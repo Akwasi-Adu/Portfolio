@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Project Details Page">
+    <meta name="keywords" content="Projects, Portfolio, ERP, Full Stack Development">
+    <title>Project Details | Akwasi Adu-Kyeremeh</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <!-- <li><a href="about.html">About</a></li> -->
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Project Details Section -->
+    <main id="project-details-page">
+        <!-- Back Button -->
+        <button onclick="window.history.back();" class="back-button">Go Back</button>
+
+        <!-- Screenshot -->
+        <img id="project-screenshot" alt="Project Screenshot" class="project-screenshot">
+
+        <!-- Title -->
+        <h1 id="project-title"></h1>
+
+        <!-- Meta Details -->
+        <p><strong>Duration:</strong> <span id="project-duration"></span></p>
+        <p><strong>Project Name:</strong> <span id="project-name"></span></p>
+        <p><strong>Industry:</strong> <span id="project-industry"></span></p>
+
+        <!-- Details -->
+        <section>
+            <h2>Details</h2>
+            <p id="project-details"></p>
+        </section>
+
+        <!-- Highlights -->
+        <section>
+            <h2>Technical Highlights</h2>
+            <p id="project-highlights"></p>
+        </section>
+
+        <!-- Outcome -->
+        <section>
+            <h2>Outcome</h2>
+            <p id="project-outcome"></p>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Akwasi Adu-Kyeremeh. All rights reserved.</p>
+    </footer>
+
+    <script src="js/projects.js"></script>
+    <script src="js/project-details-render.js"></script>
+</body>
+</html>

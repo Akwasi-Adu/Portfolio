@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog | Akwasi Adu-Kyeremeh</title>
+    <meta name="description" content="Insights and articles by Akwasi Adu-Kyeremeh on technology, ERP solutions, and software development.">
+    <meta name="keywords" content="Blog, ERP, Full-Stack Developer, Technology">
+    <meta name="author" content="Akwasi Adu-Kyeremeh">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <!-- <li><a href="about.html">About</a></li> -->
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="blog-container">
+        <h1>Blog</h1>
+
+        <!-- Search and Filter -->
+        <div class="controls">
+            <label for="search-blog">Search:</label>
+            <input type="text" id="search-blog" placeholder="Search by title...">
+
+            <label for="filter-category">Filter by Category:</label>
+            <select id="filter-category">
+                <option value="all">All</option>
+                <option value="Sage Evolution">Sage Evolution</option>
+                <option value="Sage Pastel">Sage Pastel</option>
+                <option value="ERP">ERP</option>
+                <option value="Development">Development</option>
+            </select>
+
+            <label for="sort-blog">Sort by:</label>
+            <select id="sort-blog">
+                <option value="date-desc">Newest First</option>
+                <option value="date-asc">Oldest First</option>
+                <option value="title-asc">Title (A-Z)</option>
+                <option value="title-desc">Title (Z-A)</option>
+            </select>
+        </div>
+
+        <!-- Blog Posts -->
+        <div id="blog-posts" class="blog-grid"></div>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Akwasi Adu-Kyeremeh. All rights reserved.</p>
+    </footer>
+
+    <script src="js/blogs.js"></script>
+    <script src="js/blog-render.js"></script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog Details | Akwasi Adu-Kyeremeh</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html">Projects</a></li>
+                <li><a href="blog.html" class="active">Blog</a></li>
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main id="blog-details">
+        <h1 id="blog-title"></h1>
+        <p class="blog-meta">
+            Written by <strong>Akwasi Adu-Kyeremeh</strong> on <strong id="blog-date"></strong> in <span id="blog-category"></span>
+        </p>
+        
+        <div id="blog-content"></div>
+
+        <section id="related-posts">
+            <h2>Related Posts</h2>
+            <div id="related-posts-container"></div>
+        </section>
+
+        <button onclick="window.history.back();" class="back-button">Go Back</button>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Akwasi Adu-Kyeremeh. All rights reserved.</p>
+    </footer>
+
+    <script src="js/blogs.js"></script>
+    <script src="js/blog-details-render.js"></script>
+</body>
+</html>

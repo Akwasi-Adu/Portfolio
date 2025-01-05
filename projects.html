@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Projects | Akwasi Adu-Kyeremeh</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="projects.html" class="active">Projects</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <!-- <li><a href="about.html">About</a></li> -->
+                <li><a href="index.html#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Filter and Sort Controls -->
+    <div class="controls">
+        <label for="filter-industry">Filter by Industry:</label>
+        <select id="filter-industry">
+            <option value="all">All</option>
+            <option value="all">All</option>
+            <option value="Accounting">Accounting</option>
+            <option value="Aviation">Aviation</option>
+            <option value="Banking">Banking</option>
+            <option value="Consulting">Consulting</option>
+            <option value="Duty-Free">Duty-Free</option>
+            <option value="Energy">Energy</option>
+            <option value="Engineering">Engineering</option>
+            <option value="Finance">Finance</option>
+            <option value="Government">Government</option>
+            <option value="Healthcare">Healthcare</option>
+            <option value="Insurance">Insurance</option>
+            <option value="Leadership Development">Leadership Development</option>
+            <option value="Manufacturing">Manufacturing</option>
+            <option value="Marine">Marine</option>
+            <option value="Mining">Mining</option>
+            <option value="Non-Profit">Non-Profit</option>
+            <option value="Offshore Services">Offshore Services</option>
+            <option value="Oil & Gas">Oil & Gas</option>
+            <option value="Professional Services">Professional Services</option>
+            <option value="Public Sector">Public Sector</option>
+            <option value="Real Estate">Real Estate</option>
+            <option value="Religious">Religious</option>
+            <option value="Retail">Retail</option>
+            <option value="Security Services">Security Services</option>
+            <option value="Telecommunications">Telecommunications</option>
+        </select>
+
+        <label for="sort-projects">Sort by:</label>
+        <select id="sort-projects">
+            <option value="name-asc">Name (A-Z)</option>
+            <option value="name-desc">Name (Z-A)</option>
+            <option value="duration-asc">Duration (Oldest to Newest)</option>
+            <option value="duration-desc">Duration (Newest to Oldest)</option>
+        </select>
+    </div>
+
+    <!-- Projects Section -->
+    <main>
+        <div id="projects-container" class="projects-grid"></div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2025 Akwasi Adu-Kyeremeh. All rights reserved.</p>
+    </footer>
+
+    <script src="js/projects.js"></script>
+    <script src="js/projects-render.js"></script>
+</body>
+</html>
