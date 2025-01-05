@@ -782,6 +782,22 @@ main section {
     text-align: left;
 }
 
+@media (max-width: 768px) {
+    .home-intro {
+        flex-direction: column; /* Stack items vertically */
+        align-items: center; /* Center items */
+    }
+
+    .profile-photo {
+        margin-bottom: 20px; /* Add spacing below the image */
+    }
+
+    .intro-text {
+        text-align: center; /* Center-align text */
+    }
+}
+
+
 .project-logo {
     width: 100px;
     margin-bottom: 10px;
