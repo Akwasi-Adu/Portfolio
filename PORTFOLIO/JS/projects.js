@@ -16,8 +16,8 @@ const projects = [
             "<strong>Full-Stack Development:</strong> Delivered an end-to-end solution, including APIs, backend logic, and frontend interface using ASP.NET."
         ],
         outcome: "Rescued a delayed project, completed development on time, and exceeded client expectations.",
-        logo: "images/mesti-logo.jpeg",
-        screenshot: "images/mesti-logo.jpeg"
+        logo: "portfolio/images/mesti-logo.jpeg",
+        screenshot: "portfolio/images/mesti-logo.jpeg"
     },
     // {
     //     id: 2,
@@ -36,8 +36,8 @@ const projects = [
     //         "<strong>Customization:</strong> Tailored ERP features to meet the bank's unique requirements."
     //     ],
     //     outcome: "Enhanced financial management capabilities and operational transparency at the Central Bank.",
-    //     logo: "images/cbl-logo.jpg",
-    //     screenshot: "images/cbl-screenshot.jpg"
+    //     logo: "portfolio/images/cbl-logo.jpg",
+    //     screenshot: "portfolio/images/cbl-screenshot.jpg"
     // },
     // {
     //     id: 3,
@@ -56,8 +56,8 @@ const projects = [
     //         "<strong>Technology Integration:</strong> Delivered a robust solution using Microsoft Dynamics RMS."
     //     ],
     //     outcome: "Achieved significant operational efficiency and enhanced real-time visibility into retail operations.",
-    //     logo: "images/vodafone-logo.jpg",
-    //     screenshot: "images/vodafone-screenshot.jpg"
+    //     logo: "portfolio/images/vodafone-logo.jpg",
+    //     screenshot: "portfolio/images/vodafone-screenshot.jpg"
     // },
     {
         id: 4,
@@ -76,8 +76,8 @@ const projects = [
             "<strong>Custom Reporting:</strong> Enabled exportable, drill-down project reports tailored to client-specific needs."
         ],
         outcome: "Delivered a scalable and user-friendly application that streamlined financial reporting processes for Inter-Con Security.",
-        logo: "images/intercon-logo.png",
-        screenshot: "images/intercon-logo.png"
+        logo: "portfolio/images/intercon-logo.png",
+        screenshot: "portfolio/images/intercon-logo.png"
     },
     {
         id: 5,
@@ -96,8 +96,8 @@ const projects = [
             "<strong>Notification System:</strong> Created a dynamic email service to automate stakeholder communication."
         ],
         outcome: "Delivered a robust, scalable application that streamlined procurement workflows and enhanced operational efficiency.",
-        logo: "images/hog-logo.png",
-        screenshot: "images/harlequin-logo.jpg"
+        logo: "portfolio/images/hog-logo.png",
+        screenshot: "portfolio/images/harlequin-logo.jpg"
     },
     {
         id: 6,
@@ -116,8 +116,8 @@ const projects = [
             "<strong>Fixed Assets and Inventory Integration:</strong> Delivered complete solutions for asset management and inventory control, supporting operational efficiency."
         ],
         outcome: "Successfully transitioned Lister Hospital to a modern ERP system, enhancing operational efficiency and financial management.",
-        logo: "images/lister-logo.jpg",
-        screenshot: "images/lister-logo.jpg"
+        logo: "portfolio/images/lister-logo.jpg",
+        screenshot: "portfolio/images/lister-logo.jpg"
     },
     {
         id: 7,
@@ -136,8 +136,8 @@ const projects = [
             "<strong>Stakeholder Engagement:</strong> Worked closely with company leadership and operational staff to understand requirements and deliver a solution that enhanced business operations."
         ],
         outcome: "Successfully implemented an ERP system that streamlined operations and improved financial oversight for a rapidly growing Oil & Gas company.",
-        logo: "images/ibm-logo.jpg",
-        screenshot: "images/ibm-logo.jpg"
+        logo: "portfolio/images/ibm-logo.jpg",
+        screenshot: "portfolio/images/ibm-logo.jpg"
     },
     {
         id: 8,
@@ -156,8 +156,8 @@ const projects = [
             "<strong>Customization:</strong> Tailored the ERP system to meet the unique needs of a trade association in the insurance sector."
         ],
         outcome: "Successfully deployed an ERP system that continues to support GIA's financial and operational needs.",
-        logo: "images/ecowas-logo.jpg",
-        screenshot: "images/ecowas-logo.jpg"
+        logo: "portfolio/images/ecowas-logo.jpg",
+        screenshot: "portfolio/images/ecowas-logo.jpg"
     },
     {
         id: 9,
@@ -176,8 +176,8 @@ const projects = [
             "<strong>Transition Expertise:</strong> Leveraged years of experience supporting the NCA's previous accounting software to ensure a smooth and seamless ERP implementation."
         ],
         outcome: "Successfully deployed an ERP system that streamlined operations, improved data accuracy, and enhanced decision-making across the NCA's nationwide offices.",
-        logo: "images/nca-logo2.png",
-        screenshot: "images/nca-logo2.png"
+        logo: "portfolio/images/nca-logo2.png",
+        screenshot: "portfolio/images/nca-logo2.png"
     },
     {
         id: 10,
@@ -196,8 +196,8 @@ const projects = [
             "<strong>ERP Customization:</strong> Adapted the system to align with the Energy Commission's regulatory, operational, and financial reporting needs."
         ],
         outcome: "Successfully transitioned the Energy Commission to a robust ERP system that improved operational and financial management capabilities.",
-        logo: "images/energy-logo.jpg",
-        screenshot: "images/energy-logo.jpg"
+        logo: "portfolio/images/energy-logo.jpg",
+        screenshot: "portfolio/images/energy-logo.jpg"
     },
     {
         id: 11,
@@ -216,8 +216,8 @@ const projects = [
             "<strong>Scalability:</strong> Designed the system to accommodate future growth and changes in operational scale."
         ],
         outcome: "Successfully deployed an ERP system that streamlined Misyl Energy's financial and operational processes, supporting the company's growth and compliance requirements.",
-        logo: "images/misyl-logo.jpg",
-        screenshot: "images/misyl-logo.jpg"
+        logo: "portfolio/images/misyl-logo.jpg",
+        screenshot: "portfolio/images/misyl-logo.jpg"
     },
     {
         id: 12,
@@ -236,8 +236,8 @@ const projects = [
             "<strong>Customized Reporting:</strong> Delivered tailored reporting solutions to meet the operational and regulatory requirements of a high-profile real estate developer."
         ],
         outcome: "Successfully implemented an ERP system that enhanced operational efficiency and financial management for both companies.",
-        logo: "images/goldkey-logo.jpg",
-        screenshot: "images/goldkey-logo.jpg"
+        logo: "portfolio/images/goldkey-logo.jpg",
+        screenshot: "portfolio/images/goldkey-logo.jpg"
     },
     {
         id: 13,
@@ -256,8 +256,8 @@ const projects = [
             "<strong>BI Reports:</strong> Delivered actionable insights into operations, enhancing decision-making capabilities."
         ],
         outcome: "Delivered a tailored ERP solution that became a core part of HIT's operational infrastructure, streamlining processes and enhancing efficiency.",
-        logo: "images/harlequin-logo.jpg",
-        screenshot: "images/harlequin-logo.jpg"
+        logo: "portfolio/images/harlequin-logo.jpg",
+        screenshot: "portfolio/images/harlequin-logo.jpg"
     },
     {
         id: 14,
@@ -276,8 +276,8 @@ const projects = [
             "<strong>Customization:</strong> Adapted the solution to align with the unique operational demands of a BDC in the Oil & Gas sector."
         ],
         outcome: "Successfully deployed an ERP system that streamlined operations, enhanced regulatory compliance, and provided accurate monitoring and reporting capabilities.",
-        logo: "images/petroleum-logo.jpg",
-        screenshot: "images/petroleum-logo.jpg"
+        logo: "portfolio/images/petroleum-logo.jpg",
+        screenshot: "portfolio/images/petroleum-logo.jpg"
     },
     {
         id: 15,
@@ -296,8 +296,8 @@ const projects = [
             "<strong>Customization:</strong> Adapted Sage 50 Cloud Accounting Partner to meet the operational and reporting requirements of a Free Zone Enterprise."
         ],
         outcome: "Successfully deployed an ERP system that improved financial management and inventory oversight, supporting Africopa's growth objectives.",
-        logo: "images/africopa-logo.jpg",
-        screenshot: "images/africopa-logo.jpg"
+        logo: "portfolio/images/africopa-logo.jpg",
+        screenshot: "portfolio/images/africopa-logo.jpg"
     },
     {
         id: 16,
@@ -316,8 +316,8 @@ const projects = [
             "<strong>Capacity Building:</strong> Delivered effective training to enhance staff proficiency in managing and utilizing the accounting system."
         ],
         outcome: "Successfully implemented a robust accounting system that improved financial management and transparency.",
-        logo: "images/gii-logo.jpg",
-        screenshot: "images/gii-logo.jpg"
+        logo: "portfolio/images/gii-logo.jpg",
+        screenshot: "portfolio/images/gii-logo.jpg"
     },
     {
         id: 17,
@@ -336,8 +336,8 @@ const projects = [
             "<strong>Cloud Deployment:</strong> Enabled secure, centralized access across multiple West African offices through a cloud-based implementation."
         ],
         outcome: "Successfully transitioned Inter-Con Security Systems Ghana to a modern, robust ERP system, resolving inefficiencies in their previous accounting software.",
-        logo: "images/intercon-logo.png",
-        screenshot: "images/intercon-logo.png"
+        logo: "portfolio/images/intercon-logo.png",
+        screenshot: "portfolio/images/intercon-logo.png"
     },
     {
         id: 18,
@@ -356,8 +356,8 @@ const projects = [
             "<strong>Stakeholder Training:</strong> Focused on knowledge transfer to ensure user confidence and system mastery."
         ],
         outcome: "Successfully deployed an accounting system that improved Busara Africa's financial management and reporting capabilities.",
-        logo: "images/busara-logo.jpg",
-        screenshot: "images/busara-logo.jpg"
+        logo: "portfolio/images/busara-logo.jpg",
+        screenshot: "portfolio/images/busara-logo.jpg"
     },
     {
         id: 19,
@@ -376,8 +376,8 @@ const projects = [
             "<strong>Inventory Management:</strong> Implemented modules to streamline inventory tracking and point-of-sale operations, increasing efficiency in managing church store sales."
         ],
         outcome: "Successfully deployed a comprehensive ERP solution that continues to meet the church's financial and operational needs.",
-        logo: "images/presby-logo.jpg",
-        screenshot: "images/presby-logo.jpg"
+        logo: "portfolio/images/presby-logo.jpg",
+        screenshot: "portfolio/images/presby-logo.jpg"
     },
     {
         id: 20,
@@ -396,8 +396,8 @@ const projects = [
             "<strong>E-Commerce and Retail Integration:</strong> Supported EcoDi's retail operations and online grocery delivery capabilities by ensuring seamless ERP integration."
         ],
         outcome: "Successfully implemented an ERP system that streamlined financial and operational processes, supporting EcoDi's transformation and growth.",
-        logo: "images/ecodi-logo.jpg",
-        screenshot: "images/ecodi-logo.jpg"
+        logo: "portfolio/images/ecodi-logo.jpg",
+        screenshot: "portfolio/images/ecodi-logo.jpg"
     },
     {
         id: 21,
@@ -416,8 +416,8 @@ const projects = [
             "<strong>Industry-Specific Customization:</strong> Tailored the ERP system to address specific requirements of the downstream petroleum sector, including fuel inventory and retail management."
         ],
         outcome: "Successfully deployed an ERP system that streamlined financial, inventory, and retail management processes for Nick Petroleum.",
-        logo: "images/nick-logo.jpg",
-        screenshot: "images/nick-logo.jpg"
+        logo: "portfolio/images/nick-logo.jpg",
+        screenshot: "portfolio/images/nick-logo.jpg"
     },
     {
         id: 22,
@@ -436,8 +436,8 @@ const projects = [
             "<strong>Database Optimization:</strong> Designed and optimized the MSSQL database, including schema design, query tuning, and stored procedure development to handle large datasets efficiently."
         ],
         outcome: "Delivered a user-friendly system that transformed raw financial data into actionable insights, aiding decision-making for Climate Finance initiatives.",
-        logo: "images/mof-logo.jpg",
-        screenshot: "images/mof-logo.jpg"
+        logo: "portfolio/images/mof-logo.jpg",
+        screenshot: "portfolio/images/mof-logo.jpg"
     },
     {
         id: 23,
@@ -456,8 +456,8 @@ const projects = [
             "<strong>Financial Reporting:</strong> Created modules for generating balance sheets, trend analyses, trial balances, and other financial reports with drill-down capabilities."
         ],
         outcome: "Delivered a scalable, intuitive system that streamlined financial reporting processes and improved operational efficiency.",
-        logo: "images/energy-logo.jpg",
-        screenshot: "images/energy-logo.jpg"
+        logo: "portfolio/images/energy-logo.jpg",
+        screenshot: "portfolio/images/energy-logo.jpg"
     },
     {
         id: 24,
@@ -476,8 +476,8 @@ const projects = [
             "<strong>Stakeholder Engagement:</strong> Focused on knowledge transfer and user empowerment to facilitate smooth adoption of the system."
         ],
         outcome: "Successfully deployed a robust ERP system that improved financial operations and reporting for Orica Senegal SARL.",
-        logo: "images/orica-logo.jpg",
-        screenshot: "images/orica-logo.jpg"
+        logo: "portfolio/images/orica-logo.jpg",
+        screenshot: "portfolio/images/orica-logo.jpg"
     },
     {
         id: 25,
@@ -496,8 +496,8 @@ const projects = [
             "<strong>International Standards Compliance:</strong> Ensured the system met the regulatory and operational needs of the multi-national joint venture."
         ],
         outcome: "Successfully deployed a robust ERP system that enhanced operational efficiency and financial oversight for WAPCo.",
-        logo: "images/wapco-logo.jpg",
-        screenshot: "images/wapco-logo.jpg"
+        logo: "portfolio/images/wapco-logo.jpg",
+        screenshot: "portfolio/images/wapco-logo.jpg"
     },
     {
         id: 26,
@@ -516,8 +516,8 @@ const projects = [
             "<strong>Customization:</strong> Tailored the ERP system to meet the unique needs of a trade association in the insurance sector."
         ],
         outcome: "Successfully deployed an ERP system that continues to support GIA's financial and operational needs.",
-        logo: "images/gia-logo.jpg",
-        screenshot: "images/gia-logo.jpg"
+        logo: "portfolio/images/gia-logo.jpg",
+        screenshot: "portfolio/images/gia-logo.jpg"
     },
     {
         id: 27,
@@ -536,8 +536,8 @@ const projects = [
             "<strong>Reporting Solutions:</strong> Developed tailored reports to provide management with actionable insights and enhance decision-making."
         ],
         outcome: "Successfully deployed an ERP system that enhanced operational efficiency and financial oversight for ECO Ghana.",
-        logo: "images/edco-logo.jpg",
-        screenshot: "images/edco-logo.jpg"
+        logo: "portfolio/images/edco-logo.jpg",
+        screenshot: "portfolio/images/edco-logo.jpg"
     },
     {
         id: 28,
@@ -556,8 +556,8 @@ const projects = [
             "<strong>Reporting Solutions:</strong> Developed reporting capabilities to enhance financial oversight and support strategic decision-making."
         ],
         outcome: "Successfully implemented an ERP system that improved operational efficiency and financial management for Starbow.",
-        logo: "images/starbow-logo.png",
-        screenshot: "images/starbow-logo.png"
+        logo: "portfolio/images/starbow-logo.png",
+        screenshot: "portfolio/images/starbow-logo.png"
     },
     {
         id: 29,
@@ -576,8 +576,8 @@ const projects = [
             "<strong>Custom Reporting:</strong> Developed reports to support decision-making, covering production efficiency, inventory levels, and financial performance."
         ],
         outcome: "Successfully deployed a robust ERP system that enhanced production management, financial oversight, and inventory control for HealthiLife Beverages Ltd.",
-        logo: "images/hbl-logo.jpg",
-        screenshot: "images/hbl-logo.jpg"
+        logo: "portfolio/images/hbl-logo.jpg",
+        screenshot: "portfolio/images/hbl-logo.jpg"
     },
     {
         id: 30,
@@ -596,8 +596,8 @@ const projects = [
             "<strong>Automated Procurement:</strong> Introduced advanced automation tools for procurement, dealer management, and supply chain processes."
         ],
         outcome: "Delivered a robust retail management system for Vodafone Ghana, fostering a long-term partnership and setting the benchmark for similar implementations in other regions and countries.",
-        logo: "images/vodafone-logo.jpg",
-        screenshot: "images/vodafone-logo.jpg"
+        logo: "portfolio/images/vodafone-logo.jpg",
+        screenshot: "portfolio/images/vodafone-logo.jpg"
     },
     {
         id: 31,
@@ -616,7 +616,7 @@ const projects = [
             "<strong>International Expansion:</strong> Successfully expanded the solution to a new geographic location, earning commendation for the seamless replication and implementation in Sierra Leone."
         ],
         outcome: "Maintained a high level of client satisfaction by ensuring reliable system performance and user empowerment through training.",
-        logo: "images/pwc-logo.png",
-        screenshot: "images/pwc-logo.png"
+        logo: "portfolio/images/pwc-logo.png",
+        screenshot: "portfolio/images/pwc-logo.png"
     }
 ];

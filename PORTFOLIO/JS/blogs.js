@@ -31,7 +31,7 @@ Cheers!</p>
         summary: "The error below usually pops up in Excel 2010 or above while running a report using Sage Intelligence Reporting...",
         content: `
             <p>This error usually pops up in Excel 2010 or above while running a report using Sage Intelligence Reporting.</p>
-            <img src="images/blog/sir1.png" alt="Sage Intelligence Error Screenshot">
+            <img src="portfolio/images/blog/sir1.png" alt="Sage Intelligence Error Screenshot">
             <p>This is a precautionary message that halts untrusted office files from being opened. Office 2010 requires files and locations of files to be validated and trusted. 
                <a href="http://support.microsoft.com/kb/973736" target="_blank">(Error message in Microsoft Office 2010: "Office has detected a problem with this file")</a>.
             </p>
@@ -40,7 +40,7 @@ Cheers!</p>
                 <li>Open Excel and navigate to File > Options > Trust Center > Trust Center Settings > Trusted Locations.</li>
                 <li>Click the "Add New Location" button and browse to the folder you wish to add.</li>
             </ol>
-            <img src="images/blog/sir2.png" alt="Excel Trust Center Settings Screenshot">
+            <img src="portfolio/images/blog/sir2.png" alt="Excel Trust Center Settings Screenshot">
             <p>This should allow all your Sage Intelligence reports to execute fully without the error popping up.</p>
         `,
         categories: ["Sage Evolution", "ERP", "BIC"], // Multiple categories as an array
@@ -51,7 +51,7 @@ Cheers!</p>
         title: `Sage Evolution Job Costing: Error Loading Template - "QryARFind: Field 'iCurrencyID' not found"`,
         summary: "This error pops up when a particular user in Sage Evolution attempts loading a template in the Job Costing module and persists until Evolution is restarted...",
         content: `
-            <p><img src="images/blog/evojc1.png" alt="screenshot" /></p>
+            <p><img src="portfolio/images/blog/evojc1.png" alt="screenshot" /></p>
             <p>
             This error pops up when a particular user in Sage Evolution attempts loading a template in the Job Costing module and persists until Evolution is restarted.
             </p>
@@ -66,10 +66,10 @@ You do this by following the steps below:
 </P>
             <ol>
                 <li> On the workstation, Start "Run" and type "Regedit"</li>
-                <p><img src="images/blog/evojc2.png" alt="screenshot"></P>
+                <p><img src="portfolio/images/blog/evojc2.png" alt="screenshot"></P>
                 <li>From the Registry Editor, Open the folder HKey Current User | User | Software | Softline | Evolution | Agents</li>
                 <li>Select and delete the folder for the problem user (Rosemary, in my case)</li>
-                <p><img src="images/blog/evojc3.png" alt="screenshot" /></p>
+                <p><img src="portfolio/images/blog/evojc3.png" alt="screenshot" /></p>
                 <li>Once this is done, close the Registry Editor and re-login with the user's credentials. The problem should be resolved.</li>
                 <li>Note that this resets any custom settings such as printer layouts and custom grid views for that particular and must be reset where applicable.</li>
             </Ol>
@@ -82,7 +82,7 @@ You do this by following the steps below:
         title: "Pastel Partner Runtime Error 75: Path/File Access Error",
         summary: "This is a permissions error. It usually occurs when the workstation doesn't have full read and write access to the pastel folder on the server...",
         content: `
-            <img src="images/blog/er75.png" alt="screenshot" />
+            <img src="portfolio/images/blog/er75.png" alt="screenshot" />
             <p>This is a permissions error. It usually occurs when the workstation doesn't have full read and write access to the pastel folder on the server.</p>
 
 <p>Check the properties of the Pastel folder on the server and make sure its attributes haven't been set to read only. Also, check the sharing permssions and make sure that everyone or the appropriate users have full read and write access to the folder.</p>
@@ -95,7 +95,7 @@ You do this by following the steps below:
         title: `Sage Evolution "Error Initialising Report Data" when running Accounts Payable Age Analysis`,
         summary: "he above error may be encountered when a user tries running the Accounts Payable Age Analysis report in Sage Pastel Evolution...",
         content: `
-            <img src="images/blog/aanalysis.png" alt="screenshot" />
+            <img src="portfolio/images/blog/aanalysis.png" alt="screenshot" />
             <p>The above error may be encountered when a user tries running the Accounts Payable Age Analysis report in Sage Pastel Evolution.
             </p>
 <p>The first probable cause of this error may be that a custom layout is being used. Corruption in the custom layout may throw this error.
@@ -119,7 +119,7 @@ If you are getting this error message despite having the appropriate number of u
 To confirm if you have the correct number of users licenced, go to Start > All Programs >Other Utilities > License Administrator.
 This opens the Pervasive Licence Administrator Tool which should show you all existing Pervasive Licenses with details of the number of users and date of expiry.</p>
 
-<img src="images/blog/161.png" alt="screenshot" />
+<img src="portfolio/images/blog/161.png" alt="screenshot" />
 
 <p>If the License Administrator is not showing the right number of users you are licensed for, try re-registering Pastel. You could also enter your server name in the computer name field and click ‘connect’ to pull the correct license details from the server.
 </p><p>
@@ -128,7 +128,7 @@ Another common cause of this error for clients running on Pervasive Workgroup ve
 One way to avoid this is to use the Gateway Locator tool to assign ownership of the various Pastel Partner company databases to the server and to make sure that the server has the right license info.</p>
 </p>
 
-<img src="images/blog/1612.png" alt="screenshot" />
+<img src="portfolio/images/blog/1612.png" alt="screenshot" />
 <p>To do this, go to Start > All Programs > Other Utilities > Gateway Locator.
 Click on the button at the end of the Target Directory textbox to browse to and select the appropriate pastel company database. Click on the change button and enter the server name in the “Assign a Gateway” field  and click “Ok”
 </p><p>
@@ -148,7 +148,7 @@ Cheers!</p>
             <p>If you’ve worked with Sage 200 Evolution or Sage 100 Evolution since version 10, you may have encountered a rather annoying bug: <strong>duplicate invoice numbering</strong>. Even when you’ve set your database to use <strong>manual invoice numbering</strong> and checked the option to disallow duplicates, the system can still sneakily allow duplicate invoice numbers.</p>
     
             <p>Here's a screenshot of the configuration option where the bug seems to take effect:  
-            <img src="images/blog/trigger.png" alt="Configuration option for disallowing duplicate invoice numbers"></p>
+            <img src="portfolio/images/blog/trigger.png" alt="Configuration option for disallowing duplicate invoice numbers"></p>
     
             <p>Frustrating, right? Even with subsequent updates, this issue persists. Over time, I realized I couldn’t keep waiting for Sage to fix it—I had to take matters into my own hands for the sake of my clients.</p>
     
