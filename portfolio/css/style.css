@@ -14,7 +14,7 @@ body {
 
 /* Header Navigation */
 header {
-    background: #333;
+    background: linear-gradient(45deg, #cdd1d4, #0056b3);
     color: #fff;
     padding: 10px 0;
 }
@@ -32,10 +32,12 @@ header nav ul li {
 header nav ul li a {
     color: #fff;
     text-decoration: none;
+    transition: transform 0.2s ease, background-color 0.3s ease;
 }
 
 header nav ul li a:hover {
-    text-decoration: underline;
+    transform: translateY(-3px);
+    background-color: #007BFF;
 }
 
 /* Main Content */
