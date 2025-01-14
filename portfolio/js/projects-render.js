@@ -16,7 +16,7 @@ function renderProjects() {
             <p><strong>Project Name:</strong> ${project.name}</p>
             <p><strong>Industries:</strong> ${project.industry.join(", ")}</p>
             <p>${project.summary}</p>
-            <a href="project-details.html?id=${project.id}" class="view-details">View Details</a>
+            <a href="project-details.html?id=${project.id}" class="project-link">View Details</a>
         `;
 
         container.appendChild(card);

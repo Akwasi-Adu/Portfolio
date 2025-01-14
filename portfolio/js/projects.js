@@ -9,73 +9,48 @@ const projects = [
         details: [
             "Collaborated seamlessly with a multidisciplinary team of researchers and stakeholders to align technical development with research-driven requirements.",
             "Led the design and development of the entire application, including the MSSQL database, ensuring optimized schema design, query efficiency, and scalability.",
-            "Developed advanced data configuration features allowing users to define formulae, create indicators, and link them to STI initiatives."
+            "Designed and implemented a dynamic dimension management system for creating, categorizing, and managing STI-related data, including CSV data uploads, configurable templates, and approval workflows.",
+            "Developed advanced data configuration features allowing users to define formulae, create indicators, and link them to STI initiatives.",
+            "Integrated data visualization tools, generating detailed graphic and tabular reports exportable in multiple formats and viewable in various chart types.",
+            "Enabled support for multi-currency data inputs with automatic exchange rate conversions to a set reporting currency, facilitating consistent financial reporting.",
+            "Built a robust user management system with customizable access rights, privileges, and an audit trail to ensure security and transparency.",
+            "Created a content management system (CMS) for managing articles, photo galleries, and other content displayed on the client's React-based public website through an API integration.",
+            "Engineered a public interface featuring data cards and published indicators managed seamlessly from the backend.",
+            "Authored a comprehensive user manual with detailed documentation and screenshots, enhancing usability and onboarding for non-technical users.",
+            "Conducted training sessions for all stakeholders and provided a train-the-trainer program during the handholding phase to ensure smooth adoption and operational efficiency."
         ],
         highlights: [
-            "<strong>Database Development:</strong> Designed and optimized the MSSQL database.",
-            "<strong>Full-Stack Development:</strong> Delivered an end-to-end solution, including APIs, backend logic, and frontend interface using ASP.NET."
+            "<strong>Database Development:</strong> Designed and optimized the MSSQL database, including schema design, query optimization, and stored procedure creation for maximum efficiency.",
+            "<strong>Full-Stack Development:</strong> Delivered an end-to-end solution, including the creation of APIs, backend logic, and the application's frontend interface using ASP.NET.",
+            "<strong>Dynamic Dimension Management:</strong> Implemented a system for creating, categorizing, and managing STI-related data with configurable templates and approval workflows.",
+            "<strong>Data Visualization:</strong> Integrated advanced visualization tools for generating detailed graphic and tabular reports in multiple formats.",
+            "<strong>Multi-Currency Support:</strong> Enabled multi-currency data inputs with automatic exchange rate conversions for consistent financial reporting."
         ],
-        outcome: "Rescued a delayed project, completed development on time, and exceeded client expectations.",
+        outcome: "Rescued a project delayed for several months, completing development on time and exceeding client expectations. Delivered a scalable, user-friendly system for managing STI data, enabling streamlined data analysis, reporting, and publishing. Enhanced client satisfaction and public access to STI indicators through seamless integration with the Ministry's React website.",
         logo: "portfolio/images/mesti-logo.jpeg",
         screenshot: "portfolio/images/mesti-logo.jpeg"
     },
-    // {
-    //     id: 2,
-    //     title: "ERP Consultant | Central Bank of Liberia",
-    //     duration: "Mar 2023 – Dec 2023",
-    //     name: "Financial and Operational ERP Implementation",
-    //     industry: "Banking",
-    //     summary: "Led the implementation of a comprehensive ERP system to streamline financial operations.",
-    //     details: [
-    //         "Customized modules to address specific requirements of the Central Bank's operations.",
-    //         "Provided hands-on training to staff for seamless adoption of the new system.",
-    //         "Delivered ongoing support for system enhancements."
-    //     ],
-    //     highlights: [
-    //         "<strong>Process Optimization:</strong> Improved operational efficiency by automating manual financial processes.",
-    //         "<strong>Customization:</strong> Tailored ERP features to meet the bank's unique requirements."
-    //     ],
-    //     outcome: "Enhanced financial management capabilities and operational transparency at the Central Bank.",
-    //     logo: "portfolio/images/cbl-logo.jpg",
-    //     screenshot: "portfolio/images/cbl-screenshot.jpg"
-    // },
-    // {
-    //     id: 3,
-    //     title: "Retail Management System Specialist | Vodafone Ghana",
-    //     duration: "Jan 2024 – Jul 2024",
-    //     name: "Retail Management System Modernization",
-    //     industry: "Telecommunications",
-    //     summary: "Modernized Vodafone Ghana's retail management system to replace manual processes.",
-    //     details: [
-    //         "Implemented Microsoft Dynamics RMS, streamlining operations and enabling real-time retail management across all outlets.",
-    //         "Trained staff and provided on-site support during the transition phase.",
-    //         "Delivered ongoing support for system enhancements and troubleshooting."
-    //     ],
-    //     highlights: [
-    //         "<strong>Process Modernization:</strong> Transitioned the company from manual to automated retail operations.",
-    //         "<strong>Technology Integration:</strong> Delivered a robust solution using Microsoft Dynamics RMS."
-    //     ],
-    //     outcome: "Achieved significant operational efficiency and enhanced real-time visibility into retail operations.",
-    //     logo: "portfolio/images/vodafone-logo.jpg",
-    //     screenshot: "portfolio/images/vodafone-screenshot.jpg"
-    // },
     {
         id: 4,
         title: "Full-Stack Developer | Inter-Con Security, Ghana",
         duration: "Nov 2024 – Dec 2024",
         name: "Customized Financial Reporting Application",
         industry: ["Security Services"],
-        summary: "Developed a customized financial reporting application for Inter-Con Security, interfacing with the client's accounting software running on a Pervasive database.",
+        summary: "Developed a customized financial reporting application for Inter-Con Security, interfacing with the client's accounting software running on a Pervasive SQL database.",
         details: [
-            "Integrated the application with the client's Pervasive database, fetching real-time accounting transactions for reporting purposes.",
+            "Integrated the application with the client's ERP software running on a Pervasive SQL database, fetching real-time accounting transactions for reporting purposes.",
             "Designed and implemented a financial reporting module that generated multi-page and year-to-date reports, exportable in formats like Excel, CSV, PDF, and image.",
-            "Built a comprehensive user management system with role-based access controls, password policies, and detailed audit trails."
+            "Built a comprehensive user management system with role-based access controls, password policies, and detailed audit trails.",
+            "Developed a secure license and expiration management module to enforce usage policies and track application access.",
+            "Enhanced user experience with intuitive interfaces and reusable design elements through ASP.NET master pages and modular scripts.",
+            "Created robust error handling and access control mechanisms to ensure system reliability and security."
         ],
         highlights: [
-            "<strong>Data Integration:</strong> Seamlessly connected with the Pervasive database for real-time data retrieval and processing.",
-            "<strong>Custom Reporting:</strong> Enabled exportable, drill-down project reports tailored to client-specific needs."
+            "<strong>Data Integration:</strong> Seamlessly connected with Pervasive SQL database for real-time data retrieval and processing.",
+            "<strong>Custom Reporting:</strong> Enabled exportable, drill-down project reports tailored to client-specific needs.",
+            "<strong>Security and Governance:</strong> Delivered a robust audit trail to track all user actions and system changes."
         ],
-        outcome: "Delivered a scalable and user-friendly application that streamlined financial reporting processes for Inter-Con Security.",
+        outcome: "Delivered a scalable and user-friendly application that streamlined financial reporting processes for Inter-Con Security. Exceeded client expectations by providing real-time insights and a secure, maintainable solution.",
         logo: "portfolio/images/intercon-logo.png",
         screenshot: "portfolio/images/intercon-logo.png"
     },
@@ -89,13 +64,17 @@ const projects = [
         details: [
             "Designed and implemented a procurement workflow system enabling users to create, forward, and manage requisitions, and convert them into POs for approval and further processing.",
             "Developed a service to integrate with the ERP system, polling the database for new requisitions and processing them automatically.",
-            "Built a robust email notification service to send real-time updates and alerts along the procurement chain."
+            "Built a robust email notification service to send real-time updates and alerts along the procurement chain.",
+            "Designed secure user management and audit trail modules to track system usage and changes, ensuring accountability and transparency.",
+            "Enhanced user experience by creating a seamless and intuitive interface with ASP.NET Web Forms.",
+            "Conducted extensive testing and validation of services to ensure seamless data synchronization and notification delivery."
         ],
         highlights: [
             "<strong>ERP Integration:</strong> Implemented a real-time integration service with MSSQL-based ERP systems for data synchronization.",
-            "<strong>Notification System:</strong> Created a dynamic email service to automate stakeholder communication."
+            "<strong>Notification System:</strong> Created a dynamic email service to automate stakeholder communication.",
+            "<strong>Workflow Optimization:</strong> Streamlined procurement processes, reducing manual overhead and enhancing efficiency."
         ],
-        outcome: "Delivered a robust, scalable application that streamlined procurement workflows and enhanced operational efficiency.",
+        outcome: "Delivered a robust, scalable application that streamlined procurement workflows and enhanced operational efficiency. Improved transparency and communication through automated notifications and audit trails. Achieved client satisfaction by delivering the project on time and meeting all functional requirements.",
         logo: "portfolio/images/hog-logo.png",
         screenshot: "portfolio/images/harlequin-logo.jpg"
     },
@@ -109,13 +88,18 @@ const projects = [
         details: [
             "Migrated Lister Hospital from its previous accounting system to Sage 200 Evolution, setting up the General Ledger, Payables, and Receivables modules.",
             "Provided templates for stakeholders to populate data, performed data cleansing, and migrated assets, financial records, and inventory into the ERP system.",
-            "Configured and integrated inventory management in 2020 to enhance control and tracking of hospital resources."
+            "Configured and integrated inventory management in 2020 to enhance control and tracking of hospital resources.",
+            "Implemented the Fixed Assets module to manage asset categories, depreciation methods, and reporting aligned with financial standards.",
+            "Configured tailored reports for financial oversight, asset utilization, and inventory management, providing actionable insights.",
+            "Delivered comprehensive training across multiple phases, ensuring staff were proficient in using the ERP system's expanded functionality.",
+            "Provided ongoing technical support and system updates, ensuring optimal performance and adaptability to evolving requirements."
         ],
         highlights: [
             "<strong>Full ERP Transition:</strong> Achieved a seamless upgrade from the previous accounting system, enabling improved financial operations and reporting.",
-            "<strong>Fixed Assets and Inventory Integration:</strong> Delivered complete solutions for asset management and inventory control, supporting operational efficiency."
+            "<strong>Fixed Assets and Inventory Integration:</strong> Delivered complete solutions for asset management and inventory control, supporting operational efficiency.",
+            "<strong>Data Integrity and Compliance:</strong> Ensured accurate tracking and reporting of financial and operational data, meeting regulatory standards."
         ],
-        outcome: "Successfully transitioned Lister Hospital to a modern ERP system, enhancing operational efficiency and financial management.",
+        outcome: "Successfully transitioned Lister Hospital to a modern ERP system, enhancing operational efficiency and financial management. Expanded the ERP system to include inventory management, ensuring accurate tracking and control of resources. Enabled reliable and accurate financial and asset reporting, supporting strategic decision-making and long-term planning.",
         logo: "portfolio/images/lister-logo.jpg",
         screenshot: "portfolio/images/lister-logo.jpg"
     },
@@ -129,13 +113,15 @@ const projects = [
         details: [
             "Collaborated with stakeholders to design and configure the chart of accounts, customer, and supplier profiles to align with the company's business operations and financial reporting requirements.",
             "Customized Sage 50 Cloud Pastel Partner to meet the unique needs of the Oil & Gas sector, ensuring compliance with industry standards and financial regulations.",
-            "Delivered comprehensive training sessions for all stakeholders, enabling efficient and accurate use of the ERP system."
+            "Delivered comprehensive training sessions for all stakeholders, enabling efficient and accurate use of the ERP system.",
+            "Provided ongoing technical support to address system updates, troubleshoot issues, and ensure optimal performance."
         ],
         highlights: [
             "<strong>ERP Customization:</strong> Tailored Sage 50 Cloud Pastel Partner to meet IBM Petroleum's specific operational and reporting objectives.",
-            "<strong>Stakeholder Engagement:</strong> Worked closely with company leadership and operational staff to understand requirements and deliver a solution that enhanced business operations."
+            "<strong>Stakeholder Engagement:</strong> Worked closely with company leadership and operational staff to understand requirements and deliver a solution that enhanced business operations.",
+            "<strong>Training Excellence:</strong> Ensured smooth adoption of the ERP system by equipping users with the knowledge and skills required for effective utilization."
         ],
-        outcome: "Successfully implemented an ERP system that streamlined operations and improved financial oversight for a rapidly growing Oil & Gas company.",
+        outcome: "Successfully implemented an ERP system that streamlined operations and improved financial oversight for a rapidly growing Oil & Gas company. Fostered a long-term partnership by providing consistent and reliable technical support. Enabled IBM Petroleum Limited to meet its operational objectives and scale effectively within the competitive Oil & Gas industry.",
         logo: "portfolio/images/ibm-logo.jpg",
         screenshot: "portfolio/images/ibm-logo.jpg"
     },
@@ -169,13 +155,17 @@ const projects = [
         details: [
             "Deployed the ERP system to manage all aspects of the Authority's operations, bringing all regional offices onto a centralized platform.",
             "Transitioned data from the previous accounting software to the new ERP system, ensuring continuity and accuracy.",
-            "Set up modules for General Ledger, Accounts Receivable, Accounts Payable, and other essential financial and operational processes."
+            "Set up modules for General Ledger, Accounts Receivable, Accounts Payable, and other essential financial and operational processes.",
+            "Conducted extensive training sessions for stakeholders across all offices, ensuring effective adoption and system utilization.",
+            "Connected operations across multiple regions, enabling real-time collaboration and reporting.",
+            "Provided ongoing consultancy and technical support to maintain system performance and address evolving needs."
         ],
         highlights: [
             "<strong>Nationwide Integration:</strong> Unified the financial and operational processes of all regional offices into a centralized system for enhanced oversight and efficiency.",
-            "<strong>Transition Expertise:</strong> Leveraged years of experience supporting the NCA's previous accounting software to ensure a smooth and seamless ERP implementation."
+            "<strong>Transition Expertise:</strong> Leveraged years of experience supporting the NCA's previous accounting software to ensure a smooth and seamless ERP implementation.",
+            "<strong>Regulatory Alignment:</strong> Configured the system to meet the reporting and operational needs of a communications regulatory authority."
         ],
-        outcome: "Successfully deployed an ERP system that streamlined operations, improved data accuracy, and enhanced decision-making across the NCA's nationwide offices.",
+        outcome: "Successfully deployed an ERP system that streamlined operations, improved data accuracy, and enhanced decision-making across the NCA's nationwide offices. Achieved a seamless transition from the previous system, leveraging existing knowledge to minimize disruption. Fostered a long-term partnership through consistent consultancy and post-implementation support, ensuring the system's adaptability to the NCA's evolving needs.",
         logo: "portfolio/images/nca-logo2.png",
         screenshot: "portfolio/images/nca-logo2.png"
     },
@@ -189,13 +179,16 @@ const projects = [
         details: [
             "Successfully pitched Sage 200 Evolution as a full ERP solution to address the Commission's broader operational needs, replacing the existing system.",
             "Configured the ERP system with a custom chart of accounts, Accounts Receivable and Payable modules, and dedicated databases to cater to specific operational aspects, such as the Energy Fund.",
-            "Developed tailored reporting solutions to meet regulatory and organizational requirements, ensuring compliance and transparency."
+            "Developed tailored reporting solutions to meet regulatory and organizational requirements, ensuring compliance and transparency.",
+            "Delivered comprehensive training sessions for staff, enabling effective system adoption and operation.",
+            "Provided ongoing technical support to ensure the system's reliability and adaptability to evolving needs."
         ],
         highlights: [
             "<strong>Multi-Database Setup:</strong> Designed dedicated company databases within Sage 200 Evolution to handle specialized funds and reporting requirements.",
-            "<strong>ERP Customization:</strong> Adapted the system to align with the Energy Commission's regulatory, operational, and financial reporting needs."
+            "<strong>ERP Customization:</strong> Adapted the system to align with the Energy Commission's regulatory, operational, and financial reporting needs.",
+            "<strong>Capacity Building:</strong> Equipped staff with the knowledge and skills required for efficient system use, enhancing operational confidence and effectiveness."
         ],
-        outcome: "Successfully transitioned the Energy Commission to a robust ERP system that improved operational and financial management capabilities.",
+        outcome: "Successfully transitioned the Energy Commission to a robust ERP system that improved operational and financial management capabilities. Enhanced the Commission's ability to manage dedicated funds and produce regulatory-compliant reports with precision. Fostered a long-term relationship with the client through reliable post-implementation support.",
         logo: "portfolio/images/energy-logo.jpg",
         screenshot: "portfolio/images/energy-logo.jpg"
     },
@@ -209,13 +202,16 @@ const projects = [
         details: [
             "Developed a comprehensive and industry-specific chart of accounts tailored to Misyl Energy's operations.",
             "Set up robust inventory management processes to handle various petroleum products, including LPG, automotive gas oil, and premium motor spirit.",
-            "Configured receivables and payables systems to streamline financial transactions and vendor/customer management."
+            "Configured receivables and payables systems to streamline financial transactions and vendor/customer management.",
+            "Delivered detailed training sessions for staff, ensuring effective adoption and utilization of the ERP system.",
+            "Provided ongoing technical support and consultation to address evolving business needs and ensure the system's optimal performance."
         ],
         highlights: [
             "<strong>Industry Customization:</strong> Tailored the ERP system to meet the unique regulatory and operational requirements of the downstream petroleum sector.",
-            "<strong>Scalability:</strong> Designed the system to accommodate future growth and changes in operational scale."
+            "<strong>Scalability:</strong> Designed the system to accommodate future growth and changes in operational scale.",
+            "<strong>Capacity Building:</strong> Equipped stakeholders with the knowledge to maximize the system's potential for operational efficiency and financial oversight."
         ],
-        outcome: "Successfully deployed an ERP system that streamlined Misyl Energy's financial and operational processes, supporting the company's growth and compliance requirements.",
+        outcome: "Successfully deployed an ERP system that streamlined Misyl Energy's financial and operational processes, supporting the company's growth and compliance requirements. Enhanced inventory and financial management, enabling better decision-making and operational control. Maintained a long-term partnership with Misyl Energy by providing ongoing support and adapting the system to evolving needs.",
         logo: "portfolio/images/misyl-logo.jpg",
         screenshot: "portfolio/images/misyl-logo.jpg"
     },
@@ -229,13 +225,16 @@ const projects = [
         details: [
             "Successfully migrated historical data from the previous accounting system, ensuring a seamless transition without data loss.",
             "Recreated the existing chart of accounts, accounts receivable, and accounts payable structures within Sage 200 Evolution ERP.",
-            "Configured the ERP system to support multi-company operations, enabling centralized management of Goldkey Properties and Blackwell Realty."
+            "Configured the ERP system to support multi-company operations, enabling centralized management of Goldkey Properties and Blackwell Realty.",
+            "Conducted comprehensive training sessions to equip staff with the knowledge and confidence to use the new ERP system effectively.",
+            "Provided dedicated handholding and after-sales support, addressing challenges and ensuring system stability."
         ],
         highlights: [
             "<strong>System Transition:</strong> Enabled a smooth transition from the previous accounting software to Sage 200 Evolution ERP.",
-            "<strong>Customized Reporting:</strong> Delivered tailored reporting solutions to meet the operational and regulatory requirements of a high-profile real estate developer."
+            "<strong>Customized Reporting:</strong> Delivered tailored reporting solutions to meet the operational and regulatory requirements of a high-profile real estate developer.",
+            "<strong>Scalable Implementation:</strong> Configured the system for real estate-specific financial processes, including project cost tracking and property revenue management."
         ],
-        outcome: "Successfully implemented an ERP system that enhanced operational efficiency and financial management for both companies.",
+        outcome: "Successfully implemented an ERP system that enhanced operational efficiency and financial management for both companies. Achieved high client satisfaction, with Goldkey Properties using the system for five years before transitioning to SUN Systems due to group HQ policy. Enabled streamlined operations and reporting for Blackwell Realty, further supporting its reputation for delivering high-quality developments.",
         logo: "portfolio/images/goldkey-logo.jpg",
         screenshot: "portfolio/images/goldkey-logo.jpg"
     },
@@ -249,13 +248,18 @@ const projects = [
         details: [
             "Transitioned HIT from Sage 50 Accounting Partner to Sage 200 Evolution to accommodate their expanding operations and multi-departmental needs.",
             "Implemented a scalable multi-company setup, replicating the system for Harlequin Oil & Gas upon its establishment.",
-            "Designed and integrated a comprehensive Job Costing module, supported by custom Business Intelligence reports for deep operational insights."
+            "Designed and integrated a comprehensive Job Costing module, supported by custom Business Intelligence reports for deep operational insights.",
+            "Configured the ERP system to include key departments such as accounting, procurement, stores, admin, payroll, fabrication, and engineering.",
+            "Delivered hands-on training for staff across all levels to ensure effective system adoption and operation.",
+            "Heavily customized the ERP to fit HIT's unique operational requirements, ensuring it served as an indispensable tool across all business areas.",
+            "Provided consistent, long-term support, ensuring the system remains aligned with HIT's evolving needs."
         ],
         highlights: [
             "<strong>Job Costing Module:</strong> Enabled precise cost tracking and reporting for engineering and fabrication projects.",
-            "<strong>BI Reports:</strong> Delivered actionable insights into operations, enhancing decision-making capabilities."
+            "<strong>BI Reports:</strong> Delivered actionable insights into operations, enhancing decision-making capabilities.",
+            "<strong>Multi-Company Support:</strong> Successfully scaled the ERP system to support operations across multiple companies in the group."
         ],
-        outcome: "Delivered a tailored ERP solution that became a core part of HIT's operational infrastructure, streamlining processes and enhancing efficiency.",
+        outcome: "Delivered a tailored ERP solution that became a core part of HIT's operational infrastructure, streamlining processes and enhancing efficiency. Supported the successful establishment of Harlequin Oil & Gas by replicating and customizing the system for its specific needs. Achieved high client satisfaction, fostering a partnership that includes ongoing system support and development.",
         logo: "portfolio/images/harlequin-logo.jpg",
         screenshot: "portfolio/images/harlequin-logo.jpg"
     },
@@ -269,13 +273,15 @@ const projects = [
         details: [
             "Designed and implemented an ERP system aligned with industry regulations and operational requirements specific to the Oil & Gas sector.",
             "Configured modules to meet the client's monitoring and reporting needs, ensuring compliance with Ghana's regulatory standards.",
-            "Delivered comprehensive stakeholder training to ensure effective adoption and use of the ERP system."
+            "Delivered comprehensive stakeholder training to ensure effective adoption and use of the ERP system.",
+            "Provided ongoing post-implementation support to ensure the system's smooth operation and adaptability to evolving needs."
         ],
         highlights: [
             "<strong>Regulatory Compliance:</strong> Ensured the ERP system met all industry reporting and monitoring requirements.",
-            "<strong>Customization:</strong> Adapted the solution to align with the unique operational demands of a BDC in the Oil & Gas sector."
+            "<strong>Customization:</strong> Adapted the solution to align with the unique operational demands of a BDC in the Oil & Gas sector.",
+            "<strong>User Empowerment:</strong> Conducted detailed training sessions, enabling stakeholders to maximize system functionality and efficiency."
         ],
-        outcome: "Successfully deployed an ERP system that streamlined operations, enhanced regulatory compliance, and provided accurate monitoring and reporting capabilities.",
+        outcome: "Successfully deployed an ERP system that streamlined operations, enhanced regulatory compliance, and provided accurate monitoring and reporting capabilities. Achieved high client satisfaction by delivering a tailored solution and reliable ongoing support.",
         logo: "portfolio/images/petroleum-logo.jpg",
         screenshot: "portfolio/images/petroleum-logo.jpg"
     },
@@ -289,13 +295,15 @@ const projects = [
         details: [
             "Designed and implemented a comprehensive chart of accounts, alongside Accounts Receivable and Payable modules tailored to Africopa's operational needs.",
             "Configured a robust inventory management system, emphasizing multi-store and warehouse locations with real-time tracking and reporting capabilities.",
-            "Delivered training sessions to empower stakeholders with the skills needed to effectively operate the ERP system."
+            "Delivered training sessions to empower stakeholders with the skills needed to effectively operate the ERP system.",
+            "Provided post-implementation support to address updates and ensure optimal system performance."
         ],
         highlights: [
             "<strong>Inventory Management:</strong> Implemented a scalable solution to handle diverse product categories and multiple warehouse locations, ensuring real-time accuracy.",
-            "<strong>Customization:</strong> Adapted Sage 50 Cloud Accounting Partner to meet the operational and reporting requirements of a Free Zone Enterprise."
+            "<strong>Customization:</strong> Adapted Sage 50 Cloud Accounting Partner to meet the operational and reporting requirements of a Free Zone Enterprise.",
+            "<strong>Capacity Building:</strong> Trained users to maximize system functionality and maintain operational efficiency."
         ],
-        outcome: "Successfully deployed an ERP system that improved financial management and inventory oversight, supporting Africopa's growth objectives.",
+        outcome: "Successfully deployed an ERP system that improved financial management and inventory oversight, supporting Africopa's growth objectives. Delivered a solution that enabled real-time reporting, improving decision-making and operational transparency. Fostered a strong relationship with the client by providing reliable post-implementation support and achieving high client satisfaction.",
         logo: "portfolio/images/africopa-logo.jpg",
         screenshot: "portfolio/images/africopa-logo.jpg"
     },
@@ -309,13 +317,14 @@ const projects = [
         details: [
             "Collaborated with GII to design and implement a tailored chart of accounts that aligned with their operational needs and non-profit financial reporting standards.",
             "Configured the ERP system to facilitate accurate tracking and management of funds and expenses in line with donor and regulatory requirements.",
-            "Conducted staff training sessions to ensure efficient system use and operational continuity."
+            "Conducted staff training sessions to ensure efficient system use and operational continuity.",
+            "Provided post-implementation support to ensure a smooth transition and sustained system performance."
         ],
         highlights: [
             "<strong>Customization:</strong> Adapted Sage 50 Cloud Accounting Partner to meet the specific operational and compliance needs of a non-profit organization.",
             "<strong>Capacity Building:</strong> Delivered effective training to enhance staff proficiency in managing and utilizing the accounting system."
         ],
-        outcome: "Successfully implemented a robust accounting system that improved financial management and transparency.",
+        outcome: "Successfully implemented a robust accounting system that improved financial management and transparency. Earned client satisfaction by delivering the project on time and ensuring a smooth adoption of the new system.",
         logo: "portfolio/images/gii-logo.jpg",
         screenshot: "portfolio/images/gii-logo.jpg"
     },
@@ -329,13 +338,17 @@ const projects = [
         details: [
             "Conducted comprehensive stakeholder meetings to understand operational challenges and showcase successful ERP implementations for similar clients.",
             "Designed and implemented a tailored chart of accounts, ensuring alignment with Inter-Con's complex security service operations.",
-            "Configured Accounts Receivable and Payable modules to streamline financial workflows and enhance accuracy in client and vendor management."
+            "Configured Accounts Receivable and Payable modules to streamline financial workflows and enhance accuracy in client and vendor management.",
+            "Developed custom reporting solutions integrated into Sage 50 Cloud Accounting Partner, providing actionable insights for management decision-making.",
+            "Managed the deployment of the ERP system in a cloud server environment, facilitating secure access and scalability for regional operations in Togo and Benin.",
+            "Delivered training sessions for staff across multiple countries to ensure consistent and effective system use."
         ],
         highlights: [
             "<strong>ERP Customization:</strong> Tailored Sage 50 Cloud Accounting Partner to meet the unique operational and reporting needs of a multinational security services provider.",
-            "<strong>Cloud Deployment:</strong> Enabled secure, centralized access across multiple West African offices through a cloud-based implementation."
+            "<strong>Cloud Deployment:</strong> Enabled secure, centralized access across multiple West African offices through a cloud-based implementation.",
+            "<strong>Custom Reporting:</strong> Created integrated reporting solutions to provide management with accurate, real-time financial insights."
         ],
-        outcome: "Successfully transitioned Inter-Con Security Systems Ghana to a modern, robust ERP system, resolving inefficiencies in their previous accounting software.",
+        outcome: "Successfully transitioned Inter-Con Security Systems Ghana to a modern, robust ERP system, resolving inefficiencies in their previous accounting software. Expanded the implementation to Togo and Benin, enhancing financial operations across the region. Delivered a scalable, cloud-based solution that continues to support Inter-Con's operational growth and management needs.",
         logo: "portfolio/images/intercon-logo.png",
         screenshot: "portfolio/images/intercon-logo.png"
     },
@@ -349,13 +362,15 @@ const projects = [
         details: [
             "Collaborated with stakeholders to design and set up a tailored chart of accounts, ensuring alignment with Busara Africa's operational and reporting objectives.",
             "Configured Accounts Receivable and Payable modules, streamlining financial transactions and enabling efficient management of clients and vendors.",
-            "Delivered training sessions to empower relevant staff with the skills needed to effectively operate Sage 50 Cloud Accounting Partner."
+            "Delivered training sessions to empower relevant staff with the skills needed to effectively operate Sage 50 Cloud Accounting Partner.",
+            "Provided after-implementation support, addressing technical issues and ensuring the system's smooth operation."
         ],
         highlights: [
             "<strong>Customization:</strong> Adapted Sage 50 Cloud Accounting Partner to meet the specific needs of a consulting firm, emphasizing accurate reporting and operational efficiency.",
-            "<strong>Stakeholder Training:</strong> Focused on knowledge transfer to ensure user confidence and system mastery."
+            "<strong>Stakeholder Training:</strong> Focused on knowledge transfer to ensure user confidence and system mastery.",
+            "<strong>Post-Implementation Support:</strong> Ensured long-term client satisfaction by offering reliable technical assistance."
         ],
-        outcome: "Successfully deployed an accounting system that improved Busara Africa's financial management and reporting capabilities.",
+        outcome: "Successfully deployed an accounting system that improved Busara Africa's financial management and reporting capabilities. Empowered stakeholders with tools and knowledge to maintain and optimize system use. Fostered client satisfaction and operational efficiency, supporting Busara Africa's continued success.",
         logo: "portfolio/images/busara-logo.jpg",
         screenshot: "portfolio/images/busara-logo.jpg"
     },
@@ -369,13 +384,17 @@ const projects = [
         details: [
             "Successfully pitched and implemented Sage 50 Cloud Accounting Partner to meet the church's operational and reporting objectives.",
             "Designed and deployed inventory and point-of-sale modules to manage the sale of religious materials in church stores.",
-            "Configured the ERP system on a cloud server environment, enabling centralized access and enhancing operational efficiency."
+            "Configured the ERP system on a cloud server environment, enabling centralized access and enhancing operational efficiency.",
+            "Integrated Pastel IronTree, an automated backup solution for real-time safeguarding of Pervasive SQL databases, ensuring data security and recovery.",
+            "Delivered comprehensive training sessions to equip all stakeholders with the knowledge and skills required to effectively use the system.",
+            "Provided ongoing technical support, addressing updates, troubleshooting, and maintenance needs to ensure smooth system operations."
         ],
         highlights: [
             "<strong>Non-Profit Focus:</strong> Customized Sage 50 Cloud Accounting Partner to align with the unique objectives and operational requirements of a non-profit organization.",
-            "<strong>Inventory Management:</strong> Implemented modules to streamline inventory tracking and point-of-sale operations, increasing efficiency in managing church store sales."
+            "<strong>Inventory Management:</strong> Implemented modules to streamline inventory tracking and point-of-sale operations, increasing efficiency in managing church store sales.",
+            "<strong>Cloud Deployment:</strong> Delivered a scalable solution hosted in a cloud environment for secure and flexible access."
         ],
-        outcome: "Successfully deployed a comprehensive ERP solution that continues to meet the church's financial and operational needs.",
+        outcome: "Successfully deployed a comprehensive ERP solution that continues to meet the church's financial and operational needs. Enhanced operational efficiency through automated inventory and point-of-sale processes. Established a long-term partnership by providing reliable technical support, ensuring the system's continued success and usability.",
         logo: "portfolio/images/presby-logo.jpg",
         screenshot: "portfolio/images/presby-logo.jpg"
     },
@@ -389,13 +408,17 @@ const projects = [
         details: [
             "Curated a customized chart of accounts to reflect EcoDi's financial structure and operational requirements.",
             "Configured and optimized receivables and payables systems for efficient management of customer and vendor transactions.",
-            "Developed tailored reports to provide actionable insights for decision-making and compliance with industry standards."
+            "Developed tailored reports to provide actionable insights for decision-making and compliance with industry standards.",
+            "Conducted comprehensive training sessions to ensure staff proficiency in the ERP system.",
+            "Provided a dedicated handholding phase post-implementation, addressing initial challenges and ensuring smooth system adoption.",
+            "Delivered ongoing technical support to ensure the system's reliability and alignment with EcoDi's evolving needs."
         ],
         highlights: [
             "<strong>Scalable ERP Implementation:</strong> Deployed Sage 200 Evolution ERP to support EcoDi's growing operations, including their transformation into SPAR-branded stores.",
-            "<strong>E-Commerce and Retail Integration:</strong> Supported EcoDi's retail operations and online grocery delivery capabilities by ensuring seamless ERP integration."
+            "<strong>E-Commerce and Retail Integration:</strong> Supported EcoDi's retail operations and online grocery delivery capabilities by ensuring seamless ERP integration.",
+            "<strong>Custom Reporting:</strong> Enabled enhanced operational oversight with tailored reporting functionalities."
         ],
-        outcome: "Successfully implemented an ERP system that streamlined financial and operational processes, supporting EcoDi's transformation and growth.",
+        outcome: "Successfully implemented an ERP system that streamlined financial and operational processes, supporting EcoDi's transformation and growth. Enhanced operational efficiency, enabling EcoDi to scale effectively and meet international retail standards as a SPAR operator. Fostered long-term client satisfaction by delivering a reliable solution and consistent post-implementation support.",
         logo: "portfolio/images/ecodi-logo.jpg",
         screenshot: "portfolio/images/ecodi-logo.jpg"
     },
@@ -409,13 +432,17 @@ const projects = [
         details: [
             "Designed and configured a customized General Ledger to reflect the financial structure and reporting needs of a petroleum retail business.",
             "Streamlined customer and vendor management with efficient tracking and reconciliation processes.",
-            "Configured robust inventory systems for fuel and convenience store items, enabling accurate stock control and integration with retail operations across 11 service stations."
+            "Configured robust inventory systems for fuel and convenience store items, enabling accurate stock control and integration with retail operations across 11 service stations.",
+            "Developed tailored reports for financial, operational, and compliance purposes, providing actionable insights for management.",
+            "Delivered comprehensive training to ensure proficiency among staff in using the ERP system effectively across various locations.",
+            "Provided ongoing technical support to address system updates and evolving business needs."
         ],
         highlights: [
             "<strong>Multi-Location Integration:</strong> Enabled centralized management of inventory, retail operations, and financial processes across service stations in multiple regions.",
-            "<strong>Industry-Specific Customization:</strong> Tailored the ERP system to address specific requirements of the downstream petroleum sector, including fuel inventory and retail management."
+            "<strong>Industry-Specific Customization:</strong> Tailored the ERP system to address specific requirements of the downstream petroleum sector, including fuel inventory and retail management.",
+            "<strong>Scalability:</strong> Designed the system to accommodate the company's expansion strategy, supporting new ultra-modern retail outlets."
         ],
-        outcome: "Successfully deployed an ERP system that streamlined financial, inventory, and retail management processes for Nick Petroleum.",
+        outcome: "Successfully deployed an ERP system that streamlined financial, inventory, and retail management processes for Nick Petroleum. Enabled centralized oversight of operations, enhancing decision-making and operational efficiency. Fostered a long-term partnership by providing reliable post-implementation support, aligning the system with Nick Petroleum's growth and industry requirements.",
         logo: "portfolio/images/nick-logo.jpg",
         screenshot: "portfolio/images/nick-logo.jpg"
     },
@@ -429,13 +456,20 @@ const projects = [
         details: [
             "Collaborated with key stakeholders, including Ministry staff and UNDP representatives, to align the application's functionality with financial reporting needs.",
             "Designed and implemented a robust back-end system for managing data uploads, segment definitions, ledger accounts, and budget versions.",
-            "Developed dynamic dashboards and custom reports, enabling users to analyze Climate Finance data by various dimensions and drill into details through interactive data grids."
+            "Developed dynamic dashboards and custom reports, enabling users to analyze Climate Finance data by various dimensions and drill into details through interactive data grids.",
+            "Built features for uploading data via templates, ensuring seamless integration of data from CSV and TXT files into a structured database.",
+            "Created a secure user management system with roles, menu access controls, and detailed audit trails for tracking data changes and user activities.",
+            "Designed the front-end dashboards for easy visualization, with export options and tools for customization, including chart type selection, palette changes, and pivot functionality.",
+            "Authored a comprehensive help manual integrated into the application to guide users on system navigation and functionality.",
+            "Conducted extensive training sessions for stakeholders and delivered presentations to UNDP, ensuring all users were equipped to utilize the system effectively."
         ],
         highlights: [
             "<strong>Data Integration:</strong> Seamlessly integrated the application with the GIFMIS system to fetch and process ERP data for financial reporting.",
-            "<strong>Database Optimization:</strong> Designed and optimized the MSSQL database, including schema design, query tuning, and stored procedure development to handle large datasets efficiently."
+            "<strong>Database Optimization:</strong> Designed and optimized the MSSQL database, including schema design, query tuning, and stored procedure development to handle large datasets efficiently.",
+            "<strong>Custom Reporting:</strong> Enabled multi-dimensional reporting with features for historical GDP analysis, budget version comparisons, and user-defined analytical dashboards.",
+            "<strong>Content Management:</strong> Integrated a content management module for uploading and tagging multimedia content relevant to Climate Finance."
         ],
-        outcome: "Delivered a user-friendly system that transformed raw financial data into actionable insights, aiding decision-making for Climate Finance initiatives.",
+        outcome: "Delivered a user-friendly system that transformed raw financial data into actionable insights, aiding decision-making for Climate Finance initiatives. Enhanced transparency and accountability by providing stakeholders with detailed dashboards and exportable reports. Received positive feedback from stakeholders and UNDP for delivering the project on time and exceeding expectations.",
         logo: "portfolio/images/mof-logo.jpg",
         screenshot: "portfolio/images/mof-logo.jpg"
     },
@@ -449,13 +483,19 @@ const projects = [
         details: [
             "Designed and implemented a system for department and section management, enabling users to link general ledger accounts to specific organizational units.",
             "Developed dynamic dashboards featuring real-time chart visualizations and drill-down cross-tab grids, providing users with actionable insights.",
-            "Ensured real-time data synchronization by creating backend services that fetched updates directly from the ERP system."
+            "Ensured real-time data synchronization by creating backend services that fetched updates directly from the ERP system.",
+            "Built modules for budget entry and analysis, including quarterly breakdowns and ledger-linked budgets.",
+            "Developed user-friendly interfaces using ASP.NET Web Forms, with reusable master pages and comprehensive styling.",
+            "Implemented robust user authentication and role-based access control systems.",
+            "Authored a comprehensive help manual to guide end users and administrators on application functionality.",
+            "Conducted stakeholder training sessions and presentations, ensuring smooth adoption and utilization of the system."
         ],
         highlights: [
             "<strong>Real-Time Integration:</strong> Designed and implemented mechanisms to fetch, process, and display real-time updates from the ERP system.",
-            "<strong>Financial Reporting:</strong> Created modules for generating balance sheets, trend analyses, trial balances, and other financial reports with drill-down capabilities."
+            "<strong>Financial Reporting:</strong> Created modules for generating balance sheets, trend analyses, trial balances, and other financial reports with drill-down capabilities.",
+            "<strong>Scalable Architecture:</strong> Optimized application performance through efficient database queries and reusable components."
         ],
-        outcome: "Delivered a scalable, intuitive system that streamlined financial reporting processes and improved operational efficiency.",
+        outcome: "Delivered a scalable, intuitive system that streamlined financial reporting processes and improved operational efficiency. Enhanced stakeholder satisfaction by meeting all project deadlines and exceeding user expectations.",
         logo: "portfolio/images/energy-logo.jpg",
         screenshot: "portfolio/images/energy-logo.jpg"
     },
@@ -473,9 +513,10 @@ const projects = [
         ],
         highlights: [
             "<strong>Customization:</strong> Adapted the ERP system to meet the specific needs of a global mining and infrastructure solutions provider.",
-            "<strong>Stakeholder Engagement:</strong> Focused on knowledge transfer and user empowerment to facilitate smooth adoption of the system."
+            "<strong>Stakeholder Engagement:</strong> Focused on knowledge transfer and user empowerment to facilitate smooth adoption of the system.",
+            "<strong>Sustainability and Safety Focus:</strong> Ensured the ERP solution supported the company's operational priorities, including safety and sustainability."
         ],
-        outcome: "Successfully deployed a robust ERP system that improved financial operations and reporting for Orica Senegal SARL.",
+        outcome: "Successfully deployed a robust ERP system that improved financial operations and reporting for Orica Senegal SARL. Enhanced operational efficiency and compliance, aligning with the client's business goals. Achieved high client satisfaction through reliable system performance and effective support.",
         logo: "portfolio/images/orica-logo.jpg",
         screenshot: "portfolio/images/orica-logo.jpg"
     },
@@ -489,13 +530,15 @@ const projects = [
         details: [
             "Designed and deployed a tailored ERP system to manage accounting, payables, receivables, payroll, and operational reporting.",
             "Configured the ERP to align with multi-national requirements, addressing the unique needs of a joint venture spanning multiple countries.",
-            "Delivered stakeholder training to ensure proficiency in the system across departments and roles."
+            "Delivered stakeholder training to ensure proficiency in the system across departments and roles.",
+            "Provided ongoing technical support, ensuring smooth operations and addressing any system-related issues post-implementation."
         ],
         highlights: [
             "<strong>Comprehensive Functionality:</strong> Integrated modules for accounting, payroll, and reporting, ensuring seamless and efficient management of operations.",
-            "<strong>International Standards Compliance:</strong> Ensured the system met the regulatory and operational needs of the multi-national joint venture."
+            "<strong>International Standards Compliance:</strong> Ensured the system met the regulatory and operational needs of the multi-national joint venture.",
+            "<strong>Stakeholder Empowerment:</strong> Focused on capacity building through extensive training, fostering confidence and system independence among users."
         ],
-        outcome: "Successfully deployed a robust ERP system that enhanced operational efficiency and financial oversight for WAPCo.",
+        outcome: "Successfully deployed a robust ERP system that enhanced operational efficiency and financial oversight for WAPCo. Supported WAPCo's mission of safe, reliable, and responsible natural gas transportation by enabling effective internal management. Achieved high client satisfaction through reliable system performance, comprehensive training, and ongoing support.",
         logo: "portfolio/images/wapco-logo.jpg",
         screenshot: "portfolio/images/wapco-logo.jpg"
     },
@@ -509,13 +552,16 @@ const projects = [
         details: [
             "Designed and configured a customized chart of accounts to align with GIA's operational and reporting requirements.",
             "Developed modules for managing membership and subscription processes, enabling efficient tracking and reporting.",
-            "Created tailored reporting solutions to provide actionable insights and support decision-making."
+            "Created tailored reporting solutions to provide actionable insights and support decision-making.",
+            "Delivered training sessions to stakeholders, ensuring smooth adoption and effective use of the ERP system.",
+            "Provided ongoing post-implementation support, addressing updates and ensuring the system's reliability and performance."
         ],
         highlights: [
             "<strong>Membership and Subscription Management:</strong> Streamlined processes for tracking membership and subscription payments with real-time reporting capabilities.",
-            "<strong>Customization:</strong> Tailored the ERP system to meet the unique needs of a trade association in the insurance sector."
+            "<strong>Customization:</strong> Tailored the ERP system to meet the unique needs of a trade association in the insurance sector.",
+            "<strong>Capacity Building:</strong> Equipped GIA staff with the knowledge and skills to operate the system efficiently through hands-on training."
         ],
-        outcome: "Successfully deployed an ERP system that continues to support GIA's financial and operational needs.",
+        outcome: "Successfully deployed an ERP system that continues to support GIA's financial and operational needs. Enhanced operational efficiency and transparency in managing memberships and subscriptions. Earned long-term client satisfaction through reliable support and system adaptability.",
         logo: "portfolio/images/gia-logo.jpg",
         screenshot: "portfolio/images/gia-logo.jpg"
     },
@@ -529,13 +575,15 @@ const projects = [
         details: [
             "Designed and deployed a tailored ERP system to address the unique operational and financial reporting requirements of a global marine transportation leader.",
             "Configured modules for accounting, operations, and reporting, ensuring alignment with ECO Ghana's business processes.",
-            "Delivered training sessions for stakeholders, ensuring effective adoption and efficient use of the ERP system."
+            "Delivered training sessions for stakeholders, ensuring effective adoption and efficient use of the ERP system.",
+            "Provided post-implementation technical support, ensuring smooth operations and addressing evolving business needs."
         ],
         highlights: [
             "<strong>Customization:</strong> Adapted the ERP system to accommodate the specific operational demands of offshore support, port operations, and subsea services.",
-            "<strong>Reporting Solutions:</strong> Developed tailored reports to provide management with actionable insights and enhance decision-making."
+            "<strong>Reporting Solutions:</strong> Developed tailored reports to provide management with actionable insights and enhance decision-making.",
+            "<strong>Capacity Building:</strong> Conducted comprehensive training to ensure stakeholder confidence and proficiency in system use."
         ],
-        outcome: "Successfully deployed an ERP system that enhanced operational efficiency and financial oversight for ECO Ghana.",
+        outcome: "Successfully deployed an ERP system that enhanced operational efficiency and financial oversight for ECO Ghana. Supported the company's mission to deliver innovative and reliable offshore solutions through improved system capabilities. Earned long-term client satisfaction through reliable system performance and ongoing support.",
         logo: "portfolio/images/edco-logo.jpg",
         screenshot: "portfolio/images/edco-logo.jpg"
     },
@@ -549,13 +597,15 @@ const projects = [
         details: [
             "Designed and deployed a customized chart of accounts, ensuring alignment with the airline industry's operational and financial needs.",
             "Configured modules to manage accounts receivable and payable, payroll processing, and industry-specific financial reporting.",
-            "Delivered comprehensive training sessions for stakeholders to ensure effective system adoption and use."
+            "Delivered comprehensive training sessions for stakeholders to ensure effective system adoption and use.",
+            "Provided ongoing post-implementation support, ensuring the system's reliability and adaptability to the airline's evolving needs."
         ],
         highlights: [
             "<strong>Customization:</strong> Tailored the ERP system to accommodate the unique requirements of an airline, including specialized reporting and operational workflows.",
-            "<strong>Reporting Solutions:</strong> Developed reporting capabilities to enhance financial oversight and support strategic decision-making."
+            "<strong>Reporting Solutions:</strong> Developed reporting capabilities to enhance financial oversight and support strategic decision-making.",
+            "<strong>Capacity Building:</strong> Empowered stakeholders through targeted training, fostering confidence in system use and operational efficiency."
         ],
-        outcome: "Successfully implemented an ERP system that improved operational efficiency and financial management for Starbow.",
+        outcome: "Successfully implemented an ERP system that improved operational efficiency and financial management for Starbow. Supported the airline's mission to deliver high-quality regional flight services by enhancing internal processes and reporting capabilities. Achieved high client satisfaction through reliable system performance and ongoing technical support.",
         logo: "portfolio/images/starbow-logo.png",
         screenshot: "portfolio/images/starbow-logo.png"
     },
@@ -569,13 +619,17 @@ const projects = [
         details: [
             "Designed and implemented a customized chart of accounts, aligning with the financial structure and reporting needs of a manufacturing business.",
             "Configured Accounts Payable and Receivable modules, streamlining financial workflows and improving efficiency in managing vendors and customers.",
-            "Integrated a Bill of Materials (BOM) and Manufacturing module, enabling seamless management of production processes and cost tracking."
+            "Integrated a Bill of Materials (BOM) and Manufacturing module, enabling seamless management of production processes and cost tracking.",
+            "Developed an Inventory Management system to handle raw materials, work-in-progress, and finished goods, ensuring accurate stock control and reporting.",
+            "Delivered training sessions to equip staff with the skills needed for effective system use and operational success.",
+            "Provided post-implementation technical support, ensuring sustained system performance and adaptability to evolving business needs."
         ],
         highlights: [
             "<strong>Manufacturing Focus:</strong> Tailored the ERP system to incorporate BOM, production scheduling, and inventory control, meeting the demands of a large-scale manufacturing facility.",
-            "<strong>Custom Reporting:</strong> Developed reports to support decision-making, covering production efficiency, inventory levels, and financial performance."
+            "<strong>Custom Reporting:</strong> Developed reports to support decision-making, covering production efficiency, inventory levels, and financial performance.",
+            "<strong>Capacity Building:</strong> Fostered user confidence and operational efficiency through targeted training and ongoing support."
         ],
-        outcome: "Successfully deployed a robust ERP system that enhanced production management, financial oversight, and inventory control for HealthiLife Beverages Ltd.",
+        outcome: "Successfully deployed a robust ERP system that enhanced production management, financial oversight, and inventory control for HealthiLife Beverages Ltd. Supported the company's growth and regional expansion by providing a scalable and reliable system to manage its operations. Achieved high client satisfaction, laying the foundation for continued success as an ERP consultant.",
         logo: "portfolio/images/hbl-logo.jpg",
         screenshot: "portfolio/images/hbl-logo.jpg"
     },
@@ -589,13 +643,20 @@ const projects = [
         details: [
             "Participated in system rollout for Vodafone Ghana's Greater Accra and Ashanti Regions before leading implementations in the Central and Western Regions.",
             "Replaced manual retail processes with a real-time nationwide EPOS system across 50 stores, introducing new procedures for banking, billing systems, demand management, and stock control.",
-            "Designed and deployed an automated purchase requisition system using SharePoint, including three-way matching for improved efficiency."
+            "Designed and deployed an automated purchase requisition system using SharePoint, including three-way matching for improved efficiency.",
+            "Introduced a dealer management solution with scratch card serialization capturing over 20 million records per month.",
+            "Overhauled the direct sales process and implemented a new solution to support 150 direct sales staff.",
+            "Designed and deployed a supply chain solution for all saleable products, ensuring efficient stock management and distribution.",
+            "Conducted extensive training for all retail staff and managers, ensuring thorough understanding and effective system use.",
+            "Maintained a strong relationship with Vodafone Ghana by providing years of reliable technical support post-implementation.",
+            "Successfully replicated the RMS implementation for Airtel-Tigo Ghana and extended it to telcos in Chad and Benin."
         ],
         highlights: [
             "<strong>Regional Rollout Leadership:</strong> Played a key role in the successful rollout of Microsoft Dynamics RMS across multiple regions.",
-            "<strong>Automated Procurement:</strong> Introduced advanced automation tools for procurement, dealer management, and supply chain processes."
+            "<strong>Automated Procurement:</strong> Introduced advanced automation tools for procurement, dealer management, and supply chain processes.",
+            "<strong>Centralized Oversight:</strong> Enabled centralized oversight of retail operations across multiple regions, enhancing operational efficiency."
         ],
-        outcome: "Delivered a robust retail management system for Vodafone Ghana, fostering a long-term partnership and setting the benchmark for similar implementations in other regions and countries.",
+        outcome: "Delivered a robust retail management system for Vodafone Ghana, fostering a long-term partnership and setting the benchmark for similar implementations in other regions and countries. Enhanced retail operations, providing management with real-time visibility into nationwide sales data. Successfully replicated the solution for other telcos, cementing the company's reputation as a trusted provider of retail management systems.",
         logo: "portfolio/images/vodafone-logo.jpg",
         screenshot: "portfolio/images/vodafone-logo.jpg"
     },
@@ -609,13 +670,15 @@ const projects = [
         details: [
             "Delivered technical support services for PwC Ghana's accounting software since 2006, ensuring seamless operation and resolving technical issues promptly.",
             "Conducted regular training sessions for PwC staff to enhance their proficiency in the software and optimize their workflow.",
-            "Successfully replicated and implemented the accounting software solution for PwC Sierra Leone in 2017, based on the success of the Ghana operations."
+            "Successfully replicated and implemented the accounting software solution for PwC Sierra Leone in 2017, based on the success of the Ghana operations.",
+            "Customized the system to meet local accounting requirements and regulatory standards, ensuring compliance and accuracy.",
+            "Facilitated knowledge transfer and operational continuity through detailed documentation and training for both technical and non-technical staff."
         ],
         highlights: [
             "<strong>Technical Support:</strong> Maintained a high level of client satisfaction by ensuring reliable system performance and user empowerment through training.",
             "<strong>International Expansion:</strong> Successfully expanded the solution to a new geographic location, earning commendation for the seamless replication and implementation in Sierra Leone."
         ],
-        outcome: "Maintained a high level of client satisfaction by ensuring reliable system performance and user empowerment through training.",
+        outcome: "Maintained a high level of client satisfaction by ensuring reliable system performance and user empowerment through training. Successfully expanded the solution to a new geographic location, ensuring seamless adoption and earning praise for the system's effectiveness and adaptability.",
         logo: "portfolio/images/pwc-logo.png",
         screenshot: "portfolio/images/pwc-logo.png"
     }

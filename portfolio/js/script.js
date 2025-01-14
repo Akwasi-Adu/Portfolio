@@ -62,57 +62,57 @@ function scrollToTop() {
     window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
-// Function to display projects
-function loadProjects() {
-    const container = document.getElementById("projects-container");
+// // Function to display projects
+// function loadProjects() {
+//     const container = document.getElementById("projects-container");
 
-    projects.forEach((project, index) => {
-        const card = document.createElement("div");
-        card.classList.add("project-card");
+//     projects.forEach((project, index) => {
+//         const card = document.createElement("div");
+//         card.classList.add("project-card");
 
-        card.innerHTML = `
-            <img src="${project.screenshot}" alt="${project.title}">
-            <h2>${project.title}</h2>
-            <p><strong>Client:</strong> ${project.client}</p>
-            <p><strong>Industry:</strong> ${project.industry}</p>
-            <p>${project.description}</p>
-            <button onclick="viewDetails(${index})">View Details</button>
-        `;
+//         card.innerHTML = `
+//             <img src="${project.screenshot}" alt="${project.title}">
+//             <h2>${project.title}</h2>
+//             <p><strong>Client:</strong> ${project.client}</p>
+//             <p><strong>Industry:</strong> ${project.industry}</p>
+//             <p>${project.description}</p>
+//             <button onclick="viewDetails(${index})">View Details</button>
+//         `;
 
-        container.appendChild(card);
-    });
-}
+//         container.appendChild(card);
+//     });
+// }
 
-// Function to view project details in a modal
-function viewDetails(index) {
-    const project = projects[index];
+// // Function to view project details in a modal
+// function viewDetails(index) {
+//     const project = projects[index];
 
-    // Populate modal content
-    document.getElementById("modal-title").innerText = project.title;
-    document.getElementById("modal-client").innerText = project.client;
-    document.getElementById("modal-industry").innerText = project.industry;
-    document.getElementById("modal-details").innerText = project.details;
-    document.getElementById("modal-screenshot").src = project.screenshot;
+//     // Populate modal content
+//     document.getElementById("modal-title").innerText = project.title;
+//     document.getElementById("modal-client").innerText = project.client;
+//     document.getElementById("modal-industry").innerText = project.industry;
+//     document.getElementById("modal-details").innerText = project.details;
+//     document.getElementById("modal-screenshot").src = project.screenshot;
 
-    // Show the modal
-    document.getElementById("project-modal").style.display = "flex";
-}
+//     // Show the modal
+//     document.getElementById("project-modal").style.display = "flex";
+// }
 
-// Function to close the modal
-function closeModal() {
-    document.getElementById("project-modal").style.display = "none";
-}
+// // Function to close the modal
+// function closeModal() {
+//     document.getElementById("project-modal").style.display = "none";
+// }
 
-// Load projects on page load
-window.onload = loadProjects;
+// // Load projects on page load
+// window.onload = loadProjects;
 
-// Close modal when clicking outside the content
-window.onclick = function(event) {
-    const modal = document.getElementById("project-modal");
-    if (event.target === modal) {
-        closeModal();
-    }
-};
+// // Close modal when clicking outside the content
+// window.onclick = function(event) {
+//     const modal = document.getElementById("project-modal");
+//     if (event.target === modal) {
+//         closeModal();
+//     }
+// };
 
 document.addEventListener("DOMContentLoaded", () => {
     // Function to render the latest blogs
