@@ -16,7 +16,7 @@ function renderProjects() {
             <p><strong>Project Name:</strong> ${project.name}</p>
             <p><strong>Industries:</strong> ${project.industry.join(", ")}</p>
             <p>${project.summary}</p>
-            <a href="project-details.html?id=${project.id}" class="project-link">View Details</a>
+            <a href="project-details.html?id=${project.id}" class="project-link" onclick="trackProjectClick('${project.name}')">View Details</a>
         `;
 
         container.appendChild(card);
@@ -74,3 +74,13 @@ document.addEventListener("DOMContentLoaded", () => {
     filterIndustry.addEventListener("change", (e) => filterProjectsByIndustry(e.target.value));
     sortProjectsControl.addEventListener("change", (e) => sortProjects(e.target.value));
 });
+
+// Track project clicks
+function trackProjectClick(name) {
+    gtag('event', 'click', {
+        'event_category': 'Project',
+        'event_label': name,
+        'event_action': 'View Details',
+        'page_location': window.location.href // Logs the current page
+    });
+}

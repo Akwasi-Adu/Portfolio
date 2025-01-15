@@ -14,7 +14,15 @@
         emailjs.init("HNWqejSJ6lO8tpjjf"); // Replace "your-public-key" with your actual Public Key
     })();
 </script>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-EPKW2QTNQL"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
+  gtag('config', 'G-EPKW2QTNQL');
+</script>
 </head>
 <body>
     <!-- Header Section -->
@@ -233,9 +241,18 @@
         
         
         <div class="contact-links">
-            <a href="mailto:akwasi@rhema-systems.com.gh">Email Me</a> |
-            <a href="https://www.linkedin.com/in/akwasi/" target="_blank">LinkedIn</a> |
-            <a href="https://github.com/Akwasi-Adu" target="_blank">GitHub</a>
+            <a href="mailto:akwasi@rhema-systems.com.gh" onclick="gtag('event', 'click', {
+                'event_category': 'Outbound Link',
+                'event_label': 'GitHub Profile'
+            });">Email Me</a> |
+            <a href="https://www.linkedin.com/in/akwasi/" target="_blank" onclick="gtag('event', 'click', {
+                'event_category': 'Outbound Link',
+                'event_label': 'GitHub Profile'
+            });">LinkedIn</a> |
+            <a href="https://github.com/Akwasi-Adu" target="_blank" onclick="gtag('event', 'click', {
+                'event_category': 'Outbound Link',
+                'event_label': 'GitHub Profile'
+            });">GitHub</a>
         </div>
     </section>
 

@@ -12,8 +12,9 @@ function renderBlogs() {
             <h2>${blog.title}</h2>
             <p><em>${new Date(blog.date).toLocaleDateString()}</em></p>
             <p>${blog.summary}</p>
-            <a href="blog-details.html?id=${blog.id}" class="read-more">Read More</a>
+            <a href="blog-details.html?id=${blog.id}" class="read-more" onclick="trackBlogClick('${blog.title}')">Read More</a>
         `;
+        
 
         container.appendChild(post);
     });
@@ -57,3 +58,13 @@ document.addEventListener("DOMContentLoaded", () => {
     filterCategory.addEventListener("change", (e) => filterBlogsByCategory(e.target.value));
     sortBlog.addEventListener("change", (e) => sortBlogs(e.target.value));
 });
+
+// Track blog clicks
+function trackBlogClick(title) {
+    gtag('event', 'click', {
+        'event_category': 'Blog',
+        'event_label': title,
+        'event_action': 'Read More',
+        'page_location': window.location.href // Logs the current page
+    });
+}
