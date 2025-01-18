@@ -1106,3 +1106,101 @@ pre code {
         font-size: 1.5rem;
     }
 }
+
+/* Custom CV styling to match website theme */
+#cv-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+    background: #f4f4f4;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 1200px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#cv-left, #cv-right {
+    padding: 20px;
+}
+
+#cv-left {
+    flex: 1;
+    background: linear-gradient(45deg, #0073e6, #005bb5);
+    color: white;
+    border-radius: 10px;
+}
+
+#cv-left h1, #cv-left h2 {
+    color: white; 
+    text-align: left;
+}
+
+#cv-left ul {
+    list-style: square;
+    padding: 0; 
+    text-align: left;
+}
+
+#cv-left ul li {
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+    text-align: left;
+}
+
+#cv-right {
+    flex: 2;
+    margin-left: 20px;
+    text-align: left;
+}
+
+#cv-right h2 {
+    text-align: left;
+}
+
+#cv-left h2 {
+    text-align: left;
+}
+
+h2 {
+    border-bottom: 2px solid #0073e6;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    color: #333;
+    text-align: left;
+}
+
+ul {
+    list-style: disc;
+    margin-left: 20px;
+}
+
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.tag {
+    background: #0073e6;
+    color: #fff;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+/* Media query for mobile devices */
+@media (max-width: 768px) {
+    #cv-container {
+        flex-direction: column-reverse; /* Reverse the order of the sections */
+    }
+
+    #cv-left {
+        margin-left: 0; /* Remove the left margin */
+        margin-top: 20px; /* Add some space between the sections */
+    }
+
+    #cv-right {
+        margin-left: 0; /* Remove the left margin */
+    }
+}
