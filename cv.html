@@ -123,6 +123,34 @@ body.print-mode .typing {
   border: none !important;
 }
 
+/* This overrides the typing animation for print or print-mode */
+/* Print-mode via class */
+body.print-mode .typing {
+  animation: none !important;
+  border: none !important;
+  width: auto !important;
+  font-family: monospace;
+  font-size: 24px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* Print-mode via print media query */
+@media print {
+  .typing {
+    animation: none !important;
+    border: none !important;
+    width: auto !important;
+    font-family: monospace;
+    font-size: 24px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 1rem;
+  }
+}
+
+
 
 
   </style>
