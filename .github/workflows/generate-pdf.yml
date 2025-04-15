@@ -1,0 +1,33 @@
+name: Generate CV PDF
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
+
+      - name: Install Puppeteer
+        run: npm install puppeteer
+
+      - name: Generate Akwasi_CV.pdf
+        run: node generate-cv.js
+
+      - name: Commit updated PDF to repo
+        run: |
+          git config user.name "GitHub Action"
+          git config user.email "actions@github.com"
+          git add Akwasi_CV.pdf
+          git commit -m "🤖 Auto-update CV PDF"
+          git push
+        continue-on-error: true
