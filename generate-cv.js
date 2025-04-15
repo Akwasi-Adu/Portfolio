@@ -20,3 +20,6 @@ const puppeteer = require('puppeteer');
 
   await browser.close();
 })();
+
+console.log("✅ PDF generated and saved to Akwasi_CV.pdf");
+
