@@ -7,9 +7,12 @@ const puppeteer = require('puppeteer');
   });
 
   const page = await browser.newPage();
-
-  // Visit your live CV page
   await page.goto('https://akwasi.dev/cv.html', { waitUntil: 'networkidle0' });
+
+  // Inject print mode class to remove animations and make it PDF-friendly
+  await page.evaluate(() => {
+    document.body.classList.add('print-mode');
+  });
 
   await page.pdf({
     path: 'Akwasi_CV.pdf',
@@ -20,6 +23,3 @@ const puppeteer = require('puppeteer');
 
   await browser.close();
 })();
-
-console.log("✅ PDF generated and saved to Akwasi_CV.pdf");
-

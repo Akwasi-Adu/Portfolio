@@ -85,6 +85,35 @@
   }
 }
 
+/* === Print-Friendly Overrides === */
+body.print-mode .typing {
+  animation: none !important;
+  border: none !important;
+  width: auto !important;
+  font-family: monospace;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+body.print-mode .fade-in {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+body.print-mode .tag-cloud {
+  display: none !important;
+}
+
+body.print-mode .print-button,
+body.print-mode .download-button,
+body.print-mode header,
+body.print-mode footer,
+body.print-mode nav {
+  display: none !important;
+}
+
+
   </style>
 
   <!-- Google tag (gtag.js) -->
