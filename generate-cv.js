@@ -15,7 +15,7 @@ await page.evaluate(() => {
 });
 
 // WAIT for typing effect to complete before printing (2.5s duration)
-await page.waitForTimeout(3000);
+await new Promise(resolve => setTimeout(resolve, 3000));
 
 await page.pdf({
   path: 'Akwasi_CV.pdf',
