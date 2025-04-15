@@ -42,6 +42,12 @@
       50% { border-color: orange; }
     }
 
+    .typing {
+  display: inline-block;
+  max-width: 100%;
+}
+
+
     .print-button {
   background-color: #0073e6;
   color: white;
@@ -151,6 +157,34 @@ body.print-mode .typing {
 }
 
 
+@media (max-width: 768px) {
+  #cv-container {
+    flex-direction: column-reverse;
+    padding: 10px;
+  }
+
+  #cv-left, #cv-right {
+    margin-left: 0 !important;
+    padding: 10px;
+  }
+
+  .typing {
+    font-size: 1.2rem;
+    white-space: normal; /* Allow wrapping */
+    width: 100% !important;
+    animation: none !important;
+    border: none;
+  }
+
+  .fade-in {
+    transform: none;
+    opacity: 1;
+  }
+
+  .tag-cloud {
+    justify-content: center;
+  }
+}
 
 
   </style>
