@@ -9,17 +9,21 @@ const puppeteer = require('puppeteer');
   const page = await browser.newPage();
   await page.goto('https://akwasi.dev/cv.html', { waitUntil: 'networkidle0' });
 
-  // Inject print mode class to remove animations and make it PDF-friendly
-  await page.evaluate(() => {
-    document.body.classList.add('print-mode');
-  });
+// Add print-mode class to disable animations and fade-ins
+await page.evaluate(() => {
+  document.body.classList.add('print-mode');
+});
 
-  await page.pdf({
-    path: 'Akwasi_CV.pdf',
-    format: 'A4',
-    printBackground: true,
-    margin: { top: '30px', bottom: '30px', left: '20px', right: '20px' }
-  });
+// WAIT for typing effect to complete before printing (2.5s duration)
+await page.waitForTimeout(3000);
+
+await page.pdf({
+  path: 'Akwasi_CV.pdf',
+  format: 'A4',
+  printBackground: true,
+  margin: { top: '30px', bottom: '30px', left: '20px', right: '20px' }
+});
+
 
   await browser.close();
 })();

@@ -101,9 +101,13 @@ body.print-mode .fade-in {
   transition: none !important;
 }
 
+/* Let skills show up when printing */
 body.print-mode .tag-cloud {
-  display: none !important;
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 6px;
 }
+
 
 body.print-mode .print-button,
 body.print-mode .download-button,
@@ -112,6 +116,13 @@ body.print-mode footer,
 body.print-mode nav {
   display: none !important;
 }
+
+body.print-mode .typing {
+  animation: none !important;
+  width: auto !important;
+  border: none !important;
+}
+
 
 
   </style>
