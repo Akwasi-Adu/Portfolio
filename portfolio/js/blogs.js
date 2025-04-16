@@ -219,7 +219,175 @@ Cheers!</p>
         categories: ["Announcements"],
         summary: `I'm thrilled to launch my personal portfolio site — akwasi.dev! Built with HTML, JavaScript, and hosted on GitHub Pages, this platform showcases the projects I've worked on, technologies I love, and insights through my blog.`,
         content: `The journey of building this site was part professional, part personal. From setting up GitHub Pages, configuring analytics, email forwarding, custom domains, to making everything responsive — it's been a labor of love. This site marks a new chapter in showcasing my work and connecting with fellow developers, clients, and creatives around the world.\n\nI'm excited to keep publishing helpful content, deep dives into ERP and enterprise solutions, and lessons learned from real-world development.`
+      },
+      {
+        id: 7,
+        title: "Bulk Unapplication of Customer Invoices in Business Central",
+        summary: "Unapplying customer invoices tied to payments in bulk isn't directly supported in the BC UI — but here’s how I tackled it with AL code, a report, and a config package workaround.",
+        date: "2025-04-16",
+        categories: ["Business Central", "AL", "ERP", "Tips"],
+        content: `
+      <p>A friend on a Business Central-focused WhatsApp group I belong to asked this question:</p>
+      
+      <p><em>"Hi guys. Hoping y'all are doing great. Just a question... Is there anyone here who knows how to do bulk unapplication of customer invoices that are already tied to customer payments?"</em></p>
+      
+      <p><strong>My thoughts:</strong><br>
+      Yes! In Microsoft Dynamics 365 Business Central, you <strong>can</strong> unapply customer invoices that are already applied to payments — even in bulk — but the system doesn't natively support bulk unapplication through the standard UI. You’ll have to get creative. Here are a few approaches I shared:</p>
+      
+      <h3>Option 1: Manual Unapplication (Standard Way)</h3>
+      <p>This is straightforward, but tedious if you’re dealing with more than a handful of records:</p>
+      <ol>
+      <li>Go to <strong>Customer > Ledger Entries</strong>.</li>
+      <li>Find the payment or invoice you want to unapply.</li>
+      <li>Click <strong>Process > Unapply Entries</strong>.</li>
+      <li>Confirm unapplication.</li>
+      </ol>
+      <p>It works, but it’s slow for high volumes.</p>
+      
+      <h3>Option 2: Use a Configuration Package (Advanced)</h3>
+      <p>If you're feeling bold, you can technically unapply entries using a config package and Excel.</p>
+      <ol>
+      <li>Create a config package and add table <code>379 - Detailed Cust. Ledg. Entry</code>.</li>
+      <li>Export entries where <code>Applied Entry to Entry No.</code> &gt; 0.</li>
+      <li>In Excel, clear the following fields: 
+      <code>Applied Entry to Entry No.</code>, 
+      <code>Application Type</code>, 
+      <code>Application Date</code>.</li>
+      <li>Import the Excel file back and apply the package.</li>
+      </ol>
+      <p><strong>Important:</strong> This method can cause inconsistencies if related fields (like <code>Amount Remaining</code>) are not recalculated properly. Use only in sandbox or with full data backups.</p>
+      
+      <h3>Option 3: AL Code for Safe Bulk Unapply</h3>
+      <p>This is the cleanest way to handle bulk unapplication if you’re a developer or working with one.</p>
+      
+      <p>Here’s the core AL procedure I used:</p>
+      <pre><code>
+      procedure BulkUnapplyCustomerEntries(CustomerNo: Code[20])
+      var
+          CustLedgerEntry: Record "Cust. Ledger Entry";
+          CustUnapply: Codeunit "CustUnapplyPostedEntries";
+          UnappliedCount: Integer;
+      begin
+          UnappliedCount := 0;
+          CustLedgerEntry.Reset();
+          CustLedgerEntry.SetRange("Customer No.", CustomerNo);
+          CustLedgerEntry.SetRange(Open, false);
+          if CustLedgerEntry.FindSet() then
+              repeat
+                  if CustLedgerEntry."Applied Entries Exist" then begin
+                      CustUnapply.Unapply(CustLedgerEntry);
+                      UnappliedCount += 1;
+                  end;
+              until CustLedgerEntry.Next() = 0;
+      
+          Message('Successfully unapplied %1 entries for customer %2', UnappliedCount, CustomerNo);
+      end;
+      </code></pre>
+      
+      <p>I then wrapped this in a custom page so I could run it from the BC UI:</p>
+      
+      <h3>AL Page: Bulk Unapply from Customer List</h3>
+      <p>This allows you to click a button on a customer and unapply all entries for that customer.</p>
+      <pre><code>
+      page 50100 "Bulk Customer Unapply"
+      {
+          PageType = List;
+          SourceTable = Customer;
+          ApplicationArea = All;
+          UsageCategory = Tasks;
+      
+          layout
+          {
+              area(content)
+              {
+                  repeater(Group)
+                  {
+                      field("No."; "No.") { }
+                      field(Name; Name) { }
+                  }
+              }
+          }
+      
+          actions
+          {
+              area(processing)
+              {
+                  action(BulkUnapply)
+                  {
+                      Caption = 'Bulk Unapply Entries';
+                      trigger OnAction()
+                      var
+                          CustLedgerEntry: Record "Cust. Ledger Entry";
+                          CustUnapply: Codeunit "CustUnapplyPostedEntries";
+                          UnappliedCount: Integer;
+                      begin
+                          if not Confirm('Are you sure?', false) then exit;
+      
+                          CustLedgerEntry.SetRange("Customer No.", Rec."No.");
+                          CustLedgerEntry.SetRange(Open, false);
+                          if CustLedgerEntry.FindSet() then
+                              repeat
+                                  if CustLedgerEntry."Applied Entries Exist" then begin
+                                      CustUnapply.Unapply(CustLedgerEntry);
+                                      UnappliedCount += 1;
+                                  end;
+                              until CustLedgerEntry.Next() = 0;
+      
+                          Message('Unapplied %1 entries.', UnappliedCount);
+                      end;
+                  }
+              }
+          }
       }
+      </code></pre>
+      
+      <h3>Bonus: Report for Background Execution</h3>
+      <p>This report version can be scheduled or filtered for multiple customers and date ranges:</p>
+      <pre><code>
+      report 50101 "Bulk Unapply Customer Entries"
+      {
+          ProcessingOnly = true;
+      
+          dataset
+          {
+              dataitem(Customer; Customer)
+              {
+                  RequestFilterFields = "No.";
+      
+                  dataitem("Cust. Ledger Entry"; "Cust. Ledger Entry")
+                  {
+                      DataItemLink = "Customer No." = Customer."No.";
+                      DataItemTableView = WHERE(Open = CONST(false), "Applied Entries Exist" = CONST(true));
+                      RequestFilterFields = "Posting Date";
+      
+                      trigger OnAfterGetRecord()
+                      var
+                          CustUnapply: Codeunit "CustUnapplyPostedEntries";
+                      begin
+                          CustUnapply.Unapply(Rec);
+                          TotalUnapplied += 1;
+                      end;
+                  }
+              }
+          }
+      
+          trigger OnPostReport()
+          begin
+              Message('Unapplied %1 entries in total.', TotalUnapplied);
+          end;
+      
+          var
+              TotalUnapplied: Integer;
+      }
+      </code></pre>
+      
+      <h3>Closing Thoughts</h3>
+      <p>If you only have a few entries, stick with the standard UI. For power users or mass cleanup, the AL extension route is safest. The config package trick should only be used if you know what you're doing — and never on production data without testing.</p>
+      
+      <p>Hope this helps someone else facing the same challenge! Cheers!</p>
+        `
+      }
+      
       
     
 ];

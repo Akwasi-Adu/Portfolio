@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Portfolio of Akwasi Adu-Kyeremeh — ERP Solutions Architect & Full Stack Developer based in Accra, Ghana.">
+  <meta name="keywords" content="ERP, Full Stack Developer, ASP.NET, React, MSSQL, portfolio">
+  <meta name="author" content="Akwasi Adu-Kyeremeh">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="portfolio/images/favicon.png">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Akwasi Adu-Kyeremeh | Portfolio">
+  <meta property="og:description" content="Explore the work of Akwasi Adu-Kyeremeh — ERP Architect & Full Stack Developer.">
+  <meta property="og:image" content="https://akwasi.dev/portfolio/images/og-image.jpg">
+  <meta property="og:url" content="https://akwasi.dev/index.html">
+  <meta property="og:type" content="website">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Akwasi Adu-Kyeremeh | Portfolio">
+  <meta name="twitter:description" content="Explore the portfolio of Akwasi Adu-Kyeremeh — full-stack developer & business technology expert.">
+  <meta name="twitter:image" content="https://akwasi.dev/portfolio/images/og-image.jpg">
+
+  <title>Akwasi Adu-Kyeremeh | ERP Solutions Architect</title>
+  <link rel="stylesheet" href="portfolio/css/style.css">
+
+  <!-- EmailJS -->
+  <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>
+    (function() {
+        emailjs.init("HNWqejSJ6lO8tpjjf");
+    })();
+  </script>
+
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EPKW2QTNQL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EPKW2QTNQL');
+  </script>
+</head>
+<body>
+
+  <header>
+    <div class="intro-text fade-in">
+      <h1>ERP Solutions Architect & Full Stack Developer</h1>
+      <p>Helping organizations scale through technology.</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- Featured Projects -->
+    <section id="featured-projects" class="fade-in">
+      <h2>Featured Projects</h2>
+      <div id="projects-container" class="projects-grid">
+        <!-- Project cards dynamically inserted via JavaScript -->
+      </div>
+      <a href="projects.html" class="view-more">View All Projects</a>
+    </section>
+
+    <!-- Clients -->
+    <section id="clients" class="fade-in">
+      <h2>Clients Served</h2>
+      <div class="client-logos">
+        <img src="portfolio/images/clients/logo1.png" alt="Client 1" />
+        <img src="portfolio/images/clients/logo2.png" alt="Client 2" />
+        <!-- Additional logos... -->
+      </div>
+    </section>
+
+    <!-- Blog Teaser -->
+    <section id="blog-teaser" class="fade-in">
+      <h2>Latest Blog Posts</h2>
+      <div id="blog-teasers" class="blog-grid">
+        <!-- Blog previews inserted via JavaScript -->
+      </div>
+      <a href="blog.html" class="view-more">View All Posts</a>
+    </section>
+
+    <!-- Tech Tags -->
+    <section id="tech-tags" class="fade-in">
+      <h2>Tech Stack</h2>
+      <div class="tag-cloud">
+        <span class="tag">React</span>
+        <span class="tag">ASP.NET</span>
+        <span class="tag">C#</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">SQL</span>
+        <span class="tag">Kotlin</span>
+        <span class="tag">Java</span>
+        <span class="tag">MSSQL</span>
+      </div>
+    </section>
+
+    <!-- Timeline -->
+    <section id="timeline" class="fade-in">
+      <h2>Journey</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">2019</div>
+          <div class="timeline-content">
+            <h3>Expanded Expertise</h3>
+            <p>Added full-stack development to my ERP consulting toolkit for end-to-end solutions.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2010</div>
+          <div class="timeline-content">
+            <h3>Major Implementation</h3>
+            <p>Led ERP rollout post $900M acquisition in the telecom sector.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">2009</div>
+          <div class="timeline-content">
+            <h3>Consulting Beginnings</h3>
+            <p>Started career in enterprise solutions and digital transformation.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="fade-in">
+      <h2>Contact Me</h2>
+      <p>If you'd like to collaborate or discuss a project, feel free to reach out!</p>
+      <form id="contact-form" onsubmit="sendEmail(event)">
+        <div class="form-group">
+          <label for="name">Name</label>
+          <input type="text" name="name" id="name" placeholder="Your Name" required />
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" name="email" id="email" placeholder="Your Email" required />
+        </div>
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea name="message" id="message" placeholder="Your Message" rows="5" required></textarea>
+        </div>
+        <div id="form-status">
+          <div id="spinner" style="display: none;">Sending...</div>
+          <div id="success-message" style="display: none; color: green;">Message sent successfully!</div>
+        </div>
+        <button type="submit" class="btn">Send Message</button>
+      </form>
+
+      <div class="contact-links">
+        <a href="mailto:akwasi@rhema-systems.com.gh">Email Me</a> |
+        <a href="https://www.linkedin.com/in/akwasi/" target="_blank">LinkedIn</a> |
+        <a href="https://github.com/Akwasi-Adu" target="_blank">GitHub</a>
+      </div>
+    </section>
+  </main>
+
+  <button id="back-to-top" onclick="scrollToTop()">↑ Top</button>
+
+  <footer>
+    <p>&copy; 2025 Akwasi Adu-Kyeremeh. All rights reserved.</p>
+  </footer>
+
+  <script src="portfolio/js/projects.js"></script>
+  <script src="portfolio/js/blogs.js"></script>
+  <script src="portfolio/js/script.js"></script>
+</body>
+</html>
