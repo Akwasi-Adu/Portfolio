@@ -1271,4 +1271,44 @@ ul {
       padding: 1rem;
     }
   }
+
+  /* Add to your CSS */
+.technical-competencies {
+    padding: 60px 20px;
+    background-color: #f9f9f9;
+    color: #222;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .technical-competencies h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+    text-align: center;
+    font-weight: 700;
+  }
+  
+  .competency-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+  }
+  
+  .competency h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    color: #004080;
+  }
+  
+  .competency p {
+    font-size: 1rem;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 768px) {
+    .competency-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
   
