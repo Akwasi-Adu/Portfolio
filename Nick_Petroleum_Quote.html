@@ -1,0 +1,922 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sage Evolution ERP Integration Project Quote</title>
+    <style>
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            line-height: 1.4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #2c5aa0;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #2c5aa0;
+            font-size: 24px;
+            margin: 0;
+            font-weight: bold;
+        }
+        
+        .header h2 {
+            color: #666;
+            font-size: 18px;
+            margin: 5px 0;
+            font-weight: normal;
+        }
+        
+        .client-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            background-color: #f9f9f9;
+        }
+        
+        .client-info div {
+            flex: 1;
+        }
+        
+        h1 {
+            color: #2c5aa0;
+            font-size: 20px;
+            margin: 25px 0 15px 0;
+            border-bottom: 2px solid #2c5aa0;
+            padding-bottom: 5px;
+        }
+        
+        h2 {
+            color: #2c5aa0;
+            font-size: 16px;
+            margin: 20px 0 10px 0;
+            font-weight: bold;
+        }
+        
+        h3 {
+            color: #444;
+            font-size: 14px;
+            margin: 15px 0 8px 0;
+            font-weight: bold;
+        }
+        
+        p, li {
+            font-size: 11px;
+            margin: 8px 0;
+        }
+        
+        ul, ol {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 11px;
+        }
+        
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #2c5aa0;
+            color: white;
+            padding: 12px 8px;
+            font-weight: bold;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px 8px;
+            vertical-align: top;
+        }
+        
+        .total-row {
+            background-color: #f0f8ff;
+            font-weight: bold;
+        }
+        
+        .highlight-box {
+            background-color: #e8f4fd;
+            border-left: 4px solid #2c5aa0;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .timeline-table td {
+            text-align: center;
+        }
+        
+        .timeline-table td:first-child {
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .deliverable {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #2c5aa0;
+            text-align: center;
+            font-size: 10px;
+            color: #666;
+        }
+        
+        .contact-section {
+            margin-top: 30px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+        
+        @media print {
+            body { margin: 0; }
+            .no-print { display: none; }
+        }
+        
+        .amount {
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .feature-highlight {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 10px;
+        }
+
+        .appendix {
+            page-break-before: always;
+            margin-top: 40px;
+            border-top: 3px solid #2c5aa0;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>PROJECT QUOTATION</h1>
+        <h2>Sage Evolution ERP Integration & Web Application Development</h2>
+    </div>
+
+    <div class="client-info">
+        <div>
+            <strong>Client:</strong> Nick Petroleum Ghana Limited<br>
+            <strong>Project:</strong> Sage Evolution ERP Modular Enhancement & Custom Web Application Development<br>
+            <strong>Industry:</strong> Oil & Gas
+        </div>
+        <div style="text-align: right;">
+            <strong>Date:</strong> 21/07/2025<br>
+            <strong>Validity:</strong> 30 Days<br>
+            <strong>Project Duration:</strong> 3 Months
+        </div>
+    </div>
+
+    <div class="section">
+        <h1>PROJECT OVERVIEW</h1>
+        <p>This comprehensive solution involves enhancing your existing Sage Evolution ERP system and developing integrated web applications to streamline operations across your 14 fuel stations with future scalability considerations. The project replicates and enhances your current OMBA ERP functionality while integrating seamlessly with Sage Evolution ERP for superior financial management and reporting capabilities.</p>
+        
+        <div class="feature-highlight">
+            <strong>Key Value Proposition:</strong> You'll retain all the operational efficiency of your current system while gaining enterprise-grade financial controls, regulatory compliance, and scalable architecture for future growth.
+        </div>
+    </div>
+
+    <div class="section">
+        <h1>SCOPE OF WORK</h1>
+        
+        <h2>1. SAGE EVOLUTION ERP ENHANCEMENTS</h2>
+        
+        <h3>1.1 Module Modifications & Configuration</h3>
+        <ul>
+            <li>General Ledger (GL) module customization and optimization for fields sales (station) integration</li>
+            <li>Accounts Receivable (AR) module enhancement with custom integrations to PostAR, Client, Invnum, and _btblInvoiceLines tables</li>
+            <li>Accounts Payable (AP) module configuration with advanced supplier management and integration to Vendor, PostAP, Invnum, and _btblInvoiceLines tables</li>
+            <li>System configuration for 10+ concurrent users with scalability provisions for future growth</li>
+            <li>Custom workflow configuration for industry-specific approval processes</li>
+        </ul>
+        
+        <h3>1.2 Module Activation & Implementation</h3>
+        <ul>
+            <li>Inventory Management module activation with integration to StkItem and InvCostTracking tables</li>
+            <li>Order Entry module activation and configuration for procurement workflows</li>
+            <li>Stock control setup with web application integration for fuel products across 14 stations</li>
+            <li>Sage Contact Management Premium module activation with enhanced functionality and web app integration</li>
+            <li>Multi-location inventory tracking with station-level stock management</li>
+        </ul>
+        
+        <h3>1.3 Database Preparation & Integration Architecture</h3>
+        <ul>
+            <li>Custom User Defined Fields (UDFs) development for specialized operations in Sage Evolution ERP</li>
+            <li>Database schema preparation for bi-directional synchronization of operations transactions from web applications</li>
+            <li>Implementation of robust data integrity controls and validation mechanisms</li>
+            <li>Custom API development for seamless integration between web applications and Sage Evolution</li>
+            <li>Transaction logging and audit trail implementation for regulatory compliance</li>
+        </ul>
+        
+        <!-- <h3>1.4 Ghana Fuel Industry Compliance & Localization</h3> -->
+        <!-- <ul> -->
+            <!-- <li>Ghana fuel industry regulatory compliance configuration and reporting</li> -->
+            <!-- <li>Tax management setup according to Ghana Revenue Authority requirements</li> -->
+            <!-- <li>Petroleum industry-specific reporting templates and regulatory submissions</li> -->
+            <!-- <li>National Petroleum Authority (NPA) compliance reporting automation</li> -->
+            <!-- <li>Environmental Protection Agency (EPA) reporting integration</li> -->
+        <!-- </ul> -->
+
+        <h2>2. WEB APPLICATION DEVELOPMENT</h2>
+        
+        <h3>2.1 Operations Management Web Application</h3>
+        <ul>
+            <li><strong>Technology Stack:</strong> React 18 with TypeScript, Tailwind CSS, Lucide React icons</li>
+            <li><strong>Core Features (Replicated from OMBA ERP):</strong>
+                <ul>
+                    <li>Advanced Purchase Order (PO) management system with multi-level approval workflows</li>
+                    <li>Sophisticated Goods Received Voucher (GRV) processing with variance tracking</li>
+                    <li>Comprehensive Delivery Notes generation and real-time tracking</li>
+                    <li>Advanced supplier management interface with performance analytics</li>
+                    <li>Intelligent inventory tracking with automated alerts and forecasting</li>
+                    <li>Multi-role user management system (30 users capacity) with provision for scalability</li>
+                    <li>Mobile-responsive design optimized for field operations</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <h3>2.2 Fuel Management Center (FMC) Application - Enterprise Grade</h3>
+        <p><strong>Complete replication of your current FMC system with enhanced capabilities:</strong></p>
+        <ul>
+            <li><strong>Advanced Station Operations Management:</strong>
+                <ul>
+                    <li>Comprehensive product receiving and inventory management</li>
+                    <li>Fuel deliveries tracking with real-time documentation</li>
+                    <li>Sophisticated sales integration for all fuel sales channels</li>
+                    <!-- <li>Automated pump calibration and maintenance scheduling</li> -->
+                    <li>Advanced tank dipping and reconciliation with variance analysis</li>
+                    <li>Multi-shift reporting capabilities with performance analytics</li>
+                </ul>
+            </li>
+            <li><strong>Multi-Station Architecture:</strong> Current 14 stations with unlimited scalability</li>
+            <li><strong>Advanced Reporting & Analytics:</strong> Recharts integration with executive dashboards</li>
+            <li><strong>Financial Controls:</strong> Complete cash reconciliation and banking integration</li>
+        </ul>
+
+        <h2>3. DATA SYNCHRONIZATION & INTEGRATION SERVICE</h2>
+        
+        <h3>3.1 Windows Service Development</h3>
+        <ul>
+            <li><strong>Technology:</strong> ASP.NET Windows Service with custom API development</li>
+            <li><strong>Synchronization Functionality:</strong>
+                <ul>
+                    <li>Scheduled batch synchronization of operations transactions from web applications to Sage Evolution</li>
+                    <li>Bi-directional data sync ensuring data consistency across platforms</li>
+                    <li>Automated financial data transfer including sales, purchases, and inventory movements</li>
+                    <li>Advanced error handling with automatic retry mechanisms and failure notifications</li>
+                    <li>Comprehensive transaction logging and detailed audit trails for compliance</li>
+                    <li>Configurable synchronization intervals (hourly, daily, or custom schedules)</li>
+                </ul>
+            </li>
+        </ul>
+        
+        <h3>3.2 Integration Architecture & Data Flow</h3>
+        <ul>
+            <li>Secure custom API endpoints with authentication and authorization</li>
+            <li>Advanced data validation and integrity checks with rollback capabilities</li>
+            <li>Automated backup and recovery procedures with disaster recovery planning</li>
+            <li>Performance monitoring and optimization with real-time alerts</li>
+            <li>Data mapping and transformation between web applications and Sage Evolution</li>
+        </ul>
+
+        <h2>4. REPORTING & COMPLIANCE</h2>
+        
+        <h3>4.1 Financial Reports</h3>
+        <ul>
+            <li>Deep integration with Sage Evolution reporting engine</li>
+            <li>Custom report templates specifically designed for Ghana fuel industry requirements</li>
+            <li>Automated regulatory compliance reports for NPA and EPA submissions</li>
+            <li>Executive dashboards with real-time KPI monitoring and trend analysis</li>
+        </ul>
+        
+        <h3>4.2 Operational Reports</h3>
+        <ul>
+            <li>Comprehensive station-wise performance analytics with benchmarking</li>
+            <li>Advanced inventory management reports with forecasting capabilities</li>
+            <li>Detailed sales and reconciliation reports with variance analysis</li>
+            <li>Pump efficiency and maintenance reports with predictive analytics</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h1>PROJECT DELIVERABLES</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 20%;">Phase</th>
+                    <th style="width: 20%;">Timeline</th>
+                    <th style="width: 60%;">Deliverables</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Phase 1: ERP Enhancement</strong></td>
+                    <td>Month 1</td>
+                    <td>
+                        <span class="deliverable">✓</span> Sage Evolution GL, AR, AP module modifications<br>
+                        <span class="deliverable">✓</span> Inventory and Contact Management Premium activation<br>
+                        <span class="deliverable">✓</span> Custom UDFs and database preparation<br>
+                        <span class="deliverable">✓</span> Ghana compliance configuration
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 2: Web Application Development</strong></td>
+                    <td>Month 2</td>
+                    <td>
+                        <span class="deliverable">✓</span> Operations Management Web Application<br>
+                        <span class="deliverable">✓</span> Complete FMC Web Application for all 14 stations<br>
+                        <span class="deliverable">✓</span> User interface design and development<br>
+                        <span class="deliverable">✓</span> Comprehensive testing and quality assurance
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 3: Integration & Deployment</strong></td>
+                    <td>Month 3</td>
+                    <td>
+                        <span class="deliverable">✓</span> Windows Service synchronization development<br>
+                        <span class="deliverable">✓</span> System integration and testing<br>
+                        <span class="deliverable">✓</span> Cloud deployment and configuration<br>
+                        <span class="deliverable">✓</span> Data migration from OMBA ERP<br>
+                        <span class="deliverable">✓</span> User acceptance testing
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h1>TRAINING & KNOWLEDGE TRANSFER</h1>
+        
+        <h2>4.1 On-Site Training Program</h2>
+        <ul>
+            <li><strong>ERP Training:</strong> 2 days on-site for finance team (10 users)</li>
+            <li><strong>Web Application Training:</strong> 3 days on-site for operations team (30 users)</li>
+            <li><strong>Administrator Training:</strong> 2 days for IT personnel</li>
+            <li><strong>Station Manager Training:</strong> 1 day per station (14 stations)</li>
+        </ul>
+        
+        <h2>4.2 Documentation Package</h2>
+        <ul>
+            <li>Comprehensive user manuals for all systems</li>
+            <li>Technical documentation for system administrators</li>
+            <li>Standard Operating Procedures (SOPs) for daily operations</li>
+            <li>Troubleshooting guides and FAQ documentation</li>
+            <li>Video tutorials for key processes and workflows</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h1>IMPLEMENTATION & ROLLOUT</h1>
+        
+        <h2>5.1 Deployment Strategy</h2>
+        <ul>
+            <li>Simultaneous rollout across all 14 stations</li>
+            <li>Enterprise-grade cloud hosting with 99.9% uptime guarantee</li>
+            <li>Comprehensive system testing including load testing and security assessments</li>
+            <li>Parallel running period with legacy OMBA ERP system for smooth transition</li>
+        </ul>
+        
+        <h2>5.2 Go-Live Support</h2>
+        <ul>
+            <li>Dedicated on-site support during first week of operation</li>
+            <li>24/7 remote monitoring and support during critical transition period</li>
+            <li>Immediate issue resolution protocols with escalation procedures</li>
+            <li>Performance optimization and fine-tuning post-deployment</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h1>ONGOING SUPPORT & MAINTENANCE</h1>
+        
+        <h2>6.1 Post-Implementation Support (Included)</h2>
+        <ul>
+            <li><strong>Duration:</strong> 3 months post go-live</li>
+            <li><strong>Coverage:</strong> Bug fixes, system troubleshooting, minor adjustments</li>
+            <li><strong>Response Time:</strong> 24-hour response for critical issues</li>
+            <li><strong>Support Channels:</strong> Phone, email, remote desktop assistance</li>
+        </ul>
+        
+        <h2>6.2 Excluded from Support</h2>
+        <ul>
+            <li>New feature development or major modifications</li>
+            <li>Training for additional users beyond initial scope</li>
+            <li>Hardware-related issues</li>
+            <li>Third-party software conflicts</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h1>INVESTMENT BREAKDOWN</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 40%;">Component</th>
+                    <th style="width: 40%;">Description</th>
+                    <th style="width: 20%;">Amount (GHS)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>ERP Enhancement</strong></td>
+                    <td>Module modifications, activation, UDFs, and configuration</td>
+                    <td class="amount">25,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Operations Web App</strong></td>
+                    <td>Complete operations management system development</td>
+                    <td class="amount">35,000</td>
+                </tr>
+                <tr>
+                    <td><strong>FMC Application</strong></td>
+                    <td>Enterprise-grade 14-station fuel management system</td>
+                    <td class="amount">45,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Synchronization Service</strong></td>
+                    <td>Windows service with custom API development</td>
+                    <td class="amount">20,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Training & Documentation</strong></td>
+                    <td>Comprehensive on-site training and documentation</td>
+                    <td class="amount">15,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Implementation & Support</strong></td>
+                    <td>Deployment, rollout, and 3-month support</td>
+                    <td class="amount">10,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Project Management</strong></td>
+                    <td>Coordination, testing, and quality assurance</td>
+                    <td class="amount">8,000</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><strong>SUBTOTAL</strong></td>
+                    <td class="amount"><strong>158,000</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Contingency (5%)</strong></td>
+                    <td>Risk mitigation and unforeseen requirements</td>
+                    <td class="amount"><strong>7,900</strong></td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="2"><strong>TOTAL PROJECT COST</strong></td>
+                    <td class="amount"><strong>GHS 165,900</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h1>ANNUAL LICENSE & MAINTENANCE FEES (ALF)</h1>
+        
+        <h2>7.1 Software Licensing (Annual)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 60%;">Service</th>
+                    <th style="width: 40%;">Annual Fee (GHS)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Cloud Hosting & Infrastructure</td>
+                    <td class="amount">8,000</td>
+                </tr>
+                <tr>
+                    <td>System Maintenance & Updates</td>
+                    <td class="amount">12,000</td>
+                </tr>
+                <tr>
+                    <td>Technical Support (Business Hours)</td>
+                    <td class="amount">6,000</td>
+                </tr>
+                <tr>
+                    <td>Security & Backup Services</td>
+                    <td class="amount">4,000</td>
+                </tr>
+                <tr class="total-row">
+                    <td><strong>Total Annual Fee</strong></td>
+                    <td class="amount"><strong>GHS 30,000</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2>7.2 Optional Extended Support</h2>
+        <ul>
+            <li><strong>24/7 Support Coverage:</strong> Additional GHS 15,000/year</li>
+            <li><strong>On-site Support Visits:</strong> GHS 2,000/visit</li>
+            <li><strong>Custom Report Development:</strong> GHS 3,000/report</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h1>PAYMENT TERMS</h1>
+        
+        <h2>Milestone-Based Payments</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 30%;">Milestone</th>
+                    <th style="width: 40%;">Description</th>
+                    <th style="width: 15%;">Percentage</th>
+                    <th style="width: 15%;">Amount (GHS)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Project Initiation</strong></td>
+                    <td>Upon contract signing</td>
+                    <td class="amount">30%</td>
+                    <td class="amount">49,770</td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 1 Completion</strong></td>
+                    <td>ERP enhancement delivery</td>
+                    <td class="amount">25%</td>
+                    <td class="amount">41,475</td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 2 Completion</strong></td>
+                    <td>Web applications delivery</td>
+                    <td class="amount">25%</td>
+                    <td class="amount">41,475</td>
+                </tr>
+                <tr>
+                    <td><strong>Project Completion</strong></td>
+                    <td>Final deployment and handover</td>
+                    <td class="amount">20%</td>
+                    <td class="amount">33,180</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2>Annual License Fee</h2>
+        <ul>
+            <li><strong>Payment:</strong> Annually in advance</li>
+            <li><strong>First Year:</strong> Due upon project completion</li>
+            <li><strong>Subsequent Years:</strong> 30 days before anniversary date</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h1>PROJECT TIMELINE</h1>
+        
+        <table class="timeline-table">
+            <thead>
+                <tr>
+                    <th style="width: 20%;">Phase</th>
+                    <th style="width: 20%;">Duration</th>
+                    <th style="width: 60%;">Key Milestones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Phase 1</strong></td>
+                    <td>Weeks 1-4</td>
+                    <td>ERP modules and database preparation complete</td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 2</strong></td>
+                    <td>Weeks 5-8</td>
+                    <td>Complete web applications development and testing</td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 3</strong></td>
+                    <td>Weeks 9-12</td>
+                    <td>Integration, synchronization service, and deployment</td>
+                </tr>
+                <tr>
+                    <td><strong>Training</strong></td>
+                    <td>Weeks 10-12</td>
+                    <td>Comprehensive user training and documentation</td>
+                </tr>
+                <tr class="total-row">
+                    <td><strong>Go-Live</strong></td>
+                    <td>Week 12</td>
+                    <td>Full system operational across all 14 stations</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h1>TERMS & CONDITIONS</h1>
+        
+        <h2>8.1 Project Assumptions</h2>
+        <ul>
+            <li>Client provides necessary access to existing OMBA ERP for comprehensive data analysis and migration</li>
+            <li>Client IT team available for coordination, testing support, and knowledge transfer</li>
+            <li>Stable internet connectivity at all 14 stations with minimum bandwidth requirements</li>
+            <li>Client provides test data, business process documentation, and user requirements</li>
+        </ul>
+        
+        <h2>8.2 Change Management</h2>
+        <ul>
+            <li>Scope changes require written approval and may affect timeline and cost</li>
+            <li>Additional features beyond agreed scope will be quoted separately</li>
+            <li>Client-requested modifications during development may incur additional charges</li>
+        </ul>
+        
+        <h2>8.3 Warranty & Guarantees</h2>
+        <ul>
+            <li>90-day warranty on all deliverables from go-live date</li>
+            <li>System performance guarantee as per agreed specifications</li>
+            <li>Data integrity and security compliance guarantee</li>
+        </ul>
+    </div>
+
+    <div class="highlight-box">
+        <h1>NEXT STEPS</h1>
+        <ol>
+            <li><strong>Contract Approval:</strong> Review and approve this quotation</li>
+            <li><strong>Project Kickoff:</strong> Schedule initial planning meeting</li>
+            <li><strong>System Assessment:</strong> Detailed analysis of current OMBA ERP system</li>
+            <li><strong>Development Commencement:</strong> Begin Phase 1 activities</li>
+        </ol>
+    </div>
+
+    <div class="contact-section">
+        <h2>Contact Information</h2>
+        <table style="border: none;">
+            <tr style="border: none;">
+                <td style="border: none; width: 25%;"><strong>Prepared by:</strong></td>
+                <td style="border: none; width: 25%;">[Your Name]</td>
+                <td style="border: none; width: 25%;"><strong>Email:</strong></td>
+                <td style="border: none; width: 25%;">[Your Email]</td>
+            </tr>
+            <tr style="border: none;">
+                <td style="border: none;"><strong>Title:</strong></td>
+                <td style="border: none;">[Your Title]</td>
+                <td style="border: none;"><strong>Phone:</strong></td>
+                <td style="border: none;">[Your Phone]</td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- APPENDIX STARTS HERE -->
+    <div class="appendix">
+        <h1>APPENDIX A: DETAILED FMC FEATURE SPECIFICATIONS</h1>
+        <p><em>Comprehensive Technical Feature Set - Replicated from Current OMBA ERP System</em></p>
+
+        <h2>🔐 ENTERPRISE AUTHENTICATION & SECURITY</h2>
+        <h3>Multi-Role Authentication System</h3>
+        <ul>
+            <li><strong>5 Distinct User Roles:</strong> Admin, Operations Manager, Operations Staff, Station Manager, Attendant</li>
+            <li><strong>Advanced Role-Based Access Control:</strong> Granular permissions with module-level restrictions</li>
+            <li><strong>Secure Authentication:</strong> Enterprise-grade login with session management and timeout controls</li>
+            <li><strong>User Activity Monitoring:</strong> Complete audit trails with real-time activity tracking</li>
+        </ul>
+
+        <h2>🏢 HEADQUARTERS OPERATIONS MODULE</h2>
+        <h3>Advanced Purchase Order Management System</h3>
+        <ul>
+            <li><strong>Multi-Product Order Creation:</strong> Complex orders with destination station allocation</li>
+            <li><strong>Supplier Integration:</strong> Complete supplier, depot, and logistics coordination</li>
+            <li><strong>Sophisticated Approval Workflows:</strong> Multi-level approvals with configurable amount thresholds</li>
+            <li><strong>Real-Time Tracking:</strong> Complete audit trail of all PO activities with status updates</li>
+        </ul>
+
+        <h3>Goods Received Voucher (GRV) Processing</h3>
+        <ul>
+            <li><strong>Advanced Delivery Processing:</strong> Process deliveries against purchase orders with variance tracking</li>
+            <li><strong>Quality Control Integration:</strong> Comprehensive quality control and acceptance workflows</li>
+            <li><strong>Variance Management:</strong> Sophisticated tracking of ordered vs received quantities</li>
+            <li><strong>Document Integration:</strong> Seamless integration with delivery note generation</li>
+        </ul>
+
+        <h3>Delivery Note Management System</h3>
+        <ul>
+            <li><strong>Automated Generation:</strong> Generate delivery notes from approved GRVs</li>
+            <li><strong>Logistics Coordination:</strong> Driver and vehicle assignment with route optimization</li>
+            <li><strong>Multi-Station Coordination:</strong> Complex multi-station delivery management</li>
+            <li><strong>Real-Time Tracking:</strong> Live delivery status tracking with GPS integration</li>
+        </ul>
+
+        <h2>⛽ ADVANCED STATION OPERATIONS MODULE</h2>
+        <h3>Comprehensive Session Management</h3>
+        <ul>
+            <li><strong>Daily Session Control:</strong> Start/close daily sessions with opening/closing cash and fuel levels</li>
+            <li><strong>Session-Based Transactions:</strong> Complete session-based transaction control and monitoring</li>
+            <li><strong>Historical Tracking:</strong> Comprehensive session history with detailed reporting capabilities</li>
+            <li><strong>Multi-Shift Support:</strong> Advanced support for multiple shifts with seamless handovers</li>
+        </ul>
+
+        <h3>Intelligent Tank Operations</h3>
+        <ul>
+            <li><strong>Real-Time Monitoring:</strong> Live tank level monitoring with sophisticated visual indicators</li>
+            <li><strong>Advanced Dip Recording:</strong> Daily tank dip recording with comprehensive variance analysis</li>
+            <li><strong>Product Return Management:</strong> Advanced product return to tank functionality for pump tests and maintenance</li>
+            <li><strong>Smart Alerts:</strong> Intelligent low fuel level alerts and capacity management system</li>
+            <li><strong>Reconciliation Engine:</strong> Advanced reconciliation with discrepancy detection and reporting</li>
+        </ul>
+
+        <h3>Multi-Shift Pump Management</h3>
+        <ul>
+            <li><strong>Comprehensive Shift Coverage:</strong> Multi-shift pump readings (Morning, Afternoon, Evening, Night)</li>
+            <li><strong>Automated Calculations:</strong> Sophisticated automatic sales calculation based on meter readings</li>
+            <li><strong>Performance Tracking:</strong> Attendant assignment and detailed performance tracking</li>
+            <li><strong>Real-Time Analytics:</strong> Live sales monitoring with trend analysis</li>
+            <li><strong>Variance Detection:</strong> Advanced variance detection with automated alerts</li>
+        </ul>
+
+        <h3>Advanced Delivery Reception System</h3>
+        <ul>
+            <li><strong>Station-Level Processing:</strong> Receive and confirm deliveries at individual station level</li>
+            <li><strong>Smart Tank Assignment:</strong> Intelligent tank assignment for incoming products</li>
+            <li><strong>Variance Management:</strong> Sophisticated variance management (expected vs actual quantities)</li>
+            <li><strong>Automated Updates:</strong> Real-time automatic tank level updates with validation</li>
+        </ul>
+
+        <h2>💰 COMPREHENSIVE FINANCIAL MANAGEMENT MODULE</h2>
+        <h3>Advanced Cash Reconciliation System</h3>
+        <ul>
+            <li><strong>Multi-Channel Reconciliation:</strong> Daily cash, POS, and credit reconciliation</li>
+            <li><strong>Variance Analysis:</strong> Sophisticated variance analysis with surplus/deficit tracking</li>
+            <li><strong>Expected vs Actual:</strong> Advanced expected vs actual cash comparison algorithms</li>
+            <li><strong>Collection Monitoring:</strong> Comprehensive collection rate monitoring and analytics</li>
+        </ul>
+
+        <h3>Expense Requisition Management System</h3>
+        <ul>
+            <li><strong>Station-Level Requests:</strong> Advanced station-level expense requests with GL account coding</li>
+            <li><strong>Workflow Management:</strong> Sophisticated multi-level approval workflow (Operations Manager approval)</li>
+            <li><strong>Real-Time Tracking:</strong> Live status tracking and automated notifications</li>
+            <li><strong>Budget Control:</strong> Advanced budget control and comprehensive spending analysis</li>
+        </ul>
+
+        <h3>Banking & Deposits Management</h3>
+        <ul>
+            <li><strong>Multi-Channel Deposits:</strong> Comprehensive multi-channel deposit recording (Cash, Mobile Money, Cards)</li>
+            <li><strong>Account Management:</strong> Advanced bank account management with multiple account support</li>
+            <li><strong>Document Tracking:</strong> Sophisticated deposit slip tracking and reconciliation</li>
+            <li><strong>Automated Alerts:</strong> Intelligent variance alerts for discrepancies</li>
+        </ul>
+
+        <h2>🛒 ADVANCED SALES MANAGEMENT MODULE</h2>
+        <h3>Fuel Station Mart Operations</h3>
+        <ul>
+            <li><strong>Comprehensive Sales Recording:</strong> Daily mart sales recording with credit and shortage tracking</li>
+            <li><strong>Automated Calculations:</strong> Advanced expected deposit calculations with variance analysis</li>
+            <li><strong>Variance Management:</strong> Sophisticated variance analysis and automated alerts</li>
+            <li><strong>Banking Integration:</strong> Seamless integration with comprehensive banking module</li>
+        </ul>
+
+        <h3>Lubricant Sales Management System</h3>
+        <ul>
+            <li><strong>Product Catalog:</strong> Comprehensive product catalog with dynamic pricing</li>
+            <li><strong>Inventory Integration:</strong> Advanced inventory tracking and sales recording</li>
+            <li><strong>Performance Analytics:</strong> Top-selling products analysis with trend forecasting</li>
+            <li><strong>Staff Monitoring:</strong> Detailed staff performance monitoring and analytics</li>
+        </ul>
+
+        <h2>📊 ENTERPRISE REPORTING SUITE</h2>
+        <h3>Operational Intelligence Reports</h3>
+        <ul>
+            <li><strong>Executive Dashboards:</strong> Daily summary reports with comprehensive KPIs</li>
+            <li><strong>Product Analysis:</strong> Advanced fuel sales analysis by product type with trend analysis</li>
+            <li><strong>Inventory Intelligence:</strong> Tank utilization and inventory status with forecasting</li>
+            <li><strong>Performance Metrics:</strong> Pump performance and efficiency metrics with benchmarking</li>
+        </ul>
+
+        <h3>Headquarters Operations Reports</h3>
+        <ul>
+            <li><strong>Procurement Analytics:</strong> Purchase order analysis with approval rates and efficiency metrics</li>
+            <li><strong>Delivery Performance:</strong> Advanced delivery performance and variance tracking</li>
+            <li><strong>Supplier Intelligence:</strong> Comprehensive supplier performance benchmarking</li>
+            <li><strong>Efficiency Metrics:</strong> Procurement efficiency metrics with cost analysis</li>
+        </ul>
+
+        <h3>Financial Intelligence Reports</h3>
+        <ul>
+            <li><strong>Cash Flow Analysis:</strong> Comprehensive cash flow analysis and reconciliation reports</li>
+            <li><strong>Expense Analytics:</strong> Advanced expense tracking and budget analysis</li>
+            <li><strong>Banking Intelligence:</strong> Banking and deposit summaries with trend analysis</li>
+            <li><strong>Variance Analysis:</strong> Comprehensive variance analysis across all operations</li>
+        </ul>
+
+        <h2>🔍 AUDIT & COMPLIANCE FRAMEWORK</h2>
+        <h3>Advanced User Activity Monitoring</h3>
+        <ul>
+            <li><strong>Complete Audit Trails:</strong> Comprehensive audit trail of all user actions</li>
+            <li><strong>Real-Time Monitoring:</strong> Live user activity monitoring with alerts</li>
+            <li><strong>Advanced Search:</strong> Searchable and filterable log entries with advanced queries</li>
+            <li><strong>Compliance Reporting:</strong> Automated compliance reporting capabilities</li>
+        </ul>
+
+        <h2>⚙️ SYSTEM ADMINISTRATION & CONFIGURATION</h2>
+        <h3>Advanced System Management</h3>
+        <ul>
+            <li><strong>User Management:</strong> Comprehensive user management and role assignment</li>
+            <li><strong>Tax Configuration:</strong> Advanced tax rate configuration and management</li>
+            <li><strong>Station Setup:</strong> Comprehensive station setup and configuration</li>
+            <li><strong>Localization:</strong> Currency and localization settings with multi-language support</li>
+        </ul>
+
+        <h2>🎨 TECHNICAL ARCHITECTURE & FEATURES</h2>
+        <h3>Responsive Design Framework</h3>
+        <ul>
+            <li><strong>Mobile Optimization:</strong> Mobile-friendly interface optimized for field operations</li>
+            <li><strong>Tablet Integration:</strong> Tablet optimization for comprehensive station management</li>
+            <li><strong>Desktop Dashboard:</strong> Advanced desktop dashboard for headquarters oversight</li>
+            <li><strong>Cross-Platform:</strong> Seamless cross-platform compatibility</li>
+        </ul>
+
+        <h3>Real-Time Data Architecture</h3>
+        <ul>
+            <li><strong>Live Synchronization:</strong> Real-time data synchronization across all modules</li>
+            <li><strong>Instant Notifications:</strong> Immediate notifications for critical events and thresholds</li>
+            <li><strong>Real-Time Dashboards:</strong> Live dashboard metrics with automatic refresh</li>
+            <li><strong>Performance Monitoring:</strong> Real-time system performance monitoring</li>
+        </ul>
+
+        <h3>Advanced Data Visualization</h3>
+        <ul>
+            <li><strong>Interactive Charts:</strong> Advanced interactive charts and graphs using Recharts</li>
+            <li><strong>KPI Dashboards:</strong> Comprehensive KPI dashboards with drill-down capabilities</li>
+            <li><strong>Trend Analysis:</strong> Sophisticated trend analysis and forecasting algorithms</li>
+            <li><strong>Visual Analytics:</strong> Advanced visual analytics with customizable views</li>
+        </ul>
+
+        <h2>🔒 SECURITY & DATA INTEGRITY</h2>
+        <h3>Enterprise Security Framework</h3>
+        <ul>
+            <li><strong>Role-Based Access:</strong> Advanced role-based access control with granular permissions</li>
+            <li><strong>Data Validation:</strong> Comprehensive data validation and integrity checks</li>
+            <li><strong>Session Security:</strong> Secure session management with timeout and concurrent login controls</li>
+            <li><strong>Transaction Integrity:</strong> Complete audit trail for all transactions with immutable logging</li>
+        </ul>
+
+        <h2>💡 KEY BUSINESS BENEFITS</h2>
+        <div class="feature-highlight">
+            <ul>
+                <li><strong>✅ Operational Efficiency:</strong> Streamlined workflows from procurement to sales with automated processes</li>
+                <li><strong>✅ Financial Control:</strong> Real-time cash management and variance tracking with automated reconciliation</li>
+                <li><strong>✅ Inventory Management:</strong> Accurate fuel level monitoring and forecasting with predictive analytics</li>
+                <li><strong>✅ Regulatory Compliance:</strong> Complete audit trails and automated regulatory reporting</li>
+                <li><strong>✅ Multi-Location Management:</strong> Centralized control with station-level autonomy and real-time monitoring</li>
+                <li><strong>✅ Unlimited Scalability:</strong> Easily add new stations and users without system limitations</li>
+                <li><strong>✅ Data-Driven Decisions:</strong> Comprehensive reporting for informed decision-making with predictive insights</li>
+                <li><strong>✅ Cost Optimization:</strong> Advanced variance analysis and cost control mechanisms</li>
+                <li><strong>✅ Performance Analytics:</strong> Detailed performance monitoring across all operations</li>
+                <li><strong>✅ Future-Proof Architecture:</strong> Modern technology stack with continuous update capabilities</li>
+            </ul>
+        </div>
+
+        <div class="highlight-box">
+            <h3>SYSTEM COMPLEXITY OVERVIEW</h3>
+            <p><strong>This comprehensive system represents:</strong></p>
+            <ul>
+                <li><strong>50+ Individual Features</strong> across multiple integrated modules</li>
+                <li><strong>5 User Role Types</strong> with granular permission systems</li>
+                <li><strong>14 Station Integration</strong> with unlimited scalability</li>
+                <li><strong>Multi-Shift Operations</strong> with 24/7 operational capability</li>
+                <li><strong>Real-Time Data Processing</strong> with advanced analytics</li>
+                <li><strong>Enterprise-Grade Security</strong> with complete audit trails</li>
+                <li><strong>Regulatory Compliance</strong> for Ghana fuel industry standards</li>
+            </ul>
+            <p><em>This system provides end-to-end fuel station management from headquarters procurement to point-of-sale transactions, with robust financial controls, comprehensive reporting capabilities, and complete operational oversight.</em></p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><em>This quotation is valid for 30 days from the date of issue. All prices are in Ghana Cedis (GHS) and exclusive of applicable taxes. Terms and conditions apply.</em></p>
+    </div>
+
+</body>
+</html>
