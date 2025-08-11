@@ -213,7 +213,7 @@ Cheers!</p>
         date: "2025-01-04"
     },
     {
-        id: 7,
+        id: 8,
         title: `AI in ERP: A Transformation That's Reshaping the Workforce`,
         date: `2025-05-22`,
         categories: ["ERP","AI"],
