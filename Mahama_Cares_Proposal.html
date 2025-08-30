@@ -177,6 +177,20 @@
             height: 4px;
             margin-bottom: 20px;
         }
+
+        .phase-badge {
+            display: inline-block;
+            font-size: 10px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            border: 1px solid #ddd;
+            margin-left: 6px;
+        }
+        
+        .mvp { background: #e7f7ee; border-color: #9bd6b3; }
+        .enhanced { background: #fff6e6; border-color: #ffd18a; }
+        .advanced { background: #fceff0; border-color: #f5a3ab; }
+        .dependency { background: #eef2ff; border-color: #cbd2ff; }
     </style>
 </head>
 <body>
@@ -265,55 +279,60 @@
     </div>
 
     <div class="section">
-        <h1>PROJECT TIMELINE</h1>
+        <h1>PHASED PROJECT TIMELINE & DELIVERY</h1>
         
+        <div class="feature-highlight">
+            <strong>Phased Implementation Strategy:</strong> This project follows a three-phase approach ensuring rapid MVP delivery while allowing for advanced feature evolution based on operational experience and stakeholder feedback. Phase 1 delivers core functionality within 3 months, with optional enhancement phases available for future implementation.
+        </div>
+        
+        <h2>Phase 1: MVP Foundation & Core Platform <span class="phase-badge mvp">13 Weeks</span></h2>
         <table class="timeline-table">
             <thead>
                 <tr>
-                    <th style="width: 25%;">Phase</th>
+                    <th style="width: 25%;">Stage</th>
                     <th style="width: 20%;">Duration</th>
                     <th style="width: 55%;">Key Deliverables</th>
                 </tr>
             </thead>
             <tbody>
                 <tr>
-                    <td><strong>Phase 1: Foundation</strong></td>
+                    <td><strong>Stage 1: Foundation</strong></td>
                     <td>Weeks 1-4</td>
                     <td>
-                        <span class="deliverable">✓</span> NITA infrastructure setup<br>
-                        <span class="deliverable">✓</span> Core authentication system<br>
-                        <span class="deliverable">✓</span> Basic public website<br>
-                        <span class="deliverable">✓</span> Security framework
+                        <span class="deliverable">✓</span> NITA infrastructure setup & domain configuration<br>
+                        <span class="deliverable">✓</span> Core authentication (MFA, RBAC) & audit logging<br>
+                        <span class="deliverable">✓</span> Multi-language public website (English/Twi/Ga)<br>
+                        <span class="deliverable">✓</span> Data Protection Act 2012 compliance framework
                     </td>
                 </tr>
                 <tr>
-                    <td><strong>Phase 2: Core System</strong></td>
+                    <td><strong>Stage 2: Core Application</strong></td>
                     <td>Weeks 5-8</td>
                     <td>
-                        <span class="deliverable">✓</span> Citizen application portal<br>
-                        <span class="deliverable">✓</span> Administrative review interface<br>
-                        <span class="deliverable">✓</span> Medical reviewer tools<br>
-                        <span class="deliverable">✓</span> Basic grant management
+                        <span class="deliverable">✓</span> Citizen portal with Ghana Card integration <span class="phase-badge dependency">NIA API</span><br>
+                        <span class="deliverable">✓</span> Basic case management & review workflows<br>
+                        <span class="deliverable">✓</span> Document management with OCR & secure storage<br>
+                        <span class="deliverable">✓</span> Basic grant tracking & donor management
                     </td>
                 </tr>
                 <tr>
-                    <td><strong>Phase 3: Advanced Features</strong></td>
+                    <td><strong>Stage 3: Operations</strong></td>
                     <td>Weeks 9-12</td>
                     <td>
-                        <span class="deliverable">✓</span> Payment processing system<br>
-                        <span class="deliverable">✓</span> Advanced grant management<br>
-                        <span class="deliverable">✓</span> Public transparency dashboard<br>
-                        <span class="deliverable">✓</span> Comprehensive reporting
+                        <span class="deliverable">✓</span> Payment processing (Bank & Mobile Money) <span class="phase-badge dependency">Bank APIs</span><br>
+                        <span class="deliverable">✓</span> Public transparency dashboard (aggregated, non-PII)<br>
+                        <span class="deliverable">✓</span> Basic reporting suite & KPI dashboards<br>
+                        <span class="deliverable">✓</span> Risk flagging (rule-based heuristics)
                     </td>
                 </tr>
                 <tr class="total-row">
-                    <td><strong>Go-Live</strong></td>
+                    <td><strong>Go-Live Preparation</strong></td>
                     <td>Week 13</td>
                     <td>
-                        <span class="deliverable">✓</span> User acceptance testing<br>
-                        <span class="deliverable">✓</span> Security audit<br>
-                        <span class="deliverable">✓</span> Staff training<br>
-                        <span class="deliverable">✓</span> Production deployment
+                        <span class="deliverable">✓</span> User acceptance testing & security audit<br>
+                        <span class="deliverable">✓</span> Staff training (10 days total)<br>
+                        <span class="deliverable">✓</span> Production deployment & launch support<br>
+                        <span class="deliverable">✓</span> Complete documentation handover
                     </td>
                 </tr>
             </tbody>
@@ -321,71 +340,137 @@
     </div>
 
     <div class="section">
+        <h1>OPTIONAL ENHANCEMENT PHASES</h1>
+        
+        <h2>Phase 2: Enhanced Operations <span class="phase-badge enhanced">6-8 Months Post-MVP</span></h2>
+        <div class="feature-highlight">
+            <strong>Available after MVP stabilization and operational experience:</strong>
+            <ul>
+                <li><strong>Workflow Automation:</strong> Advanced workflow designer, SLA timers, escalation rules</li>
+                <li><strong>Medical Review Tools:</strong> Clinical guideline integration, provider verification, specialist consultation portal</li>
+                <li><strong>Advanced Analytics:</strong> Predictive models, comparative analysis, GIS integration</li>
+                <li><strong>Enhanced Security:</strong> Zero-trust architecture, SIEM integration, advanced monitoring</li>
+            </ul>
+            <p><em>Requires: Clinical governance board establishment, data sharing agreements, operational process maturity</em></p>
+        </div>
+        
+        <h2>Phase 3: Research & Advanced Features <span class="phase-badge advanced">12+ Months Post-MVP</span></h2>
+        <div class="feature-highlight">
+            <strong>Research-grade features requiring extensive validation:</strong>
+            <ul>
+                <li><strong>Real-time Cost Benchmarking:</strong> NHIS integration for national cost comparisons</li>
+                <li><strong>Clinical Decision Support:</strong> Evidence-based treatment suggestions (human-supervised)</li>
+                <li><strong>Advanced Fraud Detection:</strong> Machine learning models with bias monitoring</li>
+                <li><strong>Health Economics:</strong> Cost-effectiveness analysis and outcome prediction</li>
+            </ul>
+            <p><em>Requires: Ethics committee approval, clinical validation studies, regulatory compliance review</em></p>
+        </div>
+    </div>
+
+    <div class="section">
         <h1>TRAINING & SUPPORT</h1>
         
-        <h2>Training Program (10 Days Total)</h2>
+        <h2>Phase 1 MVP Training Program (10 Days Total)</h2>
         <ul>
-            <li><strong>Administrator Training:</strong> 3 days - Case management and system administration</li>
-            <li><strong>Medical Reviewer Training:</strong> 2 days - Clinical assessment tools and validation</li>
-            <li><strong>Finance Officer Training:</strong> 2 days - Payment processing and reconciliation</li>
-            <li><strong>Grant Management Training:</strong> 2 days - Donor management and compliance</li>
-            <li><strong>Public Relations Training:</strong> 1 day - Public dashboard and transparency reporting</li>
+            <li><strong>Administrator Training:</strong> 3 days - Core case management, user administration, basic workflows</li>
+            <li><strong>Medical Reviewer Training:</strong> 2 days - Review interface, documentation requirements, decision templates</li>
+            <li><strong>Finance Officer Training:</strong> 2 days - Payment processing, reconciliation, basic reporting</li>
+            <li><strong>Grant Management Training:</strong> 2 days - Donor tracking, basic compliance reporting</li>
+            <li><strong>Public Relations Training:</strong> 1 day - Public dashboard management, transparency metrics</li>
         </ul>
         
-        <h2>Documentation Package</h2>
+        <h2>Documentation & Knowledge Transfer</h2>
         <ul>
-            <li>Comprehensive user manuals for all system components</li>
-            <li>Standard Operating Procedures (SOPs) for administrative functions</li>
-            <li>Technical documentation for IT staff</li>
-            <li>Training videos in English, Twi, and Ga</li>
+            <li><strong>User Manuals:</strong> Role-specific guides for all MVP functionality</li>
+            <li><strong>SOPs:</strong> Standard operating procedures for core administrative processes</li>
+            <li><strong>Technical Documentation:</strong> System architecture, API documentation, troubleshooting guides</li>
+            <li><strong>Training Videos:</strong> Multilingual tutorials for citizen portal usage</li>
+            <li><strong>Quick Reference Cards:</strong> Laminated guides for common tasks</li>
         </ul>
         
         <h2>Support Services</h2>
         <ul>
-            <li><strong>Launch Support:</strong> 3 months dedicated support with 4-hour response time</li>
-            <li><strong>Ongoing Support:</strong> Business hours technical support</li>
-            <li><strong>System Updates:</strong> Regular security updates and feature enhancements</li>
+            <li><strong>Launch Support:</strong> 3 months dedicated support with 4-hour critical response time</li>
+            <li><strong>Ongoing MVP Support:</strong> Business hours technical support and system maintenance</li>
+            <li><strong>Enhancement Phase Support:</strong> Separate support agreements for Phase 2/3 implementations</li>
+            <li><strong>Security Updates:</strong> Regular security patches and vulnerability management</li>
         </ul>
     </div>
 
     <div class="section">
-        <h1>INVESTMENT BREAKDOWN</h1>
+        <h1>REVISED INVESTMENT STRUCTURE</h1>
         
+        <h2>Phase 1: MVP Platform Investment</h2>
         <div class="feature-highlight">
-            <strong>Complete Solution Components:</strong>
+            <strong>MVP Solution Components:</strong>
             <ul>
-                <li>Public Website with multi-language support</li>
-                <li>Citizen Application Portal with Ghana Card integration</li>
-                <li>Administrative Management System</li>
-                <li>Medical Review & Validation Platform</li>
-                <li>Financial Management & Payment System</li>
-                <li>Integrated Grant Management System</li>
-                <li>Real-Time Public Dashboard</li>
-                <li>Security & Compliance Implementation</li>
-                <li>Training & Documentation Package</li>
+                <li>Multi-language public website with transparency dashboard</li>
+                <li>Citizen application portal with Ghana Card integration</li>
+                <li>Core administrative management & review workflows</li>
+                <li>Basic medical review interface with documentation tools</li>
+                <li>Payment processing system (banks & mobile money)</li>
+                <li>Foundational grant management & donor tracking</li>
+                <li>Security framework & Data Protection Act compliance</li>
+                <li>Complete training & documentation package</li>
             </ul>
         </div>
         
         <table>
             <thead>
                 <tr>
-                    <th style="width: 60%;">Solution Package</th>
+                    <th style="width: 60%;">Phase 1 MVP Package</th>
                     <th style="width: 40%;">Investment (GHS)</th>
                 </tr>
             </thead>
             <tbody>
                 <tr class="total-row">
-                    <td><strong>Complete MahamaCares Digital Platform</strong><br>
-                    <em>All components included as integrated solution</em></td>
-                    <td class="amount"><strong>GHS 485,000</strong></td>
+                    <td><strong>Complete MVP Digital Platform</strong><br>
+                    <em>13-week delivery with 3-month launch support</em></td>
+                    <td class="amount"><strong>GHS 620,000</strong></td>
                 </tr>
             </tbody>
         </table>
+        
+        <h2>Optional Enhancement Phases</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 40%;">Enhancement Phase</th>
+                    <th style="width: 25%;">Timeline</th>
+                    <th style="width: 35%;">Investment (GHS)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Phase 2: Enhanced Operations</strong><br>
+                    <em>Advanced workflows, clinical tools, analytics</em></td>
+                    <td>6-8 months post-MVP</td>
+                    <td class="amount"><strong>GHS 380,000</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 3: Research Features</strong><br>
+                    <em>AI/ML capabilities, advanced clinical support</em></td>
+                    <td>12+ months post-MVP</td>
+                    <td class="amount"><strong>GHS 450,000</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="feature-highlight">
+            <strong>Phased Investment Benefits:</strong>
+            <ul>
+                <li>Rapid ROI through MVP delivery within 13 weeks</li>
+                <li>Risk mitigation through proven foundation before advanced features</li>
+                <li>Budget flexibility - enhance only when operational need is demonstrated</li>
+                <li>Technology evolution - leverage operational learnings for better Phase 2/3 design</li>
+            </ul>
+        </div>
     </div>
 
     <div class="section">
         <h1>ANNUAL HOSTING & MAINTENANCE</h1>
         
+        <h2>Phase 1 MVP Maintenance</h2>
         <table>
             <thead>
                 <tr>
@@ -399,25 +484,49 @@
                     <td class="amount">Subject to NITA Quotation</td>
                 </tr>
                 <tr>
-                    <td>Technical Maintenance & Support</td>
-                    <td class="amount">GHS 95,000</td>
+                    <td>MVP Technical Maintenance & Support</td>
+                    <td class="amount">GHS 115,000</td>
                 </tr>
                 <tr class="total-row">
-                    <td><strong>Total Annual Services</strong></td>
-                    <td class="amount"><strong>GHS 95,000 + NITA Costs</strong></td>
+                    <td><strong>Total MVP Annual Services</strong></td>
+                    <td class="amount"><strong>GHS 115,000 + NITA Costs</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <h2>Enhanced Maintenance (Phase 2/3 Active)</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 60%;">Enhanced Service Package</th>
+                    <th style="width: 40%;">Annual Fee (GHS)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Advanced Feature Maintenance & Support</td>
+                    <td class="amount">GHS 165,000</td>
+                </tr>
+                <tr>
+                    <td>Clinical Governance & Model Monitoring</td>
+                    <td class="amount">GHS 85,000</td>
+                </tr>
+                <tr class="total-row">
+                    <td><strong>Total Enhanced Annual Services</strong></td>
+                    <td class="amount"><strong>GHS 250,000 + NITA Costs</strong></td>
                 </tr>
             </tbody>
         </table>
         
         <div class="feature-highlight">
-            <strong>Services Include:</strong> NITA hosting, system maintenance, security updates, technical support, performance monitoring, compliance updates, and automated backups.
+            <strong>Maintenance Services Include:</strong> NITA hosting coordination, security updates, performance monitoring, user support, compliance updates, backup management, and feature evolution based on operational feedback.
         </div>
     </div>
 
     <div class="section">
         <h1>PAYMENT OPTIONS</h1>
         
-        <h2>Option 1: Government Standard Milestone Payments</h2>
+        <h2>Phase 1 MVP: Government Standard Milestone Payments</h2>
         <table>
             <thead>
                 <tr>
@@ -430,60 +539,38 @@
             <tbody>
                 <tr>
                     <td><strong>Project Commencement</strong></td>
-                    <td>Upon contract signature</td>
+                    <td>Contract signature & infrastructure setup</td>
                     <td class="amount">30%</td>
-                    <td class="amount">145,500</td>
+                    <td class="amount">186,000</td>
                 </tr>
                 <tr>
-                    <td><strong>Phase 1 Completion</strong></td>
-                    <td>Infrastructure and foundation</td>
+                    <td><strong>Stage 1 Completion</strong></td>
+                    <td>Foundation & authentication systems</td>
                     <td class="amount">25%</td>
-                    <td class="amount">121,250</td>
+                    <td class="amount">155,000</td>
                 </tr>
                 <tr>
-                    <td><strong>Phase 2 Completion</strong></td>
-                    <td>Core application system</td>
+                    <td><strong>Stage 2 Completion</strong></td>
+                    <td>Core application & workflows operational</td>
                     <td class="amount">25%</td>
-                    <td class="amount">121,250</td>
+                    <td class="amount">155,000</td>
                 </tr>
                 <tr>
-                    <td><strong>Project Completion</strong></td>
-                    <td>Final deployment and training</td>
+                    <td><strong>MVP Go-Live</strong></td>
+                    <td>Training completion & production launch</td>
                     <td class="amount">20%</td>
-                    <td class="amount">97,000</td>
+                    <td class="amount">124,000</td>
                 </tr>
             </tbody>
         </table>
         
-        <!-- <h2>Option 2: Accelerated Implementation</h2>
-        <table>
-            <thead>
-                <tr>
-                    <th style="width: 40%;">Payment Component</th>
-                    <th style="width: 40%;">Description</th>
-                    <th style="width: 20%;">Amount (GHS)</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><strong>Initial Payment</strong></td>
-                    <td>50% upon contract signature</td>
-                    <td class="amount">242,500</td>
-                </tr>
-                <tr>
-                    <td><strong>Mid-Point Payment</strong></td>
-                    <td>30% at Phase 2 completion</td>
-                    <td class="amount">145,500</td>
-                </tr>
-                <tr>
-                    <td><strong>Final Payment</strong></td>
-                    <td>20% upon successful launch</td>
-                    <td class="amount">97,000</td>
-                </tr>
-            </tbody>
-        </table> -->
+        <h2>Future Enhancement Phase Payments</h2>
+        <p><strong>Phase 2/3:</strong> Separate contracts with milestone-based payments aligned to enhancement delivery schedules</p>
+        <p><strong>Annual Maintenance:</strong> GHS 115,000 + NITA costs (MVP) | GHS 250,000 + NITA costs (Enhanced)</p>
         
-        <p><strong>Annual Hosting & Maintenance:</strong> GHS 95,000 + NITA hosting costs</p>
+        <div class="feature-highlight">
+            <strong>Payment Structure Benefits:</strong> Clear MVP investment with optional enhancements allows for budget planning and ROI demonstration before committing to advanced features. Each phase delivers complete, operational functionality.
+        </div>
     </div>
 
     <div class="section">
@@ -544,6 +631,474 @@
     <div class="footer">
         <p><em>This proposal is valid for 45 days from the date of issue. All prices are in Ghana Cedis (GHS) and exclusive of applicable taxes. NITA hosting costs subject to separate quotation.</em></p>
     </div>
+
+    <!-- ================== APPENDIX (PHASED ROADMAP) ================== -->
+<style>
+  /* Appendix-scoped styles (won’t clash with existing) */
+  .appendix { margin-top: 40px; }
+  .appendix .subtle { color:#666; font-size:10px; }
+  .appendix .badge { display:inline-block; font-size:10px; padding:2px 6px; border-radius:4px; border:1px solid #ddd; margin-left:6px; }
+  .appendix .now { background:#e7f7ee; border-color:#9bd6b3; }
+  .appendix .next { background:#fff6e6; border-color:#ffd18a; }
+  .appendix .later { background:#fceff0; border-color:#f5a3ab; }
+  .appendix .dep { background:#eef2ff; border-color:#cbd2ff; }
+  .appendix .risk { background:#fff3cd; border-color:#ffe08a; }
+  .appendix .highlight-box { background-color:#fff5f5; border-left:4px solid #c41e3a; padding:15px; margin:15px 0; }
+  .appendix .kpi { background:#f7f7f7; border-left:4px solid #c41e3a; padding:12px; margin:12px 0; }
+  .appendix h1 { color:#c41e3a; font-size:18px; margin:25px 0 15px; border-bottom:2px solid #c41e3a; padding-bottom:5px; }
+  .appendix h2 { color:#c41e3a; font-size:16px; margin:20px 0 10px; font-weight:bold; }
+  .appendix h3 { color:#444; font-size:14px; margin:15px 0 8px; font-weight:bold; }
+  .appendix p, .appendix li { font-size:11px; margin:6px 0; }
+  .appendix ul { padding-left:20px; margin:8px 0; }
+  .appendix .anchor { font-size:10px; margin-left:8px; text-decoration:none; }
+  .appendix .top-link { display:inline-block; font-size:10px; margin-left:12px; text-decoration:none; }
+  /* Back-to-top button */
+  .appendix .back-to-top {
+    position: fixed; right: 16px; bottom: 16px; display:none;
+    padding:8px 10px; font-size:11px; border:1px solid #c41e3a; color:#c41e3a; background:#fff; border-radius:4px; cursor:pointer;
+  }
+  .appendix .back-to-top:hover { background:#fff5f5; }
+</style>
+
+<div class="appendix" id="appendix">
+  <div class="header" style="margin-top:0;">
+    <h1>APPENDIX A: PHASED TECHNICAL ROADMAP</h1>
+    <p><em>Pragmatic delivery plan with clear dependencies — continuation of the proposal</em></p>
+  </div>
+
+  <div class="highlight-box" id="overview">
+    <h2>How to read this appendix</h2>
+    <ul>
+      <li>Features are grouped into <strong>Phase 0 (Foundations)</strong>, <strong>Phase 1 (MVP)</strong>, <strong>Phase 2 (Enhanced Operations)</strong>, and <strong>Phase 3 (Advanced/Research)</strong>.</li>
+      <li>Badges indicate readiness: <span class="badge now">Now</span> <span class="badge next">Next</span> <span class="badge later">Later</span> &nbsp;and dependencies/risks: <span class="badge dep">Dependency</span> / <span class="badge risk">Risk</span>.</li>
+      <li><strong>Clinical guardrails:</strong> all clinical features are <strong>human-in-the-loop</strong>; the platform does <strong>not</strong> make autonomous clinical decisions.</li>
+      <li><strong>Public dashboard:</strong> shows <strong>non-PII, aggregated</strong> statistics only.</li>
+    </ul>
+  </div>
+
+  <!-- Phase 0 -->
+  <h1 id="phase0">Phase 0 — Foundations <span class="badge now">Now</span> <a class="anchor" href="#appendix">#</a></h1>
+  <h2>Platform Core</h2>
+  <ul>
+    <li>API-first services (REST + OpenAPI), modular services, audit logging</li>
+    <li>Identity & Access: MFA, RBAC (least privilege), secure sessions</li>
+    <li>Data Protection Act 2012 alignment: consent, DSAR tooling, retention policies</li>
+    <li>Secure DevOps: CI/CD, secrets management, baseline WAF, vulnerability scanning</li>
+  </ul>
+  <h2>Public Website</h2>
+  <ul>
+    <li>English/Twi/Ga content, WCAG 2.1 AA, SEO, news/FAQ, policy docs</li>
+    <li>Public dashboard (non-PII): applications volume, approvals, fund utilization (from analytics warehouse extracts)</li>
+  </ul>
+  <h2>Data Platform</h2>
+  <ul>
+    <li>Operational database + analytics warehouse (ELT), data catalog, data quality rules</li>
+    <li>Standards readiness: HL7/FHIR schemas for future hospital integrations <span class="badge dep">Future EMR</span></li>
+  </ul>
+  <p><a class="top-link" href="#appendix">Back to top</a></p>
+
+  <!-- Phase 1 -->
+  <h1 id="phase1">Phase 1 — MVP Delivery <span class="badge now">Now</span> <a class="anchor" href="#appendix">#</a></h1>
+  <h2>Citizen Application Portal</h2>
+  <ul>
+    <li>Ghana Card lookup/validation (read-only) <span class="badge dep">NIA API</span></li>
+    <li>Progressive registration, OTP/email verification, duplicate detection</li>
+    <li>Smart forms: ICD-10 lookup, cost <em>estimation ranges</em> (static tables)</li>
+    <li>Document management: PDF/JPG/PNG/DOC, OCR, virus scan, encrypted at rest/in transit</li>
+    <li>Status tracking: live timeline, secure messaging, appeals</li>
+  </ul>
+  <h2>Admin Case Management</h2>
+  <ul>
+    <li>Queues, filtering, workload balancing, bulk actions</li>
+    <li>360° case view, decision templates, multi-level approvals, reviewer notes</li>
+    <li>Risk flags (rule-based heuristics; ML later) <span class="badge next">Evolves in Phase 2</span></li>
+  </ul>
+  <h2>Payments (Foundational)</h2>
+  <ul>
+    <li>Bank + Mobile Money disbursements <span class="badge dep">Bank/MNO APIs</span></li>
+    <li>Reconciliation v1 (two-way), receipts, retry flows</li>
+  </ul>
+  <h2>Reporting & KPIs</h2>
+  <ul>
+    <li>Dashboards: volumes, turnaround time, approval rates, fund utilization</li>
+    <li>Exports: PDF/CSV/Excel; role-based access to reports</li>
+  </ul>
+  <p><a class="top-link" href="#appendix">Back to top</a></p>
+
+  <!-- Phase 2 -->
+  <h1 id="phase2">Phase 2 — Enhanced Operations <span class="badge next">Next</span> <a class="anchor" href="#appendix">#</a></h1>
+  <h2>Workflow Automation</h2>
+  <ul>
+    <li>Drag-and-drop workflows, SLA timers, escalations, business rules engine</li>
+    <li>Fraud signals v2: supervised models using historical decisions <span class="badge dep">Data volume</span></li>
+  </ul>
+  <h2>Medical Review & Validation (Human-in-the-loop)</h2>
+  <ul>
+    <li>Guideline library (WHO/NICE/national) with reviewer checklists</li>
+    <li>Provider verification via licensing registries <span class="badge dep">MoH/Regulator API</span></li>
+    <li>Treatment timeline visualization from submitted docs (OCR + manual structuring)</li>
+    <li>Specialist consultation portal (secure chat/video, scheduling, honoraria workflow)</li>
+    <li>DICOM viewer integration (annotations; no autonomous diagnosis) <span class="badge risk">Clinical governance</span></li>
+    <li>Drug database: RxNorm/ATC + local formularies; pricing via contracted feeds <span class="badge dep">Licensing</span></li>
+  </ul>
+  <h2>Finance Controls</h2>
+  <ul>
+    <li>Segregation of duties, multi-level authorizations, reconciliation v2 (three-way)</li>
+    <li>Compliance hooks: AML/KYC screening where applicable <span class="badge dep">Partner systems</span></li>
+  </ul>
+  <h2>Analytics</h2>
+  <ul>
+    <li>Comparative regional/demographic analysis, donor dashboards, GIS overlays</li>
+    <li>Data quality scorecards; anomaly detection on volumes and amounts</li>
+  </ul>
+  <p><a class="top-link" href="#appendix">Back to top</a></p>
+
+  <!-- Phase 3 -->
+  <h1 id="phase3">Phase 3 — Advanced / Research <span class="badge later">Later</span> <a class="anchor" href="#appendix">#</a></h1>
+  <p class="subtle"><strong>Requires:</strong> clinical & ethics oversight, data-sharing MOUs, licensed datasets, and potential SaMD/CE/FDA-style review for clinical decision support features.</p>
+  <h2>Cost & Evidence Engines</h2>
+  <ul>
+    <li>Real-time cost benchmarking vs national/regional averages <span class="badge dep">NHIS/claims feeds</span> <span class="badge risk">Data access</span></li>
+    <li>Evidence cross-reference assistant: links treatment to literature/guidelines; <em>citation surfacing only</em></li>
+    <li>Cost-effectiveness scoring (health economic models) <span class="badge risk">Methodology & validation</span></li>
+  </ul>
+  <h2>Clinical Decision Support (Guard-railed)</h2>
+  <ul>
+    <li>Alternative treatment suggestions presented as options; always require human approval and rationale <span class="badge risk">Liability</span></li>
+    <li>Risk stratification models (mortality/morbidity) on de-identified cohorts; bias monitoring, model cards, calibration checks</li>
+  </ul>
+  <h2>Audit & Integrity</h2>
+  <ul>
+    <li>Immutable audit enhancements (append-only store; optional blockchain after internal trails mature)</li>
+    <li>Advanced SIEM + SOC integration, automated incident response</li>
+  </ul>
+  <p><a class="top-link" href="#appendix">Back to top</a></p>
+
+  <!-- Integrations -->
+  <h1 id="deps">Integrations & Dependencies <a class="anchor" href="#appendix">#</a></h1>
+  <ul>
+    <li>NHIS claims/pricing APIs — <span class="badge later">Phase 3</span></li>
+    <li>NIA/Ghana Card services — <span class="badge now">Phase 1</span></li>
+    <li>Bank/Mobile Money (GhIPSS, MTN MoMo, AirtelTigo, Vodafone Cash, Zeepay) — <span class="badge now">Phase 1</span></li>
+    <li>Provider registries (licensing/credential checks) — <span class="badge next">Phase 2</span></li>
+    <li>Hospital EMRs via HL7/FHIR (pilots) — <span class="badge next">Phase 2</span></li>
+    <li>Drug/pricing datasets (RxNorm/ATC + local price feeds) — <span class="badge next">Phase 2</span>/<span class="badge later">3</span></li>
+  </ul>
+  <p><a class="top-link" href="#appendix">Back to top</a></p>
+
+
+  
+
+  <!-- Security -->
+  <h1 id="security">Security & Compliance (Staged) <a class="anchor" href="#appendix">#</a></h1>
+  <h2>MVP Security (Phase 1)</h2>
+  <ul>
+    <li>TLS 1.3, AES-256 at rest, MFA, secrets vault, OWASP ASVS controls, DPIA</li>
+    <li>PII minimization, data residency, DLP on exports, incident/breach workflows</li>
+  </ul>
+  <h2>Hardened Posture (Phase 2/3)</h2>
+  <ul>
+    <li>Zero-trust segmentation, device posture checks, SIEM/SOAR, red-team exercises</li>
+    <li>Vendor risk management, continuous compliance monitoring</li>
+  </ul>
+  <p><a class="top-link" href="#appendix">Back to top</a></p>
+
+  <!-- KPIs -->
+  <div class="highlight-box" id="kpis">
+    <h2>KPIs & Impact (Targets & Evaluation)</h2>
+    <div class="kpi"><strong>Service Efficiency:</strong> Reduce application-to-disbursement median time by 30–50% in Phase 1; additional 15–25% in Phase 2 (baseline set in Phase 0).</div>
+    <div class="kpi"><strong>Transparency:</strong> 100% of disbursements represented on public dashboard (aggregated, non-PII) with monthly downloadable reports.</div>
+    <div class="kpi"><strong>Quality & Fairness:</strong> Audit 5–10% of decisions monthly; publish fairness metrics (region, gender, age) starting Phase 2.</div>
+    <div class="kpi"><strong>Fraud Reduction:</strong> Heuristic flags (Phase 1) → supervised models (Phase 2) targeting ≥25% reduction in confirmed fraud year-over-year with guardrails on false positives.</div>
+    <p class="subtle">Targets depend on data access, inter-agency integrations, and policy approvals.</p>
+  </div>
+  <p><a class="top-link" href="#appendix">Back to top</a></p>
+
+  <!-- Out of scope -->
+  <h1 id="scope">Out of Scope for Initial Contract <a class="anchor" href="#appendix">#</a></h1>
+  <ul>
+    <li>Autonomous clinical decision-making without human approval</li>
+    <li>Real-time national cost benchmarking without data-sharing agreements</li>
+    <li>Nationwide EMR ingestion prior to signed MOUs and pilots</li>
+    <li>Blockchain audit ledgers before internal audit trail maturity</li>
+  </ul>
+  <p><a class="top-link" href="#appendix">Back to top</a></p>
+
+  <!-- Governance -->
+  <h1 id="governance">Governance & Ethics <a class="anchor" href="#appendix">#</a></h1>
+  <ul>
+    <li>Clinical Governance Board (MoH + external clinicians) to approve any clinical support features</li>
+    <li>Ethics & Data Access Committee to vet training datasets and fairness monitoring</li>
+    <li>Model cards & change logs for all predictive models; kill-switch for rapid rollback</li>
+  </ul>
+  <p><a class="top-link" href="#appendix">Back to top</a></p>
+
+  <button class="back-to-top" id="backToTopBtn" aria-label="Back to top">Back to top</button>
+</div>
+
+<!-- ================== APPENDIX: SCOPE TABLE ================== -->
+<style>
+  .appendix .scope-wrap { margin: 18px 0 8px; }
+  .appendix .scope-legend { font-size:10px; color:#666; margin:6px 0 10px; }
+  .appendix .scope-controls { margin: 8px 0 12px; }
+  .appendix .scope-controls .chip {
+    display:inline-block; font-size:10px; padding:4px 8px; border:1px solid #ddd; border-radius:14px;
+    margin-right:6px; cursor:pointer; user-select:none;
+  }
+  .appendix .scope-controls .chip.active { border-color:#c41e3a; color:#c41e3a; }
+  .appendix table.scope-table { width:100%; border-collapse:collapse; }
+  .appendix table.scope-table th, .appendix table.scope-table td {
+    font-size:11px; text-align:left; padding:8px 10px; border-bottom:1px solid #eee; vertical-align:top;
+  }
+  .appendix table.scope-table th { color:#c41e3a; border-bottom:2px solid #c41e3a; }
+  .appendix .cat { font-weight:bold; color:#444; }
+  .appendix .muted { color:#666; font-size:10px; }
+  .appendix .nowrap { white-space:nowrap; }
+  /* phase attribute for filtering */
+  .appendix tr[data-phase="now"]{}
+  .appendix tr[data-phase="next"]{}
+  .appendix tr[data-phase="later"]{}
+  /* small note rows */
+  .appendix tr.note-row td { font-size:10px; color:#666; background:#f9f9f9; }
+</style>
+
+<div class="scope-wrap" id="scope-table">
+  <h2>Scope Table</h2>
+  <div class="scope-legend">
+    The table summarizes key features, their delivery phase, critical dependencies, and notable risks. Use the filters to view by phase.
+  </div>
+  <div class="scope-controls" aria-label="Filter scope table by phase">
+    <span class="chip active" data-filter="all">All</span>
+    <span class="chip" data-filter="now">Phase 0–1 (Now)</span>
+    <span class="chip" data-filter="next">Phase 2 (Next)</span>
+    <span class="chip" data-filter="later">Phase 3 (Later)</span>
+  </div>
+
+  <table class="scope-table" role="table" aria-describedby="scope-table">
+    <thead>
+      <tr>
+        <th style="width:18%;">Area</th>
+        <th style="width:32%;">Feature</th>
+        <th style="width:14%;">Phase</th>
+        <th style="width:20%;">Key Dependency</th>
+        <th style="width:16%;">Primary Risk</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- FOUNDATIONS / PUBLIC -->
+      <tr data-phase="now">
+        <td class="cat">Platform Core</td>
+        <td>API-first services, audit logging, RBAC/MFA</td>
+        <td class="nowrap"><span class="badge now">Phase 0–1</span></td>
+        <td>CI/CD, secrets vault, WAF baseline</td>
+        <td>Security hardening scope creep</td>
+      </tr>
+      <tr data-phase="now">
+        <td class="cat">Public Site</td>
+        <td>Multilingual content, WCAG 2.1 AA, policy docs</td>
+        <td class="nowrap"><span class="badge now">Phase 0</span></td>
+        <td>Content owners for Twi/Ga</td>
+        <td>Translation quality; accessibility regressions</td>
+      </tr>
+      <tr data-phase="now">
+        <td class="cat">Public Dashboard</td>
+        <td>Aggregated, non-PII statistics (applications, approvals, funds)</td>
+        <td class="nowrap"><span class="badge now">Phase 0–1</span></td>
+        <td>Analytics warehouse extracts</td>
+        <td>Data latency/quality controls</td>
+      </tr>
+
+      <!-- CITIZEN / CASE MGMT -->
+      <tr data-phase="now">
+        <td class="cat">Citizen Portal</td>
+        <td>Ghana Card validation; progressive registration; duplicate checks</td>
+        <td class="nowrap"><span class="badge now">Phase 1</span></td>
+        <td><span class="badge dep">NIA API</span></td>
+        <td>API availability/SLA; support for edge cases</td>
+      </tr>
+      <tr data-phase="now">
+        <td class="cat">Citizen Portal</td>
+        <td>ICD-10 lookup; cost estimation ranges (static tables)</td>
+        <td class="nowrap"><span class="badge now">Phase 1</span></td>
+        <td>Curated tables; policy sign-off</td>
+        <td>Outdated tables; user misinterpretation</td>
+      </tr>
+      <tr data-phase="now">
+        <td class="cat">Documents</td>
+        <td>OCR, virus scanning, encrypted storage; timeline and appeals</td>
+        <td class="nowrap"><span class="badge now">Phase 1</span></td>
+        <td>Secure object storage; AV engine</td>
+        <td>PII leakage via exports</td>
+      </tr>
+      <tr data-phase="now">
+        <td class="cat">Case Management</td>
+        <td>Queues, workload balancing, decision templates, approvals</td>
+        <td class="nowrap"><span class="badge now">Phase 1</span></td>
+        <td>Role design; change management</td>
+        <td>Process variance across regions</td>
+      </tr>
+      <tr data-phase="next">
+        <td class="cat">Automation</td>
+        <td>Workflow designer, SLA timers, escalations</td>
+        <td class="nowrap"><span class="badge next">Phase 2</span></td>
+        <td>Policy rules; training</td>
+        <td>Over-automation; exception handling</td>
+      </tr>
+
+      <!-- MEDICAL REVIEW -->
+      <tr data-phase="next">
+        <td class="cat">Medical Review</td>
+        <td>Guideline library + reviewer checklists (human-in-the-loop)</td>
+        <td class="nowrap"><span class="badge next">Phase 2</span></td>
+        <td>WHO/NICE/national content</td>
+        <td>Guideline updates; localization</td>
+      </tr>
+      <tr data-phase="next">
+        <td class="cat">Provider Verification</td>
+        <td>Licensing & credential checks</td>
+        <td class="nowrap"><span class="badge next">Phase 2</span></td>
+        <td><span class="badge dep">MoH/Regulator API</span></td>
+        <td>Registry coverage; data accuracy</td>
+      </tr>
+      <tr data-phase="next">
+        <td class="cat">Imaging</td>
+        <td>DICOM viewer with annotations (no autonomous diagnosis)</td>
+        <td class="nowrap"><span class="badge next">Phase 2</span></td>
+        <td>Viewer integration; storage class</td>
+        <td>Clinical governance; performance</td>
+      </tr>
+      <tr data-phase="next">
+        <td class="cat">Drugs</td>
+        <td>RxNorm/ATC + local formularies; pricing feeds</td>
+        <td class="nowrap"><span class="badge next">Phase 2</span></td>
+        <td><span class="badge dep">Licensing</span></td>
+        <td>License cost; update cadence</td>
+      </tr>
+
+      <!-- PAYMENTS -->
+      <tr data-phase="now">
+        <td class="cat">Payments</td>
+        <td>Bank & Mobile Money disbursements; receipts; retries</td>
+        <td class="nowrap"><span class="badge now">Phase 1</span></td>
+        <td><span class="badge dep">Bank/MNO APIs</span></td>
+        <td>Settlement failures; reconciliation gaps</td>
+      </tr>
+      <tr data-phase="next">
+        <td class="cat">Finance Controls</td>
+        <td>Segregation of duties; 3-way reconciliation; AML/KYC hooks</td>
+        <td class="nowrap"><span class="badge next">Phase 2</span></td>
+        <td>Partner systems; policy alignment</td>
+        <td>False positives; manual workload</td>
+      </tr>
+
+      <!-- ANALYTICS -->
+      <tr data-phase="now">
+        <td class="cat">Reporting</td>
+        <td>Dashboards (volumes, TAT, utilization); scheduled exports</td>
+        <td class="nowrap"><span class="badge now">Phase 1</span></td>
+        <td>Warehouse models; access control</td>
+        <td>Metric definitions drift</td>
+      </tr>
+      <tr data-phase="next">
+        <td class="cat">Analytics</td>
+        <td>Comparatives, donor dashboards, GIS; anomaly detection</td>
+        <td class="nowrap"><span class="badge next">Phase 2</span></td>
+        <td>Clean dimensions; geo data</td>
+        <td>Quality of input data</td>
+      </tr>
+
+      <!-- ADVANCED / RESEARCH -->
+      <tr data-phase="later">
+        <td class="cat">Cost Benchmarking</td>
+        <td>Real-time cost comparisons vs national/regional averages</td>
+        <td class="nowrap"><span class="badge later">Phase 3</span></td>
+        <td><span class="badge dep">NHIS/claims feeds</span></td>
+        <td>Data access; representativeness</td>
+      </tr>
+      <tr data-phase="later">
+        <td class="cat">Evidence Assistant</td>
+        <td>Treatment–literature cross-references (citation surfacing only)</td>
+        <td class="nowrap"><span class="badge later">Phase 3</span></td>
+        <td>Indexed guideline & literature sets</td>
+        <td>Maintenance; reviewer workload</td>
+      </tr>
+      <tr data-phase="later">
+        <td class="cat">Cost-Effectiveness</td>
+        <td>Treatment cost-effectiveness scoring</td>
+        <td class="nowrap"><span class="badge later">Phase 3</span></td>
+        <td>Health economic models; outcomes data</td>
+        <td>Method validation; policy impact</td>
+      </tr>
+      <tr data-phase="later">
+        <td class="cat">CDS (Guard-railed)</td>
+        <td>Alternative treatment suggestions; risk stratification</td>
+        <td class="nowrap"><span class="badge later">Phase 3</span></td>
+        <td>Clinical board; de-identified cohorts</td>
+        <td>Liability; bias; drift</td>
+      </tr>
+
+      <!-- SECURITY -->
+      <tr data-phase="now">
+        <td class="cat">Security</td>
+        <td>TLS 1.3, AES-256 at rest, OWASP ASVS controls, DPIA</td>
+        <td class="nowrap"><span class="badge now">Phase 1</span></td>
+        <td>Secrets management; logging</td>
+        <td>Config drift; key rotation</td>
+      </tr>
+      <tr data-phase="next">
+        <td class="cat">Security</td>
+        <td>Zero-trust segmentation; SIEM/SOAR; red-team</td>
+        <td class="nowrap"><span class="badge next">Phase 2–3</span></td>
+        <td>SOC integration</td>
+        <td>Alert fatigue; tuning</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p class="muted">Notes: “Human-in-the-loop” applies to all clinical features. Public dashboard is strictly non-PII and aggregated. Phase 3 items require data-sharing agreements and formal clinical governance.</p>
+  <p><a class="top-link" href="#appendix">Back to top</a></p>
+</div>
+
+<script>
+  // Scope table phase filter (appendix-scoped)
+  (function(){
+    var container = document.querySelector('.appendix');
+    if(!container) return;
+    var chips = container.querySelectorAll('.scope-controls .chip');
+    var rows = container.querySelectorAll('table.scope-table tbody tr:not(.note-row)');
+    function setActive(filter){
+      chips.forEach(function(c){ c.classList.toggle('active', c.getAttribute('data-filter')===filter); });
+      rows.forEach(function(r){
+        var ph = r.getAttribute('data-phase');
+        if(filter==='all' || filter===ph){ r.style.display=''; } else { r.style.display='none'; }
+      });
+    }
+    chips.forEach(function(c){
+      c.addEventListener('click', function(){ setActive(c.getAttribute('data-filter')); });
+    });
+    setActive('all');
+  })();
+</script>
+<!-- ================== /APPENDIX: SCOPE TABLE ================== -->
+
+
+<script>
+  // Back-to-top reveal + behavior
+  (function(){
+    var btn = document.getElementById('backToTopBtn');
+    if(!btn) return;
+    var toggle = function(){
+      if (window.scrollY > 300) { btn.style.display = 'block'; }
+      else { btn.style.display = 'none'; }
+    };
+    window.addEventListener('scroll', toggle);
+    btn.addEventListener('click', function(){ window.scrollTo({top:0, behavior:'smooth'}); });
+    toggle();
+  })();
+</script>
+<!-- ================== /APPENDIX ================== -->
+
+
 
 </body>
 </html>
