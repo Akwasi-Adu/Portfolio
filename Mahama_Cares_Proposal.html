@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MahamaCares Fund Digital Platform - Project Proposal</title>
+    <style>
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            line-height: 1.4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #c41e3a;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #c41e3a;
+            font-size: 24px;
+            margin: 0;
+            font-weight: bold;
+        }
+        
+        .header h2 {
+            color: #666;
+            font-size: 18px;
+            margin: 5px 0;
+            font-weight: normal;
+        }
+        
+        .client-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            background-color: #f9f9f9;
+        }
+        
+        .client-info div {
+            flex: 1;
+        }
+        
+        h1 {
+            color: #c41e3a;
+            font-size: 20px;
+            margin: 25px 0 15px 0;
+            border-bottom: 2px solid #c41e3a;
+            padding-bottom: 5px;
+        }
+        
+        h2 {
+            color: #c41e3a;
+            font-size: 16px;
+            margin: 20px 0 10px 0;
+            font-weight: bold;
+        }
+        
+        h3 {
+            color: #444;
+            font-size: 14px;
+            margin: 15px 0 8px 0;
+            font-weight: bold;
+        }
+        
+        p, li {
+            font-size: 11px;
+            margin: 8px 0;
+        }
+        
+        ul, ol {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 11px;
+        }
+        
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #c41e3a;
+            color: white;
+            padding: 12px 8px;
+            font-weight: bold;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px 8px;
+            vertical-align: top;
+        }
+        
+        .total-row {
+            background-color: #fff5f5;
+            font-weight: bold;
+        }
+        
+        .highlight-box {
+            background-color: #fff5f5;
+            border-left: 4px solid #c41e3a;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .timeline-table td {
+            text-align: center;
+        }
+        
+        .timeline-table td:first-child {
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .deliverable {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #c41e3a;
+            text-align: center;
+            font-size: 10px;
+            color: #666;
+        }
+        
+        .contact-section {
+            margin-top: 30px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+        
+        @media print {
+            body { margin: 0; }
+            .no-print { display: none; }
+        }
+        
+        .amount {
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .feature-highlight {
+            background-color: #fff3cd;
+            border-left: 4px solid #ffc107;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 10px;
+        }
+
+        .gov-flag {
+            background: linear-gradient(to right, #c41e3a 33%, #ffcd00 33%, #ffcd00 66%, #28a745 66%);
+            height: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="gov-flag"></div>
+    
+    <div class="header">
+        <h1>PROJECT PROPOSAL</h1>
+        <h2>MahamaCares Fund Digital Platform & Grant Management System</h2>
+    </div>
+
+    <div class="client-info">
+        <div>
+            <strong>Client:</strong> MahamaCares Fund Initiative<br>
+            <strong>Project:</strong> Comprehensive Digital Healthcare Funding Platform<br>
+            <strong>Sector:</strong> Government Healthcare & Social Services
+        </div>
+        <div style="text-align: right;">
+            <strong>Date:</strong> August 29, 2025<br>
+            <strong>Validity:</strong> 45 Days<br>
+            <strong>MVP Timeline:</strong> 3 Months
+        </div>
+    </div>
+
+    <div class="section">
+        <h1>EXECUTIVE SUMMARY</h1>
+        <p>This proposal outlines the development of a comprehensive digital platform for the MahamaCares Fund, designed to revolutionize healthcare funding access for Ghanaian citizens. The solution encompasses a public-facing application portal, administrative management system, and integrated grant management platform, all built to the highest standards of transparency, security, and accessibility.</p>
+        
+        <div class="feature-highlight">
+            <strong>Strategic Value Proposition:</strong> This platform will establish Ghana as a continental leader in digital healthcare funding, providing transparent, efficient access to medical assistance while ensuring complete accountability to citizens and funding partners. The integrated grant management system will enable sophisticated tracking of funding sources from Government allocations to international donor contributions.
+        </div>
+    </div>
+
+    <div class="section">
+        <h1>SCOPE OF WORK</h1>
+        
+        <h2>1. PUBLIC-FACING DIGITAL PLATFORM</h2>
+        <ul>
+            <li><strong>Multi-Language Public Website:</strong> English, Twi, and Ga language support with accessibility compliance</li>
+            <li><strong>Real-Time Public Dashboard:</strong> Live transparency metrics showing applications processed and funds disbursed</li>
+            <li><strong>Citizen Application Portal:</strong> Secure registration and application system with Ghana Card integration</li>
+            <li><strong>Document Management System:</strong> Secure upload and management of medical documentation</li>
+        </ul>
+
+        <h2>2. ADMINISTRATIVE MANAGEMENT SYSTEM</h2>
+        <ul>
+            <li><strong>Intelligent Case Management:</strong> Priority-based application queuing with automated processing</li>
+            <li><strong>Multi-Role Review System:</strong> Dedicated interfaces for administrators, medical reviewers, and finance officers</li>
+            <li><strong>Advanced Workflow Engine:</strong> Configurable approval workflows with audit trails</li>
+            <li><strong>Medical Review Tools:</strong> Clinical assessment interface for treatment validation</li>
+        </ul>
+
+        <h2>3. INTEGRATED GRANT MANAGEMENT SYSTEM</h2>
+        <ul>
+            <li><strong>Multi-Donor Tracking:</strong> Management of funding from Government, World Bank, UN agencies, and private foundations</li>
+            <li><strong>Grant Administration:</strong> Digital storage and tracking of donor agreements and compliance requirements</li>
+            <li><strong>Automated Reporting:</strong> Donor-specific reports meeting international standards</li>
+            <li><strong>Financial Controls:</strong> Multi-level authorization and comprehensive audit trails</li>
+        </ul>
+
+        <h2>4. PAYMENT & FINANCIAL SYSTEM</h2>
+        <ul>
+            <li><strong>Multi-Channel Processing:</strong> Integration with banks, mobile money, and government payment systems</li>
+            <li><strong>Payment Reconciliation:</strong> Automated reconciliation with variance reporting</li>
+            <li><strong>Beneficiary Portal:</strong> Secure payment tracking for beneficiaries</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h1>TECHNICAL ARCHITECTURE</h1>
+        
+        <h2>Technology Stack</h2>
+        <ul>
+            <li><strong>Frontend:</strong> ASP.NET Core MVC 8.0, Bootstrap 5, JavaScript/jQuery</li>
+            <li><strong>Backend:</strong> ASP.NET Core 8.0, Entity Framework Core, Identity Framework</li>
+            <li><strong>Database:</strong> Microsoft SQL Server with automated backups</li>
+            <li><strong>Security:</strong> AES-256 encryption, TLS 1.3, multi-factor authentication</li>
+            <li><strong>Infrastructure:</strong> NITA Government Data Center hosting</li>
+        </ul>
+        
+        <h2>Compliance & Security</h2>
+        <ul>
+            <li><strong>Data Protection Act 2012:</strong> Full compliance with consent management and data subject rights</li>
+            <li><strong>Government Standards:</strong> NITA security requirements and government IT policies</li>
+            <li><strong>Audit & Monitoring:</strong> Comprehensive audit trails and real-time monitoring</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h1>PROJECT TIMELINE</h1>
+        
+        <table class="timeline-table">
+            <thead>
+                <tr>
+                    <th style="width: 25%;">Phase</th>
+                    <th style="width: 20%;">Duration</th>
+                    <th style="width: 55%;">Key Deliverables</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Phase 1: Foundation</strong></td>
+                    <td>Weeks 1-4</td>
+                    <td>
+                        <span class="deliverable">✓</span> NITA infrastructure setup<br>
+                        <span class="deliverable">✓</span> Core authentication system<br>
+                        <span class="deliverable">✓</span> Basic public website<br>
+                        <span class="deliverable">✓</span> Security framework
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 2: Core System</strong></td>
+                    <td>Weeks 5-8</td>
+                    <td>
+                        <span class="deliverable">✓</span> Citizen application portal<br>
+                        <span class="deliverable">✓</span> Administrative review interface<br>
+                        <span class="deliverable">✓</span> Medical reviewer tools<br>
+                        <span class="deliverable">✓</span> Basic grant management
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 3: Advanced Features</strong></td>
+                    <td>Weeks 9-12</td>
+                    <td>
+                        <span class="deliverable">✓</span> Payment processing system<br>
+                        <span class="deliverable">✓</span> Advanced grant management<br>
+                        <span class="deliverable">✓</span> Public transparency dashboard<br>
+                        <span class="deliverable">✓</span> Comprehensive reporting
+                    </td>
+                </tr>
+                <tr class="total-row">
+                    <td><strong>Go-Live</strong></td>
+                    <td>Week 13</td>
+                    <td>
+                        <span class="deliverable">✓</span> User acceptance testing<br>
+                        <span class="deliverable">✓</span> Security audit<br>
+                        <span class="deliverable">✓</span> Staff training<br>
+                        <span class="deliverable">✓</span> Production deployment
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h1>TRAINING & SUPPORT</h1>
+        
+        <h2>Training Program (10 Days Total)</h2>
+        <ul>
+            <li><strong>Administrator Training:</strong> 3 days - Case management and system administration</li>
+            <li><strong>Medical Reviewer Training:</strong> 2 days - Clinical assessment tools and validation</li>
+            <li><strong>Finance Officer Training:</strong> 2 days - Payment processing and reconciliation</li>
+            <li><strong>Grant Management Training:</strong> 2 days - Donor management and compliance</li>
+            <li><strong>Public Relations Training:</strong> 1 day - Public dashboard and transparency reporting</li>
+        </ul>
+        
+        <h2>Documentation Package</h2>
+        <ul>
+            <li>Comprehensive user manuals for all system components</li>
+            <li>Standard Operating Procedures (SOPs) for administrative functions</li>
+            <li>Technical documentation for IT staff</li>
+            <li>Training videos in English, Twi, and Ga</li>
+        </ul>
+        
+        <h2>Support Services</h2>
+        <ul>
+            <li><strong>Launch Support:</strong> 3 months dedicated support with 4-hour response time</li>
+            <li><strong>Ongoing Support:</strong> Business hours technical support</li>
+            <li><strong>System Updates:</strong> Regular security updates and feature enhancements</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h1>INVESTMENT BREAKDOWN</h1>
+        
+        <div class="feature-highlight">
+            <strong>Complete Solution Components:</strong>
+            <ul>
+                <li>Public Website with multi-language support</li>
+                <li>Citizen Application Portal with Ghana Card integration</li>
+                <li>Administrative Management System</li>
+                <li>Medical Review & Validation Platform</li>
+                <li>Financial Management & Payment System</li>
+                <li>Integrated Grant Management System</li>
+                <li>Real-Time Public Dashboard</li>
+                <li>Security & Compliance Implementation</li>
+                <li>Training & Documentation Package</li>
+            </ul>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 60%;">Solution Package</th>
+                    <th style="width: 40%;">Investment (GHS)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="total-row">
+                    <td><strong>Complete MahamaCares Digital Platform</strong><br>
+                    <em>All components included as integrated solution</em></td>
+                    <td class="amount"><strong>GHS 485,000</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h1>ANNUAL HOSTING & MAINTENANCE</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 60%;">Service Package</th>
+                    <th style="width: 40%;">Annual Fee (GHS)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>NITA Hosting Services</td>
+                    <td class="amount">Subject to NITA Quotation</td>
+                </tr>
+                <tr>
+                    <td>Technical Maintenance & Support</td>
+                    <td class="amount">GHS 95,000</td>
+                </tr>
+                <tr class="total-row">
+                    <td><strong>Total Annual Services</strong></td>
+                    <td class="amount"><strong>GHS 95,000 + NITA Costs</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="feature-highlight">
+            <strong>Services Include:</strong> NITA hosting, system maintenance, security updates, technical support, performance monitoring, compliance updates, and automated backups.
+        </div>
+    </div>
+
+    <div class="section">
+        <h1>PAYMENT OPTIONS</h1>
+        
+        <h2>Option 1: Government Standard Milestone Payments</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 30%;">Milestone</th>
+                    <th style="width: 40%;">Description</th>
+                    <th style="width: 15%;">Percentage</th>
+                    <th style="width: 15%;">Amount (GHS)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Project Commencement</strong></td>
+                    <td>Upon contract signature</td>
+                    <td class="amount">30%</td>
+                    <td class="amount">145,500</td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 1 Completion</strong></td>
+                    <td>Infrastructure and foundation</td>
+                    <td class="amount">25%</td>
+                    <td class="amount">121,250</td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 2 Completion</strong></td>
+                    <td>Core application system</td>
+                    <td class="amount">25%</td>
+                    <td class="amount">121,250</td>
+                </tr>
+                <tr>
+                    <td><strong>Project Completion</strong></td>
+                    <td>Final deployment and training</td>
+                    <td class="amount">20%</td>
+                    <td class="amount">97,000</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- <h2>Option 2: Accelerated Implementation</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 40%;">Payment Component</th>
+                    <th style="width: 40%;">Description</th>
+                    <th style="width: 20%;">Amount (GHS)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Initial Payment</strong></td>
+                    <td>50% upon contract signature</td>
+                    <td class="amount">242,500</td>
+                </tr>
+                <tr>
+                    <td><strong>Mid-Point Payment</strong></td>
+                    <td>30% at Phase 2 completion</td>
+                    <td class="amount">145,500</td>
+                </tr>
+                <tr>
+                    <td><strong>Final Payment</strong></td>
+                    <td>20% upon successful launch</td>
+                    <td class="amount">97,000</td>
+                </tr>
+            </tbody>
+        </table> -->
+        
+        <p><strong>Annual Hosting & Maintenance:</strong> GHS 95,000 + NITA hosting costs</p>
+    </div>
+
+    <div class="section">
+        <h1>TERMS & CONDITIONS</h1>
+        
+        <h2>Project Assumptions</h2>
+        <ul>
+            <li>Client provides stakeholder access for requirements and testing</li>
+            <li>NITA provides timely infrastructure setup support</li>
+            <li>Government provides test data and approval workflows</li>
+            <li>Key stakeholders available for progress reviews</li>
+        </ul>
+        
+        <h2>Warranties & Guarantees</h2>
+        <ul>
+            <li>90-day warranty on all deliverables from go-live</li>
+            <li>System performance guarantee as per specifications</li>
+            <li>Data security and compliance guarantee</li>
+        </ul>
+        
+        <h2>Success Metrics</h2>
+        <ul>
+            <li><strong>Technical:</strong> 99.9% uptime, <3 second load times, 1000+ concurrent users</li>
+            <li><strong>User Adoption:</strong> 2000+ applications in first quarter, 90%+ satisfaction</li>
+            <li><strong>Operational:</strong> 5-day average processing time, 100% compliance</li>
+        </ul>
+    </div>
+
+    <div class="highlight-box">
+        <h1>NEXT STEPS</h1>
+        <ol>
+            <li><strong>Proposal Review & Approval</strong> - Week 1</li>
+            <li><strong>Contract Finalization</strong> - Week 2</li>
+            <li><strong>NITA Coordination</strong> - Week 3</li>
+            <li><strong>Project Kickoff</strong> - Week 4</li>
+            <li><strong>Development Commencement</strong> - Week 5</li>
+        </ol>
+    </div>
+
+    <div class="contact-section">
+        <h2>Contact Information</h2>
+        <table style="border: none;">
+            <tr style="border: none;">
+                <td style="border: none; width: 25%;"><strong>Company:</strong></td>
+                <td style="border: none; width: 25%;">Adullam Solutions Company Limited</td>
+                <td style="border: none; width: 25%;"><strong>Email:</strong></td>
+                <td style="border: none; width: 25%;">info@adullamsolutions.com</td>
+            </tr>
+            <tr style="border: none;">
+                <td style="border: none;"><strong>Project Lead:</strong></td>
+                <td style="border: none;">Akwasi Adu-Kyeremeh</td>
+                <td style="border: none;"><strong>Phone:</strong></td>
+                <td style="border: none;">+233244427217</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="footer">
+        <p><em>This proposal is valid for 45 days from the date of issue. All prices are in Ghana Cedis (GHS) and exclusive of applicable taxes. NITA hosting costs subject to separate quotation.</em></p>
+    </div>
+
+</body>
+</html>
