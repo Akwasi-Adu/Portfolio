@@ -457,7 +457,110 @@ Cheers!</p>
       
       <p>Hope this helps someone else facing the same challenge! Cheers!</p>
         `
-      }
+      },
+
+      {
+        id: 9,
+        title: "Fixing 'Conversion failed when converting date and/or time from character string' in Sage Intelligence Reporting",
+        summary: "If you run Sage Intelligence reports and hit this error, especially in September, it may be caused by Windows regional month abbreviations. Here’s why it happens and how to fix it.",
+        date: "2025-09-05",
+        categories: ["Sage Evolution", "Sage Intelligence", "SQL Server", "Tips"],
+        content: `
+      <p>If you’ve ever run a report in <strong>Sage Intelligence Reporting</strong> (BIC) and been stopped by this error:</p>
+
+      <pre><code>
+      [Microsoft][ODBC SQL Server Driver][SQL Server]
+      Conversion failed when converting date and/or time from character string.
+      </code></pre>
+
+      <img src="portfolio/images/blog/sir3.png" alt="Sage Intelligence Error Screenshot">
+
+      <p>You know how frustrating it is. The error shows up in the Sage Intelligence <em>Report Execution Error</em> dialog, with SQL State 22008 and Driver Error 241.</p>
+
+      <h3>🔍 What’s going on?</h3>
+      <p>Sage Intelligence generates SQL queries behind the scenes based on the report parameters you enter. For example, if you filter by dates in September, it may build SQL like this:</p>
+
+      <pre><code>
+      WHERE dStartDate &gt;= '01-Sept-2025'
+        AND dStartDate &lt;= '30-Sept-2025'
+      </code></pre>
+
+      <p>The problem? SQL Server does not recognize <code>Sept</code> as a valid month abbreviation. It only accepts <code>Sep</code> (three letters) or the full <code>September</code>. As a result, the query fails and you see the conversion error.</p>
+
+      <h3>🤔 Why does Sage use “Sept”?</h3>
+      <p>Sage Intelligence is Excel-based and relies on <strong>Windows regional settings</strong> to format dates. Depending on your locale:</p>
+      <ul>
+        <li>English (US, UK) → <code>Sep</code></li>
+        <li>English (Ghana, South Africa) → <code>Sept</code></li>
+      </ul>
+      <p>That small difference is enough to break reports every September.</p>
+
+      <h3>🛠 Solutions</h3>
+
+      <h4>1. Change Windows regional format</h4>
+      <p>Switch your PC’s regional format to English (United States) or English (United Kingdom). Both use <code>Sep</code>, which SQL Server understands. This is quick but changes date formats across Windows and Excel.</p>
+
+      <h4>2. Registry override (recommended)</h4>
+      <p>You can override month abbreviations for your Windows user account by adding the following registry entries:</p>
+
+      <pre><code>
+      Windows Registry Editor Version 5.00
+
+      [HKEY_CURRENT_USER\Control Panel\International]
+      "sAbbrevMonthNames"="Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec;"
+      "sMonthNames"="January;February;March;April;May;June;July;August;September;October;November;December;"
+      </code></pre>
+
+      <p><strong>How to apply:</strong></p>
+      <ol>
+        <li>Copy the text into Notepad.</li>
+        <li>Save as <code>Fix_Sage_Sept_Abbreviation.reg</code> (Save as type = All Files).</li>
+        <li>Double-click it and confirm.</li>
+        <li>Sign out or reboot Windows.</li>
+      </ol>
+
+      <h4>3. Quick batch script</h4>
+      <p>For non-technical users, a batch file can apply the same fix automatically:</p>
+
+      <pre><code>
+      @echo off
+      echo.
+      echo Applying fix for Sage Intelligence September abbreviation issue...
+      echo.
+
+      REM Create a temporary .reg file
+      &gt; "%temp%\\Fix_Sage_Sept_Abbreviation.reg" echo Windows Registry Editor Version 5.00
+      &gt;&gt;"%temp%\\Fix_Sage_Sept_Abbreviation.reg" echo.
+      &gt;&gt;"%temp%\\Fix_Sage_Sept_Abbreviation.reg" echo [HKEY_CURRENT_USER\\Control Panel\\International]
+      &gt;&gt;"%temp%\\Fix_Sage_Sept_Abbreviation.reg" echo "sAbbrevMonthNames"="Jan;Feb;Mar;Apr;May;Jun;Jul;Aug;Sep;Oct;Nov;Dec;"
+      &gt;&gt;"%temp%\\Fix_Sage_Sept_Abbreviation.reg" echo "sMonthNames"="January;February;March;April;May;June;July;August;September;October;November;December;"
+
+      REM Import into registry
+      reg import "%temp%\\Fix_Sage_Sept_Abbreviation.reg"
+
+      echo.
+      echo Done! Please sign out and sign back in (or reboot) for changes to take effect.
+      pause
+      </code></pre>
+
+      <p>Save this as <code>Fix_Sage_Sept_Abbreviation.bat</code>, run it once, and restart your PC.</p>
+
+      <h3>📥 Download Ready-Made Fix</h3>
+      <p>For convenience, I’ve packaged both the registry file and batch script into a single zip you can download here:</p>
+      <p><a href="/downloads/Sage_Intelligence_Sep_Fix.zip">👉 Download Sage Intelligence September Fix</a></p>
+
+      <h3>⚠️ Notes & Caveats</h3>
+      <ul>
+        <li>This fix changes abbreviations for the <strong>current Windows user</strong>. If Sage Intelligence runs on a server, apply it on the server account too.</li>
+        <li>Always back up your registry first (right-click key → Export).</li>
+        <li>Changing regional settings or registry values can affect other apps. Test before rolling out widely.</li>
+      </ul>
+
+      <h3>✅ Takeaway</h3>
+      <p>If you hit “Conversion failed when converting date and/or time from character string” in Sage Intelligence Reporting, check if your report is filtered on September dates. In many locales, Windows uses <code>Sept</code> instead of <code>Sep</code>, and SQL Server rejects it. Overriding the abbreviation fixes the error permanently.</p>
+        `
+}
+
       
       
     
