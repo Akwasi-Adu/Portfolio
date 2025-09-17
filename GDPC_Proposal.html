@@ -1,0 +1,674 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GDPC Cybersecurity Remediation & Infrastructure Enhancement Project Quote</title>
+    <style>
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            line-height: 1.4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #c41e3a;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #c41e3a;
+            font-size: 24px;
+            margin: 0;
+            font-weight: bold;
+        }
+        
+        .header h2 {
+            color: #666;
+            font-size: 18px;
+            margin: 5px 0;
+            font-weight: normal;
+        }
+        
+        .client-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            background-color: #f9f9f9;
+        }
+        
+        .client-info div {
+            flex: 1;
+        }
+        
+        h1 {
+            color: #c41e3a;
+            font-size: 20px;
+            margin: 25px 0 15px 0;
+            border-bottom: 2px solid #c41e3a;
+            padding-bottom: 5px;
+        }
+        
+        h2 {
+            color: #c41e3a;
+            font-size: 16px;
+            margin: 20px 0 10px 0;
+            font-weight: bold;
+        }
+        
+        h3 {
+            color: #444;
+            font-size: 14px;
+            margin: 15px 0 8px 0;
+            font-weight: bold;
+        }
+        
+        p, li {
+            font-size: 11px;
+            margin: 8px 0;
+        }
+        
+        ul, ol {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 11px;
+        }
+        
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #c41e3a;
+            color: white;
+            padding: 12px 8px;
+            font-weight: bold;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px 8px;
+            vertical-align: top;
+        }
+        
+        .total-row {
+            background-color: #fff0f0;
+            font-weight: bold;
+        }
+        
+        .critical-row {
+            background-color: #ffe6e6;
+            border-left: 4px solid #c41e3a;
+        }
+        
+        .highlight-box {
+            background-color: #fff0f0;
+            border-left: 4px solid #c41e3a;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .security-highlight {
+            background-color: #e8f4fd;
+            border-left: 4px solid #1f4e79;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 10px;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .timeline-table td {
+            text-align: center;
+        }
+        
+        .timeline-table td:first-child {
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .deliverable {
+            color: #28a745;
+            font-weight: bold;
+        }
+        
+        .critical-deliverable {
+            color: #c41e3a;
+            font-weight: bold;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #c41e3a;
+            text-align: center;
+            font-size: 10px;
+            color: #666;
+        }
+        
+        .contact-section {
+            margin-top: 30px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+        
+        @media print {
+            body { margin: 0; }
+            .no-print { display: none; }
+        }
+        
+        .amount {
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .vulnerability-table {
+            background-color: #fff5f5;
+        }
+
+        .appendix {
+            page-break-before: always;
+            margin-top: 40px;
+            border-top: 3px solid #c41e3a;
+            padding-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>CYBERSECURITY REMEDIATION PROPOSAL</h1>
+        <h2>VAPT Vulnerability Remediation & Enterprise Security Infrastructure Enhancement</h2>
+    </div>
+
+    <div class="client-info">
+        <div>
+            <strong>Client:</strong> Ghana Deposit Protection Corporation (GDPC)<br>
+            <strong>Project:</strong> Cybersecurity Infrastructure Remediation & Advanced Threat Protection Implementation<br>
+            <strong>Classification:</strong> Critical Security Response - Central Banking Institution
+        </div>
+        <div style="text-align: right;">
+            <strong>Date:</strong> [Current Date]<br>
+            <strong>Validity:</strong> 30 Days<br>
+            <strong>Project Duration:</strong> 6 Months (Phased Implementation)
+        </div>
+    </div>
+
+    <div class="section">
+        <h1>EXECUTIVE SUMMARY</h1>
+        <p>Following the comprehensive 2024 Vulnerability Assessment and Penetration Testing (VAPT) conducted by the Bank of Ghana's Information Security Office, GDPC requires immediate remediation of critical cybersecurity vulnerabilities. This proposal addresses the 5 outstanding critical vulnerabilities and implements a comprehensive enterprise security framework to protect Ghana's deposit protection infrastructure.</p>
+        
+        <div class="security-highlight">
+            <strong>Critical Situation Overview:</strong> The VAPT identified 14 internal vulnerabilities (10 critical, 4 high), with 5 critical vulnerabilities remaining partially remediated. These include compromised privileged access controls, undetected attack capabilities, and inadequate monitoring systems that could allow attackers to remain undetected for extended periods while accessing sensitive financial institution data and potentially all bank accounts in the country.
+        </div>
+
+        <div class="highlight-box">
+            <strong>Our Approach:</strong> We provide a hybrid solution combining proven enterprise security platforms with custom-developed integration and monitoring systems. Our phased implementation ensures continuous operation while systematically addressing each vulnerability with enterprise-grade solutions designed specifically for critical financial infrastructure. This approach leverages established cybersecurity partnerships for core security components while delivering custom development for GDPC-specific requirements, ensuring both immediate risk mitigation and long-term security resilience.
+        </div>
+    </div>
+
+    <div class="section">
+        <h1>OUTSTANDING CRITICAL VULNERABILITIES</h1>
+        
+        <table class="vulnerability-table">
+            <thead>
+                <tr>
+                    <th style="width: 15%;">Finding ID</th>
+                    <th style="width: 20%;">Vulnerability</th>
+                    <th style="width: 35%;">Risk Impact</th>
+                    <th style="width: 30%;">Our Remediation Solution</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="critical-row">
+                    <td><strong>IPT-001</strong><br><em>Critical</em></td>
+                    <td>Default credentials on Minio object storage</td>
+                    <td>Full access to sensitive financial institution returns and all bank accounts data</td>
+                    <td><span class="critical-deliverable">⚡</span> Enterprise PAM implementation with secure credential management</td>
+                </tr>
+                <tr class="critical-row">
+                    <td><strong>IPT-003</strong><br><em>Critical</em></td>
+                    <td>Reused local admin credentials across ~21 machines</td>
+                    <td>Pass-the-hash attacks enabling domain controller compromise</td>
+                    <td><span class="critical-deliverable">⚡</span> LAPS deployment + comprehensive PAM solution</td>
+                </tr>
+                <tr class="critical-row">
+                    <td><strong>IPT-006</strong><br><em>Critical</em></td>
+                    <td>Weak Domain Administrator password</td>
+                    <td>Full domain compromise via password cracking</td>
+                    <td><span class="critical-deliverable">⚡</span> CIS Benchmark compliance + PAM with password filtering</td>
+                </tr>
+                <tr class="critical-row">
+                    <td><strong>IPT-008</strong><br><em>Critical</em></td>
+                    <td>Undetected attack capability</td>
+                    <td>Extended undetected presence with data exfiltration potential</td>
+                    <td><span class="critical-deliverable">⚡</span> SIEM + IDPS + EDR comprehensive threat detection</td>
+                </tr>
+                <tr class="critical-row">
+                    <td><strong>IPT-010</strong><br><em>Critical</em></td>
+                    <td>Default credentials on Netbotz rack monitor</td>
+                    <td>Environmental monitoring and video surveillance access</td>
+                    <td><span class="critical-deliverable">⚡</span> Secure device management via PAM + network segmentation</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h1>COMPREHENSIVE SOLUTION ARCHITECTURE</h1>
+        
+        <h2>1. PRIVILEGED ACCESS MANAGEMENT (PAM) SYSTEM - PRIORITY 1</h2>
+        
+        <h3>1.1 Enterprise PAM Platform Implementation</h3>
+        <ul>
+            <li><strong>Partnership Approach:</strong> Integration with established PAM solutions (CyberArk, BeyondTrust, or equivalent) for core functionality</li>
+            <li><strong>Custom Development:</strong> GDPC-specific integration interfaces and reporting dashboards</li>
+            <li><strong>Local Administrator Password Solution (LAPS):</strong> Automated unique password management across all 21+ affected machines</li>
+            <li><strong>Privileged Session Management:</strong> Complete session recording and monitoring for compliance</li>
+            <li><strong>Emergency Access Protocols:</strong> Secure break-glass procedures for critical situations</li>
+        </ul>
+        
+        <h3>1.2 Advanced Credential Security</h3>
+        <ul>
+            <li><strong>Password Policy Enforcement:</strong> CIS Benchmark-compliant password requirements with custom filtering</li>
+            <li><strong>Multi-Factor Authentication:</strong> MFA integration for all privileged accounts</li>
+            <li><strong>Service Account Management:</strong> Managed Service Accounts (MSAs) and Group Managed Service Accounts (gMSAs) implementation</li>
+            <li><strong>Least Privilege Implementation:</strong> Role-based access with granular permission controls</li>
+        </ul>
+
+        <h2>2. SECURITY INFORMATION & EVENT MANAGEMENT (SIEM) - PRIORITY 1</h2>
+        
+        <h3>2.1 Enterprise SIEM Platform</h3>
+        <ul>
+            <li><strong>Platform Selection:</strong> Enterprise SIEM solution (Splunk, IBM QRadar, or equivalent) with custom rule development</li>
+            <li><strong>Custom Analytics:</strong> GDPC-specific threat detection rules and correlation algorithms</li>
+            <li><strong>Real-time Monitoring:</strong> 24/7 security operations center (SOC) dashboard development</li>
+            <li><strong>Automated Response:</strong> Custom automation workflows for threat response</li>
+        </ul>
+        
+        <h3>2.2 Advanced Threat Detection Integration</h3>
+        <ul>
+            <li><strong>Log Aggregation:</strong> Centralized logging from all network devices, servers, and applications</li>
+            <li><strong>Behavioral Analytics:</strong> Machine learning-based anomaly detection for unusual access patterns</li>
+            <li><strong>Compliance Reporting:</strong> Automated regulatory compliance reporting for central banking requirements</li>
+            <li><strong>Threat Intelligence Integration:</strong> Real-time threat feed integration with custom analysis</li>
+        </ul>
+
+        <h2>3. INTRUSION DETECTION & PREVENTION (IDPS) + ENDPOINT PROTECTION</h2>
+        
+        <h3>3.1 Network Security Enhancement</h3>
+        <ul>
+            <li><strong>IDPS Deployment:</strong> Strategic placement of intrusion detection systems throughout network infrastructure</li>
+            <li><strong>Network Segmentation:</strong> Advanced micro-segmentation with zero-trust architecture principles</li>
+            <li><strong>Traffic Analysis:</strong> Deep packet inspection with custom rule development for banking protocols</li>
+            <li><strong>Threat Blocking:</strong> Automated threat blocking with custom whitelist/blacklist management</li>
+        </ul>
+        
+        <h3>3.2 Advanced Endpoint Detection & Response (EDR)</h3>
+        <ul>
+            <li><strong>EDR Platform Implementation:</strong> Enterprise EDR solution deployment across all endpoints</li>
+            <li><strong>Custom Integration:</strong> Integration with existing antivirus and security systems</li>
+            <li><strong>Behavioral Monitoring:</strong> Advanced endpoint behavioral analysis and threat hunting capabilities</li>
+            <li><strong>Incident Response:</strong> Automated incident response with custom playbook development</li>
+        </ul>
+
+        <h2>4. PATCH MANAGEMENT & VULNERABILITY ASSESSMENT</h2>
+        
+        <h3>4.1 Automated Patch Management System</h3>
+        <ul>
+            <li><strong>Custom Patch Management Platform:</strong> Automated patch deployment system with custom approval workflows</li>
+            <li><strong>Testing Environment:</strong> Isolated testing infrastructure for patch validation</li>
+            <li><strong>Rollback Capabilities:</strong> Automated rollback procedures for failed patches</li>
+            <li><strong>Compliance Tracking:</strong> Real-time patch compliance monitoring and reporting</li>
+        </ul>
+        
+        <h3>4.2 Continuous Vulnerability Assessment</h3>
+        <ul>
+            <li><strong>Automated Scanning:</strong> Continuous vulnerability scanning with custom reporting</li>
+            <li><strong>Risk Prioritization:</strong> AI-powered vulnerability prioritization based on GDPC's specific environment</li>
+            <li><strong>Integration with Patch Management:</strong> Seamless integration between vulnerability detection and patch deployment</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h1>PHASED IMPLEMENTATION STRATEGY</h1>
+        
+        <table class="timeline-table">
+            <thead>
+                <tr>
+                    <th style="width: 20%;">Phase</th>
+                    <th style="width: 15%;">Duration</th>
+                    <th style="width: 25%;">Critical Vulnerabilities Addressed</th>
+                    <th style="width: 40%;">Key Deliverables</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="critical-row">
+                    <td><strong>Phase 1: Emergency Stabilization</strong></td>
+                    <td>Weeks 1-6</td>
+                    <td>IPT-001, IPT-006, IPT-010</td>
+                    <td>
+                        <span class="critical-deliverable">⚡</span> PAM system deployment<br>
+                        <span class="critical-deliverable">⚡</span> Critical credential remediation<br>
+                        <span class="critical-deliverable">⚡</span> Network segmentation<br>
+                        <span class="critical-deliverable">⚡</span> Emergency monitoring implementation
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 2: Monitoring & Detection</strong></td>
+                    <td>Weeks 7-12</td>
+                    <td>IPT-008</td>
+                    <td>
+                        <span class="deliverable">✓</span> SIEM platform deployment<br>
+                        <span class="deliverable">✓</span> IDPS implementation<br>
+                        <span class="deliverable">✓</span> EDR rollout<br>
+                        <span class="deliverable">✓</span> SOC dashboard development
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 3: Advanced Protection</strong></td>
+                    <td>Weeks 13-18</td>
+                    <td>IPT-003 + Infrastructure Hardening</td>
+                    <td>
+                        <span class="deliverable">✓</span> LAPS deployment<br>
+                        <span class="deliverable">✓</span> Advanced threat analytics<br>
+                        <span class="deliverable">✓</span> Automated patch management<br>
+                        <span class="deliverable">✓</span> Compliance reporting systems
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 4: Optimization & Training</strong></td>
+                    <td>Weeks 19-24</td>
+                    <td>System optimization & Knowledge Transfer</td>
+                    <td>
+                        <span class="deliverable">✓</span> Performance optimization<br>
+                        <span class="deliverable">✓</span> Staff training programs<br>
+                        <span class="deliverable">✓</span> Documentation delivery<br>
+                        <span class="deliverable">✓</span> Final security assessment
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h1>PARTNERSHIP & EXPERTISE FRAMEWORK</h1>
+        
+        <h2>5.1 Strategic Security Partnerships</h2>
+        <ul>
+            <li><strong>Enterprise Security Vendor Partnerships:</strong> Established relationships with tier-1 cybersecurity providers</li>
+            <li><strong>Technical Expertise:</strong> Access to certified security professionals (CISSP, CISM, CEH)</li>
+            <li><strong>Compliance Specialists:</strong> Banking sector compliance and regulatory expertise</li>
+            <li><strong>24/7 Support:</strong> Round-the-clock security monitoring and incident response capabilities</li>
+        </ul>
+        
+        <h2>5.2 Custom Development Capabilities</h2>
+        <ul>
+            <li><strong>Integration Development:</strong> Custom API development for seamless system integration</li>
+            <li><strong>Reporting & Analytics:</strong> Bespoke dashboard and reporting solutions</li>
+            <li><strong>Automation Scripts:</strong> Custom automation for GDPC-specific security processes</li>
+            <li><strong>Mobile Applications:</strong> Security management mobile applications for executive oversight</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h1>TRAINING & KNOWLEDGE TRANSFER</h1>
+        
+        <h2>6.1 Comprehensive Training Program</h2>
+        <ul>
+            <li><strong>Security Operations Training:</strong> 5-day intensive SOC operations training</li>
+            <li><strong>PAM System Administration:</strong> 3-day privileged access management training</li>
+            <li><strong>SIEM Management:</strong> 4-day SIEM administration and threat hunting training</li>
+            <li><strong>Incident Response:</strong> 2-day incident response procedures training</li>
+            <li><strong>Executive Security Briefings:</strong> Monthly security posture briefings for leadership</li>
+        </ul>
+        
+        <h2>6.2 Documentation & Procedures</h2>
+        <ul>
+            <li><strong>Security Policies:</strong> Complete cybersecurity policy framework</li>
+            <li><strong>Standard Operating Procedures:</strong> Detailed SOPs for all security systems</li>
+            <li><strong>Incident Response Playbooks:</strong> Step-by-step incident response procedures</li>
+            <li><strong>Technical Documentation:</strong> Comprehensive system administration guides</li>
+            <li><strong>Compliance Documentation:</strong> Regulatory compliance tracking and reporting procedures</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h1>INVESTMENT BREAKDOWN</h1>
+        
+        <div class="security-highlight">
+            <strong>Critical Security Infrastructure Components:</strong>
+            <ul>
+                <li>Enterprise PAM System with Custom Integration</li>
+                <li>SIEM Platform with Custom Analytics Development</li>
+                <li>IDPS & EDR Implementation with Custom Rules</li>
+                <li>Automated Patch Management System</li>
+                <li>Network Security Infrastructure Enhancement</li>
+                <li>24/7 SOC Setup with Custom Dashboards</li>
+                <li>Comprehensive Training & Knowledge Transfer</li>
+            </ul>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 60%;">Phase & Solution Package</th>
+                    <th style="width: 40%;">Investment (GHS)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="critical-row">
+                    <td><strong>Phase 1: Emergency Stabilization Package</strong><br>
+                    <em>PAM implementation, critical credential remediation, network segmentation</em></td>
+                    <td class="amount"><strong>GHS 450,000</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 2: Monitoring & Detection Package</strong><br>
+                    <em>SIEM platform, IDPS, EDR, SOC dashboard development</em></td>
+                    <td class="amount"><strong>GHS 380,000</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 3: Advanced Protection Package</strong><br>
+                    <em>LAPS, advanced analytics, patch management, compliance systems</em></td>
+                    <td class="amount"><strong>GHS 320,000</strong></td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 4: Optimization & Training Package</strong><br>
+                    <em>Performance optimization, training programs, documentation</em></td>
+                    <td class="amount"><strong>GHS 180,000</strong></td>
+                </tr>
+                <tr class="total-row">
+                    <td><strong>Complete Cybersecurity Remediation Solution</strong><br>
+                    <em>All phases included - comprehensive security infrastructure</em></td>
+                    <td class="amount"><strong>GHS 1,330,000</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h1>ONGOING SECURITY MANAGEMENT</h1>
+        
+        <div class="security-highlight">
+            <strong>Annual Security Management Services Include:</strong>
+            <ul>
+                <li>24/7 Security Operations Center (SOC) Management</li>
+                <li>Continuous Threat Monitoring & Incident Response</li>
+                <li>Quarterly Penetration Testing & Vulnerability Assessments</li>
+                <li>Security System Updates & Patch Management</li>
+                <li>Compliance Monitoring & Regulatory Reporting</li>
+                <li>Executive Security Briefings & Risk Reporting</li>
+            </ul>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 60%;">Service Package</th>
+                    <th style="width: 40%;">Annual Fee (GHS)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="total-row">
+                    <td><strong>Complete Annual Security Management Package</strong><br>
+                    <em>All services listed above included</em></td>
+                    <td class="amount"><strong>GHS 420,000</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="security-highlight">
+            <strong>Flexible Payment Options:</strong> Annual management fee can be paid annually in advance or split quarterly in advance (GHS 105,000 per quarter).
+        </div>
+    </div>
+
+    <div class="section">
+        <h1>PAYMENT OPTIONS</h1>
+        
+        <h2>Option 1: Phased Implementation Payments</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 30%;">Phase</th>
+                    <th style="width: 40%;">Description</th>
+                    <th style="width: 15%;">Percentage</th>
+                    <th style="width: 15%;">Amount (GHS)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="critical-row">
+                    <td><strong>Phase 1 Start</strong></td>
+                    <td>Emergency stabilization initiation</td>
+                    <td class="amount">40%</td>
+                    <td class="amount">532,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 2 Start</strong></td>
+                    <td>Monitoring systems deployment</td>
+                    <td class="amount">25%</td>
+                    <td class="amount">332,500</td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 3 Start</strong></td>
+                    <td>Advanced protection implementation</td>
+                    <td class="amount">20%</td>
+                    <td class="amount">266,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Project Completion</strong></td>
+                    <td>Final optimization and handover</td>
+                    <td class="amount">15%</td>
+                    <td class="amount">199,500</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p><strong>Annual Management Fee:</strong> GHS 420,000 annually or GHS 105,000 quarterly</p>
+        
+        <h2>Option 2: Accelerated Critical Response</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 40%;">Payment Component</th>
+                    <th style="width: 40%;">Description</th>
+                    <th style="width: 20%;">Amount (GHS)</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="critical-row">
+                    <td><strong>Emergency Response Payment</strong></td>
+                    <td>60% of total for immediate critical vulnerability remediation</td>
+                    <td class="amount">798,000</td>
+                </tr>
+                <tr>
+                    <td><strong>Completion Payment</strong></td>
+                    <td>40% upon full system deployment and training completion</td>
+                    <td class="amount">532,000</td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="security-highlight">
+            <strong>Option 2 Benefits:</strong> Accelerated deployment of critical security controls, priority resource allocation, and expedited vulnerability remediation with dedicated security team assignment.
+        </div>
+    </div>
+
+    <div class="section">
+        <h1>TERMS & CONDITIONS</h1>
+        
+        <h2>8.1 Project Assumptions</h2>
+        <ul>
+            <li><strong>Security Clearance:</strong> GDPC provides necessary security clearances and system access for comprehensive remediation</li>
+            <li><strong>Stakeholder Availability:</strong> IT security team available for coordination, testing support, and knowledge transfer</li>
+            <li><strong>Infrastructure Access:</strong> Full administrative access to affected systems for remediation activities</li>
+            <li><strong>Change Management:</strong> GDPC follows established change management procedures for security implementations</li>
+            <li><strong>Regulatory Compliance:</strong> All implementations will comply with Bank of Ghana cybersecurity requirements and central banking regulations</li>
+        </ul>
+        
+        <h2>8.2 Critical Success Factors</h2>
+        <ul>
+            <li><strong>Immediate Response:</strong> Project initiation within 2 weeks of contract approval for critical vulnerability remediation</li>
+            <li><strong>Continuous Operation:</strong> All remediation activities designed to maintain business continuity</li>
+            <li><strong>Regulatory Alignment:</strong> Solutions aligned with central banking cybersecurity standards and BOG requirements</li>
+            <li><strong>Knowledge Transfer:</strong> Complete knowledge transfer to GDPC security team for ongoing management</li>
+        </ul>
+        
+        <h2>8.3 Warranty & Support</h2>
+        <ul>
+            <li><strong>Security Guarantee:</strong> 6-month warranty on all security implementations from project completion</li>
+            <li><strong>Performance Guarantee:</strong> System performance guarantee as per agreed security metrics</li>
+            <li><strong>Incident Response:</strong> 24-hour response guarantee for critical security incidents during warranty period</li>
+        </ul>
+    </div>
+
+    <div class="highlight-box">
+        <h1>IMMEDIATE ACTION REQUIRED</h1>
+        <p><strong>Critical Timeline:</strong> The 5 outstanding vulnerabilities represent immediate risk to GDPC's security posture and the broader Ghanaian financial system. Delay in remediation increases exposure to:</p>
+        <ul>
+            <li><strong>Data Breach Risk:</strong> Potential access to all banking institution data</li>
+            <li><strong>Regulatory Non-Compliance:</strong> Potential regulatory action from Bank of Ghana</li>
+            <li><strong>Operational Disruption:</strong> System compromise could disrupt deposit protection services</li>
+            <li><strong>Reputational Damage:</strong> Security incidents could damage public trust in deposit protection</li>
+        </ul>
+        
+        <h2>Next Steps:</h2>
+        <ol>
+            <li><strong>Contract Approval:</strong> Review and approve this proposal within 5 business days</li>
+            <li><strong>Emergency Response Meeting:</strong> Schedule immediate stakeholder meeting for project initiation</li>
+            <li><strong>Security Assessment:</strong> Begin immediate detailed security infrastructure assessment</li>
+            <li><strong>Phase 1 Mobilization:</strong> Deploy emergency response team within 1 week of approval</li>
+        </ol>
+    </div>
+
+    <div class="contact-section">
+        <h2>Contact Information</h2>
+        <table style="border: none;">
+            <tr style="border: none;">
+                <td style="border: none; width: 25%;"><strong>Prepared by:</strong></td>
+                <td style="border: none; width: 25%;">Akwasi Adu-Kyeremeh</td>
+                <td style="border: none; width: 25%;"><strong>Email:</strong></td>
+                <td style="border: none; width: 25%;">me@akwasi.dev</td>
+            </tr>   
+        </table>
+    </div>
+</body>
+</html>
