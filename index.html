@@ -6,6 +6,8 @@
   <title>Akwasi Adu-Kyeremeh — Business Technology Specialist, ERP Consultant &amp; Full-Stack Developer (Accra, Ghana)</title>
   <meta name="description" content="Business Technology Specialist &amp; ERP Consultant in Accra, Ghana. I design ERP systems and full-stack solutions that help organizations work smarter and scale with confidence.">
   <link rel="canonical" href="https://akwasi.dev/">
+  <link rel="preload" as="image" href="/portfolio/images/pics/akwasi-512.webp" imagesrcset="/portfolio/images/pics/akwasi-256.webp 256w, /portfolio/images/pics/akwasi-512.webp 512w, /portfolio/images/pics/akwasi-768.webp 768w" imagesizes="(max-width: 640px) 40vw, 320px">
+
 
   <!-- Favicons -->
   <link rel="icon" type="image/png" href="https://akwasi.dev/portfolio/images/favicon.png">
@@ -73,7 +75,7 @@
         "name": "Akwasi Adu-Kyeremeh",
         "url": "https://akwasi.dev/",
         "jobTitle": "Business Technology Specialist, ERP Consultant & Full-Stack Developer",
-        "image": "https://akwasi.dev/portfolio/images/Akwasi_Adu-Kyeremeh.jpg",
+        "image": "https://akwasi.dev/portfolio/images/pics/Akwasi_Adu-Kyeremeh.jpg",
         "worksFor": { "@type": "Organization", "name": "Rhema Systems" },
         "address": { "@type": "PostalAddress", "addressLocality": "Accra", "addressCountry": "GH" },
         "sameAs": [
@@ -106,7 +108,31 @@
         <section>
             <div class="home-intro">
                 <!-- <img src="portfolio/images/Me3.jpg" alt="Picture of Akwasi Adu-Kyeremeh" class="profile-photo"> -->
-                <img src="portfolio/images/Akwasi_Adu-Kyeremeh.jpg" alt="Portrait of Akwasi Adu-Kyeremeh" class="profile-photo" loading="eager">
+                <!-- <img src="portfolio/images/Akwasi_Adu-Kyeremeh.jpg" alt="Portrait of Akwasi Adu-Kyeremeh" class="profile-photo" loading="eager">
+                 -->
+              <picture>
+                <source type="image/avif"
+                  srcset="/portfolio/images/pics/akwasi-256.avif 256w,
+                          /portfolio/images/pics/akwasi-512.avif 512w,
+                          /portfolio/images/pics/akwasi-768.avif 768w,
+                          /portfolio/images/pics/akwasi-1024.avif 1024w"
+                  sizes="(max-width: 640px) 40vw, (max-width: 1024px) 25vw, 320px" />
+                <source type="image/webp"
+                  srcset="/portfolio/images/pics/akwasi-256.webp 256w,
+                          /portfolio/images/pics/akwasi-512.webp 512w,
+                          /portfolio/images/pics/akwasi-768.webp 768w,
+                          /portfolio/images/pics/akwasi-1024.webp 1024w"
+                  sizes="(max-width: 640px) 40vw, (max-width: 1024px) 25vw, 320px" />
+                <img
+                  src="/portfolio/images/akwasi-512.jpg"
+                  width="320" height="320"
+                  alt="Portrait of Akwasi Adu-Kyeremeh"
+                  class="profile-photo"
+                  loading="eager"
+                  decoding="async"
+                  fetchpriority="high" />
+              </picture>
+
                 <div class="intro-text fade-in">
                     <h1>Crafting Solutions:<br> My portfolio in Technology and Innovation</h1>
                     <!-- <p>Hi, I'm Akwasi. I specialize in designing and implementing enterprise resource planning solutions and developing custom full-stack applications that drive business success. Based in Accra, Ghana, I combine technical expertise with a passion for problem-solving to deliver tailored, impactful results. Let’s collaborate to turn your challenges into innovative solutions!</p>
