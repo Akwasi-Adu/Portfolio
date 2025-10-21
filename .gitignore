@@ -1,1 +1,15 @@
-.qodo
+# Create/edit .gitignore
+echo "blog/*/" >> .gitignore
+echo "projects/*/" >> .gitignore
+echo "sitemap*.xml" >> .gitignore
+echo "robots.txt" >> .gitignore
+
+# Remove from Git tracking
+git rm -r --cached blog/*/
+git rm -r --cached projects/*/
+git rm --cached sitemap*.xml robots.txt
+
+# Commit
+git add .gitignore
+git commit -m "Stop tracking generated files to prevent conflicts"
+git push
