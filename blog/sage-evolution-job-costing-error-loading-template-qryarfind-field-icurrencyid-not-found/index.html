@@ -16,6 +16,8 @@
 <meta name="twitter:description" content="This error pops up when a particular user in Sage Evolution attempts loading a template in the Job Costing module and persists until Evolution is restarted...">
 <meta name="twitter:image" content="https://akwasi.dev/portfolio/images/blog/evojc1.png">
 <link rel="stylesheet" href="/portfolio/css/style.css">
+<link rel="icon" type="image/png" href="/portfolio/images/favicon.png">
+  <meta name="theme-color" content="#0b1221">
 
 <script type="application/ld+json">
 {
@@ -52,34 +54,35 @@
 </header>
 <main>
 
-<article class="blog-details">
-  <h1>Sage Evolution Job Costing: Error Loading Template - &quot;QryARFind: Field 'iCurrencyID' not found&quot;</h1>
-  <p><em>19/09/2014</em></p>
-  <div>
-            <p><img src="portfolio/images/blog/evojc1.png" alt="screenshot" /></p>
+<article class="blog-details" style="max-width: 900px; margin: 0 auto; padding: 2rem;">
+  <h1 style="text-align: center; margin-bottom: 0.5rem;">Sage Evolution Job Costing: Error Loading Template - &quot;QryARFind: Field 'iCurrencyID' not found&quot;</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 2rem;"><em>19/09/2014</em></p>
+  <div style="text-align: left; line-height: 1.8;">
+    <html><head></head><body><p><img src="/portfolio/images/blog/evojc1.png" alt="screenshot"></p>
             <p>
             This error pops up when a particular user in Sage Evolution attempts loading a template in the Job Costing module and persists until Evolution is restarted.
             </p>
             <p>
 If other users can load templates without getting the error on the same workstation, a solution would be to delete the problem user from the registry.
-            </P>
+            </p>
             <p style="color:red">
 Nb: The windows registry contains sensitive info needed for the proper functioning of your computer. You may take a backup of the registry before making any changes or get someone who is more technically apt, to help you with the steps below:
             </p>
             <p>
 You do this by following the steps below:
-</P>
+</p>
             <ol>
                 <li> On the workstation, Start "Run" and type "Regedit"</li>
-                <p><img src="portfolio/images/blog/evojc2.png" alt="screenshot"></P>
+                <p><img src="/portfolio/images/blog/evojc2.png" alt="screenshot"></p>
                 <li>From the Registry Editor, Open the folder HKey Current User | User | Software | Softline | Evolution | Agents</li>
                 <li>Select and delete the folder for the problem user (Rosemary, in my case)</li>
-                <p><img src="portfolio/images/blog/evojc3.png" alt="screenshot" /></p>
+                <p><img src="/portfolio/images/blog/evojc3.png" alt="screenshot"></p>
                 <li>Once this is done, close the Registry Editor and re-login with the user's credentials. The problem should be resolved.</li>
                 <li>Note that this resets any custom settings such as printer layouts and custom grid views for that particular and must be reset where applicable.</li>
-            </Ol>
-        </div>
-  <p><a href="/blog.html">← Back to Blog</a></p>
+            </ol>
+        </body></html>
+  </div>
+  <p style="text-align: center; margin-top: 3rem;"><a href="/blog.html">← Back to Blog</a></p>
 </article>
 </main>
 <footer><p>&copy; 2025 Akwasi Adu-Kyeremeh. All rights reserved.</p></footer>

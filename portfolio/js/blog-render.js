@@ -1,3 +1,32 @@
+// Helper function to create slugs (matches prerender.js logic)
+function slugifyTitle(s) {
+  let cleaned = String(s);
+  
+  // Handle pipe-separated titles
+  if (cleaned.includes('|')) {
+    const parts = cleaned.split('|').map(p => p.trim());
+    cleaned = parts[0] + ' ' + parts[parts.length - 1];
+  }
+  
+  // Extract acronyms in parentheses
+  const acronymMatch = cleaned.match(/\(([A-Z]{2,})\)/);
+  if (acronymMatch) {
+    cleaned = cleaned.replace(/\([^)]*\)/, ' ' + acronymMatch[1]);
+  }
+  
+  // Clean up special characters
+  cleaned = cleaned
+    .replace(/&/g, 'and')
+    .replace(/[()]/g, '')
+    .replace(/,/g, '');
+  
+  // Final slugification
+  return cleaned.toLowerCase().trim()
+    .replace(/[^\w\s-]/g, '')
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-');
+}
+
 let filteredBlogs = [...blogs];
 
 function renderBlogs() {
@@ -7,12 +36,15 @@ function renderBlogs() {
     filteredBlogs.forEach(blog => {
         const post = document.createElement("div");
         post.classList.add("blog-post");
+        
+        // Use slug if available, otherwise generate from title
+        const slug = blog.slug || slugifyTitle(blog.title);
 
         post.innerHTML = `
             <h2>${blog.title}</h2>
             <p><em>${new Date(blog.date).toLocaleDateString()}</em></p>
             <p>${blog.summary}</p>
-            <a href="blog-details.html?id=${blog.id}" class="read-more" onclick="trackBlogClick('${blog.title}')">Read More</a>
+            <a href="/blog/${slug}/" class="read-more" onclick="trackBlogClick('${blog.title}')">Read More</a>
         `;
         
 

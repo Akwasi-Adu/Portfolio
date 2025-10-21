@@ -10,7 +10,7 @@
 
     <!-- Open Graph Meta Tags -->
     <meta property="og:title" content="Akwasi Adu-Kyeremeh | Portfolio">
-    <meta property="og:description" content="Explore the portfolio of Akwasi Adu-Kyeremeh — full-stack developer & ERP consultant based in Accra, Ghana.">
+    <meta property="og:description" content="Explore the portfolio of Akwasi Adu-Kyeremeh – full-stack developer & ERP consultant based in Accra, Ghana.">
     <meta property="og:image" content="https://akwasi.dev/portfolio/images/og-image.jpg">
     <meta property="og:url" content="https://akwasi.dev/index.html">
     <meta property="og:type" content="website">
@@ -18,6 +18,56 @@
     <title>Project Details | Akwasi Adu-Kyeremeh</title>
     <link rel="stylesheet" href="portfolio/css/style.css">
     <link rel="icon" type="image/png" href="portfolio/images/favicon.png">
+
+    <!-- put these very high in <body> or in <head> -->
+<script src="portfolio/js/projects.js"></script>
+<script>
+(function () {
+  const params = new URLSearchParams(location.search);
+  const id = params.get('id');
+
+  const data = window.projects;
+  if (!id || !Array.isArray(data)) return;
+
+  const p = data.find(x => String(x.id) === String(id));
+  if (!p) return;
+
+  // Improved slugify function - matches prerender.js logic
+  const slugify = s => {
+    let cleaned = String(s);
+    
+    // Handle pipe-separated titles (e.g., "Full-Stack Developer | MESTI, Ghana")
+    if (cleaned.includes('|')) {
+      const parts = cleaned.split('|').map(p => p.trim());
+      cleaned = parts[0] + ' ' + parts[parts.length - 1];
+    }
+    
+    // Extract acronyms in parentheses (e.g., "MESTI" from "Ministry (MESTI)")
+    const acronymMatch = cleaned.match(/\(([A-Z]{2,})\)/);
+    if (acronymMatch) {
+      cleaned = cleaned.replace(/\([^)]*\)/, ' ' + acronymMatch[1]);
+    }
+    
+    // Clean up special characters
+    cleaned = cleaned
+      .replace(/&/g, 'and')
+      .replace(/[()]/g, '')
+      .replace(/,/g, '');
+    
+    // Final slugification
+    return cleaned.toLowerCase().trim()
+      .replace(/[^\w\s-]/g, '')
+      .replace(/\s+/g, '-')
+      .replace(/-+/g, '-');
+  };
+  
+  const slug = p.slug || slugify(p.title || p.name || ('project-' + id));
+
+  // Redirect to the static page
+  location.replace(`/projects/${slug}/`);
+})();
+</script>
+
 
     <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-EPKW2QTNQL"></script>
@@ -83,7 +133,7 @@
     <footer>
         <p>&copy; 2025 Akwasi Adu-Kyeremeh. All rights reserved.</p>
     </footer>
-
+   
     <script src="portfolio/js/projects.js"></script>
     <script src="portfolio/js/project-details-render.js"></script>
 </body>

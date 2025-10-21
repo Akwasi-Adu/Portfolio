@@ -16,6 +16,8 @@
 <meta name="twitter:description" content="If you run Sage Intelligence reports and hit this error, especially in September, it may be caused by Windows regional month abbreviations. Here’s why it happens and how to fix it.">
 <meta name="twitter:image" content="https://akwasi.dev/portfolio/images/blog/sir3.png">
 <link rel="stylesheet" href="/portfolio/css/style.css">
+<link rel="icon" type="image/png" href="/portfolio/images/favicon.png">
+  <meta name="theme-color" content="#0b1221">
 
 <script type="application/ld+json">
 {
@@ -50,18 +52,18 @@
 </header>
 <main>
 
-<article class="blog-details">
-  <h1>Fixing 'Conversion failed when converting date and/or time from character string' in Sage Intelligence Reporting</h1>
-  <p><em>05/09/2025</em></p>
-  <div>
-      <p>If you’ve ever run a report in <strong>Sage Intelligence Reporting</strong> (BIC) and been stopped by this error:</p>
+<article class="blog-details" style="max-width: 900px; margin: 0 auto; padding: 2rem;">
+  <h1 style="text-align: center; margin-bottom: 0.5rem;">Fixing 'Conversion failed when converting date and/or time from character string' in Sage Intelligence Reporting</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 2rem;"><em>05/09/2025</em></p>
+  <div style="text-align: left; line-height: 1.8;">
+    <html><head></head><body><p>If you’ve ever run a report in <strong>Sage Intelligence Reporting</strong> (BIC) and been stopped by this error:</p>
 
       <pre><code>
       [Microsoft][ODBC SQL Server Driver][SQL Server]
       Conversion failed when converting date and/or time from character string.
       </code></pre>
 
-      <img src="portfolio/images/blog/sir3.png" alt="Sage Intelligence Error Screenshot">
+      <img src="/portfolio/images/blog/sir3.png" alt="Sage Intelligence Error Screenshot">
 
       <p>You know how frustrating it is. The error shows up in the Sage Intelligence <em>Report Execution Error</em> dialog, with SQL State 22008 and Driver Error 241.</p>
 
@@ -137,7 +139,7 @@
       <p>For convenience, I’ve packaged both the registry file and batch script into a single zip you can download here:</p>
       <p><a href="/downloads/Sage_Intelligence_Sep_Fix.zip">👉 Download Sage Intelligence September Fix</a></p>
 
-      <h3>⚠️ Notes & Caveats</h3>
+      <h3>⚠️ Notes &amp; Caveats</h3>
       <ul>
         <li>This fix changes abbreviations for the <strong>current Windows user</strong>. If Sage Intelligence runs on a server, apply it on the server account too.</li>
         <li>Always back up your registry first (right-click key → Export).</li>
@@ -146,8 +148,9 @@
 
       <h3>✅ Takeaway</h3>
       <p>If you hit “Conversion failed when converting date and/or time from character string” in Sage Intelligence Reporting, check if your report is filtered on September dates. In many locales, Windows uses <code>Sept</code> instead of <code>Sep</code>, and SQL Server rejects it. Overriding the abbreviation fixes the error permanently.</p>
-        </div>
-  <p><a href="/blog.html">← Back to Blog</a></p>
+        </body></html>
+  </div>
+  <p style="text-align: center; margin-top: 3rem;"><a href="/blog.html">← Back to Blog</a></p>
 </article>
 </main>
 <footer><p>&copy; 2025 Akwasi Adu-Kyeremeh. All rights reserved.</p></footer>

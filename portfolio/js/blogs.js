@@ -565,3 +565,4 @@ Cheers!</p>
       
     
 ];
+window.projects = blogs;

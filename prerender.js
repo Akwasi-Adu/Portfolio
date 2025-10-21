@@ -18,6 +18,22 @@ function absoluteUrl(u) {
   return `https://akwasi.dev${u.startsWith('/') ? '' : '/'}${u}`;
 }
 
+// NEW: Convert relative paths to root-absolute paths
+function toRootAbsolute(u) {
+  if (!u) return u;
+  if (/^https?:\/\//i.test(u) || u.startsWith('/')) return u;
+  return '/' + u.replace(/^\.?\//, '');
+}
+
+// NEW: Normalize all asset paths in HTML content to root-absolute
+function normalizeHtmlAssets(html) {
+  const $ = cheerio.load(html || "");
+  $('img[src]').each((_, el) => $(el).attr('src', toRootAbsolute($(el).attr('src'))));
+  $('link[href]').each((_, el) => $(el).attr('href', toRootAbsolute($(el).attr('href'))));
+  $('script[src]').each((_, el) => $(el).attr('src', toRootAbsolute($(el).attr('src'))));
+  return $.html();
+}
+
 // Extract <img> srcs from HTML
 function extractImageSrcs(html) {
   const $ = cheerio.load(html || "");
@@ -34,11 +50,11 @@ function extractImageSrcs(html) {
 function loadGlobalFromFile(filePath, globalName) {
   let code = fs.readFileSync(filePath, "utf8");
 
-  // 1) Rewrite "const|let|var <name> =" to "globalThis.<name> =" so it lands on the VM global.
+  // 1) Rewrite "const|let|var <n> =" to "globalThis.<n> =" so it lands on the VM global.
   const decl = new RegExp(`\\b(const|let|var)\\s+${globalName}\\s*=`);
   code = code.replace(decl, `globalThis.${globalName} =`);
 
-  // 2) Also catch "export const <name> =" or "export default <name>"
+  // 2) Also catch "export const <n> =" or "export default <n>"
   const exportConst = new RegExp(`\\bexport\\s+const\\s+${globalName}\\s*=`);
   code = code.replace(exportConst, `globalThis.${globalName} =`);
 
@@ -95,6 +111,8 @@ function makePage({ title, description, canonical, ogImage, body, jsonLd, extraH
 <meta name="twitter:description" content="${esc(description)}">
 <meta name="twitter:image" content="${esc(ogImage || "https://akwasi.dev/portfolio/images/og-image.jpg")}">
 <link rel="stylesheet" href="/portfolio/css/style.css">
+<link rel="icon" type="image/png" href="/portfolio/images/favicon.png">
+  <meta name="theme-color" content="#0b1221">
 ${extraHead}
 <script type="application/ld+json">
 ${JSON.stringify(jsonLd, null, 2)}
@@ -121,7 +139,33 @@ ${body}
 }
 
 function toSlug(s) {
-  return slugify(s, { lower: true, strict: true, trim: true });
+  let cleaned = String(s);
+  
+  // Handle pipe-separated titles (e.g., "Full-Stack Developer | MESTI, Ghana")
+  // Keep first part (role) + last part (location/company)
+  if (cleaned.includes('|')) {
+    const parts = cleaned.split('|').map(p => p.trim());
+    cleaned = parts[0] + ' ' + parts[parts.length - 1];
+  }
+  
+  // Extract acronyms in parentheses (e.g., "MESTI" from "Ministry (MESTI)")
+  const acronymMatch = cleaned.match(/\(([A-Z]{2,})\)/);
+  if (acronymMatch) {
+    cleaned = cleaned.replace(/\([^)]*\)/, ' ' + acronymMatch[1]);
+  }
+  
+  // Clean up special characters before slugifying
+  cleaned = cleaned
+    .replace(/&/g, 'and')           // & to 'and'
+    .replace(/[()]/g, '')           // Remove parentheses
+    .replace(/,/g, '');             // Remove commas
+  
+  return slugify(cleaned, { 
+    lower: true, 
+    strict: true, 
+    trim: true,
+    remove: /[*+~.()'"!:@]/g 
+  });
 }
 
 (async function run() {
@@ -134,106 +178,184 @@ function toSlug(s) {
   await fs.ensureDir(path.join(OUT, "projects"));
 
   // 3) Build blog detail pages
-for (const b of blogs) {
-  const slug = b.slug || toSlug(b.title);
-  const url = `https://akwasi.dev/blog/${slug}/`;
+  for (const b of blogs) {
+    const slug = b.slug || toSlug(b.title);
+    const url = `https://akwasi.dev/blog/${slug}/`;
 
-  // Collect images: explicit fields + inline images in content
-  const inlineImgs = extractImageSrcs(b.content);
-  const declaredImgs = []
-    .concat(b.heroImage ? [absoluteUrl(b.heroImage)] : [])
-    .concat(Array.isArray(b.images) ? b.images.map(absoluteUrl) : []);
-  const allImages = Array.from(new Set([...declaredImgs, ...inlineImgs]));
+    // Collect images: explicit fields + inline images in content
+    const inlineImgs = extractImageSrcs(b.content);
+    const declaredImgs = []
+      .concat(b.heroImage ? [absoluteUrl(b.heroImage)] : [])
+      .concat(Array.isArray(b.images) ? b.images.map(absoluteUrl) : []);
+    const allImages = Array.from(new Set([...declaredImgs, ...inlineImgs]));
 
-  const body = `
-<article class="blog-details">
-  <h1>${esc(b.title)}</h1>
-  <p><em>${new Date(b.date).toLocaleDateString()}</em></p>
-  <div>${b.content || ""}</div>
-  <p><a href="/blog.html">← Back to Blog</a></p>
+    // FIXED: Normalize all asset paths in content and add proper article styling
+    const body = `
+<article class="blog-details" style="max-width: 900px; margin: 0 auto; padding: 2rem;">
+  <h1 style="text-align: center; margin-bottom: 0.5rem;">${esc(b.title)}</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 2rem;"><em>${new Date(b.date).toLocaleDateString()}</em></p>
+  <div style="text-align: left; line-height: 1.8;">
+    <style>
+      .blog-details h2 { 
+        color: #2563eb; 
+        margin-top: 2rem; 
+        margin-bottom: 1rem; 
+        padding-bottom: 0.5rem;
+        border-bottom: 2px solid #e5e7eb;
+      }
+      .blog-details h3 { 
+        color: #1e40af; 
+        margin-top: 1.5rem; 
+        margin-bottom: 0.75rem; 
+      }
+      .blog-details p { 
+        margin-bottom: 1rem; 
+        line-height: 1.8;
+      }
+      .blog-details ul, .blog-details ol { 
+        margin: 1rem 0 1rem 2rem; 
+        padding-left: 1rem;
+        line-height: 1.8;
+      }
+      .blog-details li { 
+        margin-bottom: 0.5rem; 
+      }
+      .blog-details code { 
+        background-color: #f3f4f6; 
+        padding: 0.2rem 0.4rem; 
+        border-radius: 3px; 
+        font-family: monospace;
+        font-size: 0.9em;
+      }
+      .blog-details pre { 
+        background-color: #1e293b; 
+        color: #e2e8f0; 
+        padding: 1rem; 
+        border-radius: 6px; 
+        overflow-x: auto;
+        margin: 1rem 0;
+      }
+      .blog-details pre code { 
+        background: none; 
+        color: inherit; 
+        padding: 0;
+      }
+      .blog-details blockquote {
+        border-left: 4px solid #2563eb;
+        padding-left: 1rem;
+        margin: 1rem 0;
+        color: #666;
+        font-style: italic;
+      }
+      .blog-details a {
+        color: #2563eb;
+        text-decoration: underline;
+      }
+      .blog-details a:hover {
+        color: #1e40af;
+      }
+      .blog-details strong {
+        font-weight: 600;
+      }
+    </style>
+    ${normalizeHtmlAssets(b.content || "")}
+  </div>
+  <p style="text-align: center; margin-top: 3rem;"><a href="/blog.html">← Back to Blog</a></p>
 </article>`;
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "BlogPosting",
-    "headline": b.title,
-    "datePublished": b.date,
-    "dateModified": b.lastUpdated || b.date,
-    "description": b.summary || "",
-    "author": { "@type": "Person", "name": "Akwasi Adu-Kyeremeh" },
-    "url": url,
-    ...(allImages.length ? { "image": allImages } : {})
-  };
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": b.title,
+      "datePublished": b.date,
+      "dateModified": b.lastUpdated || b.date,
+      "description": b.summary || "",
+      "author": { "@type": "Person", "name": "Akwasi Adu-Kyeremeh" },
+      "url": url,
+      ...(allImages.length ? { "image": allImages } : {})
+    };
 
-  const html = makePage({
-    title: `${b.title} | Blog | Akwasi Adu-Kyeremeh`,
-    description: b.summary || "Article by Akwasi Adu-Kyeremeh",
-    canonical: url,
-    ogImage: allImages[0] || undefined,
-    body,
-    jsonLd
-  });
+    const html = makePage({
+      title: `${b.title} | Blog | Akwasi Adu-Kyeremeh`,
+      description: b.summary || "Article by Akwasi Adu-Kyeremeh",
+      canonical: url,
+      ogImage: allImages[0] || undefined,
+      body,
+      jsonLd
+    });
 
-  const outDir = path.join(OUT, "blog", slug);
-  await fs.ensureDir(outDir);
-  await fs.writeFile(path.join(outDir, "index.html"), html);
-}
+    const outDir = path.join(OUT, "blog", slug);
+    await fs.ensureDir(outDir);
+    await fs.writeFile(path.join(outDir, "index.html"), html);
+  }
 
   // 4) Build project detail pages
-for (const p of projects) {
-  const slug = p.slug || toSlug(p.title || p.name);
-  const url = `https://akwasi.dev/projects/${slug}/`;
+  for (const p of projects) {
+    const slug = p.slug || toSlug(p.title || p.name);
+    const url = `https://akwasi.dev/projects/${slug}/`;
 
-  // Gather declared project images
-  const declaredProjImgs = []
-    .concat(p.screenshot ? [absoluteUrl(p.screenshot)] : [])
-    .concat(Array.isArray(p.images) ? p.images.map(absoluteUrl) : []);
-  const projImages = Array.from(new Set(declaredProjImgs));
+    // Gather declared project images
+    const declaredProjImgs = []
+      .concat(p.screenshot ? [absoluteUrl(p.screenshot)] : [])
+      .concat(Array.isArray(p.images) ? p.images.map(absoluteUrl) : []);
+    const projImages = Array.from(new Set(declaredProjImgs));
 
-  const detailsHtml = Array.isArray(p.details) ? p.details.map(d => `<li>${esc(d)}</li>`).join("") : "";
-  const highlightsHtml = Array.isArray(p.highlights) ? p.highlights.map(h => `<li>${esc(h)}</li>`).join("") : "";
-  const outcomeHtml = p.outcome ? esc(p.outcome) : "";
+    // Allow inline HTML in details and highlights
+    const detailsHtml    = Array.isArray(p.details)    ? p.details.map(d => `<li>${d}</li>`).join("") : "";
+    const highlightsHtml = Array.isArray(p.highlights) ? p.highlights.map(h => `<li>${h}</li>`).join("") : "";
+    const outcomeHtml = p.outcome ? esc(p.outcome) : "";
 
-  const body = `
-<article id="project-details-page">
-  ${p.screenshot ? `<img src="${esc(p.screenshot)}" alt="Screenshot for ${esc(p.title || p.name)}" class="project-screenshot">` : ""}
-  <h1>${esc(p.title || p.name)}</h1>
-  ${p.duration ? `<p><strong>Duration:</strong> ${esc(p.duration)}</p>` : ""}
-  ${p.name ? `<p><strong>Project Name:</strong> ${esc(p.name)}</p>` : ""}
-  ${p.industry ? `<p><strong>Industry:</strong> ${Array.isArray(p.industry) ? esc(p.industry.join(", ")) : esc(p.industry)}</p>` : ""}
-  <section><h2>Details</h2><ul>${detailsHtml}</ul></section>
-  ${highlightsHtml ? `<section><h2>Technical Highlights</h2><ul>${highlightsHtml}</ul></section>` : ""}
-  ${outcomeHtml ? `<section><h2>Outcome</h2><p>${outcomeHtml}</p></section>` : ""}
-  <p><a href="/projects.html">← Back to Projects</a></p>
+    // FIXED: Use toRootAbsolute for screenshot
+    const body = `
+<article id="project-details-page" style="max-width: 900px; margin: 0 auto; padding: 2rem;">
+  ${p.screenshot ? `<img src="${esc(toRootAbsolute(p.screenshot))}" alt="Screenshot for ${esc(p.title || p.name)}" class="project-screenshot" style="display: block; margin: 0 auto 2rem; max-width: 100%; border-radius: 8px;">` : ""}
+  <h1 style="text-align: center; margin-bottom: 1rem;">${esc(p.title || p.name)}</h1>
+  <div style="text-align: center; margin-bottom: 2rem; color: #666;">
+    ${p.duration ? `<p><strong>Duration:</strong> ${esc(p.duration)}</p>` : ""}
+    ${p.name ? `<p><strong>Project Name:</strong> ${esc(p.name)}</p>` : ""}
+    ${p.industry ? `<p><strong>Industry:</strong> ${Array.isArray(p.industry) ? esc(p.industry.join(", ")) : esc(p.industry)}</p>` : ""}
+  </div>
+  <section style="margin-bottom: 2rem;">
+    <h2 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 0.5rem;">Details</h2>
+    <ul style="line-height: 1.8; padding-left: 1.5rem;">${detailsHtml}</ul>
+  </section>
+  ${highlightsHtml ? `<section style="margin-bottom: 2rem;">
+    <h2 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 0.5rem;">Technical Highlights</h2>
+    <ul style="line-height: 1.8; padding-left: 1.5rem;">${highlightsHtml}</ul>
+  </section>` : ""}
+  ${outcomeHtml ? `<section style="margin-bottom: 2rem;">
+    <h2 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 0.5rem;">Outcome</h2>
+    <p style="line-height: 1.8;">${outcomeHtml}</p>
+  </section>` : ""}
+  <p style="text-align: center; margin-top: 3rem;"><a href="/projects.html">← Back to Projects</a></p>
 </article>`;
 
-  const jsonLd = {
-    "@context": "https://schema.org",
-    "@type": "CreativeWork",
-    "name": p.title || p.name,
-    "description": p.summary || "",
-    "url": url,
-    ...(projImages.length ? { "image": projImages } : {})
-  };
+    const jsonLd = {
+      "@context": "https://schema.org",
+      "@type": "CreativeWork",
+      "name": p.title || p.name,
+      "description": p.summary || "",
+      "url": url,
+      ...(projImages.length ? { "image": projImages } : {})
+    };
 
-  const html = makePage({
-    title: `${(p.title || p.name)} | Projects | Akwasi Adu-Kyeremeh`,
-    description: p.summary || "Project by Akwasi Adu-Kyeremeh",
-    canonical: url,
-    ogImage: projImages[0] || undefined,
-    body,
-    jsonLd
-  });
+    const html = makePage({
+      title: `${(p.title || p.name)} | Projects | Akwasi Adu-Kyeremeh`,
+      description: p.summary || "Project by Akwasi Adu-Kyeremeh",
+      canonical: url,
+      ogImage: projImages[0] || undefined,
+      body,
+      jsonLd
+    });
 
-  const outDir = path.join(OUT, "projects", slug);
-  await fs.ensureDir(outDir);
-  await fs.writeFile(path.join(outDir, "index.html"), html);
-}
+    const outDir = path.join(OUT, "projects", slug);
+    await fs.ensureDir(outDir);
+    await fs.writeFile(path.join(outDir, "index.html"), html);
+  }
 
-
-  // 5) Pre-render blog index (top N newest)
+  // 5) Pre-render blog.html with all blog posts
   const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date) - new Date(a.date));
-  const blogList = sortedBlogs.map(b => {
+  const blogCards = sortedBlogs.map(b => {
     const slug = b.slug || toSlug(b.title);
     return `<article class="blog-post">
       <h2><a href="/blog/${slug}/">${esc(b.title)}</a></h2>
@@ -247,22 +369,20 @@ for (const p of projects) {
   if (fs.existsSync(blogIndexPath)) {
     const $ = cheerio.load(fs.readFileSync(blogIndexPath, "utf8"));
     const container = $("#blog-posts");
-    if (container.length) container.html(blogList);
+    if (container.length) container.html(blogCards);
     await fs.writeFile(blogIndexPath, $.html());
   }
 
-  // 6) Pre-render projects index and the homepage “Featured/Latest” areas
-  // Projects index
+  // 6) Pre-render projects.html with all projects
   const projectCards = projects.map(p => {
     const slug = p.slug || toSlug(p.title || p.name);
-    const industries = Array.isArray(p.industry) ? p.industry.join(", ") : (p.industry || "");
     return `<div class="project-card">
-      ${p.logo ? `<img src="${esc(p.logo)}" alt="${esc(p.name)} Logo" class="project-logo">` : ""}
-      <h2>${esc(p.title || p.name)}</h2>
-      ${p.duration ? `<p><strong>Duration:</strong> ${esc(p.duration)}</p>` : ""}
-      ${p.name ? `<p><strong>Project Name:</strong> ${esc(p.name)}</p>` : ""}
-      ${industries ? `<p><strong>Industries:</strong> ${esc(industries)}</p>` : ""}
-      <p>${esc(p.summary || "")}</p>
+      ${p.logo ? `<img src="${esc(toRootAbsolute(p.logo))}" alt="${esc(p.name)} Logo" class="project-logo">` : ""}
+      <h2>${esc(p.title)}</h2>
+      <p><strong>Duration:</strong> ${esc(p.duration)}</p>
+      <p><strong>Project Name:</strong> ${esc(p.name)}</p>
+      <p><strong>Industries:</strong> ${esc(Array.isArray(p.industry) ? p.industry.join(", ") : p.industry)}</p>
+      <p>${esc(p.summary)}</p>
       <a href="/projects/${slug}/" class="project-link">View Details</a>
     </div>`;
   }).join("");
@@ -329,7 +449,7 @@ const blogUrls = blogs.map(b => {
     loc: `${siteBase}/blog/${slug}/`,
     changefreq: "monthly",
     priority: "0.8",
-    lastmod: isoDate(b.lastUpdated || b.date || new Date()) // ← add lastUpdated
+    lastmod: isoDate(b.lastUpdated || b.date || new Date())
   };
 });
 
@@ -359,7 +479,7 @@ ${urls.map(u => `  <url>
 
 const blogSitemapXml = urlset(blogUrls);
 const projectsSitemapXml = urlset(projectUrls);
-const rootUrls = staticUrls; // Optional: include static pages in a root urlset, or index only
+const rootUrls = staticUrls;
 
 // Sitemap index referencing children
 const sitemapIndexXml = `<?xml version="1.0" encoding="UTF-8"?>

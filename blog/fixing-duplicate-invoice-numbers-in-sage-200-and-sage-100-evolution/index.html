@@ -16,6 +16,8 @@
 <meta name="twitter:description" content="A persistent bug in Sage Evolution since version 10 allows duplicate invoice numbers even with manual numbering enabled. Here's a workaround using an SQL trigger.">
 <meta name="twitter:image" content="https://akwasi.dev/portfolio/images/blog/trigger.png">
 <link rel="stylesheet" href="/portfolio/css/style.css">
+<link rel="icon" type="image/png" href="/portfolio/images/favicon.png">
+  <meta name="theme-color" content="#0b1221">
 
 <script type="application/ld+json">
 {
@@ -50,14 +52,14 @@
 </header>
 <main>
 
-<article class="blog-details">
-  <h1>Fixing Duplicate Invoice Numbers in Sage 200 and Sage 100 Evolution</h1>
-  <p><em>04/01/2025</em></p>
-  <div>
-            <p>If you’ve worked with Sage 200 Evolution or Sage 100 Evolution since version 10, you may have encountered a rather annoying bug: <strong>duplicate invoice numbering</strong>. Even when you’ve set your database to use <strong>manual invoice numbering</strong> and checked the option to disallow duplicates, the system can still sneakily allow duplicate invoice numbers.</p>
+<article class="blog-details" style="max-width: 900px; margin: 0 auto; padding: 2rem;">
+  <h1 style="text-align: center; margin-bottom: 0.5rem;">Fixing Duplicate Invoice Numbers in Sage 200 and Sage 100 Evolution</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 2rem;"><em>04/01/2025</em></p>
+  <div style="text-align: left; line-height: 1.8;">
+    <html><head></head><body><p>If you’ve worked with Sage 200 Evolution or Sage 100 Evolution since version 10, you may have encountered a rather annoying bug: <strong>duplicate invoice numbering</strong>. Even when you’ve set your database to use <strong>manual invoice numbering</strong> and checked the option to disallow duplicates, the system can still sneakily allow duplicate invoice numbers.</p>
     
             <p>Here's a screenshot of the configuration option where the bug seems to take effect:  
-            <img src="portfolio/images/blog/trigger.png" alt="Configuration option for disallowing duplicate invoice numbers"></p>
+            <img src="/portfolio/images/blog/trigger.png" alt="Configuration option for disallowing duplicate invoice numbers"></p>
     
             <p>Frustrating, right? Even with subsequent updates, this issue persists. Over time, I realized I couldn’t keep waiting for Sage to fix it—I had to take matters into my own hands for the sake of my clients.</p>
     
@@ -75,8 +77,7 @@
             </ol>
     
             <h3>The SQL Code</h3>
-            <pre>
-    <code>
+            <pre>    <code>
     -- =============================================
     -- Author:      Akwasi Adu-Kyeremeh
     -- Create date: 27 August 2024
@@ -100,7 +101,7 @@
             AND n.DocType = 0 -- Ensure the comparison is only with DocType 0 rows
             AND n.AutoIndex != i.AutoIndex;  -- Replace with your primary key column to exclude the current row
     
-        IF @ConflictCount > 0
+        IF @ConflictCount &gt; 0
         BEGIN
             RAISERROR ('Duplicate Invoice Number detected. Please check!', 16, 1);
             ROLLBACK TRANSACTION;
@@ -117,8 +118,9 @@
             <p>This workaround isn’t perfect—it’s more of a patch than a permanent fix. Ideally, Sage should address this bug in future releases. But until they do, this solution has proven effective for my clients, and it might help you too!</p>
     
             <p>If you have any questions or want to share how you’ve tackled similar bugs, feel free to drop a comment below.</p>
-        </div>
-  <p><a href="/blog.html">← Back to Blog</a></p>
+        </body></html>
+  </div>
+  <p style="text-align: center; margin-top: 3rem;"><a href="/blog.html">← Back to Blog</a></p>
 </article>
 </main>
 <footer><p>&copy; 2025 Akwasi Adu-Kyeremeh. All rights reserved.</p></footer>

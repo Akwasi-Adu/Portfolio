@@ -16,6 +16,8 @@
 <meta name="twitter:description" content="Unapplying customer invoices tied to payments in bulk isn't directly supported in the BC UI — but here’s how I tackled it with AL code, a report, and a config package workaround.">
 <meta name="twitter:image" content="https://akwasi.dev/portfolio/images/og-image.jpg">
 <link rel="stylesheet" href="/portfolio/css/style.css">
+<link rel="icon" type="image/png" href="/portfolio/images/favicon.png">
+  <meta name="theme-color" content="#0b1221">
 
 <script type="application/ld+json">
 {
@@ -47,11 +49,11 @@
 </header>
 <main>
 
-<article class="blog-details">
-  <h1>Bulk Unapplication of Customer Invoices in Business Central</h1>
-  <p><em>16/04/2025</em></p>
-  <div>
-      <p>A friend on a Business Central-focused WhatsApp group I belong to asked this question:</p>
+<article class="blog-details" style="max-width: 900px; margin: 0 auto; padding: 2rem;">
+  <h1 style="text-align: center; margin-bottom: 0.5rem;">Bulk Unapplication of Customer Invoices in Business Central</h1>
+  <p style="text-align: center; color: #666; margin-bottom: 2rem;"><em>16/04/2025</em></p>
+  <div style="text-align: left; line-height: 1.8;">
+    <html><head></head><body><p>A friend on a Business Central-focused WhatsApp group I belong to asked this question:</p>
       
       <p><em>"Hi guys. Hoping y'all are doing great. Just a question... Is there anyone here who knows how to do bulk unapplication of customer invoices that are already tied to customer payments?"</em></p>
       
@@ -61,9 +63,9 @@
       <h3>Option 1: Manual Unapplication (Standard Way)</h3>
       <p>This is straightforward, but tedious if you’re dealing with more than a handful of records:</p>
       <ol>
-      <li>Go to <strong>Customer > Ledger Entries</strong>.</li>
+      <li>Go to <strong>Customer &gt; Ledger Entries</strong>.</li>
       <li>Find the payment or invoice you want to unapply.</li>
-      <li>Click <strong>Process > Unapply Entries</strong>.</li>
+      <li>Click <strong>Process &gt; Unapply Entries</strong>.</li>
       <li>Confirm unapplication.</li>
       </ol>
       <p>It works, but it’s slow for high volumes.</p>
@@ -209,8 +211,9 @@
       <p>If you only have a few entries, stick with the standard UI. For power users or mass cleanup, the AL extension route is safest. The config package trick should only be used if you know what you're doing — and never on production data without testing.</p>
       
       <p>Hope this helps someone else facing the same challenge! Cheers!</p>
-        </div>
-  <p><a href="/blog.html">← Back to Blog</a></p>
+        </body></html>
+  </div>
+  <p style="text-align: center; margin-top: 3rem;"><a href="/blog.html">← Back to Blog</a></p>
 </article>
 </main>
 <footer><p>&copy; 2025 Akwasi Adu-Kyeremeh. All rights reserved.</p></footer>

@@ -683,3 +683,4 @@ const projects = [
         screenshot: "portfolio/images/pwc-logo.png"
     }
 ];
+window.projects = projects;
