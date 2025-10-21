@@ -1,45 +1,91 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Personal website of an ERP expert and Full Stack Developer based in Accra, Ghana.">
-    <meta name="keywords" content="ERP, Full Stack Developer, ASP.NET, React, MSSQL, portfolio">
-    <meta name="author" content="Akwasi Adu-Kyeremeh">
-    <meta name="robots" content="index, follow">
-    <link rel="icon" type="image/png" href="portfolio/images/favicon.png">
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- Open Graph Meta Tags -->
-    <meta property="og:title" content="Akwasi Adu-Kyeremeh | Portfolio">
-    <meta property="og:description" content="Explore the portfolio of Akwasi Adu-Kyeremeh — full-stack developer & ERP consultant based in Accra, Ghana.">
-    <meta property="og:image" content="https://akwasi.dev/portfolio/images/og-image.jpg">
-    <meta property="og:url" content="https://akwasi.dev/index.html">
-    <meta property="og:type" content="website">
+  <!-- Primary SEO -->
+  <title>Akwasi Adu-Kyeremeh — Business Technology Specialist, ERP Consultant &amp; Full-Stack Developer (Accra, Ghana)</title>
+  <meta name="description" content="Business Technology Specialist &amp; ERP Consultant in Accra, Ghana. I design ERP systems and full-stack solutions that help organizations work smarter and scale with confidence.">
+  <link rel="canonical" href="https://akwasi.dev/">
 
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Akwasi Adu-Kyeremeh | Portfolio">
-    <meta name="twitter:description" content="Explore the portfolio of Akwasi Adu-Kyeremeh — full-stack developer & business technology expert.">
-    <meta name="twitter:image" content="https://akwasi.dev/portfolio/images/og-image.jpg">
-    
-    <title>Akwasi Adu-Kyeremeh | ERP Expert & Full Stack Developer</title>
-    <link rel="stylesheet" href="portfolio/css/style.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-<script>
-    (function() {
-        emailjs.init("HNWqejSJ6lO8tpjjf"); // Replace "your-public-key" with your actual Public Key
-    })();
-</script>
-<!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-EPKW2QTNQL"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
+  <!-- Favicons -->
+  <link rel="icon" type="image/png" href="https://akwasi.dev/portfolio/images/favicon.png">
+  <meta name="theme-color" content="#0b1221">
 
-  gtag('config', 'G-EPKW2QTNQL');
-</script>
-<!-- <meta name="google-site-verification" content="xRlxiv12zH9dAVvYwXLwADPVGo3B6kwTKzzb1ZpDzD4" /> -->
+  <!-- Open Graph -->
+  <meta property="og:title" content="Akwasi Adu-Kyeremeh — Business Technology Specialist, ERP Consultant &amp; Full-Stack Developer">
+  <meta property="og:description" content="I design and implement ERP systems and custom web apps that automate processes, enhance visibility, and drive measurable results.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://akwasi.dev/">
+  <meta property="og:site_name" content="akwasi.dev">
+  <meta property="og:image" content="https://akwasi.dev/portfolio/images/og-image.jpg">
+  <meta property="og:image:alt" content="Akwasi Adu-Kyeremeh — ERP &amp; Full-Stack Portfolio">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_GB">
+
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Akwasi Adu-Kyeremeh — Business Technology Specialist, ERP Consultant &amp; Full-Stack Developer">
+  <meta name="twitter:description" content="ERP &amp; full-stack solutions that simplify complexity and scale with growth.">
+  <meta name="twitter:image" content="https://akwasi.dev/portfolio/images/og-image.jpg">
+
+  <!-- Indexing -->
+  <meta name="robots" content="index, follow, max-image-preview:large">
+
+  <!-- (Optional) remove keywords meta; it’s obsolete -->
+  <!-- <meta name="keywords" content=""> -->
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="portfolio/css/style.css">
+
+  <!-- EmailJS -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer=""></script>
+  <script defer="">
+    window.addEventListener('DOMContentLoaded', function () {
+      emailjs.init("HNWqejSJ6lO8tpjjf"); // consider moving to env if possible
+    });
+  </script>
+
+  <!-- Google Analytics -->
+  <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-EPKW2QTNQL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){ dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-EPKW2QTNQL');
+  </script>
+
+  <!-- JSON-LD: Person + WebSite -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "url": "https://akwasi.dev/",
+        "name": "akwasi.dev",
+        "description": "Business Technology Specialist & ERP Consultant in Accra, Ghana.",
+        "publisher": { "@id": "https://akwasi.dev/#person" }
+      },
+      {
+        "@type": "Person",
+        "@id": "https://akwasi.dev/#person",
+        "name": "Akwasi Adu-Kyeremeh",
+        "url": "https://akwasi.dev/",
+        "jobTitle": "Business Technology Specialist, ERP Consultant & Full-Stack Developer",
+        "image": "https://akwasi.dev/portfolio/images/Akwasi_Adu-Kyeremeh.jpg",
+        "worksFor": { "@type": "Organization", "name": "Rhema Systems" },
+        "address": { "@type": "PostalAddress", "addressLocality": "Accra", "addressCountry": "GH" },
+        "sameAs": [
+          "https://www.linkedin.com/in/akwasi/",
+          "https://github.com/Akwasi-Adu"
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
+
 <body>
     <!-- Header Section -->
     <header>
@@ -60,9 +106,19 @@
         <section>
             <div class="home-intro">
                 <!-- <img src="portfolio/images/Me3.jpg" alt="Picture of Akwasi Adu-Kyeremeh" class="profile-photo"> -->
+                <img src="portfolio/images/Akwasi_Adu-Kyeremeh.jpg" alt="Portrait of Akwasi Adu-Kyeremeh" class="profile-photo" loading="eager">
                 <div class="intro-text fade-in">
-                    <h1>Crafting Solutions:<br /> My portfolio in Technology and Innovation</h1>
-                    <p>Hi, I'm Akwasi. I specialize in designing and implementing enterprise resource planning solutions and developing custom full-stack applications that drive business success. Based in Accra, Ghana, I combine technical expertise with a passion for problem-solving to deliver tailored, impactful results. Let’s collaborate to turn your challenges into innovative solutions!</p>
+                    <h1>Crafting Solutions:<br> My portfolio in Technology and Innovation</h1>
+                    <!-- <p>Hi, I'm Akwasi. I specialize in designing and implementing enterprise resource planning solutions and developing custom full-stack applications that drive business success. Based in Accra, Ghana, I combine technical expertise with a passion for problem-solving to deliver tailored, impactful results. Let’s collaborate to turn your challenges into innovative solutions!</p>
+                 -->
+                    <p>
+  Hi, I’m <strong>Akwasi Adu-Kyeremeh</strong> — a <strong>Business Technology Specialist, ERP Consultant, and Full-Stack Developer</strong> based in <strong>Accra, Ghana</strong>. I design and implement <strong>enterprise resource planning (ERP) systems</strong> and <strong>custom web applications</strong> that automate processes, enhance visibility, and drive measurable results.
+  <br><br>
+  This portfolio showcases selected client work, case studies, and technical insights — from <strong>ERP solution architecture</strong> to <strong>ASP.NET and full-stack development</strong>. Explore the projects, read recent articles, and see how I turn complex ideas into intelligent systems.
+</p>
+
+
+
                 </div>
             </div>
         </section>
@@ -96,13 +152,13 @@
         <p>Solution Architecture, Client-facing Consulting, Software Project Management, ERP Implementation (Sage, SAP, Microsoft Dynamics)</p>
       </div>
       <div class="competency">
-        <h3>Languages & Markup</h3>
+        <h3>Languages &amp; Markup</h3>
         <p>C#, Java, Kotlin, JavaScript, TypeScript, HTML5, CSS3, SQL</p>
       </div>
   
       <div class="competency">
-        <h3>Frameworks & Libraries</h3>
-        <p>.NET Framework, .NET Core, ASP.NET Web Forms, ASP.NET MVC & Core MVC, Entity Framework / EF Core, Blazor, SignalR, LINQ, DevExpress</p>
+        <h3>Frameworks &amp; Libraries</h3>
+        <p>.NET Framework, .NET Core, ASP.NET Web Forms, ASP.NET MVC &amp; Core MVC, Entity Framework / EF Core, Blazor, SignalR, LINQ, DevExpress</p>
       </div>
   
       <div class="competency">
@@ -111,7 +167,7 @@
       </div>
   
       <div class="competency">
-        <h3>API & Integration</h3>
+        <h3>API &amp; Integration</h3>
         <p>RESTful APIs, SOAP/XML Web Services, GraphQL, Swagger/OpenAPI, Postman, Fiddler</p>
       </div>
   
@@ -122,41 +178,41 @@
   
       <div class="competency">
         <h3>Databases</h3>
-        <p>Microsoft SQL Server, Pervasive SQL, Database Design & Normalization, Stored Procedures, Views, Triggers, Indexing, Performance Tuning</p>
+        <p>Microsoft SQL Server, Pervasive SQL, Database Design &amp; Normalization, Stored Procedures, Views, Triggers, Indexing, Performance Tuning</p>
       </div>
   
       <div class="competency">
-        <h3>DevOps & CI/CD</h3>
+        <h3>DevOps &amp; CI/CD</h3>
         <p>Git (GitHub, GitLab, Bitbucket), Azure DevOps, Basic Pipeline Configuration, Deployment Scripting</p>
       </div>
   
       <div class="competency">
-        <h3>Messaging & Communication</h3>
+        <h3>Messaging &amp; Communication</h3>
         <p>RabbitMQ, Azure Service Bus, MSMQ</p>
       </div>
   
       <div class="competency">
-        <h3>Architecture & Patterns</h3>
+        <h3>Architecture &amp; Patterns</h3>
         <p>Microservices Architecture, Monolithic Applications, Clean Architecture / Onion Architecture, Layered Architecture</p>
       </div>
   
       <div class="competency">
-        <h3>Hosting & Containers</h3>
-        <p>IIS, Windows Server, Docker, Kubernetes, Azure App Services, DNS & SSL Configuration</p>
+        <h3>Hosting &amp; Containers</h3>
+        <p>IIS, Windows Server, Docker, Kubernetes, Azure App Services, DNS &amp; SSL Configuration</p>
       </div>
   
       <div class="competency">
-        <h3>Testing & Debugging</h3>
+        <h3>Testing &amp; Debugging</h3>
         <p>Unit Testing (MSTest, xUnit, NUnit), Integration Testing, Debugging Tools (Visual Studio, Fiddler), Manual Testing, Logging, SQL Tracing</p>
       </div>
   
       <div class="competency">
-        <h3>Security & Authentication</h3>
-        <p>Authentication (Forms, OAuth2, JWT), Authorization (Roles, Policies), Session Management, Data Protection & Encryption, CORS Configuration, SSL/TLS (HTTPS), OWASP Secure Coding Practices, Secure API Design</p>
+        <h3>Security &amp; Authentication</h3>
+        <p>Authentication (Forms, OAuth2, JWT), Authorization (Roles, Policies), Session Management, Data Protection &amp; Encryption, CORS Configuration, SSL/TLS (HTTPS), OWASP Secure Coding Practices, Secure API Design</p>
       </div>
   
       <div class="competency">
-        <h3>Project & Team Tools / Workflow</h3>
+        <h3>Project &amp; Team Tools / Workflow</h3>
         <p>Agile/Scrum Methodology, Jira, Trello, Azure Boards, Confluence, Slack, Microsoft Teams</p>
       </div>
   
@@ -186,7 +242,7 @@
             <span class="tag">Lister Hospital</span>
             <span class="tag">Misyl Energy</span>
             <span class="tag">IBM Petroleum</span>
-            <span class="tag">Harlequin Oil & Gas</span>
+            <span class="tag">Harlequin Oil &amp; Gas</span>
             <span class="tag">Nick Petroleum</span>
             <span class="tag">Energy Commission of Ghana</span>
             <span class="tag">Ecowas Brown Card Insurance Scheme Gnb</span>
@@ -203,7 +259,7 @@
             <span class="tag">Asempa Publishers</span>
             <span class="tag">Amponsah-Efah Pharmaceuticals</span>
             <span class="tag">African Woman Development Fund</span>
-            <span class="tag"> Petroleum Warehousing & Supplies Ltd (BDC)</span>
+            <span class="tag"> Petroleum Warehousing &amp; Supplies Ltd (BDC)</span>
             <span class="tag">Busara Africa</span>
             <span class="tag">Economic Distribution Company Ghana Limited (EcoDi)</span>
             <span class="tag">Forever Living Products (Ghana) Limited</span>
@@ -236,7 +292,7 @@
             <span class="tag">Airside Hotel</span>
             <span class="tag">Aqua Vitens Rand Ltd</span>
             <span class="tag">Automotive Springs Gh Limited</span>
-            <span class="tag">Business & Finacial Times</span>
+            <span class="tag">Business &amp; Finacial Times</span>
             <span class="tag">Christian Service University College</span>
             <span class="tag">Continental Christian Traders Ltd (CCT)</span>
             <span class="tag">Emos Consultancy Limited</span>
@@ -252,20 +308,20 @@
             <h2>Featured Projects</h2>
             <div class="projects-grid">
                 <div class="project fade-in">
-                    <img src="portfolio/images/vodafone-logo.jpg" alt="Vodafone Logo" class="project-logo">
+                    <img src="portfolio/images/vodafone-logo.jpg" alt="Vodafone Logo" class="project-logo" loading="lazy">
                     <h3>Retail Management System Specialist | Vodafone Ghana</h3>
                     <p>Recruited to modernize Ghana Telecom, a former state-owned fixed-line and mobile operator, following its $900 million acquisition by Vodafone. Played a key role in implementing Microsoft Dynamics RMS to replace manual retail processes, streamline operations, and establish a real-time nationwide retail management system.</p>
                     <a href="project-details.html?id=30" class="project-link">View Details</a>
                 </div>
                 <div class="project fade-in">
-                    <img src="portfolio/images/pwc-logo.png" alt="PwC Logo" class="project-logo">
+                    <img src="portfolio/images/pwc-logo.png" alt="PwC Logo" class="project-logo" loading="lazy">
                     <h3>Technical Support Specialist | Accounting Software Solutions for PwC Ghana and Sierra Leone</h3>
                     <p>Provided ongoing technical support, training, and replication of accounting software solutions for PwC Ghana and Sierra Leone, enabling them to efficiently prepare accounts for their clientele.</p>
                     <a href="project-details.html?id=31" class="project-link">View Details</a>
                 </div>
                 <div class="project fade-in">
-                    <img src="portfolio/images/mesti-logo.jpeg" alt="MESTI Logo" class="project-logo">
-                    <h3>Full-Stack Developer | Ministry of Environment, Science, Technology & Innovation (MESTI), Ghana</h3>
+                    <img src="portfolio/images/mesti-logo.jpeg" alt="MESTI Logo" class="project-logo" loading="lazy">
+                    <h3>Full-Stack Developer | Ministry of Environment, Science, Technology &amp; Innovation (MESTI), Ghana</h3>
                     <p>Successfully developed a comprehensive ASP.NET web application to support the Ministry's data management needs for Science, Technology, and Innovation (STI) initiatives. Delivered the project within three months, rescuing a stalled development effort by previous contractors.</p>
                     <a href="project-details.html?id=1" class="project-link">View Details</a>
                 </div>
@@ -275,9 +331,19 @@
         <!-- Blog Teaser Section -->
         <section id="blog-teaser">
             <h2>Latest Blog Posts</h2>
-            <div id="latest-blogs" class="blog-grid fade-in">
-                <!-- Latest blogs dynamically rendered here -->
-            </div>
+            <div id="latest-blogs" class="blog-grid fade-in"><div class="blog-post">
+        <h3><a href="/blog/fixing-conversion-failed-when-converting-date-andor-time-from-character-string-in-sage-intelligence-reporting/">Fixing 'Conversion failed when converting date and/or time from character string' in Sage Intelligence Reporting</a></h3>
+        <p><em>05/09/2025</em></p>
+        <p>If you run Sage Intelligence reports and hit this error, especially in September, it may be caused by Windows regional month abbreviations. Here’s why it happens and how to fix it.</p>
+      </div><div class="blog-post">
+        <h3><a href="/blog/ai-in-erp-a-transformation-thats-reshaping-the-workforce/">AI in ERP: A Transformation That's Reshaping the Workforce</a></h3>
+        <p><em>22/05/2025</em></p>
+        <p>When Microsoft embedded Copilot into Dynamics 365 or SAP introduced AI-driven cash application matching in S/4HANA, it wasn't just about new features—it was a signal that the future of enterprise technology is here...</p>
+      </div><div class="blog-post">
+        <h3><a href="/blog/bulk-unapplication-of-customer-invoices-in-business-central/">Bulk Unapplication of Customer Invoices in Business Central</a></h3>
+        <p><em>16/04/2025</em></p>
+        <p>Unapplying customer invoices tied to payments in bulk isn't directly supported in the BC UI — but here’s how I tackled it with AL code, a report, and a config package workaround.</p>
+      </div></div>
             <a href="blog.html" class="view-more">View All Posts</a>
         </section>
         
@@ -334,11 +400,11 @@
         <form id="contact-form" onsubmit="sendEmail(event)">
             <div class="form-group">
                 <label for="name">Name</label>
-                <input type="text" id="name" name="name" placeholder="Your Name" required>
+                <input type="text" id="name" name="name" placeholder="Your Name" required="">
             </div>
             <div class="form-group">
                 <label for="email">Email</label>
-                <input type="email" id="email" name="email" placeholder="Your Email" required>
+                <input type="email" id="email" name="email" placeholder="Your Email" required="">
             </div>
             <div class="form-group">
                 <label for="phone">Phone (Optional)</label>
@@ -346,7 +412,7 @@
             </div>
             <div class="form-group">
                 <label for="message">Message</label>
-                <textarea id="message" name="message" placeholder="Your Message" rows="5" required></textarea>
+                <textarea id="message" name="message" placeholder="Your Message" rows="5" required=""></textarea>
             </div>
             <!-- Spinner and Success Message -->
             <div id="form-status">
@@ -360,7 +426,7 @@
         <div class="contact-links">
             <a href="mailto:akwasi@rhema-systems.com.gh" onclick="gtag('event', 'click', {
                 'event_category': 'Outbound Link',
-                'event_label': 'GitHub Profile'
+                'event_label': 'Email Profile'
             });">Email Me</a> |
             <a href="https://www.linkedin.com/in/akwasi/" target="_blank" onclick="gtag('event', 'click', {
                 'event_category': 'Outbound Link',
@@ -368,7 +434,7 @@
             });">LinkedIn</a> |
             <a href="https://github.com/Akwasi-Adu" target="_blank" onclick="gtag('event', 'click', {
                 'event_category': 'Outbound Link',
-                'event_label': 'GitHub Profile'
+                'event_label': 'LInkedIn Profile'
             });">GitHub</a>
         </div>
     </section>
@@ -379,7 +445,7 @@
 
     <!-- Footer -->
     <footer>
-        <p>&copy; 2024 Akwasi Adu-Kyeremeh. All rights reserved.</p>
+        <p>© 2024 Akwasi Adu-Kyeremeh. All rights reserved.</p>
         <!-- <div class="social-icons">
             <a href="https://github.com/yourprofile" target="_blank">
                 <img src="images/github-icon.png" alt="GitHub">
@@ -399,5 +465,6 @@
     <script src="portfolio/js/script.js"></script>
 
 
-</body>
-</html>
+
+
+</body></html>
