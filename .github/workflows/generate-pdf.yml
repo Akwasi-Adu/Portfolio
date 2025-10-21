@@ -1,46 +1,53 @@
 name: Build site (prerender + CV)
-
 on:
   push:
     branches: [ main ]
-
+  workflow_dispatch:  # allow manual runs from the Actions tab
 permissions:
   contents: write
-
+concurrency:
+  group: build-site
+  cancel-in-progress: true
 jobs:
   build:
+    # Don't run if the latest commit msg contains [skip ci] (prevents loops)
+    if: ${{ !contains(github.event.head_commit.message, '[skip ci]') }}
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
         with:
           persist-credentials: true
-
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: npm
 
+      - name: Cache Puppeteer
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/puppeteer
+          key: ${{ runner.os }}-puppeteer-${{ hashFiles('package-lock.json') }}
       - name: Install deps
         run: npm ci || npm i
-
-      # Pre-render static pages + sitemaps + robots
+      # --- Pre-render static pages + JSON-LD + sitemaps + robots ---
       - name: Pre-render site
         run: npm run build
-        # package.json should contain: "build": "node prerender.js"
-
-      # Generate CV (Puppeteer)
-      - name: Install Puppeteer (if not listed)
-        run: npm i puppeteer
+        # package.json must contain: "build": "node prerender.js"
+      # --- Generate CV PDF with Puppeteer ---
+      - name: Ensure Puppeteer is installed (if not in package.json)
+        run: |
+          if ! npm ls puppeteer --depth=0 >/dev/null 2>&1; then
+            npm i puppeteer
+          fi
       - name: Generate Akwasi_CV.pdf
         run: node generate-cv.js
-
-      - name: Debug files
+      - name: Debug (optional)
         run: |
           ls -la
           git status
-
+      # Single commit for all generated outputs
       - name: Commit & push generated files
         run: |
           git config user.name "github-actions[bot]"
