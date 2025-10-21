@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Sage Evolution Job Costing: Error Loading Template - &quot;QryARFind: Field 'iCurrencyID' not found&quot; | Blog | Akwasi Adu-Kyeremeh</title>
+<meta name="description" content="This error pops up when a particular user in Sage Evolution attempts loading a template in the Job Costing module and persists until Evolution is restarted...">
+<link rel="canonical" href="https://akwasi.dev/blog/sage-evolution-job-costing-error-loading-template-qryarfind-field-icurrencyid-not-found/">
+<meta property="og:title" content="Sage Evolution Job Costing: Error Loading Template - &quot;QryARFind: Field 'iCurrencyID' not found&quot; | Blog | Akwasi Adu-Kyeremeh">
+<meta property="og:description" content="This error pops up when a particular user in Sage Evolution attempts loading a template in the Job Costing module and persists until Evolution is restarted...">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://akwasi.dev/blog/sage-evolution-job-costing-error-loading-template-qryarfind-field-icurrencyid-not-found/">
+<meta property="og:image" content="https://akwasi.dev/portfolio/images/blog/evojc1.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Sage Evolution Job Costing: Error Loading Template - &quot;QryARFind: Field 'iCurrencyID' not found&quot; | Blog | Akwasi Adu-Kyeremeh">
+<meta name="twitter:description" content="This error pops up when a particular user in Sage Evolution attempts loading a template in the Job Costing module and persists until Evolution is restarted...">
+<meta name="twitter:image" content="https://akwasi.dev/portfolio/images/blog/evojc1.png">
+<link rel="stylesheet" href="/portfolio/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Sage Evolution Job Costing: Error Loading Template - \"QryARFind: Field 'iCurrencyID' not found\"",
+  "datePublished": "2014-09-19",
+  "dateModified": "2014-09-19",
+  "description": "This error pops up when a particular user in Sage Evolution attempts loading a template in the Job Costing module and persists until Evolution is restarted...",
+  "author": {
+    "@type": "Person",
+    "name": "Akwasi Adu-Kyeremeh"
+  },
+  "url": "https://akwasi.dev/blog/sage-evolution-job-costing-error-loading-template-qryarfind-field-icurrencyid-not-found/",
+  "image": [
+    "https://akwasi.dev/portfolio/images/blog/evojc1.png",
+    "https://akwasi.dev/portfolio/images/blog/evojc2.png",
+    "https://akwasi.dev/portfolio/images/blog/evojc3.png"
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/#home">Home</a></li>
+      <li><a href="/projects.html">Projects</a></li>
+      <li><a href="/blog.html">Blog</a></li>
+      <li><a href="/cv.html">CV</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+
+<article class="blog-details">
+  <h1>Sage Evolution Job Costing: Error Loading Template - &quot;QryARFind: Field 'iCurrencyID' not found&quot;</h1>
+  <p><em>19/09/2014</em></p>
+  <div>
+            <p><img src="portfolio/images/blog/evojc1.png" alt="screenshot" /></p>
+            <p>
+            This error pops up when a particular user in Sage Evolution attempts loading a template in the Job Costing module and persists until Evolution is restarted.
+            </p>
+            <p>
+If other users can load templates without getting the error on the same workstation, a solution would be to delete the problem user from the registry.
+            </P>
+            <p style="color:red">
+Nb: The windows registry contains sensitive info needed for the proper functioning of your computer. You may take a backup of the registry before making any changes or get someone who is more technically apt, to help you with the steps below:
+            </p>
+            <p>
+You do this by following the steps below:
+</P>
+            <ol>
+                <li> On the workstation, Start "Run" and type "Regedit"</li>
+                <p><img src="portfolio/images/blog/evojc2.png" alt="screenshot"></P>
+                <li>From the Registry Editor, Open the folder HKey Current User | User | Software | Softline | Evolution | Agents</li>
+                <li>Select and delete the folder for the problem user (Rosemary, in my case)</li>
+                <p><img src="portfolio/images/blog/evojc3.png" alt="screenshot" /></p>
+                <li>Once this is done, close the Registry Editor and re-login with the user's credentials. The problem should be resolved.</li>
+                <li>Note that this resets any custom settings such as printer layouts and custom grid views for that particular and must be reset where applicable.</li>
+            </Ol>
+        </div>
+  <p><a href="/blog.html">← Back to Blog</a></p>
+</article>
+</main>
+<footer><p>&copy; 2025 Akwasi Adu-Kyeremeh. All rights reserved.</p></footer>
+</body>
+</html>

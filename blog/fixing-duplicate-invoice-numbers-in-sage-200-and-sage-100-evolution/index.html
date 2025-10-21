@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Fixing Duplicate Invoice Numbers in Sage 200 and Sage 100 Evolution | Blog | Akwasi Adu-Kyeremeh</title>
+<meta name="description" content="A persistent bug in Sage Evolution since version 10 allows duplicate invoice numbers even with manual numbering enabled. Here's a workaround using an SQL trigger.">
+<link rel="canonical" href="https://akwasi.dev/blog/fixing-duplicate-invoice-numbers-in-sage-200-and-sage-100-evolution/">
+<meta property="og:title" content="Fixing Duplicate Invoice Numbers in Sage 200 and Sage 100 Evolution | Blog | Akwasi Adu-Kyeremeh">
+<meta property="og:description" content="A persistent bug in Sage Evolution since version 10 allows duplicate invoice numbers even with manual numbering enabled. Here's a workaround using an SQL trigger.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://akwasi.dev/blog/fixing-duplicate-invoice-numbers-in-sage-200-and-sage-100-evolution/">
+<meta property="og:image" content="https://akwasi.dev/portfolio/images/blog/trigger.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Fixing Duplicate Invoice Numbers in Sage 200 and Sage 100 Evolution | Blog | Akwasi Adu-Kyeremeh">
+<meta name="twitter:description" content="A persistent bug in Sage Evolution since version 10 allows duplicate invoice numbers even with manual numbering enabled. Here's a workaround using an SQL trigger.">
+<meta name="twitter:image" content="https://akwasi.dev/portfolio/images/blog/trigger.png">
+<link rel="stylesheet" href="/portfolio/css/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "Fixing Duplicate Invoice Numbers in Sage 200 and Sage 100 Evolution",
+  "datePublished": "2025-01-04",
+  "dateModified": "2025-01-04",
+  "description": "A persistent bug in Sage Evolution since version 10 allows duplicate invoice numbers even with manual numbering enabled. Here's a workaround using an SQL trigger.",
+  "author": {
+    "@type": "Person",
+    "name": "Akwasi Adu-Kyeremeh"
+  },
+  "url": "https://akwasi.dev/blog/fixing-duplicate-invoice-numbers-in-sage-200-and-sage-100-evolution/",
+  "image": [
+    "https://akwasi.dev/portfolio/images/blog/trigger.png"
+  ]
+}
+</script>
+</head>
+<body>
+<header>
+  <nav>
+    <ul>
+      <li><a href="/#home">Home</a></li>
+      <li><a href="/projects.html">Projects</a></li>
+      <li><a href="/blog.html">Blog</a></li>
+      <li><a href="/cv.html">CV</a></li>
+      <li><a href="/#contact">Contact</a></li>
+    </ul>
+  </nav>
+</header>
+<main>
+
+<article class="blog-details">
+  <h1>Fixing Duplicate Invoice Numbers in Sage 200 and Sage 100 Evolution</h1>
+  <p><em>04/01/2025</em></p>
+  <div>
+            <p>If you’ve worked with Sage 200 Evolution or Sage 100 Evolution since version 10, you may have encountered a rather annoying bug: <strong>duplicate invoice numbering</strong>. Even when you’ve set your database to use <strong>manual invoice numbering</strong> and checked the option to disallow duplicates, the system can still sneakily allow duplicate invoice numbers.</p>
+    
+            <p>Here's a screenshot of the configuration option where the bug seems to take effect:  
+            <img src="portfolio/images/blog/trigger.png" alt="Configuration option for disallowing duplicate invoice numbers"></p>
+    
+            <p>Frustrating, right? Even with subsequent updates, this issue persists. Over time, I realized I couldn’t keep waiting for Sage to fix it—I had to take matters into my own hands for the sake of my clients.</p>
+    
+            <p>So, I came up with a solution: a <strong>SQL trigger</strong> that ensures no duplicate invoice numbers are allowed when saving or posting an invoice. Let me walk you through the process.</p>
+    
+            <h3>How the Fix Works</h3>
+            <p>The bug exists because the system doesn’t effectively validate invoice numbers when saving a document to the database. To counter this, I created a trigger on the <code>INVNUM</code> table (this is where Sage Evolution stores inventory-related documents, such as invoices).</p>
+    
+            <p>Here’s what the trigger does in simple terms:</p>
+            <ol>
+                <li><strong>Focus on Incomplete Documents:</strong> The trigger works specifically for documents with <code>DocType = 0</code>. This indicates an unsaved or "fresh" document.</li>
+                <li><strong>Check for Duplicates:</strong> When a new document is saved or updated, the trigger compares the <code>InvNumber</code> of the incoming row with existing records in the table.</li>
+                <li><strong>Exclude Current Row:</strong> To ensure the system doesn’t falsely flag the row being processed, it excludes the current row from the check using the primary key (<code>AutoIndex</code> in this case).</li>
+                <li><strong>Raise an Error if a Duplicate Exists:</strong> If duplicates are found, the trigger raises an error, prevents the document from saving, and rolls back the transaction.</li>
+            </ol>
+    
+            <h3>The SQL Code</h3>
+            <pre>
+    <code>
+    -- =============================================
+    -- Author:      Akwasi Adu-Kyeremeh
+    -- Create date: 27 August 2024
+    -- Modified date: 28 August 2024
+    -- Description: Check for existing Invoice Numbers to avoid duplicates when processing invoice where manual invoice numbering is enabled
+    -- =============================================
+    
+    CREATE TRIGGER trg_CheckInvNumber
+    ON INVNUM
+    AFTER INSERT, UPDATE
+    AS
+    BEGIN
+        DECLARE @ConflictCount INT;
+    
+        -- Check for duplicates only when DocType is 0, and exclude the inserted/updated rows themselves
+        SELECT @ConflictCount = COUNT(*)
+        FROM inserted i
+        JOIN INVNUM n 
+            ON i.InvNumber = n.InvNumber 
+            AND i.DocType = 0 -- Ensure we are only checking for DocType 0
+            AND n.DocType = 0 -- Ensure the comparison is only with DocType 0 rows
+            AND n.AutoIndex != i.AutoIndex;  -- Replace with your primary key column to exclude the current row
+    
+        IF @ConflictCount > 0
+        BEGIN
+            RAISERROR ('Duplicate Invoice Number detected. Please check!', 16, 1);
+            ROLLBACK TRANSACTION;
+        END
+    END
+    GO
+    </code>
+            </pre>
+    
+            <h3>Why This Works</h3>
+            <p>By introducing this trigger, we ensure that the system performs the necessary validation at the database level. Even if Sage’s application logic fails to catch duplicates, this safety net ensures your records stay clean and consistent.</p>
+    
+            <h3>Closing Thoughts</h3>
+            <p>This workaround isn’t perfect—it’s more of a patch than a permanent fix. Ideally, Sage should address this bug in future releases. But until they do, this solution has proven effective for my clients, and it might help you too!</p>
+    
+            <p>If you have any questions or want to share how you’ve tackled similar bugs, feel free to drop a comment below.</p>
+        </div>
+  <p><a href="/blog.html">← Back to Blog</a></p>
+</article>
+</main>
+<footer><p>&copy; 2025 Akwasi Adu-Kyeremeh. All rights reserved.</p></footer>
+</body>
+</html>

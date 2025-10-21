@@ -1,3 +1,9 @@
 User-agent: *
 Allow: /
+
 Sitemap: https://akwasi.dev/sitemap.xml
+Sitemap: https://akwasi.dev/blog-sitemap.xml
+Sitemap: https://akwasi.dev/projects-sitemap.xml
+Sitemap: https://akwasi.dev/sitemap-static.xml
+
+Sitemap: https://akwasi.dev/image-sitemap.xml

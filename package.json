@@ -1,0 +1,26 @@
+{
+  "name": "akwasi-dev-prerender",
+  "private": true,
+  "scripts": {
+    "build": "node prerender.js"
+  },
+  "dependencies": {
+    "cheerio": "^1.1.2",
+    "fs-extra": "^11.3.2",
+    "slugify": "^1.6.6"
+  },
+  "version": "1.0.0",
+  "main": "generate-cv.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Akwasi-Adu/Portfolio.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Akwasi-Adu/Portfolio/issues"
+  },
+  "homepage": "https://github.com/Akwasi-Adu/Portfolio#readme",
+  "description": ""
+}
