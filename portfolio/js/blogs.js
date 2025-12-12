@@ -287,7 +287,7 @@ Cheers!</p>
         date: `2025-03-31`,
         categories: ["Announcements"],
         summary: `I'm thrilled to launch my personal portfolio site — akwasi.dev! Built with HTML, JavaScript, and hosted on GitHub Pages, this platform showcases the projects I've worked on, technologies I love, and insights through my blog.`,
-        content: `The journey of building this site was part professional, part personal. From setting up GitHub Pages, configuring analytics, email forwarding, custom domains, to making everything responsive — it's been a labor of love. This site marks a new chapter in showcasing my work and connecting with fellow developers, clients, and creatives around the world.\n\nI'm excited to keep publishing helpful content, deep dives into ERP and enterprise solutions, and lessons learned from real-world development.`
+        content: `The journey of building this site was part professional, part personal. From setting up GitHub Pages, configuring analytics, email forwarding, custom domains, to making everything responsive, it's been a labor of love. This site marks a new chapter in showcasing my work and connecting with fellow developers, clients, and creatives around the world.\n\nI'm excited to keep publishing helpful content, deep dives into ERP and enterprise solutions, and lessons learned from real-world development.`
       },
 
 
