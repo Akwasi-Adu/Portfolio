@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konvoy — Plan. Ride. Remember.</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #FF6B35;
+            --primary-dark: #E85A2A;
+            --secondary: #1B4965;
+            --accent: #5FA8D3;
+            --accent-light: #CAE9FF;
+            --success: #2EC4B6;
+            --warning: #F9C74F;
+            --danger: #E63946;
+            --dark: #0D1B2A;
+            --dark-lighter: #1B2838;
+            --light: #F7F9FC;
+            --gray: #6B7280;
+            --gray-light: #E5E7EB;
+            --gradient-adventure: linear-gradient(135deg, #FF6B35 0%, #F9C74F 50%, #2EC4B6 100%);
+            --font-display: 'Outfit', sans-serif;
+            --font-mono: 'Space Mono', monospace;
+        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        html { scroll-behavior: smooth; }
+        body { font-family: var(--font-display); background: var(--dark); color: var(--light); line-height: 1.6; overflow-x: hidden; }
+        .container { max-width: 1280px; margin: 0 auto; padding: 0 24px; }
+        .section { padding: 120px 0; position: relative; }
+        .section-light { background: var(--light); color: var(--dark); }
+        .badge { display: inline-flex; align-items: center; gap: 8px; padding: 8px 16px; background: rgba(255, 107, 53, 0.15); border: 1px solid var(--primary); border-radius: 100px; font-size: 0.85rem; font-weight: 600; color: var(--primary); text-transform: uppercase; letter-spacing: 1px; }
+        .badge-light { background: rgba(255, 255, 255, 0.1); border-color: rgba(255, 255, 255, 0.3); color: white; }
+        h1, h2, h3, h4 { font-weight: 700; line-height: 1.2; }
+        .section-title { font-size: clamp(2.5rem, 5vw, 4rem); margin-bottom: 24px; }
+        .section-subtitle { font-size: 1.25rem; color: var(--gray); max-width: 600px; }
+        .highlight { background: var(--gradient-adventure); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+        .btn { display: inline-flex; align-items: center; gap: 10px; padding: 16px 32px; font-family: var(--font-display); font-size: 1rem; font-weight: 600; text-decoration: none; border-radius: 12px; cursor: pointer; transition: all 0.3s ease; border: none; }
+        .btn-primary { background: var(--primary); color: white; box-shadow: 0 4px 24px rgba(255, 107, 53, 0.4); }
+        .btn-primary:hover { background: var(--primary-dark); transform: translateY(-2px); box-shadow: 0 8px 32px rgba(255, 107, 53, 0.5); }
+        .btn-secondary { background: transparent; color: white; border: 2px solid rgba(255, 255, 255, 0.3); }
+        .btn-secondary:hover { background: rgba(255, 255, 255, 0.1); border-color: white; }
+        .btn-dark { background: var(--dark); color: white; }
+        .btn-dark:hover { background: var(--dark-lighter); transform: translateY(-2px); }
+
+        /* Navigation */
+        nav { position: fixed; top: 0; left: 0; right: 0; z-index: 1000; padding: 20px 0; transition: all 0.3s ease; }
+        nav.scrolled { background: rgba(13, 27, 42, 0.95); backdrop-filter: blur(20px); padding: 12px 0; box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3); }
+        nav .container { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.75rem; font-weight: 900; text-decoration: none; color: white; display: flex; align-items: center; gap: 10px; }
+        .logo-icon { width: 42px; height: 42px; background: var(--gradient-adventure); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; }
+        .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+        .nav-links a { color: rgba(255, 255, 255, 0.8); text-decoration: none; font-weight: 500; font-size: 0.95rem; transition: color 0.3s ease; }
+        .nav-links a:hover { color: var(--primary); }
+        .mobile-menu-btn { display: none; background: none; border: none; color: white; font-size: 1.5rem; cursor: pointer; }
+
+        /* Hero */
+        .hero { min-height: 100vh; display: flex; align-items: center; position: relative; overflow: hidden; background: var(--dark); }
+        .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse 80% 50% at 50% -20%, rgba(95, 168, 211, 0.3) 0%, transparent 50%), radial-gradient(ellipse 60% 40% at 80% 60%, rgba(255, 107, 53, 0.2) 0%, transparent 50%), radial-gradient(ellipse 50% 30% at 20% 80%, rgba(46, 196, 182, 0.2) 0%, transparent 50%); pointer-events: none; }
+        .hero-content { position: relative; z-index: 2; max-width: 800px; }
+        .hero-badge { margin-bottom: 24px; animation: fadeInUp 0.8s ease forwards; animation-delay: 0.2s; opacity: 0; }
+        .hero h1 { font-size: clamp(2.5rem, 6vw, 4.5rem); font-weight: 900; margin-bottom: 24px; animation: fadeInUp 0.8s ease forwards; animation-delay: 0.4s; opacity: 0; }
+        .hero-tagline { font-size: clamp(1.1rem, 2vw, 1.35rem); color: rgba(255, 255, 255, 0.7); margin-bottom: 40px; max-width: 600px; animation: fadeInUp 0.8s ease forwards; animation-delay: 0.6s; opacity: 0; }
+        .hero-cta { display: flex; flex-wrap: wrap; gap: 16px; animation: fadeInUp 0.8s ease forwards; animation-delay: 0.8s; opacity: 0; }
+        .hero-visual { position: absolute; right: -5%; top: 50%; transform: translateY(-50%); width: 55%; max-width: 700px; z-index: 1; animation: floatIn 1.2s ease forwards; animation-delay: 0.5s; opacity: 0; }
+        .hero-map { background: var(--dark-lighter); border-radius: 24px; padding: 32px; box-shadow: 0 40px 80px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255, 255, 255, 0.1); }
+        .map-header { display: flex; align-items: center; gap: 12px; margin-bottom: 24px; }
+        .map-dots { display: flex; gap: 8px; }
+        .map-dot { width: 12px; height: 12px; border-radius: 50%; }
+        .map-dot:nth-child(1) { background: var(--danger); }
+        .map-dot:nth-child(2) { background: var(--warning); }
+        .map-dot:nth-child(3) { background: var(--success); }
+        .map-title { font-size: 0.9rem; color: var(--gray); }
+        .map-content { background: linear-gradient(135deg, #1a3a4d 0%, #0d2233 100%); border-radius: 16px; padding: 24px; position: relative; min-height: 280px; }
+        .route-line { position: absolute; top: 30%; left: 10%; width: 80%; height: 3px; background: var(--gradient-adventure); border-radius: 2px; animation: drawLine 2s ease forwards; animation-delay: 1.5s; transform-origin: left; transform: scaleX(0); }
+        .route-marker { position: absolute; width: 16px; height: 16px; background: var(--primary); border-radius: 50%; border: 3px solid white; box-shadow: 0 4px 12px rgba(255, 107, 53, 0.5); animation: popIn 0.5s ease forwards; opacity: 0; transform: scale(0); }
+        .route-marker:nth-child(1) { top: 26%; left: 8%; animation-delay: 2s; }
+        .route-marker:nth-child(2) { top: 26%; left: 30%; animation-delay: 2.2s; background: var(--warning); }
+        .route-marker:nth-child(3) { top: 26%; left: 55%; animation-delay: 2.4s; background: var(--accent); }
+        .route-marker:nth-child(4) { top: 26%; left: 88%; animation-delay: 2.6s; background: var(--success); }
+        .map-stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin-top: 120px; }
+        .map-stat { text-align: center; padding: 16px; background: rgba(255, 255, 255, 0.05); border-radius: 12px; }
+        .map-stat-value { font-size: 1.5rem; font-weight: 800; color: var(--primary); font-family: var(--font-mono); }
+        .map-stat-label { font-size: 0.75rem; color: var(--gray); text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Problem Section */
+        .problem { background: var(--light); position: relative; }
+        .problem::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 200px; background: linear-gradient(to bottom, var(--dark), var(--light)); }
+        .problem-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px; margin-top: 60px; }
+        .problem-card { background: white; padding: 32px; border-radius: 20px; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); border: 1px solid var(--gray-light); transition: all 0.3s ease; position: relative; overflow: hidden; }
+        .problem-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: var(--gradient-adventure); transform: scaleX(0); transition: transform 0.3s ease; }
+        .problem-card:hover { transform: translateY(-8px); box-shadow: 0 12px 48px rgba(0, 0, 0, 0.12); }
+        .problem-card:hover::before { transform: scaleX(1); }
+        .problem-icon { width: 56px; height: 56px; background: rgba(255, 107, 53, 0.1); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 20px; }
+        .problem-card h3 { font-size: 1.25rem; margin-bottom: 12px; color: var(--dark); }
+        .problem-card p { color: var(--gray); font-size: 0.95rem; }
+
+        /* Stats Banner */
+        .stats-banner { background: var(--gradient-adventure); padding: 80px 0; position: relative; overflow: hidden; }
+        .stats-banner .container { position: relative; z-index: 1; }
+        .stats-header { text-align: center; margin-bottom: 48px; }
+        .stats-header h2 { font-size: 2rem; color: white; margin-bottom: 8px; }
+        .stats-header p { color: rgba(255, 255, 255, 0.8); }
+        .stats-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+        .stat-item { text-align: center; color: white; }
+        .stat-value { font-size: clamp(2.5rem, 5vw, 3.5rem); font-weight: 900; font-family: var(--font-mono); line-height: 1; margin-bottom: 8px; }
+        .stat-label { font-size: 0.9rem; opacity: 0.9; text-transform: uppercase; letter-spacing: 1px; }
+
+        /* Features */
+        .features { background: var(--dark); }
+        .features-header { text-align: center; margin-bottom: 80px; }
+        .features-header .section-subtitle { margin: 0 auto; color: rgba(255, 255, 255, 0.6); }
+        .feature-category { margin-bottom: 100px; }
+        .feature-category:last-child { margin-bottom: 0; }
+        .category-header { display: flex; align-items: center; gap: 16px; margin-bottom: 40px; flex-wrap: wrap; }
+        .category-number { width: 48px; height: 48px; background: var(--primary); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: 1.25rem; }
+        .category-title { font-size: 1.75rem; }
+        .category-phase { background: rgba(255, 255, 255, 0.1); padding: 6px 14px; border-radius: 100px; font-size: 0.8rem; color: var(--accent-light); }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; }
+        .feature-card { background: var(--dark-lighter); border-radius: 20px; padding: 32px; border: 1px solid rgba(255, 255, 255, 0.08); transition: all 0.4s ease; }
+        .feature-card:hover { transform: translateY(-4px); border-color: rgba(255, 107, 53, 0.3); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3); }
+        .feature-card-icon { width: 52px; height: 52px; background: var(--gradient-adventure); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; margin-bottom: 20px; }
+        .feature-card h3 { font-size: 1.2rem; margin-bottom: 12px; }
+        .feature-card p { color: rgba(255, 255, 255, 0.6); font-size: 0.95rem; }
+        .feature-card ul { list-style: none; margin-top: 16px; }
+        .feature-card li { padding: 8px 0; padding-left: 24px; position: relative; color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; }
+        .feature-card li::before { content: '→'; position: absolute; left: 0; color: var(--primary); }
+
+        /* Personas */
+        .personas { background: var(--light); }
+        .personas-header { text-align: center; margin-bottom: 80px; }
+        .persona-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px; }
+        .persona-card { background: white; border-radius: 24px; overflow: hidden; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08); transition: all 0.4s ease; }
+        .persona-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15); }
+        .persona-header { padding: 32px; }
+        .persona-card:nth-child(1) .persona-header { background: linear-gradient(135deg, #FF6B35 0%, #F9C74F 100%); }
+        .persona-card:nth-child(2) .persona-header { background: linear-gradient(135deg, #5FA8D3 0%, #2EC4B6 100%); }
+        .persona-card:nth-child(3) .persona-header { background: linear-gradient(135deg, #1B4965 0%, #5FA8D3 100%); }
+        .persona-avatar { width: 80px; height: 80px; background: rgba(255, 255, 255, 0.2); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; margin-bottom: 16px; }
+        .persona-name { font-size: 1.5rem; color: white; margin-bottom: 4px; }
+        .persona-role { color: rgba(255, 255, 255, 0.8); font-size: 0.95rem; }
+        .persona-body { padding: 32px; }
+        .persona-demo { font-size: 0.85rem; color: var(--gray); margin-bottom: 20px; }
+        .persona-section { margin-bottom: 24px; }
+        .persona-section:last-child { margin-bottom: 0; }
+        .persona-section h4 { font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); margin-bottom: 12px; }
+        .persona-section ul { list-style: none; }
+        .persona-section li { padding: 6px 0; padding-left: 20px; position: relative; color: var(--gray); font-size: 0.9rem; }
+        .persona-section li::before { content: '•'; position: absolute; left: 0; color: var(--primary); font-weight: bold; }
+
+        /* Use Cases */
+        .use-cases { background: linear-gradient(180deg, var(--secondary) 0%, var(--dark) 100%); }
+        .use-cases-header { text-align: center; margin-bottom: 80px; }
+        .use-cases-header .section-subtitle { color: rgba(255, 255, 255, 0.7); margin: 0 auto; }
+        .use-case-tabs { display: flex; justify-content: center; gap: 16px; margin-bottom: 48px; flex-wrap: wrap; }
+        .use-case-tab { padding: 12px 24px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 100px; color: white; cursor: pointer; transition: all 0.3s ease; font-family: var(--font-display); font-size: 0.95rem; }
+        .use-case-tab:hover, .use-case-tab.active { background: var(--primary); border-color: var(--primary); }
+        .use-case-content { display: none; }
+        .use-case-content.active { display: block; }
+        .journey-steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; }
+        .journey-step { background: rgba(255, 255, 255, 0.05); border-radius: 16px; padding: 24px; border: 1px solid rgba(255, 255, 255, 0.1); position: relative; }
+        .journey-step-number { position: absolute; top: -12px; left: 24px; width: 32px; height: 32px; background: var(--primary); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 0.9rem; }
+        .journey-step h4 { margin-top: 8px; margin-bottom: 12px; font-size: 1.1rem; }
+        .journey-step p { color: rgba(255, 255, 255, 0.7); font-size: 0.9rem; }
+
+        /* Roadmap */
+        .roadmap { background: var(--dark); position: relative; overflow: hidden; }
+        .roadmap-header { text-align: center; margin-bottom: 80px; }
+        .roadmap-header .section-subtitle { color: rgba(255, 255, 255, 0.6); margin: 0 auto; }
+        .timeline { position: relative; max-width: 900px; margin: 0 auto; }
+        .timeline::before { content: ''; position: absolute; top: 0; left: 50%; transform: translateX(-50%); width: 4px; height: 100%; background: linear-gradient(to bottom, var(--primary), var(--accent), var(--success), var(--warning)); border-radius: 2px; }
+        .timeline-item { display: flex; align-items: flex-start; margin-bottom: 60px; position: relative; }
+        .timeline-item:last-child { margin-bottom: 0; }
+        .timeline-item:nth-child(odd) { flex-direction: row-reverse; }
+        .timeline-item:nth-child(odd) .timeline-content { text-align: right; padding-right: 60px; padding-left: 0; }
+        .timeline-item:nth-child(even) .timeline-content { padding-left: 60px; }
+        .timeline-marker { position: absolute; left: 50%; transform: translateX(-50%); width: 24px; height: 24px; background: var(--dark); border: 4px solid var(--primary); border-radius: 50%; z-index: 2; }
+        .timeline-item:nth-child(2) .timeline-marker { border-color: var(--accent); }
+        .timeline-item:nth-child(3) .timeline-marker { border-color: var(--success); }
+        .timeline-item:nth-child(4) .timeline-marker { border-color: var(--warning); }
+        .timeline-content { flex: 1; }
+        .timeline-phase { display: inline-block; padding: 6px 14px; background: rgba(255, 107, 53, 0.2); border-radius: 100px; font-size: 0.8rem; font-weight: 600; color: var(--primary); margin-bottom: 12px; }
+        .timeline-item:nth-child(2) .timeline-phase { background: rgba(95, 168, 211, 0.2); color: var(--accent); }
+        .timeline-item:nth-child(3) .timeline-phase { background: rgba(46, 196, 182, 0.2); color: var(--success); }
+        .timeline-item:nth-child(4) .timeline-phase { background: rgba(249, 199, 79, 0.2); color: var(--warning); }
+        .timeline-title { font-size: 1.5rem; margin-bottom: 8px; }
+        .timeline-period { color: var(--gray); font-size: 0.9rem; margin-bottom: 16px; }
+        .timeline-features { display: flex; flex-wrap: wrap; gap: 8px; }
+        .timeline-item:nth-child(odd) .timeline-features { justify-content: flex-end; }
+        .timeline-feature { background: rgba(255, 255, 255, 0.1); padding: 6px 12px; border-radius: 6px; font-size: 0.85rem; color: rgba(255, 255, 255, 0.8); }
+
+        /* Pricing */
+        .pricing { background: var(--light); }
+        .pricing-header { text-align: center; margin-bottom: 80px; }
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 24px; }
+        .pricing-card { background: white; border-radius: 24px; padding: 40px 32px; box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08); border: 2px solid var(--gray-light); transition: all 0.3s ease; position: relative; }
+        .pricing-card.featured { border-color: var(--primary); box-shadow: 0 20px 60px rgba(255, 107, 53, 0.2); }
+        .pricing-card.featured::before { content: 'Most Popular'; position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--primary); color: white; padding: 6px 20px; border-radius: 100px; font-size: 0.8rem; font-weight: 600; }
+        .pricing-card:hover { transform: translateY(-8px); box-shadow: 0 20px 60px rgba(0, 0, 0, 0.12); }
+        .pricing-tier { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--primary); font-weight: 600; margin-bottom: 8px; }
+        .pricing-amount { font-size: 3rem; font-weight: 900; color: var(--dark); }
+        .pricing-period { color: var(--gray); font-size: 0.9rem; }
+        .pricing-desc { color: var(--gray); font-size: 0.9rem; margin: 16px 0 32px; min-height: 44px; }
+        .pricing-features { list-style: none; margin-bottom: 32px; }
+        .pricing-features li { padding: 10px 0; padding-left: 28px; position: relative; color: var(--gray); font-size: 0.9rem; }
+        .pricing-features li::before { content: '✓'; position: absolute; left: 0; color: var(--success); font-weight: bold; }
+        .pricing-cta { width: 100%; justify-content: center; }
+
+        /* Developer */
+        .developer { background: var(--dark-lighter); }
+        .developer-header { text-align: center; margin-bottom: 60px; }
+        .developer-header .section-subtitle { color: rgba(255, 255, 255, 0.6); margin: 0 auto; }
+        .accordion { max-width: 900px; margin: 0 auto; }
+        .accordion-item { background: var(--dark); border-radius: 16px; margin-bottom: 16px; border: 1px solid rgba(255, 255, 255, 0.1); overflow: hidden; }
+        .accordion-header { padding: 24px 32px; display: flex; align-items: center; justify-content: space-between; cursor: pointer; transition: background 0.3s ease; }
+        .accordion-header:hover { background: rgba(255, 255, 255, 0.05); }
+        .accordion-title { display: flex; align-items: center; gap: 16px; }
+        .accordion-title h3 { font-size: 1.1rem; }
+        .accordion-icon { width: 40px; height: 40px; background: var(--gradient-adventure); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1.1rem; }
+        .accordion-toggle { width: 32px; height: 32px; background: rgba(255, 255, 255, 0.1); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 1.25rem; transition: all 0.3s ease; }
+        .accordion-item.active .accordion-toggle { transform: rotate(45deg); background: var(--primary); }
+        .accordion-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease; }
+        .accordion-item.active .accordion-content { max-height: 2000px; }
+        .accordion-body { padding: 0 32px 32px; }
+        .entity-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 16px; }
+        .entity-card { background: rgba(255, 255, 255, 0.05); border-radius: 12px; padding: 20px; border: 1px solid rgba(255, 255, 255, 0.08); }
+        .entity-card h4 { font-size: 1rem; margin-bottom: 12px; color: var(--primary); }
+        .entity-card code { display: block; font-family: var(--font-mono); font-size: 0.75rem; color: rgba(255, 255, 255, 0.6); line-height: 1.8; }
+        .permission-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; }
+        .permission-table th, .permission-table td { padding: 12px 16px; text-align: left; border-bottom: 1px solid rgba(255, 255, 255, 0.1); }
+        .permission-table th { background: rgba(255, 255, 255, 0.05); font-weight: 600; color: var(--accent-light); }
+        .permission-table td { color: rgba(255, 255, 255, 0.7); }
+        .check { color: var(--success); }
+        .cross { color: var(--gray); }
+
+        /* CTA */
+        .cta { background: var(--gradient-adventure); padding: 120px 0; position: relative; overflow: hidden; }
+        .cta .container { position: relative; z-index: 1; text-align: center; }
+        .cta h2 { font-size: clamp(2.5rem, 5vw, 3.5rem); color: white; margin-bottom: 20px; }
+        .cta > .container > p { font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 48px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        .waitlist-form { max-width: 700px; margin: 0 auto; background: white; border-radius: 24px; padding: 48px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3); }
+        .form-title { font-size: 1.5rem; color: var(--dark); margin-bottom: 8px; }
+        .form-subtitle { color: var(--gray); margin-bottom: 32px; }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
+        .form-group { margin-bottom: 16px; }
+        .form-group label { display: block; font-size: 0.9rem; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
+        .form-group input, .form-group select { width: 100%; padding: 14px 18px; font-family: var(--font-display); font-size: 1rem; border: 2px solid var(--gray-light); border-radius: 12px; transition: all 0.3s ease; background: white; }
+        .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1); }
+        .form-submit { width: 100%; padding: 18px; font-size: 1.1rem; margin-top: 8px; }
+        .form-note { font-size: 0.85rem; color: var(--gray); margin-top: 16px; text-align: center; }
+
+        /* Footer */
+        footer { background: var(--dark); padding: 80px 0 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
+        .footer-content { display: grid; grid-template-columns: 2fr 1fr 1fr 1fr; gap: 60px; margin-bottom: 60px; }
+        .footer-brand p { color: var(--gray); margin-top: 16px; font-size: 0.95rem; max-width: 300px; }
+        .footer-section h4 { font-size: 0.9rem; text-transform: uppercase; letter-spacing: 1px; color: var(--gray); margin-bottom: 20px; }
+        .footer-section ul { list-style: none; }
+        .footer-section li { margin-bottom: 12px; }
+        .footer-section a { color: rgba(255, 255, 255, 0.7); text-decoration: none; font-size: 0.95rem; transition: color 0.3s ease; }
+        .footer-section a:hover { color: var(--primary); }
+        .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); flex-wrap: wrap; gap: 20px; }
+        .footer-bottom p { color: var(--gray); font-size: 0.9rem; }
+        .footer-social { display: flex; gap: 16px; }
+        .footer-social a { width: 40px; height: 40px; background: rgba(255, 255, 255, 0.1); border-radius: 10px; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; transition: all 0.3s ease; }
+        .footer-social a:hover { background: var(--primary); transform: translateY(-2px); }
+
+        /* Animations */
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+        @keyframes floatIn { from { opacity: 0; transform: translateY(-50%) translateX(50px); } to { opacity: 1; transform: translateY(-50%) translateX(0); } }
+        @keyframes drawLine { to { transform: scaleX(1); } }
+        @keyframes popIn { to { opacity: 1; transform: scale(1); } }
+        .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
+        .fade-in.visible { opacity: 1; transform: translateY(0); }
+        .toast { position: fixed; bottom: 30px; right: 30px; background: var(--success); color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); transform: translateY(100px); opacity: 0; transition: all 0.4s ease; z-index: 9999; }
+        .toast.show { transform: translateY(0); opacity: 1; }
+
+        /* Responsive */
+        @media (max-width: 1200px) { .hero-visual { display: none; } .hero-content { max-width: 100%; text-align: center; } .hero-cta { justify-content: center; } }
+        @media (max-width: 992px) { .nav-links { display: none; } .mobile-menu-btn { display: block; } .footer-content { grid-template-columns: 1fr 1fr; gap: 40px; } .timeline::before { left: 20px; } .timeline-item, .timeline-item:nth-child(odd) { flex-direction: column; } .timeline-marker { left: 20px; } .timeline-content, .timeline-item:nth-child(odd) .timeline-content { padding-left: 60px !important; padding-right: 0 !important; text-align: left !important; } .timeline-item:nth-child(odd) .timeline-features { justify-content: flex-start; } .stats-grid { grid-template-columns: repeat(2, 1fr); } }
+        @media (max-width: 768px) { .section { padding: 80px 0; } .footer-content { grid-template-columns: 1fr; gap: 32px; } .form-row { grid-template-columns: 1fr; } .waitlist-form { padding: 32px 24px; } .hero h1 { font-size: 2.25rem; } }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="container">
+            <a href="#" class="logo"><span class="logo-icon">🚀</span>Konvoy</a>
+            <ul class="nav-links">
+                <li><a href="#features">Features</a></li>
+                <li><a href="#personas">Who It's For</a></li>
+                <li><a href="#roadmap">Roadmap</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#waitlist" class="btn btn-primary" style="padding: 10px 20px;">Join Waitlist</a></li>
+            </ul>
+            <button class="mobile-menu-btn">☰</button>
+        </div>
+    </nav>
+
+    <!-- Hero -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge badge"><span>🌍</span> Built from real expeditions across 5 countries</div>
+                <h1>Tired of scattered WhatsApp groups and messy spreadsheets?</h1>
+                <p class="hero-tagline">Konvoy is where your crew plans epic adventures, executes them flawlessly, and preserves memories that last a lifetime. From motorcycle expeditions to family road trips — we've got you covered.</p>
+                <div class="hero-cta">
+                    <a href="#waitlist" class="btn btn-primary">Join the Waitlist <span>→</span></a>
+                    <a href="#features" class="btn btn-secondary">See Features</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-visual">
+            <div class="hero-map">
+                <div class="map-header">
+                    <div class="map-dots"><span class="map-dot"></span><span class="map-dot"></span><span class="map-dot"></span></div>
+                    <span class="map-title">AIS Quintuple Quest 2025</span>
+                </div>
+                <div class="map-content">
+                    <div class="route-line"></div>
+                    <div class="route-marker"></div>
+                    <div class="route-marker"></div>
+                    <div class="route-marker"></div>
+                    <div class="route-marker"></div>
+                    <div class="map-stats">
+                        <div class="map-stat"><div class="map-stat-value">6,695</div><div class="map-stat-label">Kilometers</div></div>
+                        <div class="map-stat"><div class="map-stat-value">5</div><div class="map-stat-label">Countries</div></div>
+                        <div class="map-stat"><div class="map-stat-value">14</div><div class="map-stat-label">Riding Days</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Problem Section -->
+    <section class="section section-light problem" id="problem">
+        <div class="container">
+            <div class="fade-in">
+                <span class="badge" style="margin-bottom: 16px;">The Problem</span>
+                <h2 class="section-title">Group trip planning is <span class="highlight">broken</span></h2>
+                <p class="section-subtitle">Current solutions force you to juggle multiple apps, lose important details, and leave precious memories scattered across devices.</p>
+            </div>
+            <div class="problem-grid">
+                <div class="problem-card fade-in"><div class="problem-icon">📊</div><h3>Excel Chaos</h3><p>Complex spreadsheets that don't sync, can't be edited on mobile, and become outdated the moment plans change.</p></div>
+                <div class="problem-card fade-in"><div class="problem-icon">💬</div><h3>WhatsApp Overload</h3><p>Critical info gets buried in endless group chats. Good luck finding that hotel address from 3 days ago.</p></div>
+                <div class="problem-card fade-in"><div class="problem-icon">🗺️</div><h3>App Fragmentation</h3><p>TripIt for flights, Google Maps for routes, Docs for notes, Photos for memories. Nothing talks to each other.</p></div>
+                <div class="problem-card fade-in"><div class="problem-icon">🛂</div><h3>Border Blindspots</h3><p>No tool tracks visa requirements, border wait times, or documentation for multi-country expeditions.</p></div>
+                <div class="problem-card fade-in"><div class="problem-icon">📈</div><h3>No Trip Analytics</h3><p>You finish an epic journey but have no idea how many hours you spent at borders vs. actually riding.</p></div>
+                <div class="problem-card fade-in"><div class="problem-icon">📸</div><h3>Scattered Memories</h3><p>Photos live on 10 different phones. Creating a shared album is a project in itself.</p></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Banner -->
+    <section class="stats-banner">
+        <div class="container">
+            <div class="stats-header fade-in">
+                <h2>Validated by Real Expeditions</h2>
+                <p>Built from learnings on the AIS Quintuple Quest: Accra → Dakar → Accra</p>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-item fade-in"><div class="stat-value">6,695</div><div class="stat-label">Kilometers Covered</div></div>
+                <div class="stat-item fade-in"><div class="stat-value">77h</div><div class="stat-label">At Border Crossings</div></div>
+                <div class="stat-item fade-in"><div class="stat-value">52h</div><div class="stat-label">Actual Riding Time</div></div>
+                <div class="stat-item fade-in"><div class="stat-value">5</div><div class="stat-label">Countries Traversed</div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="section features" id="features">
+        <div class="container">
+            <div class="features-header fade-in">
+                <span class="badge badge-light">Features</span>
+                <h2 class="section-title" style="margin-top: 16px;">Everything you need. <span class="highlight">Nothing you don't.</span></h2>
+                <p class="section-subtitle">From planning your first day to reliving memories years later, Konvoy has you covered.</p>
+            </div>
+
+            <!-- Phase 1 -->
+            <div class="feature-category fade-in">
+                <div class="category-header">
+                    <span class="category-number">1</span>
+                    <h3 class="category-title">Foundation</h3>
+                    <span class="category-phase">MVP • Months 1-6</span>
+                </div>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-card-icon">📅</div>
+                        <h3>Day-by-Day Itinerary Builder</h3>
+                        <p>The heart of Konvoy. Build detailed daily plans with routes, stops, accommodations, and embedded maps.</p>
+                        <ul><li>Start/end locations with coordinates</li><li>Route alternatives (Scenic, Fast, Ferry)</li><li>Distance & time estimates</li><li>Embedded interactive maps</li></ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon">🛂</div>
+                        <h3>Border Crossing Management</h3>
+                        <p>First-class support for multi-country expeditions with visa tracking and wait time estimates.</p>
+                        <ul><li>Documentation requirements</li><li>Estimated processing times</li><li>Operating hours & closures</li><li>Community tips & warnings</li></ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon">👥</div>
+                        <h3>Group & Role Management</h3>
+                        <p>Organize your crew with flexible groups and role assignments that make sense.</p>
+                        <ul><li>Multiple group types</li><li>Road Captain, Sweeper, Mechanic roles</li><li>Invite via email or link</li><li>Approval workflows</li></ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon">🗺️</div>
+                        <h3>Maps Integration</h3>
+                        <p>Powerful mapping with route visualization, distance calculations, and offline support.</p>
+                        <ul><li>Google Maps / Mapbox / OSM</li><li>GPX & KML exports</li><li>Offline tile caching</li><li>Route polylines</li></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 2 -->
+            <div class="feature-category fade-in">
+                <div class="category-header">
+                    <span class="category-number">2</span>
+                    <h3 class="category-title">Live Execution</h3>
+                    <span class="category-phase">Phase 2 • Months 7-12</span>
+                </div>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-card-icon">📍</div>
+                        <h3>Live Trip Mode</h3>
+                        <p>Activate your trip and track progress in real-time with location sharing and waypoint check-ins.</p>
+                        <ul><li>Real-time group map</li><li>Opt-in location sharing</li><li>Waypoint check-ins</li><li>Auto day advancement</li></ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon">📊</div>
+                        <h3>Planned vs. Actual Tracking</h3>
+                        <p>Know exactly how your trip compared to the plan. Border delays, break times, everything logged.</p>
+                        <ul><li>Actual distance & time</li><li>Border delay tracking</li><li>Morning delay logging</li><li>Moving vs. stopped time</li></ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon">☀️</div>
+                        <h3>Daily Briefings</h3>
+                        <p>Wake up to auto-generated briefings with everything your crew needs to know for the day ahead.</p>
+                        <ul><li>Route & stops summary</li><li>Weather integration</li><li>Role assignments</li><li>PDF export for offline</li></ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon">📈</div>
+                        <h3>Analytics Dashboard</h3>
+                        <p>Beautiful visualizations of your journey with charts, comparisons, and exportable reports.</p>
+                        <ul><li>Distance over time</li><li>Delay analysis</li><li>Countries visited</li><li>Ride summary tables</li></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 3 -->
+            <div class="feature-category fade-in">
+                <div class="category-header">
+                    <span class="category-number">3</span>
+                    <h3 class="category-title">Social & Memory</h3>
+                    <span class="category-phase">Phase 3 • Months 13-18</span>
+                </div>
+                <div class="feature-grid">
+                    <div class="feature-card">
+                        <div class="feature-card-icon">📸</div>
+                        <h3>Media Management</h3>
+                        <p>One place for all trip photos and videos, auto-organized by day and location.</p>
+                        <ul><li>Bulk upload with EXIF sorting</li><li>People & location tagging</li><li>Gallery views</li><li>Photographer credits</li></ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon">🏆</div>
+                        <h3>Trip Memorialization</h3>
+                        <p>Transform completed trips into beautiful, shareable archives with photos and stats.</p>
+                        <ul><li>Read-only archives</li><li>Scrapbook / Memory Wall</li><li>Public sharing URLs</li><li>PDF trip books</li></ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon">🗳️</div>
+                        <h3>Polls & Voting</h3>
+                        <p>Make group decisions democratically with polls for routes, accommodations, and activities.</p>
+                        <ul><li>Single/multiple choice</li><li>Anonymous voting</li><li>Deadline auto-close</li><li>Ranking polls</li></ul>
+                    </div>
+                    <div class="feature-card">
+                        <div class="feature-card-icon">✨</div>
+                        <h3>Real-time Collaboration</h3>
+                        <p>Google Docs-style simultaneous editing with version history and conflict resolution.</p>
+                        <ul><li>Live cursors</li><li>Version rollback</li><li>Suggested edits</li><li>Activity feeds</li></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phase 4 -->
+            <div class="feature-category fade-in">
+                <div class="category-header">
+                    <span class="category-number">4</span>
+                    <h3 class="category-title">Platform & Ecosystem</h3>
+                    <span class="category-phase">Phase 4 • Months 19-24</span>
+                </div>
+                <div class="feature-grid">
+                    <div class="feature-card"><div class="feature-card-icon">🤖</div><h3>AI-Powered Features</h3><p>Smart route generation, border crossing predictions, and intelligent photo curation.</p></div>
+                    <div class="feature-card"><div class="feature-card-icon">🆘</div><h3>Safety & Emergency</h3><p>Dead man's switch, SOS button, emergency services locator, and live safety advisories.</p></div>
+                    <div class="feature-card"><div class="feature-card-icon">🌐</div><h3>Community & Discovery</h3><p>Browse public trips, earn badges, compare stats, and find compatible travel partners.</p></div>
+                    <div class="feature-card"><div class="feature-card-icon">🔌</div><h3>Integration Ecosystem</h3><p>Connect with Garmin, TripIt, vehicle telemetry, and social media automation.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Personas -->
+    <section class="section section-light personas" id="personas">
+        <div class="container">
+            <div class="personas-header fade-in">
+                <span class="badge">Who It's For</span>
+                <h2 class="section-title" style="margin-top: 16px;">Built for <span class="highlight">real travelers</span></h2>
+                <p class="section-subtitle" style="margin: 0 auto;">Whether you're leading a motorcycle club across borders or planning a family road trip, Konvoy adapts to your needs.</p>
+            </div>
+            <div class="persona-grid">
+                <div class="persona-card fade-in">
+                    <div class="persona-header"><div class="persona-avatar">🏍️</div><h3 class="persona-name">Daniel</h3><p class="persona-role">The Club Organizer</p></div>
+                    <div class="persona-body">
+                        <p class="persona-demo">Age 35-50 • Motorcycle club president • Manages 8-20 riders</p>
+                        <div class="persona-section"><h4>Pain Points</h4><ul><li>Coordinating multi-country logistics</li><li>Sharing updates when plans change mid-trip</li><li>Tracking actual vs planned metrics</li><li>Managing role assignments</li></ul></div>
+                        <div class="persona-section"><h4>Goals</h4><ul><li>Professionalize club operations</li><li>Create lasting adventure archives</li></ul></div>
+                    </div>
+                </div>
+                <div class="persona-card fade-in">
+                    <div class="persona-header"><div class="persona-avatar">👨‍👩‍👧‍👦</div><h3 class="persona-name">Sarah</h3><p class="persona-role">The Family Trip Planner</p></div>
+                    <div class="persona-body">
+                        <p class="persona-demo">Age 30-45 • Parent • Primary family vacation coordinator</p>
+                        <div class="persona-section"><h4>Pain Points</h4><ul><li>Gathering input from family members</li><li>Keeping everyone informed of daily plans</li><li>Managing budget across activities</li></ul></div>
+                        <div class="persona-section"><h4>Goals</h4><ul><li>Reduce planning stress</li><li>Build family travel memory collection</li></ul></div>
+                    </div>
+                </div>
+                <div class="persona-card fade-in">
+                    <div class="persona-header"><div class="persona-avatar">📷</div><h3 class="persona-name">Marcus</h3><p class="persona-role">The Adventure Photographer</p></div>
+                    <div class="persona-body">
+                        <p class="persona-demo">Age 25-40 • Professional photographer • Joins as media crew</p>
+                        <div class="persona-section"><h4>Pain Points</h4><ul><li>Not knowing itinerary in advance</li><li>Difficulty planning photo opportunities</li><li>No central place to upload media</li></ul></div>
+                        <div class="persona-section"><h4>Goals</h4><ul><li>Plan shots based on route</li><li>Easily organize media by day</li></ul></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Use Cases -->
+    <section class="section use-cases">
+        <div class="container">
+            <div class="use-cases-header fade-in">
+                <span class="badge badge-light">User Journeys</span>
+                <h2 class="section-title" style="margin-top: 16px;">See Konvoy <span class="highlight">in action</span></h2>
+                <p class="section-subtitle">From planning to memorialization, here's how real users will experience Konvoy.</p>
+            </div>
+            <div class="use-case-tabs fade-in">
+                <button class="use-case-tab active" data-tab="planning">🗺️ Planning</button>
+                <button class="use-case-tab" data-tab="execution">📍 Live Execution</button>
+                <button class="use-case-tab" data-tab="memory">📸 Memorialization</button>
+            </div>
+            <div class="use-case-content active" id="planning">
+                <div class="journey-steps">
+                    <div class="journey-step fade-in"><span class="journey-step-number">1</span><h4>Create Trip</h4><p>Daniel logs in and creates "AIS 2026 - Accra to Dakar" with dates, cover image, and countries.</p></div>
+                    <div class="journey-step fade-in"><span class="journey-step-number">2</span><h4>Build Days</h4><p>System creates 15 day placeholders. Daniel enters routes, distances, time windows for each.</p></div>
+                    <div class="journey-step fade-in"><span class="journey-step-number">3</span><h4>Add Borders</h4><p>Adds Elubo-Noe Border crossing with documentation requirements and estimated wait time.</p></div>
+                    <div class="journey-step fade-in"><span class="journey-step-number">4</span><h4>Set Accommodations</h4><p>Adds Hotel Ivoire, Abidjan with booking link. Map auto-generates showing full route.</p></div>
+                    <div class="journey-step fade-in"><span class="journey-step-number">5</span><h4>Assign Roles</h4><p>Assigns Ahmed as Road Captain, Sadique as Mechanic for Day 1. Invites co-planner.</p></div>
+                    <div class="journey-step fade-in"><span class="journey-step-number">6</span><h4>Go Live</h4><p>Reviews Border Info summary, transitions trip to "Ready", shares link with club members.</p></div>
+                </div>
+            </div>
+            <div class="use-case-content" id="execution">
+                <div class="journey-steps">
+                    <div class="journey-step fade-in"><span class="journey-step-number">1</span><h4>Morning Briefing</h4><p>At 6:00 AM, Ahmed receives daily briefing with route map, stops, border details, and weather.</p></div>
+                    <div class="journey-step fade-in"><span class="journey-step-number">2</span><h4>Start Day</h4><p>Group departs. Ahmed taps "Start Day" to begin live tracking.</p></div>
+                    <div class="journey-step fade-in"><span class="journey-step-number">3</span><h4>Log Border</h4><p>At Elubo border, Ahmed logs arrival. 2.5 hours later, logs departure. Delay calculated automatically.</p></div>
+                    <div class="journey-step fade-in"><span class="journey-step-number">4</span><h4>Track Progress</h4><p>Members with location sharing appear on live map. Ahmed marks waypoint check-ins.</p></div>
+                    <div class="journey-step fade-in"><span class="journey-step-number">5</span><h4>End Day</h4><p>Arrives at Hotel Ivoire. Ahmed taps "End Day" with actual arrival time.</p></div>
+                    <div class="journey-step fade-in"><span class="journey-step-number">6</span><h4>Day Summary</h4><p>System shows: 526km actual, 17h45m elapsed, 6h50m border delay, 7h07m moving time.</p></div>
+                </div>
+            </div>
+            <div class="use-case-content" id="memory">
+                <div class="journey-steps">
+                    <div class="journey-step fade-in"><span class="journey-step-number">1</span><h4>Complete Trip</h4><p>Trip ends. Daniel transitions to "Completed" status.</p></div>
+                    <div class="journey-step fade-in"><span class="journey-step-number">2</span><h4>Auto Summary</h4><p>System generates: 6,695km over 14 riding days, 77h at borders, 52h riding.</p></div>
+                    <div class="journey-step fade-in"><span class="journey-step-number">3</span><h4>Upload Media</h4><p>Marcus bulk uploads 2,000 photos. System organizes by EXIF date to correct days.</p></div>
+                    <div class="journey-step fade-in"><span class="journey-step-number">4</span><h4>Tag & Curate</h4><p>Marcus tags participants, adds featured gallery selections.</p></div>
+                    <div class="journey-step fade-in"><span class="journey-step-number">5</span><h4>Memory Wall</h4><p>Daniel creates memory wall with highlights and rider quotes.</p></div>
+                    <div class="journey-step fade-in"><span class="journey-step-number">6</span><h4>Share Forever</h4><p>Enables public sharing. Trip archive displays interactive map, stats, and photo gallery.</p></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Roadmap -->
+    <section class="section roadmap" id="roadmap">
+        <div class="container">
+            <div class="roadmap-header fade-in">
+                <span class="badge badge-light">Roadmap</span>
+                <h2 class="section-title" style="margin-top: 16px;">The journey <span class="highlight">ahead</span></h2>
+                <p class="section-subtitle">Our 24-month plan to build the ultimate group travel platform.</p>
+            </div>
+            <div class="timeline">
+                <div class="timeline-item fade-in">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-phase">Phase 1 • MVP</span>
+                        <h3 class="timeline-title">Foundation</h3>
+                        <p class="timeline-period">Months 1-6</p>
+                        <div class="timeline-features"><span class="timeline-feature">User Management</span><span class="timeline-feature">Groups</span><span class="timeline-feature">Trip Builder</span><span class="timeline-feature">Itinerary</span><span class="timeline-feature">Border Crossings</span><span class="timeline-feature">Maps</span></div>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-phase">Phase 2</span>
+                        <h3 class="timeline-title">Live Execution & Analytics</h3>
+                        <p class="timeline-period">Months 7-12</p>
+                        <div class="timeline-features"><span class="timeline-feature">Live Trip Mode</span><span class="timeline-feature">Real-time Tracking</span><span class="timeline-feature">Daily Briefings</span><span class="timeline-feature">Analytics</span></div>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-phase">Phase 3</span>
+                        <h3 class="timeline-title">Social & Memory</h3>
+                        <p class="timeline-period">Months 13-18</p>
+                        <div class="timeline-features"><span class="timeline-feature">Media Management</span><span class="timeline-feature">Trip Archives</span><span class="timeline-feature">Polls</span><span class="timeline-feature">Collaboration</span></div>
+                    </div>
+                </div>
+                <div class="timeline-item fade-in">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <span class="timeline-phase">Phase 4</span>
+                        <h3 class="timeline-title">Platform & Ecosystem</h3>
+                        <p class="timeline-period">Months 19-24</p>
+                        <div class="timeline-features"><span class="timeline-feature">Public API</span><span class="timeline-feature">AI Features</span><span class="timeline-feature">Native Apps</span><span class="timeline-feature">White-label</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing -->
+    <section class="section section-light pricing" id="pricing">
+        <div class="container">
+            <div class="pricing-header fade-in">
+                <span class="badge">Pricing</span>
+                <h2 class="section-title" style="margin-top: 16px;">Simple, <span class="highlight">transparent</span> pricing</h2>
+                <p class="section-subtitle" style="margin: 0 auto;">Start free, upgrade when you need more. No hidden fees, no surprises.</p>
+            </div>
+            <!-- <div class="pricing-grid">
+                <div class="pricing-card fade-in">
+                    <span class="pricing-tier">Free</span>
+                    <div><span class="pricing-amount">$0</span><span class="pricing-period"> forever</span></div>
+                    <p class="pricing-desc">Perfect for trying out Konvoy with your crew.</p>
+                    <ul class="pricing-features"><li>1 group</li><li>5 members</li><li>3 trips per year</li><li>Basic itinerary builder</li><li>Maps integration</li></ul>
+                    <a href="#waitlist" class="btn btn-dark pricing-cta">Get Started</a>
+                </div>
+                <div class="pricing-card fade-in">
+                    <span class="pricing-tier">Enthusiast</span>
+                    <div><span class="pricing-amount">$9.99</span><span class="pricing-period">/month</span></div>
+                    <p class="pricing-desc">For active travelers who plan multiple trips.</p>
+                    <ul class="pricing-features"><li>3 groups</li><li>25 members</li><li>Unlimited trips</li><li>Border crossing management</li><li>Daily briefings</li><li>Basic analytics</li></ul>
+                    <a href="#waitlist" class="btn btn-dark pricing-cta">Join Waitlist</a>
+                </div>
+                <div class="pricing-card featured fade-in">
+                    <span class="pricing-tier">Professional</span>
+                    <div><span class="pricing-amount">$29.99</span><span class="pricing-period">/month</span></div>
+                    <p class="pricing-desc">For clubs and serious expedition teams.</p>
+                    <ul class="pricing-features"><li>Unlimited groups</li><li>100 members</li><li>Live trip tracking</li><li>Advanced analytics</li><li>Media management</li><li>Trip memorialization</li><li>Priority support</li></ul>
+                    <a href="#waitlist" class="btn btn-primary pricing-cta">Join Waitlist</a>
+                </div>
+                <div class="pricing-card fade-in">
+                    <span class="pricing-tier">Enterprise</span>
+                    <div><span class="pricing-amount">Custom</span></div>
+                    <p class="pricing-desc">For tour operators and large organizations.</p>
+                    <ul class="pricing-features"><li>White-label solution</li><li>API access</li><li>Unlimited everything</li><li>Dedicated support</li><li>Custom integrations</li><li>SLA guarantee</li></ul>
+                    <a href="#waitlist" class="btn btn-dark pricing-cta">Contact Sales</a>
+                </div>
+            </div> -->
+        </div>
+    </section>
+
+    <!-- Developer -->
+    <section class="section developer" id="developer">
+        <div class="container">
+            <div class="developer-header fade-in">
+                <span class="badge badge-light">For Developers</span>
+                <h2 class="section-title" style="margin-top: 16px;">Under the <span class="highlight">hood</span></h2>
+                <p class="section-subtitle">Technical details for those who want to peek behind the curtain.</p>
+            </div>
+            <div class="accordion">
+                <!-- <div class="accordion-item fade-in">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="accordion-title"><span class="accordion-icon">🗄️</span><h3>Data Model & Entities</h3></div>
+                        <span class="accordion-toggle">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <div class="entity-grid">
+                                <div class="entity-card"><h4>User</h4><code>id, email, name, avatar_url, bio, emergency_contact, timezone, preferred_units</code></div>
+                                <div class="entity-card"><h4>Group</h4><code>id, name, description, logo_url, type, visibility, join_mode, owner_id</code></div>
+                                <div class="entity-card"><h4>Trip</h4><code>id, group_id, title, description, start_date, end_date, status, countries[]</code></div>
+                                <div class="entity-card"><h4>Day</h4><code>id, trip_id, day_number, date, title, start_location, end_location, distance_km</code></div>
+                                <div class="entity-card"><h4>BorderCrossing</h4><code>id, trip_id, day_id, name, from_country, to_country, documentation_required</code></div>
+                                <div class="entity-card"><h4>Waypoint</h4><code>id, day_id, type, name, location, sequence_order, planned_arrival</code></div>
+                                <div class="entity-card"><h4>DayActuals</h4><code>id, day_id, actual_distance_km, border_delay_minutes, moving_time_minutes</code></div>
+                                <div class="entity-card"><h4>Media</h4><code>id, trip_id, day_id, uploaded_by, type, url, caption, tags[]</code></div>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="accordion-item fade-in">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="accordion-title"><span class="accordion-icon">🔐</span><h3>Role & Permission Matrix</h3></div>
+                        <span class="accordion-toggle">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <table class="permission-table">
+                                <thead><tr><th>Permission</th><th>Admin</th><th>Convener</th><th>Planner</th><th>Member</th><th>Viewer</th></tr></thead>
+                                <tbody>
+                                    <tr><td>Create/Delete Group</td><td class="check">✓</td><td class="cross">—</td><td class="cross">—</td><td class="cross">—</td><td class="cross">—</td></tr>
+                                    <tr><td>Manage Members</td><td class="check">✓</td><td class="check">✓</td><td class="cross">—</td><td class="cross">—</td><td class="cross">—</td></tr>
+                                    <tr><td>Create Trip</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="cross">—</td><td class="cross">—</td></tr>
+                                    <tr><td>Edit Itinerary</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="cross">—</td><td class="cross">—</td></tr>
+                                    <tr><td>View Itinerary</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td></tr>
+                                    <tr><td>Log Actual Data</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="cross">—</td></tr>
+                                    <tr><td>Upload Media</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="check">✓</td><td class="cross">—</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item fade-in">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <div class="accordion-title"><span class="accordion-icon">⚡</span><h3>Non-Functional Requirements</h3></div>
+                        <span class="accordion-toggle">+</span>
+                    </div>
+                    <div class="accordion-content">
+                        <div class="accordion-body">
+                            <div class="entity-grid">
+                                <div class="entity-card"><h4>Performance</h4><code>API p95 &lt; 200ms • Page load &lt; 3s on 3G • Real-time &lt; 500ms latency</code></div>
+                                <div class="entity-card"><h4>Scalability</h4><code>100,000+ concurrent users • 1,000+ active trips • Horizontal scaling</code></div>
+                                <div class="entity-card"><h4>Availability</h4><code>99.9% uptime SLA • Graceful degradation • Offline capability</code></div>
+                                <div class="entity-card"><h4>Security</h4><code>HTTPS/TLS 1.3 • bcrypt/Argon2 • JWT rotation • CSRF protection</code></div>
+                                <div class="entity-card"><h4>Compatibility</h4><code>Chrome, Firefox, Safari, Edge • iOS 14+, Android 10+ • PWA</code></div>
+                                <div class="entity-card"><h4>Compliance</h4><code>GDPR • CCPA • SOC 2 Type II (enterprise) • Data residency options</code></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA / Waitlist -->
+    <section class="cta" id="waitlist">
+        <div class="container">
+            <h2 class="fade-in">Ready to transform your <span style="color: var(--dark);">group adventures?</span></h2>
+            <p class="fade-in">Join the waitlist and be the first to know when Konvoy launches. Early adopters get exclusive perks!</p>
+            <div class="waitlist-form fade-in">
+                <h3 class="form-title">Join the Waitlist</h3>
+                <p class="form-subtitle">Be among the first to experience Konvoy.</p>
+                <form id="waitlistForm" onsubmit="handleSubmit(event)">
+                    <div class="form-row">
+                        <div class="form-group"><label for="firstName">First Name</label><input type="text" id="firstName" name="firstName" placeholder="John" required></div>
+                        <div class="form-group"><label for="lastName">Last Name</label><input type="text" id="lastName" name="lastName" placeholder="Doe" required></div>
+                    </div>
+                    <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" name="email" placeholder="john@example.com" required></div>
+                    <div class="form-group">
+                        <label for="groupType">Group Type</label>
+                        <select id="groupType" name="groupType" required>
+                            <option value="">Select your group type...</option>
+                            <option value="motorcycle">🏍️ Motorcycle Club</option>
+                            <option value="car">🚗 Car Enthusiasts</option>
+                            <option value="family">👨‍👩‍👧‍👦 Family</option>
+                            <option value="friends">👯 Friends</option>
+                            <option value="corporate">🏢 Corporate / Team Building</option>
+                            <option value="tour">🎫 Tour Operator</option>
+                            <option value="other">✨ Other</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-submit">🚀 Join the Waitlist</button>
+                </form>
+                <p class="form-note">🔒 We respect your privacy. No spam, ever. Unsubscribe anytime.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand"><a href="#" class="logo"><span class="logo-icon">🚀</span>Konvoy</a><p>The world-class platform for planning, executing, and memorializing group travel adventures.</p></div>
+                <div class="footer-section"><h4>Product</h4><ul><li><a href="#features">Features</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#roadmap">Roadmap</a></li><li><a href="#developer">For Developers</a></li></ul></div>
+                <div class="footer-section"><h4>Company</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Blog</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li></ul></div>
+                <div class="footer-section"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Cookie Policy</a></li><li><a href="#">GDPR</a></li></ul></div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 Konvoy by Adullam Solutions Company Limited. All rights reserved.</p>
+                <div class="footer-social"><a href="#">𝕏</a><a href="#">in</a><a href="#">📷</a><a href="#">▶</a></div>
+            </div>
+        </div>
+    </footer>
+
+    <div class="toast" id="toast">🎉 You're on the list! We'll be in touch soon.</div>
+
+    <script>
+        // Navbar scroll effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => { navbar.classList.toggle('scrolled', window.scrollY > 50); });
+
+        // Fade in on scroll
+        const fadeElements = document.querySelectorAll('.fade-in');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
+        }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+        fadeElements.forEach(el => observer.observe(el));
+
+        // Use case tabs
+        document.querySelectorAll('.use-case-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.use-case-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.use-case-content').forEach(c => c.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById(tab.dataset.tab).classList.add('active');
+            });
+        });
+
+        // Accordion
+        function toggleAccordion(header) {
+            const item = header.parentElement;
+            const isActive = item.classList.contains('active');
+            document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
+            if (!isActive) item.classList.add('active');
+        }
+
+        // Form submission
+        function handleSubmit(e) {
+            e.preventDefault();
+            const toast = document.getElementById('toast');
+            toast.classList.add('show');
+            document.getElementById('waitlistForm').reset();
+            setTimeout(() => toast.classList.remove('show'), 4000);
+        }
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            });
+        });
+    </script>
+</body>
+</html>
