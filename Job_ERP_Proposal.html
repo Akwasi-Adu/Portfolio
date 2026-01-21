@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini ERP + Accounting System - Project Proposal</title>
+    <style>
+        body {
+            font-family: 'Calibri', 'Arial', sans-serif;
+            line-height: 1.4;
+            margin: 0;
+            padding: 20px;
+            color: #333;
+            background: white;
+        }
+        
+        .header {
+            text-align: center;
+            border-bottom: 3px solid #1e5631;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+        }
+        
+        .header h1 {
+            color: #1e5631;
+            font-size: 24px;
+            margin: 0;
+            font-weight: bold;
+        }
+        
+        .header h2 {
+            color: #666;
+            font-size: 18px;
+            margin: 5px 0;
+            font-weight: normal;
+        }
+        
+        .client-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+            border: 1px solid #ddd;
+            padding: 15px;
+            background-color: #f9f9f9;
+        }
+        
+        .client-info div {
+            flex: 1;
+        }
+        
+        h1 {
+            color: #1e5631;
+            font-size: 20px;
+            margin: 25px 0 15px 0;
+            border-bottom: 2px solid #1e5631;
+            padding-bottom: 5px;
+        }
+        
+        h2 {
+            color: #1e5631;
+            font-size: 16px;
+            margin: 20px 0 10px 0;
+            font-weight: bold;
+        }
+        
+        h3 {
+            color: #444;
+            font-size: 14px;
+            margin: 15px 0 8px 0;
+            font-weight: bold;
+        }
+        
+        p, li {
+            font-size: 11px;
+            margin: 8px 0;
+        }
+        
+        ul, ol {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        li {
+            margin: 5px 0;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+            font-size: 11px;
+        }
+        
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        
+        th {
+            background-color: #1e5631;
+            color: white;
+            padding: 12px 8px;
+            font-weight: bold;
+            text-align: left;
+        }
+        
+        td {
+            padding: 10px 8px;
+            vertical-align: top;
+        }
+        
+        .total-row {
+            background-color: #e8f5e9;
+            font-weight: bold;
+        }
+        
+        .highlight-box {
+            background-color: #e8f5e9;
+            border-left: 4px solid #1e5631;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        
+        .section {
+            margin-bottom: 25px;
+        }
+        
+        .timeline-table td {
+            text-align: center;
+        }
+        
+        .timeline-table td:first-child {
+            text-align: left;
+            font-weight: bold;
+        }
+        
+        .deliverable {
+            color: #2e7d32;
+            font-weight: bold;
+        }
+        
+        .footer {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 2px solid #1e5631;
+            text-align: center;
+            font-size: 10px;
+            color: #666;
+        }
+        
+        .contact-section {
+            margin-top: 30px;
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ddd;
+        }
+        
+        @media print {
+            body { margin: 0; }
+            .no-print { display: none; }
+            .page-break { page-break-before: always; }
+        }
+        
+        .amount {
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .feature-highlight {
+            background-color: #fff8e1;
+            border-left: 4px solid #f9a825;
+            padding: 10px;
+            margin: 10px 0;
+            font-size: 10px;
+        }
+
+        .appendix {
+            page-break-before: always;
+            margin-top: 40px;
+            border-top: 3px solid #1e5631;
+            padding-top: 20px;
+        }
+
+        .warning-box {
+            background-color: #fff3e0;
+            border-left: 4px solid #ff9800;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .success-box {
+            background-color: #e8f5e9;
+            border-left: 4px solid #4caf50;
+            padding: 15px;
+            margin: 15px 0;
+        }
+
+        .currency-note {
+            font-size: 10px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .module-icon {
+            font-size: 14px;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>PROJECT PROPOSAL</h1>
+        <h2>Mini ERP + Accounting System</h2>
+        <h2>Custom Web Application Development</h2>
+    </div>
+
+    <div class="client-info">
+        <div>
+            <strong>Client:</strong> XXXXX<br>
+            <strong>Attention:</strong> Godwin<br>
+            <strong>Project:</strong> Mini ERP + Accounting Web Application Development<br>
+            <strong>Industry:</strong> Engineering / Manufacturing / Fabrication
+        </div>
+        <div style="text-align: right;">
+            <strong>Date:</strong> 18th January, 2025<br>
+            <strong>Validity:</strong> 30 Days<br>
+            <strong>Project Duration:</strong> 4 Months<br>
+            <strong>Reference:</strong> ADS/PROP/2026/001
+        </div>
+    </div>
+
+    <div class="section">
+        <h1>EXECUTIVE SUMMARY</h1>
+        <p>We are pleased to present this proposal for the development of a comprehensive Mini ERP + Accounting System tailored specifically for your company. This solution is designed to replace your current Excel-based operations with a modern, integrated web application that will streamline your job costing, accounting, inventory management, and payroll processes.</p>
+        
+        <div class="highlight-box">
+            <strong>The Challenge:</strong> Managing engineering and manufacturing operations through spreadsheets creates significant inefficiencies including:
+            <ul>
+                <li>No real-time visibility into job profitability or work-in-progress (WIP) status</li>
+                <li>Error-prone manual processes for invoicing, payments, and bank reconciliation</li>
+                <li>Inability to properly track multi-currency transactions (critical for imported materials)</li>
+                <li>No audit trail for financial transactions</li>
+                <li>Time-consuming month-end closing processes</li>
+                <li>Disconnected data between sales, operations, inventory, and accounting</li>
+            </ul>
+        </div>
+
+        <div class="success-box">
+            <strong>Our Solution:</strong> A purpose-built Mini ERP + Accounting web application with integrated modules for:
+            <ul>
+                <li><strong>Job Costing (Primary Focus)</strong> - Quote to job conversion, WIP tracking, progress billing, job profitability analysis</li>
+                <li><strong>General Ledger</strong> - Chart of accounts, journal entries, period close, financial statements</li>
+                <li><strong>Accounts Receivable</strong> - Customer management, invoicing, receipts, withholding tax handling</li>
+                <li><strong>Accounts Payable</strong> - Supplier management, purchase orders, bills, payments</li>
+                <li><strong>Inventory Management</strong> - Items, stock tracking, weighted average/FIFO valuation</li>
+                <li><strong>Basic Payroll</strong> - Ghana-compliant PAYE and SSNIT calculations</li>
+                <li><strong>Multi-Currency & Banking</strong> - Foreign currency transactions, revaluation, bank reconciliation</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h1>PROJECT OBJECTIVES</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 30%;">Objective</th>
+                    <th style="width: 40%;">Success Metric</th>
+                    <th style="width: 30%;">Target</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Eliminate Excel dependency</td>
+                    <td>% of financial transactions in system</td>
+                    <td>100% within 3 months of go-live</td>
+                </tr>
+                <tr>
+                    <td>Real-time job profitability</td>
+                    <td>Time to generate job profit report</td>
+                    <td>&lt; 30 seconds</td>
+                </tr>
+                <tr>
+                    <td>Accurate multi-currency tracking</td>
+                    <td>FX gain/loss visibility</td>
+                    <td>Every period-end, automated</td>
+                </tr>
+                <tr>
+                    <td>Reduce period-close time</td>
+                    <td>Days to close month</td>
+                    <td>&lt; 3 days</td>
+                </tr>
+                <tr>
+                    <td>Audit readiness</td>
+                    <td>Complete transaction trail</td>
+                    <td>100% of all postings</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h1>SCOPE OF WORK</h1>
+        
+        <h2>1. JOB COSTING MODULE (Primary)</h2>
+        
+        <h3>1.1 Quote Management</h3>
+        <ul>
+            <li>Create, save, and send professional quotes to customers via email</li>
+            <li>Quote line items with materials, labor, and overhead categorization</li>
+            <li>Margin analysis showing estimated cost vs quoted price</li>
+            <li>Quote status tracking (Draft, Sent, Accepted, Rejected, Expired, Converted)</li>
+            <li>PDF quote generation with company letterhead</li>
+            <li>Quote cloning for similar jobs</li>
+        </ul>
+        
+        <h3>1.2 Job Management</h3>
+        <ul>
+            <li>Convert accepted quotes to jobs with budget data automatically populated</li>
+            <li>Ad-hoc job creation without quotes</li>
+            <li>Job status workflow (Open → In Progress → On Hold → Completed → Closed)</li>
+            <li>Budget vs actual tracking in real-time</li>
+            <li>Job notes and comments with timestamps</li>
+        </ul>
+        
+        <h3>1.3 Cost Capture</h3>
+        <ul>
+            <li><strong>Materials:</strong> Issue inventory to jobs with automatic cost calculation</li>
+            <li><strong>Labor:</strong> Time entry by employee with hourly rates</li>
+            <li><strong>Overhead:</strong> Configurable percentage allocation (default 15%)</li>
+            <li><strong>Direct Expenses:</strong> Subcontractor and other direct costs</li>
+            <li>All costs post automatically to Work-in-Progress (WIP) account</li>
+        </ul>
+        
+        <h3>1.4 Job Invoicing</h3>
+        <ul>
+            <li>Progress billing for long-running jobs</li>
+            <li>Final invoicing upon job completion</li>
+            <li>Track billed vs unbilled amounts per job</li>
+            <li>Link invoices to jobs for profitability reporting</li>
+        </ul>
+        
+        <h3>1.5 Job Closure & Profitability</h3>
+        <ul>
+            <li>Job close process with final overhead calculation</li>
+            <li>Automatic WIP to COGS transfer on job close</li>
+            <li>Job profitability report showing revenue, costs, gross profit, margin %</li>
+            <li>Budget variance analysis (estimated vs actual)</li>
+        </ul>
+
+        <h2>2. GENERAL LEDGER MODULE</h2>
+        
+        <h3>2.1 Chart of Accounts</h3>
+        <ul>
+            <li>Pre-seeded IFRS-aligned chart of accounts for Ghana SME</li>
+            <li>Account types: Asset, Liability, Equity, Revenue, Expense</li>
+            <li>System accounts flagged for automatic posting (AR, AP, Inventory, WIP, VAT, etc.)</li>
+            <li>Hierarchical account structure for grouping</li>
+        </ul>
+        
+        <h3>2.2 Journal Entries</h3>
+        <ul>
+            <li>Manual journal entries with validation (debits must equal credits)</li>
+            <li>System-generated journals from all transactional documents</li>
+            <li>Journal status workflow (Draft → Posted → Voided)</li>
+            <li>Immutable posted entries with void/reversal capability</li>
+            <li>Source document linking for full audit trail</li>
+        </ul>
+        
+        <h3>2.3 Period Management</h3>
+        <ul>
+            <li>Fiscal period management (12 monthly periods per year)</li>
+            <li>Period close with checklist validation</li>
+            <li>Prevent posting to closed periods</li>
+            <li>Year-end closing entry generation</li>
+        </ul>
+        
+        <h3>2.4 Financial Statements</h3>
+        <ul>
+            <li>Trial Balance (as-of date, with/without zero balances)</li>
+            <li>General Ledger Detail (transaction listing by account)</li>
+            <li>Profit & Loss Statement with prior period comparison</li>
+            <li>Balance Sheet with proper classification</li>
+        </ul>
+
+        <h2>3. ACCOUNTS RECEIVABLE MODULE</h2>
+        
+        <h3>3.1 Customer Management</h3>
+        <ul>
+            <li>Customer master records with contact information</li>
+            <li>Default currency and payment terms per customer</li>
+            <li>Credit limit tracking</li>
+            <li>Customer balance and aging summary</li>
+        </ul>
+        
+        <h3>3.2 Sales Invoicing</h3>
+        <ul>
+            <li>Invoice creation with line items and VAT calculation</li>
+            <li>Multi-currency invoicing with exchange rate capture</li>
+            <li>Invoice posting with automatic GL entries (Dr AR, Cr Revenue, Cr VAT)</li>
+            <li>PDF invoice generation and email delivery</li>
+            <li>Credit notes for adjustments/refunds</li>
+        </ul>
+        
+        <h3>3.3 Receipt Processing</h3>
+        <ul>
+            <li>Record customer payments with invoice allocation</li>
+            <li>Withholding tax (WHT) deduction handling (common in Ghana)</li>
+            <li>Multi-currency receipts with FX gain/loss calculation</li>
+            <li>On-account receipts for later allocation</li>
+        </ul>
+        
+        <h3>3.4 AR Reports</h3>
+        <ul>
+            <li>AR Aging Report (Current, 30, 60, 90, 90+ days)</li>
+            <li>Customer Statement (for sending to customers)</li>
+            <li>Invoice and Receipt Registers</li>
+        </ul>
+
+        <h2>4. ACCOUNTS PAYABLE MODULE</h2>
+        
+        <h3>4.1 Supplier Management</h3>
+        <ul>
+            <li>Supplier master records with contact information</li>
+            <li>Default currency and payment terms</li>
+            <li>Supplier balance and aging summary</li>
+        </ul>
+        
+        <h3>4.2 Purchase Orders</h3>
+        <ul>
+            <li>PO creation with line items (inventory or expense)</li>
+            <li>Multi-currency POs with exchange rate</li>
+            <li>PO status tracking (Draft, Sent, Partial, Received, Cancelled)</li>
+            <li>PDF PO generation and email delivery</li>
+        </ul>
+        
+        <h3>4.3 Supplier Bills</h3>
+        <ul>
+            <li>Enter supplier invoices with VAT input capture</li>
+            <li>Link bills to POs for matching</li>
+            <li>Automatic inventory receipt on bill posting</li>
+            <li>Multi-currency bills with exchange rate</li>
+        </ul>
+        
+        <h3>4.4 Payment Processing</h3>
+        <ul>
+            <li>Record supplier payments with bill allocation</li>
+            <li>Multi-currency payments with FX gain/loss calculation</li>
+            <li>Multiple payment methods (cheque, transfer, cash)</li>
+        </ul>
+        
+        <h3>4.5 AP Reports</h3>
+        <ul>
+            <li>AP Aging Report</li>
+            <li>Supplier Statement</li>
+            <li>Bill and Payment Registers</li>
+            <li>Open PO Report</li>
+        </ul>
+
+        <h2>5. INVENTORY MODULE</h2>
+        
+        <h3>5.1 Item Management</h3>
+        <ul>
+            <li>Item master with categories and units of measure</li>
+            <li>Stockable vs non-stockable (service) items</li>
+            <li>Reorder level and quantity settings</li>
+            <li>Track quantity on hand, on order, reserved</li>
+        </ul>
+        
+        <h3>5.2 Inventory Transactions</h3>
+        <ul>
+            <li>Receipts (from supplier bills or manual)</li>
+            <li>Issues (to jobs or expense accounts)</li>
+            <li>Adjustments (for count variances, damage, write-offs)</li>
+            <li>Automatic GL posting for all movements</li>
+        </ul>
+        
+        <h3>5.3 Inventory Valuation</h3>
+        <ul>
+            <li>Weighted Average Cost method (default)</li>
+            <li>FIFO method (configurable)</li>
+            <li>Real-time valuation recalculation</li>
+            <li>Cost tracking per transaction</li>
+        </ul>
+        
+        <h3>5.4 Inventory Reports</h3>
+        <ul>
+            <li>Inventory Valuation Report (by category)</li>
+            <li>Inventory Movement Report</li>
+            <li>Stock Reorder Report</li>
+            <li>Inventory by Job Report</li>
+        </ul>
+
+        <h2>6. PAYROLL MODULE (Basic)</h2>
+        
+        <h3>6.1 Employee Management</h3>
+        <ul>
+            <li>Employee records with personal and employment details</li>
+            <li>Salary and allowance configuration</li>
+            <li>SSNIT number and TIN tracking</li>
+            <li>Bank account details for payments</li>
+        </ul>
+        
+        <h3>6.2 Ghana Tax Compliance</h3>
+        <ul>
+            <li>Configurable PAYE tax brackets (Ghana progressive rates)</li>
+            <li>SSNIT Tier 1 contributions (5.5% employee, 13% employer)</li>
+            <li>Tax table effective dating for rate changes</li>
+        </ul>
+        
+        <h3>6.3 Pay Run Processing</h3>
+        <ul>
+            <li>Monthly pay run creation and calculation</li>
+            <li>Individual payslip adjustments</li>
+            <li>Pay run approval workflow</li>
+            <li>Post payroll to GL with proper expense and liability accounts</li>
+        </ul>
+        
+        <h3>6.4 Payroll Reports & Outputs</h3>
+        <ul>
+            <li>Payslips (PDF generation, email distribution)</li>
+            <li>Payroll Summary Report</li>
+            <li>SSNIT Contribution Report (for submission)</li>
+            <li>PAYE Report (for GRA)</li>
+            <li>Bank Payment File (CSV for bulk upload)</li>
+        </ul>
+
+        <h2>7. MULTI-CURRENCY & BANKING MODULE</h2>
+        
+        <h3>7.1 Currency Management</h3>
+        <ul>
+            <li>Base currency: GHS (Ghana Cedi)</li>
+            <li>Support for USD, EUR, GBP, CNY and other currencies</li>
+            <li>Daily exchange rate entry</li>
+            <li>Transaction currency with rate capture</li>
+        </ul>
+        
+        <h3>7.2 Foreign Currency Revaluation</h3>
+        <ul>
+            <li>Period-end revaluation of open AR/AP and bank balances</li>
+            <li>Unrealized FX gain/loss calculation and posting</li>
+            <li>Optional reversing entries for next period</li>
+            <li>Revaluation report with full detail</li>
+        </ul>
+        
+        <h3>7.3 Bank Accounts</h3>
+        <ul>
+            <li>Multiple bank accounts (local and foreign currency)</li>
+            <li>Link bank accounts to GL accounts</li>
+            <li>Bank balance tracking</li>
+        </ul>
+        
+        <h3>7.4 Bank Reconciliation</h3>
+        <ul>
+            <li>Import bank statements via CSV</li>
+            <li>Manual statement line entry</li>
+            <li>Auto-matching of transactions</li>
+            <li>Manual matching for exceptions</li>
+            <li>Create transactions from statement lines (bank charges, etc.)</li>
+            <li>Reconciliation report generation</li>
+        </ul>
+
+        <h2>8. SYSTEM ADMINISTRATION</h2>
+        
+        <h3>8.1 User Management</h3>
+        <ul>
+            <li>5 user accounts included</li>
+            <li>Role-based access control (Admin, Accountant, Operations, Sales, Payroll)</li>
+            <li>Granular permissions per role</li>
+            <li>Password policies and account security</li>
+        </ul>
+        
+        <h3>8.2 Company Configuration</h3>
+        <ul>
+            <li>Company information and logo</li>
+            <li>Fiscal year settings</li>
+            <li>Tax rates configuration</li>
+            <li>Document numbering sequences</li>
+            <li>Email (SMTP) settings</li>
+        </ul>
+        
+        <h3>8.3 Audit & Compliance</h3>
+        <ul>
+            <li>Complete audit trail of all actions</li>
+            <li>User activity logging</li>
+            <li>Immutable audit records</li>
+            <li>Audit log viewer with filters</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h1>TECHNOLOGY STACK</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 25%;">Component</th>
+                    <th style="width: 35%;">Technology</th>
+                    <th style="width: 40%;">Benefits</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Frontend</strong></td>
+                    <td>React 18 with TypeScript, shadcn/ui components, Tailwind CSS</td>
+                    <td>Modern, responsive, mobile-accessible interface</td>
+                </tr>
+                <tr>
+                    <td><strong>Backend</strong></td>
+                    <td>ASP.NET Core 8 (C#)</td>
+                    <td>Enterprise-grade, high performance, secure</td>
+                </tr>
+                <tr>
+                    <td><strong>Architecture</strong></td>
+                    <td>Clean Architecture with CQRS pattern</td>
+                    <td>Maintainable, testable, scalable</td>
+                </tr>
+                <tr>
+                    <td><strong>Database</strong></td>
+                    <td>PostgreSQL</td>
+                    <td>Robust, open-source, cost-effective</td>
+                </tr>
+                <tr>
+                    <td><strong>API</strong></td>
+                    <td>RESTful API with JWT authentication</td>
+                    <td>Secure, standards-compliant</td>
+                </tr>
+                <tr>
+                    <td><strong>Hosting</strong></td>
+                    <td>Enterprise Cloud Infrastructure</td>
+                    <td>99.9% uptime, automatic backups, SSL</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h1>PROJECT DELIVERABLES</h1>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 20%;">Phase</th>
+                    <th style="width: 15%;">Timeline</th>
+                    <th style="width: 65%;">Deliverables</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Phase 1: Foundation</strong></td>
+                    <td>Month 1</td>
+                    <td>
+                        <span class="deliverable">✓</span> Authentication & User Management<br>
+                        <span class="deliverable">✓</span> Company Settings & Configuration<br>
+                        <span class="deliverable">✓</span> Chart of Accounts (with pre-seeded Ghana SME template)<br>
+                        <span class="deliverable">✓</span> Currency & Exchange Rate Management<br>
+                        <span class="deliverable">✓</span> Customer & Supplier Masters<br>
+                        <span class="deliverable">✓</span> Basic GL Journal Entries
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 2: Job Costing & AR</strong></td>
+                    <td>Month 2</td>
+                    <td>
+                        <span class="deliverable">✓</span> Quote Management (create, send, convert)<br>
+                        <span class="deliverable">✓</span> Job Creation & Status Tracking<br>
+                        <span class="deliverable">✓</span> Inventory Items & Categories<br>
+                        <span class="deliverable">✓</span> Job Cost Entry (materials, labor, expenses)<br>
+                        <span class="deliverable">✓</span> Sales Invoices & Credit Notes<br>
+                        <span class="deliverable">✓</span> Customer Receipts with WHT handling
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 3: AP, Inventory & Payroll</strong></td>
+                    <td>Month 3</td>
+                    <td>
+                        <span class="deliverable">✓</span> Purchase Orders<br>
+                        <span class="deliverable">✓</span> Supplier Bills & Payments<br>
+                        <span class="deliverable">✓</span> Inventory Valuation (Weighted Avg/FIFO)<br>
+                        <span class="deliverable">✓</span> Job Close & WIP Transfer<br>
+                        <span class="deliverable">✓</span> Employee Management<br>
+                        <span class="deliverable">✓</span> Pay Run Processing & GL Posting
+                    </td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 4: Banking, Reports & Go-Live</strong></td>
+                    <td>Month 4</td>
+                    <td>
+                        <span class="deliverable">✓</span> Bank Account Setup<br>
+                        <span class="deliverable">✓</span> Bank Reconciliation<br>
+                        <span class="deliverable">✓</span> FX Revaluation<br>
+                        <span class="deliverable">✓</span> Period Close Process<br>
+                        <span class="deliverable">✓</span> All Reports (Financial, Job, AR, AP, Inventory, Payroll)<br>
+                        <span class="deliverable">✓</span> Dashboard & KPIs<br>
+                        <span class="deliverable">✓</span> User Acceptance Testing<br>
+                        <span class="deliverable">✓</span> Production Deployment & Go-Live Support
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h1>TRAINING & KNOWLEDGE TRANSFER</h1>
+        
+        <h2>Training Program</h2>
+        <ul>
+            <li><strong>System Administrator Training:</strong> 1 session for IT/Admin personnel</li>
+            <li><strong>Finance Team Training:</strong> 1 session covering GL, AR, AP, Banking modules</li>
+            <li><strong>Operations Team Training:</strong> 1 session covering Job Costing, Inventory modules</li>
+            <li><strong>Payroll Training:</strong> 1 session for HR/Payroll personnel</li>
+        </ul>
+        
+        <h2>Documentation Package</h2>
+        <ul>
+            <li>Comprehensive User Manual for all modules</li>
+            <li>System Administrator Guide</li>
+            <li>Standard Operating Procedures (SOPs) for key workflows</li>
+            <li>Quick Reference Guides</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h1>DEPLOYMENT & GO-LIVE</h1>
+        
+        <h2>Deployment Strategy</h2>
+        <ul>
+            <li>Cloud deployment on enterprise-grade infrastructure</li>
+            <li>SSL certificate for secure access (HTTPS)</li>
+            <li>Custom domain configuration (if required)</li>
+            <li>Automated daily backups with 30-day retention</li>
+        </ul>
+        
+        <h2>Go-Live Support</h2>
+        <ul>
+            <li>Dedicated support during first week of operation</li>
+            <li>Remote monitoring during critical transition period</li>
+            <li>Rapid issue resolution</li>
+            <li>Performance optimization and fine-tuning</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h1>ONGOING SUPPORT & MAINTENANCE</h1>
+        
+        <h2>Post-Implementation Support (Included in Development)</h2>
+        <ul>
+            <li><strong>Duration:</strong> 30 days post go-live</li>
+            <li><strong>Coverage:</strong> Bug fixes, system troubleshooting, minor adjustments</li>
+            <li><strong>Response Time:</strong> 24-hour response for critical issues</li>
+            <li><strong>Support Channels:</strong> Email, phone, remote assistance</li>
+        </ul>
+        
+        <h2>Excluded from Initial Support</h2>
+        <ul>
+            <li>New feature development or major modifications</li>
+            <li>Training for additional users beyond initial scope</li>
+            <li>Hardware-related issues</li>
+            <li>Third-party software conflicts</li>
+            <li>Issues caused by unauthorized system modifications</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h1>INVESTMENT SUMMARY</h1>
+        
+        <div class="feature-highlight">
+            <strong>Complete Solution Includes:</strong>
+            <ul>
+                <li>Job Costing Module (Quote → Job → WIP → Invoice → Profitability)</li>
+                <li>General Ledger Module (Chart of Accounts, Journals, Period Close, Financial Statements)</li>
+                <li>Accounts Receivable Module (Customers, Invoices, Credit Notes, Receipts, WHT)</li>
+                <li>Accounts Payable Module (Suppliers, POs, Bills, Payments)</li>
+                <li>Inventory Module (Items, Stock Tracking, Weighted Avg/FIFO Valuation)</li>
+                <li>Basic Payroll Module (Ghana PAYE, SSNIT Tier 1, Payslips)</li>
+                <li>Multi-Currency & Banking Module (FX Revaluation, Bank Reconciliation)</li>
+                <li>5 User Accounts with Role-Based Access Control</li>
+                <li>20+ Reports across all modules</li>
+                <li>Training and Documentation</li>
+            </ul>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 60%;">Item</th>
+                    <th style="width: 20%;">GHS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="total-row">
+                    <td><strong>Development & Implementation</strong><br>
+                    <em>Complete Mini ERP + Accounting System as described above</em></td>
+                    <td class="amount"><strong>GHS 75,000</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="section">
+        <h1>ANNUAL LICENSE & MAINTENANCE FEE (ALF)</h1>
+        
+        <div class="highlight-box">
+            <strong>Annual License & Maintenance Services Include:</strong>
+            <ul>
+                <li><strong>Cloud Hosting:</strong> Enterprise-grade infrastructure with 99.9% uptime SLA</li>
+                <li><strong>System Maintenance:</strong> Regular updates, security patches, performance optimization</li>
+                <li><strong>Technical Support:</strong> Business hours support via email and phone</li>
+                <li><strong>Automated Backups:</strong> Daily backups with 30-day retention</li>
+                <li><strong>SSL Certificate:</strong> Annual renewal for secure access</li>
+                <li><strong>Database Maintenance:</strong> Regular optimization and health checks</li>
+            </ul>
+        </div>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 60%;">Service Package</th>
+                    <th style="width: 20%;">GHS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="total-row">
+                    <td><strong>Annual License & Maintenance</strong><br>
+                    <em>All services listed above included</em></td>
+                    <td class="amount"><strong>GHS 19,500/year</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <div class="feature-highlight">
+            <strong>Flexible Payment Options:</strong> Annual fee can be paid annually in advance (GHS 20,000) or quarterly in advance (GHS 5,000/quarter).
+            <br><br>
+            <strong>Note:</strong> ALF commences after the 30-day post go-live support period ends.
+        </div>
+    </div>
+
+    <div class="section">
+        <h1>PAYMENT SCHEDULE</h1>
+        
+        <h2>Milestone-Based Payments</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th style="width: 25%;">Milestone</th>
+                    <th style="width: 35%;">Trigger</th>
+                    <th style="width: 13%;">%</th>
+                    <th style="width: 14%;">GHS</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Project Initiation</strong></td>
+                    <td>Upon acceptance of proposal</td>
+                    <td class="amount">50%</td>
+                    <td class="amount">37,500</td>
+                </tr>
+                <tr>
+                    <td><strong>Phase 1 & 2 Complete</strong></td>
+                    <td>Foundation + Job Costing + AR + AP, Inventory & Payroll delivery (End of Month 3)</td>
+                    <td class="amount">30%</td>
+                    <td class="amount">22,500</td>
+                </tr>                
+                <tr>
+                    <td><strong>Project Completion</strong></td>
+                    <td>Final deployment, UAT sign-off, go-live</td>
+                    <td class="amount">20%</td>
+                    <td class="amount">15,000</td>
+                </tr>
+                <tr class="total-row">
+                    <td colspan="2"><strong>TOTAL DEVELOPMENT</strong></td>
+                    <td class="amount"><strong>100%</strong></td>
+                    <td class="amount"><strong>75,000</strong></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <p><strong>Annual License & Maintenance Fee:</strong> GHS 20,000 per year, payable annually or quarterly in advance, commencing after 30-day post go-live support period.</p>
+    </div>
+
+    <div class="section">
+        <h1>TERMS & CONDITIONS</h1>
+        
+        <h2>General Terms</h2>
+        <ul>
+            <li>This proposal is valid for 30 days from the date of issue</li>
+            <li>Prices are quoted in both GHS</li>
+            <li>Project timeline commences upon receipt of initial payment</li>
+            <li>Any scope changes will be documented and priced separately</li>
+        </ul>
+        
+        <h2>Client Responsibilities</h2>
+        <ul>
+            <li>Provide timely feedback and approvals at each milestone</li>
+            <li>Make key personnel available for requirements gathering and testing</li>
+            <li>Provide sample data and documents for system configuration</li>
+            <li>Ensure internet connectivity for system access</li>
+        </ul>
+        
+        <h2>Intellectual Property</h2>
+        <ul>
+            <li>Upon full payment, client receives perpetual license to use the developed system</li>
+            <li>Core framework and reusable components remain the property of Adullam Solutions</li>
+        </ul>
+        
+        <h2>Warranty & Liability</h2>
+        <ul>
+            <li>30-day warranty for bug fixes post go-live (included)</li>
+            <li>System designed following IFRS principles but does not guarantee regulatory compliance</li>
+            <li>Client should consult qualified accountants for compliance assurance</li>
+            <li>Liability limited to amounts paid for development services</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h1>WHY CHOOSE US</h1>
+        
+        <div class="success-box">
+            <ul>
+                <li><strong>✅ Domain Expertise:</strong> Deep understanding of accounting principles, ERP systems, and Ghana business requirements</li>
+                <li><strong>✅ Modern Technology:</strong> Latest tech stack ensuring performance, security, and maintainability</li>
+                <li><strong>✅ Tailored Solution:</strong> Purpose-built for engineering/manufacturing job costing, not a generic off-the-shelf product</li>
+                <li><strong>✅ Local Support:</strong> Ghana-based support with understanding of local tax and compliance requirements</li>
+                <li><strong>✅ Cost-Effective:</strong> Fraction of the cost of major ERP systems while delivering essential functionality</li>
+                <li><strong>✅ Scalable:</strong> Architecture designed to grow with your business</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h1>ACCEPTANCE</h1>
+        
+        <p>To proceed with this project, please sign below and return a copy of this proposal along with the initial payment.</p>
+        
+        <table style="margin-top: 30px;">
+            <tr>
+                <td style="width: 50%; padding: 20px; border: none;">
+                    <strong>For your company:</strong><br><br><br>
+                    _________________________________<br>
+                    Signature<br><br>
+                    _________________________________<br>
+                    Name & Title<br><br>
+                    _________________________________<br>
+                    Date
+                </td>
+                <td style="width: 50%; padding: 20px; border: none;">
+                    <strong>For Adullam Solutions:</strong><br><br><br>
+                    _________________________________<br>
+                    Signature<br><br>
+                    <strong>Akwasi Adu</strong><br>
+                    Project Manager<br><br>
+                    _________________________________<br>
+                    Date
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="contact-section">
+        <h2 style="margin-top: 0;">CONTACT INFORMATION</h2>
+        <table style="border: none; margin: 0;">
+            <tr>
+                <td style="border: none; width: 50%;">
+                    <strong>Adullam Solutions Company Limited</strong><br>
+                    Accra, Ghana<br>
+                </td>
+                <td style="border: none; width: 50%; text-align: right;">
+                    <strong>Akwasi Adu</strong><br>
+                    Email: me@akwasi.dev<br>
+                    Web: akwasi.dev
+                </td>
+            </tr>
+        </table>
+    </div>
+
+    <!-- APPENDIX: COMPREHENSIVE FEATURE LIST -->
+    <div class="appendix">
+        <h1 style="text-align: center; border-bottom: none;">APPENDIX A: COMPREHENSIVE FEATURE SPECIFICATION</h1>
+        <p style="text-align: center;"><em>Detailed breakdown of all system features and capabilities</em></p>
+    </div>
+
+    <div class="section">
+        <h2>📋 JOB COSTING MODULE</h2>
+        
+        <h3>Quote Management</h3>
+        <ul>
+            <li><strong>Quote Creation:</strong> Create professional quotes with customer details, line items, and pricing</li>
+            <li><strong>Line Item Types:</strong> Categorize items as Material, Labor, Overhead, or Other</li>
+            <li><strong>Multi-Currency:</strong> Create quotes in customer's preferred currency with exchange rate capture</li>
+            <li><strong>VAT Calculation:</strong> Automatic VAT calculation at configured rate (15% default)</li>
+            <li><strong>Margin Analysis:</strong> Real-time display of expected margin (quoted price vs estimated cost)</li>
+            <li><strong>Quote Status Tracking:</strong> Draft → Sent → Accepted/Rejected → Expired → Converted</li>
+            <li><strong>PDF Generation:</strong> Professional quote document with company letterhead</li>
+            <li><strong>Email Delivery:</strong> Send quotes directly to customers via configured SMTP</li>
+            <li><strong>Quote Cloning:</strong> Duplicate existing quotes for similar jobs</li>
+            <li><strong>Validity Tracking:</strong> Automatic status change to Expired when validity date passes</li>
+            <li><strong>Quote Pipeline Report:</strong> Overview of quotes by status with conversion rate analytics</li>
+        </ul>
+
+        <h3>Job Management</h3>
+        <ul>
+            <li><strong>Quote Conversion:</strong> One-click conversion from accepted quote with all estimate data copied</li>
+            <li><strong>Ad-hoc Jobs:</strong> Create jobs directly without quotes for repeat or emergency work</li>
+            <li><strong>Job Header:</strong> Job number, customer, name, description, dates, currency, exchange rate</li>
+            <li><strong>Budget Tracking:</strong> Estimated materials, labor, overhead, total cost, contract value</li>
+            <li><strong>Actual Tracking:</strong> Real-time tracking of actual materials, labor, overhead, direct expenses</li>
+            <li><strong>Status Workflow:</strong> Open → In Progress → On Hold → Completed → Closed → Cancelled</li>
+            <li><strong>Budget vs Actual:</strong> Visual comparison with variance calculation and percentages</li>
+            <li><strong>Billing Tracking:</strong> Total invoiced, total received, unbilled amount</li>
+            <li><strong>Job Notes:</strong> Add timestamped comments and notes to jobs</li>
+            <li><strong>Job Profitability:</strong> Revenue, total cost, gross profit, margin percentage</li>
+        </ul>
+
+        <h3>Job Cost Entry</h3>
+        <ul>
+            <li><strong>Material Costs:</strong> Issue inventory items to jobs with automatic cost lookup</li>
+            <li><strong>Labor Costs:</strong> Record time by employee/role with hourly rate calculation</li>
+            <li><strong>Overhead Costs:</strong> Automatic calculation based on configurable percentage (default 15%)</li>
+            <li><strong>Direct Expenses:</strong> Manual entry for subcontractors, transport, and other direct costs</li>
+            <li><strong>Cost Date:</strong> Record actual date of cost incurrence</li>
+            <li><strong>GL Integration:</strong> All costs automatically post to WIP account with job reference</li>
+            <li><strong>Running Totals:</strong> Real-time update of job actual costs on each entry</li>
+        </ul>
+
+        <h3>Job Invoicing & Closure</h3>
+        <ul>
+            <li><strong>Progress Invoicing:</strong> Create partial invoices for long-running jobs</li>
+            <li><strong>Final Invoicing:</strong> Complete invoicing upon job completion</li>
+            <li><strong>Invoice Linking:</strong> All job invoices linked for billing analysis</li>
+            <li><strong>Billed vs Unbilled:</strong> Track invoiced amount against contract value</li>
+            <li><strong>Job Completion:</strong> Mark job as complete when work is finished</li>
+            <li><strong>Job Close Process:</strong> Finalize job with overhead calculation and WIP transfer</li>
+            <li><strong>WIP to COGS Transfer:</strong> Automatic journal entry moving WIP to Cost of Goods Sold</li>
+            <li><strong>Close Validation:</strong> Warning if unbilled amounts exist at close time</li>
+            <li><strong>Job Lock:</strong> Prevent further cost entries after closure</li>
+        </ul>
+
+        <h3>Job Costing Reports</h3>
+        <ul>
+            <li><strong>Job Profitability Report:</strong> Revenue, cost, profit, margin by job with budget variance</li>
+            <li><strong>WIP Summary Report:</strong> Current WIP balance by job with status</li>
+            <li><strong>WIP Aging Report:</strong> Age analysis of WIP (Current, 30, 60, 90, 120+ days)</li>
+            <li><strong>Quote Pipeline Report:</strong> Quotes by status with value and conversion metrics</li>
+            <li><strong>Open Jobs Report:</strong> Active jobs with budget vs actual status</li>
+            <li><strong>Billed vs Unbilled Report:</strong> Contract value, billed, unbilled by job</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📒 GENERAL LEDGER MODULE</h2>
+        
+        <h3>Chart of Accounts</h3>
+        <ul>
+            <li><strong>Pre-Seeded Template:</strong> IFRS-aligned Ghana SME chart of accounts included</li>
+            <li><strong>Account Types:</strong> Asset, Liability, Equity, Revenue, Expense with sub-types</li>
+            <li><strong>Account Hierarchy:</strong> Parent-child relationships for grouped reporting</li>
+            <li><strong>System Accounts:</strong> Flagged accounts for automatic posting (AR, AP, Inventory, WIP, VAT, FX, etc.)</li>
+            <li><strong>Bank Accounts:</strong> Special designation with currency and bank details</li>
+            <li><strong>Account Codes:</strong> Flexible coding scheme (up to 20 characters)</li>
+            <li><strong>Active/Inactive:</strong> Deactivate unused accounts without deletion</li>
+            <li><strong>Opening Balances:</strong> Set opening balances for migration</li>
+            <li><strong>Current Balance:</strong> Real-time balance display (denormalized for performance)</li>
+        </ul>
+
+        <h3>Journal Entries</h3>
+        <ul>
+            <li><strong>Manual Journals:</strong> Create multi-line journal entries with date, reference, memo</li>
+            <li><strong>Balance Validation:</strong> Enforce debits = credits before save</li>
+            <li><strong>Minimum Lines:</strong> Require at least 2 lines per journal</li>
+            <li><strong>System Journals:</strong> Automatic generation from invoices, receipts, bills, payments, payroll</li>
+            <li><strong>Source Linking:</strong> Every system journal links to its source document</li>
+            <li><strong>Status Workflow:</strong> Draft → Posted → Voided</li>
+            <li><strong>Immutability:</strong> Posted journals cannot be edited</li>
+            <li><strong>Void with Reversal:</strong> Voiding creates automatic reversing entry</li>
+            <li><strong>Period Validation:</strong> Prevent posting to closed periods</li>
+            <li><strong>Control Account Protection:</strong> Block manual posting to AR, AP, Inventory accounts</li>
+            <li><strong>Multi-Currency Support:</strong> Foreign currency amounts with rate for reporting</li>
+            <li><strong>Recurring Journals:</strong> Template journals for monthly recurring entries</li>
+        </ul>
+
+        <h3>Fiscal Period Management</h3>
+        <ul>
+            <li><strong>Automatic Creation:</strong> 12 monthly periods created per fiscal year</li>
+            <li><strong>Period Status:</strong> Open or Closed</li>
+            <li><strong>Current Period:</strong> Designate active posting period</li>
+            <li><strong>Period Close:</strong> Close period with validation checklist</li>
+            <li><strong>Period Reopen:</strong> Admin-only capability to reopen closed periods</li>
+            <li><strong>Posting Prevention:</strong> Block transactions in closed periods</li>
+            <li><strong>Year-End Close:</strong> Generate closing entry transferring P&L to Retained Earnings</li>
+            <li><strong>Balance Carry Forward:</strong> Automatic carry forward of balance sheet accounts</li>
+        </ul>
+
+        <h3>GL Reports</h3>
+        <ul>
+            <li><strong>Trial Balance:</strong> All accounts with debit/credit balances as of selected date</li>
+            <li><strong>GL Detail:</strong> Transaction listing by account with running balance</li>
+            <li><strong>Profit & Loss:</strong> Income statement with period comparison option</li>
+            <li><strong>Balance Sheet:</strong> Financial position with Assets = Liabilities + Equity validation</li>
+            <li><strong>Export Options:</strong> PDF and Excel for all reports</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>💰 ACCOUNTS RECEIVABLE MODULE</h2>
+        
+        <h3>Customer Management</h3>
+        <ul>
+            <li><strong>Customer Master:</strong> Code, name, contact person, email, phone, address</li>
+            <li><strong>Tax Information:</strong> TIN (Tax Identification Number) storage</li>
+            <li><strong>Default Currency:</strong> Preferred currency for transactions</li>
+            <li><strong>Payment Terms:</strong> Default payment days (e.g., 30 days)</li>
+            <li><strong>Credit Limit:</strong> Set and track credit limits</li>
+            <li><strong>Current Balance:</strong> Real-time outstanding balance</li>
+            <li><strong>Aging Summary:</strong> Current, 30, 60, 90, 90+ day breakdown</li>
+            <li><strong>Transaction History:</strong> View all invoices, receipts, credit notes</li>
+            <li><strong>Soft Delete:</strong> Deactivate customers with history without losing data</li>
+        </ul>
+
+        <h3>Sales Invoicing</h3>
+        <ul>
+            <li><strong>Invoice Header:</strong> Auto-number, customer, dates, currency, rate, job reference</li>
+            <li><strong>Line Items:</strong> Description, quantity, unit price, VAT rate, line total</li>
+            <li><strong>Invoice Types:</strong> Standard, Progress (for jobs), Final (for jobs)</li>
+            <li><strong>VAT Calculation:</strong> Automatic per line with configurable rates</li>
+            <li><strong>Multi-Currency:</strong> Invoice in any configured currency with rate capture</li>
+            <li><strong>Base Currency Tracking:</strong> Store both transaction and base currency amounts</li>
+            <li><strong>Status Workflow:</strong> Draft → Posted → Partial → Paid → Voided</li>
+            <li><strong>GL Posting:</strong> Dr Accounts Receivable, Cr Revenue, Cr VAT Output</li>
+            <li><strong>Customer Balance Update:</strong> Automatic on posting</li>
+            <li><strong>PDF Generation:</strong> Professional invoice with company letterhead</li>
+            <li><strong>Email Delivery:</strong> Send invoices directly to customers</li>
+            <li><strong>Void Capability:</strong> Void posted invoices with reversing entry</li>
+        </ul>
+
+        <h3>Credit Notes</h3>
+        <ul>
+            <li><strong>Credit Note Creation:</strong> Similar structure to invoices</li>
+            <li><strong>Invoice Linking:</strong> Optional link to original invoice</li>
+            <li><strong>Reason Tracking:</strong> Document reason for credit</li>
+            <li><strong>Status Workflow:</strong> Draft → Posted → Applied → Voided</li>
+            <li><strong>GL Posting:</strong> Dr Revenue, Dr VAT Output, Cr Accounts Receivable</li>
+            <li><strong>Application:</strong> Apply credit notes against open invoices</li>
+        </ul>
+
+        <h3>Receipt Processing</h3>
+        <ul>
+            <li><strong>Receipt Header:</strong> Auto-number, customer, date, bank account, currency, rate</li>
+            <li><strong>Amount Received:</strong> Actual cash/bank amount received</li>
+            <li><strong>Withholding Tax:</strong> Handle WHT deductions common in Ghana (rate, amount, certificate ref)</li>
+            <li><strong>Invoice Allocation:</strong> Allocate receipt across multiple invoices</li>
+            <li><strong>Credit Note Application:</strong> Apply credit notes during receipt</li>
+            <li><strong>On-Account Receipts:</strong> Receive payments before invoice for later allocation</li>
+            <li><strong>Multi-Currency:</strong> Receive in customer's currency</li>
+            <li><strong>FX Gain/Loss:</strong> Automatic calculation when receipt rate differs from invoice rate</li>
+            <li><strong>GL Posting:</strong> Dr Bank, Dr WHT Receivable, Cr AR, Dr/Cr FX Gain/Loss</li>
+            <li><strong>Invoice Status Update:</strong> Automatic update to Partial or Paid</li>
+            <li><strong>Over-Allocation Prevention:</strong> Cannot allocate more than invoice balance</li>
+        </ul>
+
+        <h3>AR Reports</h3>
+        <ul>
+            <li><strong>AR Aging Report:</strong> Customer balances by age bucket with totals and percentages</li>
+            <li><strong>Customer Statement:</strong> Transaction history with running balance (email-ready)</li>
+            <li><strong>Invoice Register:</strong> All invoices for period with status and payment info</li>
+            <li><strong>Receipt Register:</strong> All receipts for period with allocations</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>🛒 ACCOUNTS PAYABLE MODULE</h2>
+        
+        <h3>Supplier Management</h3>
+        <ul>
+            <li><strong>Supplier Master:</strong> Code, name, contact person, email, phone, address</li>
+            <li><strong>Tax Information:</strong> TIN storage</li>
+            <li><strong>Default Currency:</strong> Preferred currency for transactions</li>
+            <li><strong>Payment Terms:</strong> Default payment days</li>
+            <li><strong>Current Balance:</strong> Real-time outstanding balance</li>
+            <li><strong>Aging Summary:</strong> Current, 30, 60, 90, 90+ day breakdown</li>
+            <li><strong>Transaction History:</strong> View all POs, bills, payments</li>
+        </ul>
+
+        <h3>Purchase Orders</h3>
+        <ul>
+            <li><strong>PO Header:</strong> Auto-number, supplier, dates, currency, rate, delivery address</li>
+            <li><strong>Line Items:</strong> Item (inventory or free text), description, qty, price, VAT</li>
+            <li><strong>Multi-Currency:</strong> PO in supplier's currency</li>
+            <li><strong>Status Workflow:</strong> Draft → Sent → Partial Received → Received → Cancelled</li>
+            <li><strong>No GL Impact:</strong> POs are commitments only, no accounting entries</li>
+            <li><strong>PDF Generation:</strong> Professional PO document</li>
+            <li><strong>Email Delivery:</strong> Send POs to suppliers</li>
+            <li><strong>Receipt Tracking:</strong> Track received quantity per line</li>
+            <li><strong>Partial Receipts:</strong> Support for partial deliveries</li>
+        </ul>
+
+        <h3>Supplier Bills</h3>
+        <ul>
+            <li><strong>Bill Header:</strong> Auto-number, supplier, supplier ref, dates, currency, rate</li>
+            <li><strong>PO Linking:</strong> Optional link to purchase order for matching</li>
+            <li><strong>Line Items:</strong> Description, account (Inventory or Expense), qty, price, VAT</li>
+            <li><strong>VAT Input:</strong> Automatic calculation of recoverable VAT</li>
+            <li><strong>Multi-Currency:</strong> Bills in supplier's currency</li>
+            <li><strong>PO Variance Warning:</strong> Alert if bill differs from PO by threshold</li>
+            <li><strong>Status Workflow:</strong> Draft → Posted → Partial → Paid → Voided</li>
+            <li><strong>GL Posting:</strong> Dr Inventory/Expense, Dr VAT Input, Cr Accounts Payable</li>
+            <li><strong>Inventory Update:</strong> Automatic stock receipt for inventory items</li>
+            <li><strong>Valuation Update:</strong> Recalculate weighted average cost</li>
+        </ul>
+
+        <h3>Payment Processing</h3>
+        <ul>
+            <li><strong>Payment Header:</strong> Auto-number, supplier, date, bank account, currency, rate</li>
+            <li><strong>Payment Amount:</strong> Amount paid from bank</li>
+            <li><strong>Payment Method:</strong> Cheque, Bank Transfer, Cash</li>
+            <li><strong>Bill Allocation:</strong> Allocate payment across multiple bills</li>
+            <li><strong>Multi-Currency:</strong> Pay in supplier's currency</li>
+            <li><strong>FX Gain/Loss:</strong> Automatic calculation when payment rate differs from bill rate</li>
+            <li><strong>GL Posting:</strong> Dr AP, Cr Bank, Dr/Cr FX Gain/Loss</li>
+            <li><strong>Bill Status Update:</strong> Automatic update to Partial or Paid</li>
+        </ul>
+
+        <h3>AP Reports</h3>
+        <ul>
+            <li><strong>AP Aging Report:</strong> Supplier balances by age bucket</li>
+            <li><strong>Supplier Statement:</strong> Transaction history with running balance</li>
+            <li><strong>Bill Register:</strong> All bills for period with status and payments</li>
+            <li><strong>Payment Register:</strong> All payments for period with allocations</li>
+            <li><strong>Open PO Report:</strong> Outstanding purchase orders not fully received/billed</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📦 INVENTORY MODULE</h2>
+        
+        <h3>Item Management</h3>
+        <ul>
+            <li><strong>Item Master:</strong> Code, description, category, unit of measure</li>
+            <li><strong>Stockable Flag:</strong> Distinguish inventory items from services</li>
+            <li><strong>Categories:</strong> Hierarchical category structure for organization</li>
+            <li><strong>Units of Measure:</strong> Configurable UOM with decimal places</li>
+            <li><strong>Reorder Settings:</strong> Reorder level and reorder quantity</li>
+            <li><strong>Stock Levels:</strong> Quantity on hand, on order, reserved</li>
+            <li><strong>Costing:</strong> Average cost, last purchase price</li>
+            <li><strong>Total Value:</strong> Current inventory value</li>
+            <li><strong>Transaction History:</strong> All movements for the item</li>
+        </ul>
+
+        <h3>Inventory Transactions</h3>
+        <ul>
+            <li><strong>Receipts:</strong> Automatic from supplier bills or manual entry</li>
+            <li><strong>Issues:</strong> Issue to jobs (WIP) or expense accounts</li>
+            <li><strong>Adjustments:</strong> Record count variances, damage, write-offs</li>
+            <li><strong>Transaction Date:</strong> Record actual date of movement</li>
+            <li><strong>Cost Capture:</strong> Cost at time of transaction</li>
+            <li><strong>Running Totals:</strong> Quantity and value after each transaction</li>
+            <li><strong>GL Integration:</strong> Automatic posting for all movements</li>
+            <li><strong>Negative Prevention:</strong> Cannot issue more than available quantity</li>
+        </ul>
+
+        <h3>Inventory Valuation</h3>
+        <ul>
+            <li><strong>Weighted Average:</strong> Default method, recalculated on each receipt</li>
+            <li><strong>FIFO:</strong> First-In-First-Out with cost layer tracking</li>
+            <li><strong>System-Wide Setting:</strong> Single valuation method for all items</li>
+            <li><strong>Real-Time Calculation:</strong> Cost updated on each transaction</li>
+            <li><strong>Method Lock:</strong> Cannot change method with non-zero inventory</li>
+        </ul>
+
+        <h3>Inventory Reports</h3>
+        <ul>
+            <li><strong>Valuation Report:</strong> Stock quantity and value by item and category</li>
+            <li><strong>Movement Report:</strong> Opening, receipts, issues, adjustments, closing by item</li>
+            <li><strong>Reorder Report:</strong> Items at or below reorder level</li>
+            <li><strong>Item Transaction History:</strong> All movements for selected item</li>
+            <li><strong>Inventory by Job:</strong> Materials issued to each job</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>👥 PAYROLL MODULE</h2>
+        
+        <h3>Employee Management</h3>
+        <ul>
+            <li><strong>Employee Master:</strong> Code, name, DOB, gender, hire date, department, position</li>
+            <li><strong>Employment Type:</strong> Full-time, Part-time, Contract</li>
+            <li><strong>Salary Information:</strong> Basic salary, housing allowance, transport allowance, other</li>
+            <li><strong>Tax Information:</strong> TIN, SSNIT number</li>
+            <li><strong>Bank Details:</strong> Bank name, branch, account number</li>
+            <li><strong>Termination Date:</strong> Track ended employment</li>
+            <li><strong>Salary History:</strong> Historical record of salary changes</li>
+        </ul>
+
+        <h3>Ghana Tax Configuration</h3>
+        <ul>
+            <li><strong>PAYE Tax Brackets:</strong> Configurable progressive tax rates per Ghana law</li>
+            <li><strong>SSNIT Rates:</strong> Employee 5.5%, Employer 13% (configurable)</li>
+            <li><strong>Monthly Caps:</strong> SSNIT contribution caps</li>
+            <li><strong>Effective Dating:</strong> Tax tables with effective dates for rate changes</li>
+        </ul>
+
+        <h3>Pay Run Processing</h3>
+        <ul>
+            <li><strong>Pay Run Creation:</strong> Monthly pay run with period selection</li>
+            <li><strong>Employee Loading:</strong> Automatic inclusion of all active employees</li>
+            <li><strong>Calculation:</strong> Gross pay, SSNIT employee, taxable income, PAYE, net pay</li>
+            <li><strong>Employer Costs:</strong> SSNIT employer contribution</li>
+            <li><strong>Individual Adjustments:</strong> Override calculations for specific employees</li>
+            <li><strong>Status Workflow:</strong> Draft → Calculated → Approved → Posted → Voided</li>
+            <li><strong>Duplicate Prevention:</strong> Cannot create duplicate pay run for same period</li>
+            <li><strong>GL Posting:</strong> Dr Salary Expense, Dr SSNIT Employer, Cr PAYE Payable, Cr SSNIT Payable, Cr Net Salary Payable</li>
+        </ul>
+
+        <h3>Payroll Outputs</h3>
+        <ul>
+            <li><strong>Payslips:</strong> Individual payslip generation with earnings, deductions, net pay, YTD</li>
+            <li><strong>PDF Export:</strong> Printable payslip documents</li>
+            <li><strong>Email Distribution:</strong> Bulk email payslips to employees</li>
+            <li><strong>Bank Payment File:</strong> CSV export for bulk bank upload</li>
+        </ul>
+
+        <h3>Payroll Reports</h3>
+        <ul>
+            <li><strong>Payroll Summary:</strong> All employees with gross, deductions, net for pay run</li>
+            <li><strong>Payroll Detail:</strong> Breakdown by earnings and deduction type</li>
+            <li><strong>SSNIT Report:</strong> Employee contributions formatted for SSNIT submission</li>
+            <li><strong>PAYE Report:</strong> Tax deductions formatted for GRA submission</li>
+            <li><strong>Year-to-Date Report:</strong> Cumulative earnings and deductions by employee</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>💱 MULTI-CURRENCY & BANKING MODULE</h2>
+        
+        <h3>Currency Management</h3>
+        <ul>
+            <li><strong>Base Currency:</strong> GHS (Ghana Cedi) - system functional currency</li>
+            <li><strong>Foreign Currencies:</strong> USD, EUR, GBP, CNY and others supported</li>
+            <li><strong>Currency Master:</strong> ISO code, name, symbol, decimal places</li>
+            <li><strong>Exchange Rates:</strong> Daily rate entry (1 FC = X GHS)</li>
+            <li><strong>Rate History:</strong> Full history of all exchange rates</li>
+            <li><strong>Rate Default:</strong> Use most recent rate if exact date not available</li>
+            <li><strong>Rate Override:</strong> Allow transaction-level rate override</li>
+            <li><strong>Bulk Rate Entry:</strong> Enter multiple currency rates at once</li>
+        </ul>
+
+        <h3>Foreign Currency Revaluation</h3>
+        <ul>
+            <li><strong>Revaluation Scope:</strong> Open AR invoices, Open AP bills, FC bank accounts</li>
+            <li><strong>Period-End Process:</strong> Run revaluation as part of period close</li>
+            <li><strong>Rate Entry:</strong> Enter period-end rates for all foreign currencies</li>
+            <li><strong>Preview:</strong> Review revaluation impact before posting</li>
+            <li><strong>Gain/Loss Calculation:</strong> (FC Balance × New Rate) - Book Value</li>
+            <li><strong>GL Posting:</strong> Unrealized FX Gain/Loss entries</li>
+            <li><strong>Reversing Entries:</strong> Optional auto-reverse at start of next period</li>
+            <li><strong>Revaluation Report:</strong> Full detail of all revalued items</li>
+        </ul>
+
+        <h3>Bank Accounts</h3>
+        <ul>
+            <li><strong>Bank Account Master:</strong> Account name, bank name, account number, currency</li>
+            <li><strong>GL Linking:</strong> Each bank account linked to GL account</li>
+            <li><strong>Multi-Currency:</strong> Support local and foreign currency accounts</li>
+            <li><strong>Balance Tracking:</strong> Book balance from posted transactions</li>
+            <li><strong>Reconciliation Status:</strong> Last reconciled date and balance</li>
+        </ul>
+
+        <h3>Bank Reconciliation</h3>
+        <ul>
+            <li><strong>Statement Import:</strong> Upload bank statement CSV files</li>
+            <li><strong>Column Mapping:</strong> Configure CSV column mapping (date, description, debit, credit)</li>
+            <li><strong>Manual Entry:</strong> Add statement lines manually</li>
+            <li><strong>Auto-Matching:</strong> Automatic matching by amount, date, reference</li>
+            <li><strong>Manual Matching:</strong> Match unmatched items manually</li>
+            <li><strong>Transaction Creation:</strong> Create bank charges, interest from statement lines</li>
+            <li><strong>Reconciliation Summary:</strong> Statement balance, book balance, outstanding items, difference</li>
+            <li><strong>Zero Difference Required:</strong> Cannot complete until balanced</li>
+            <li><strong>Reconciliation Report:</strong> Printable reconciliation document</li>
+            <li><strong>Reconciliation Lock:</strong> Mark matched transactions as reconciled</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>📊 REPORTING SUITE</h2>
+        
+        <h3>Financial Reports</h3>
+        <ul>
+            <li><strong>Trial Balance:</strong> Account balances as of date with debit/credit columns</li>
+            <li><strong>General Ledger Detail:</strong> Transaction listing by account with running balance</li>
+            <li><strong>Profit & Loss Statement:</strong> Revenue, COGS, gross profit, expenses, net profit</li>
+            <li><strong>Balance Sheet:</strong> Assets, liabilities, equity with proper classification</li>
+        </ul>
+
+        <h3>Job Costing Reports</h3>
+        <ul>
+            <li><strong>Job Profitability:</strong> Revenue, cost, profit, margin with budget variance</li>
+            <li><strong>WIP Summary:</strong> Work in progress by job</li>
+            <li><strong>WIP Aging:</strong> Age analysis of WIP balances</li>
+            <li><strong>Quote Pipeline:</strong> Quotes by status with conversion analysis</li>
+            <li><strong>Open Jobs:</strong> Active jobs with budget vs actual</li>
+            <li><strong>Billed vs Unbilled:</strong> Invoicing status by job</li>
+        </ul>
+
+        <h3>AR/AP Reports</h3>
+        <ul>
+            <li><strong>AR Aging:</strong> Customer balances by age bucket</li>
+            <li><strong>AP Aging:</strong> Supplier balances by age bucket</li>
+            <li><strong>Customer Statement:</strong> Transaction history (email-ready)</li>
+            <li><strong>Supplier Statement:</strong> Transaction history</li>
+            <li><strong>Invoice/Bill/Receipt/Payment Registers:</strong> Transaction listings</li>
+            <li><strong>Open PO Report:</strong> Outstanding purchase orders</li>
+        </ul>
+
+        <h3>Inventory Reports</h3>
+        <ul>
+            <li><strong>Inventory Valuation:</strong> Stock value by item and category</li>
+            <li><strong>Inventory Movement:</strong> Stock activity for period</li>
+            <li><strong>Stock Reorder:</strong> Items below reorder level</li>
+            <li><strong>Inventory by Job:</strong> Materials consumed per job</li>
+        </ul>
+
+        <h3>Payroll Reports</h3>
+        <ul>
+            <li><strong>Payroll Summary:</strong> Pay run overview</li>
+            <li><strong>SSNIT Report:</strong> Contribution details for submission</li>
+            <li><strong>PAYE Report:</strong> Tax details for GRA</li>
+            <li><strong>Bank Payment File:</strong> CSV for bulk payment</li>
+            <li><strong>Year-to-Date:</strong> Cumulative payroll by employee</li>
+        </ul>
+
+        <h3>Report Features</h3>
+        <ul>
+            <li><strong>Filter Options:</strong> Date range, entity, status, currency</li>
+            <li><strong>PDF Export:</strong> All reports exportable to PDF</li>
+            <li><strong>Excel Export:</strong> All reports exportable to Excel</li>
+            <li><strong>Saved Filters:</strong> Save frequently used filter combinations</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>⚙️ SYSTEM ADMINISTRATION</h2>
+        
+        <h3>User Management</h3>
+        <ul>
+            <li><strong>User Accounts:</strong> 5 users included in base system</li>
+            <li><strong>User Roles:</strong> Admin, Accountant, Operations, Sales, Payroll Clerk</li>
+            <li><strong>Granular Permissions:</strong> Access control per module and function</li>
+            <li><strong>Password Security:</strong> Complexity requirements, expiry, reset</li>
+            <li><strong>Account Lockout:</strong> Automatic lockout after failed attempts</li>
+            <li><strong>Password Reset:</strong> Self-service and admin-initiated</li>
+        </ul>
+
+        <h3>Company Configuration</h3>
+        <ul>
+            <li><strong>Company Details:</strong> Name, address, phone, email, TIN, VAT number</li>
+            <li><strong>Company Logo:</strong> Upload for document headers</li>
+            <li><strong>Fiscal Year:</strong> Configure fiscal year start month</li>
+            <li><strong>VAT Rate:</strong> Default VAT rate (15% for Ghana)</li>
+            <li><strong>Overhead Rate:</strong> Default job overhead percentage</li>
+            <li><strong>Payment Terms:</strong> Default payment days</li>
+            <li><strong>Email Settings:</strong> SMTP configuration for sending documents</li>
+        </ul>
+
+        <h3>Document Numbering</h3>
+        <ul>
+            <li><strong>Auto-Numbering:</strong> Sequential numbers for all documents</li>
+            <li><strong>Configurable Prefixes:</strong> Q-, JOB-, INV-, RCT-, PO-, BILL-, PMT-, JE-, etc.</li>
+            <li><strong>Year Reset:</strong> Optional annual reset of sequences</li>
+            <li><strong>Number Format:</strong> Configurable format (e.g., INV-2024-0001)</li>
+        </ul>
+
+        <h3>Audit & Compliance</h3>
+        <ul>
+            <li><strong>Audit Trail:</strong> Complete log of all create, update, delete, post, void actions</li>
+            <li><strong>User Tracking:</strong> Who did what and when</li>
+            <li><strong>Old/New Values:</strong> Before and after data for changes</li>
+            <li><strong>Login Logging:</strong> Track all login attempts</li>
+            <li><strong>Immutable Logs:</strong> Audit records cannot be modified or deleted</li>
+            <li><strong>Audit Viewer:</strong> Search and filter audit logs</li>
+            <li><strong>7-Year Retention:</strong> Audit logs retained for compliance</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>🎨 USER INTERFACE & EXPERIENCE</h2>
+        
+        <h3>Design Framework</h3>
+        <ul>
+            <li><strong>Modern UI:</strong> Clean, professional interface using shadcn/ui components</li>
+            <li><strong>Responsive Design:</strong> Works on desktop, tablet, and mobile devices</li>
+            <li><strong>Intuitive Navigation:</strong> Logical menu structure by module</li>
+            <li><strong>Consistent Layout:</strong> Standard patterns for lists, forms, and detail views</li>
+        </ul>
+
+        <h3>Key UI Features</h3>
+        <ul>
+            <li><strong>Dashboard:</strong> KPI cards, charts, action items, upcoming tasks</li>
+            <li><strong>Data Tables:</strong> Sortable, filterable, paginated lists</li>
+            <li><strong>Quick Search:</strong> Global search across entities (Ctrl+K)</li>
+            <li><strong>Status Badges:</strong> Visual status indicators (Draft, Posted, Paid, etc.)</li>
+            <li><strong>Notifications:</strong> Toast messages for actions and alerts</li>
+            <li><strong>Loading States:</strong> Skeleton loaders for better UX</li>
+        </ul>
+
+        <h3>Mobile Optimization</h3>
+        <ul>
+            <li><strong>Mobile Navigation:</strong> Bottom navigation bar on small screens</li>
+            <li><strong>Touch-Friendly:</strong> Appropriate tap targets and gestures</li>
+            <li><strong>Card Layouts:</strong> Card-based lists on mobile instead of tables</li>
+            <li><strong>Priority Screens:</strong> Dashboard, Job List, Receipt Entry optimized for mobile</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>🔒 SECURITY & DATA INTEGRITY</h2>
+        
+        <h3>Application Security</h3>
+        <ul>
+            <li><strong>Authentication:</strong> JWT-based authentication with secure tokens</li>
+            <li><strong>Authorization:</strong> Role-based access control at every endpoint</li>
+            <li><strong>HTTPS:</strong> All traffic encrypted with SSL/TLS</li>
+            <li><strong>Password Hashing:</strong> bcrypt hashing for password storage</li>
+            <li><strong>Session Management:</strong> Secure session handling with expiry</li>
+            <li><strong>Input Validation:</strong> Server-side validation of all inputs</li>
+            <li><strong>SQL Injection Prevention:</strong> Parameterized queries via ORM</li>
+            <li><strong>XSS Prevention:</strong> Output encoding and sanitization</li>
+        </ul>
+
+        <h3>Data Integrity</h3>
+        <ul>
+            <li><strong>Database Constraints:</strong> Foreign keys, unique constraints, check constraints</li>
+            <li><strong>Journal Balance Check:</strong> Enforce debits = credits at database level</li>
+            <li><strong>Optimistic Concurrency:</strong> Prevent conflicting updates</li>
+            <li><strong>Transaction Management:</strong> Atomic operations for data consistency</li>
+            <li><strong>Soft Deletes:</strong> Preserve data history, prevent accidental loss</li>
+            <li><strong>Referential Integrity:</strong> Cannot delete entities with related transactions</li>
+        </ul>
+
+        <h3>Backup & Recovery</h3>
+        <ul>
+            <li><strong>Automated Backups:</strong> Daily database backups</li>
+            <li><strong>Backup Retention:</strong> 30-day backup retention</li>
+            <li><strong>Point-in-Time Recovery:</strong> Restore to any point within retention</li>
+            <li><strong>Disaster Recovery:</strong> Geo-redundant backup storage</li>
+        </ul>
+    </div>
+
+    <div class="section">
+        <h2>💡 KEY BUSINESS BENEFITS</h2>
+        
+        <div class="success-box">
+            <ul>
+                <li><strong>✅ Eliminate Excel Dependency:</strong> Move from error-prone spreadsheets to integrated system</li>
+                <li><strong>✅ Real-Time Job Visibility:</strong> Know job profitability as costs are incurred, not after the fact</li>
+                <li><strong>✅ Financial Control:</strong> Proper double-entry accounting with audit trail</li>
+                <li><strong>✅ Multi-Currency Mastery:</strong> Handle foreign transactions and FX properly</li>
+                <li><strong>✅ Faster Month-End:</strong> Reduce close process from weeks to days</li>
+                <li><strong>✅ Ghana Tax Compliance:</strong> Built-in PAYE and SSNIT calculations</li>
+                <li><strong>✅ Inventory Accuracy:</strong> Know your stock levels and values in real-time</li>
+                <li><strong>✅ Customer & Supplier Management:</strong> Complete history and aging at your fingertips</li>
+                <li><strong>✅ Bank Reconciliation:</strong> Reconcile accounts in minutes, not hours</li>
+                <li><strong>✅ Audit Ready:</strong> Complete trail for every transaction</li>
+                <li><strong>✅ Mobile Access:</strong> Access key functions from anywhere</li>
+                <li><strong>✅ Scalable:</strong> Grow without changing systems</li>
+            </ul>
+        </div>
+
+        <div class="highlight-box">
+            <h3>SYSTEM SUMMARY</h3>
+            <p><strong>This comprehensive system includes:</strong></p>
+            <ul>
+                <li><strong>7 Integrated Modules:</strong> Job Costing, GL, AR, AP, Inventory, Payroll, Banking</li>
+                <li><strong>5 User Roles:</strong> Admin, Accountant, Operations, Sales, Payroll</li>
+                <li><strong>5 User Accounts:</strong> Included in base system</li>
+                <li><strong>30+ Reports:</strong> Financial, operational, and compliance reports</li>
+                <li><strong>Multi-Currency:</strong> Full support for foreign currency transactions</li>
+                <li><strong>Ghana Compliant:</strong> VAT, PAYE, SSNIT built-in</li>
+                <li><strong>Modern Architecture:</strong> React + ASP.NET Core for performance and maintainability</li>
+            </ul>
+            <p><em>This system provides end-to-end business management for engineering and manufacturing operations, from customer quotes through job execution to final invoicing and financial reporting.</em></p>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p><em>This proposal is valid for 30 days from the date of issue.</em></p>
+        <p><strong>Adullam Solutions Company Limited</strong> | Accra, Ghana | me@akwasi.dev | akwasi.dev</p>
+        <p>© 2025 Adullam Solutions. All rights reserved.</p>
+    </div>
+
+</body>
+</html>
