@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Sleep Tracker</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background-color: #f3f4f6;
+            min-height: 100vh;
+            max-width: 430px;
+            margin: 0 auto;
+        }
+
+        .container {
+            padding: 0 0 40px 0;
+        }
+
+        /* Header */
+        .header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 16px 20px;
+            background: #f3f4f6;
+        }
+
+        .header-left {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+        }
+
+        .back-btn {
+            font-size: 22px;
+            color: #1a1a1a;
+            cursor: pointer;
+        }
+
+        .header-title {
+            font-size: 22px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .header-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .header-right i {
+            font-size: 20px;
+            color: #1a1a1a;
+            cursor: pointer;
+        }
+
+        /* Weekly Chart */
+        .weekly-chart {
+            padding: 10px 16px 20px;
+            position: relative;
+        }
+
+        .chart-container {
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-between;
+            height: 120px;
+            padding-right: 90px;
+            position: relative;
+        }
+
+        /* Dotted reference line */
+        .chart-container::before {
+            content: '';
+            position: absolute;
+            top: 20px;
+            left: 0;
+            right: 90px;
+            height: 1px;
+            background: repeating-linear-gradient(
+                to right,
+                #c5d1e8 0,
+                #c5d1e8 4px,
+                transparent 4px,
+                transparent 8px
+            );
+        }
+
+        .chart-day {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .chart-bar {
+            width: 18px;
+            background: #5b8def;
+            border-radius: 9px;
+            min-height: 8px;
+        }
+
+        .chart-label {
+            font-size: 13px;
+            color: #9ca3af;
+            font-weight: 400;
+        }
+
+        .chart-label.active {
+            color: #5b8def;
+            font-weight: 500;
+        }
+
+        /* Today's highlight bubble */
+        .today-bubble {
+            position: absolute;
+            right: 0;
+            top: 0;
+            background: #ffffff;
+            border-radius: 24px;
+            padding: 16px 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+            min-width: 80px;
+        }
+
+        .today-hours {
+            font-size: 13px;
+            color: #9ca3af;
+            margin-bottom: 8px;
+        }
+
+        .today-bar {
+            width: 18px;
+            height: 70px;
+            background: #5b8def;
+            border-radius: 9px;
+            margin-bottom: 8px;
+        }
+
+        .today-date {
+            font-size: 14px;
+            color: #1a1a1a;
+            font-weight: 500;
+        }
+
+        /* Cards */
+        .card {
+            background: #ffffff;
+            border-radius: 24px;
+            margin: 0 16px 16px;
+            padding: 24px;
+        }
+
+        /* Sleep Time Card */
+        .sleep-time-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .sleep-time-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .sleep-time-header i.chevron {
+            font-size: 14px;
+            color: #9ca3af;
+        }
+
+        .sleep-time-main {
+            display: flex;
+            align-items: center;
+            justify-content: flex-end;
+            gap: 12px;
+            margin-bottom: 12px;
+        }
+
+        .bed-icon {
+            color: #5b8def;
+            font-size: 28px;
+        }
+
+        .sleep-duration {
+            display: flex;
+            align-items: baseline;
+            gap: 2px;
+        }
+
+        .sleep-duration .number {
+            font-size: 48px;
+            font-weight: 300;
+            color: #1a1a1a;
+            line-height: 1;
+        }
+
+        .sleep-duration .unit {
+            font-size: 20px;
+            font-weight: 400;
+            color: #1a1a1a;
+            margin-left: 2px;
+            margin-right: 8px;
+        }
+
+        .sleep-details {
+            text-align: right;
+            color: #9ca3af;
+            font-size: 14px;
+        }
+
+        .sleep-details .time-range {
+            margin-bottom: 4px;
+        }
+
+        /* Sleep Score Card */
+        .sleep-score-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .sleep-score-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #1a1a1a;
+        }
+
+        .score-main {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 24px;
+            padding-bottom: 24px;
+            border-bottom: 1px solid #f0f0f0;
+        }
+
+        .score-left {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .attention-label {
+            font-size: 22px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 8px;
+        }
+
+        .score-value {
+            display: flex;
+            align-items: baseline;
+            gap: 8px;
+        }
+
+        .score-number {
+            font-size: 52px;
+            font-weight: 300;
+            color: #1a1a1a;
+            line-height: 1;
+        }
+
+        .score-change {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 18px;
+            color: #1a1a1a;
+        }
+
+        .score-change i {
+            font-size: 12px;
+        }
+
+        /* Mascot */
+        .mascot {
+            width: 100px;
+            height: 100px;
+            position: relative;
+        }
+
+        .mascot-body {
+            width: 90px;
+            height: 85px;
+            background: linear-gradient(145deg, #ffb347 0%, #ff9500 100%);
+            border-radius: 20px;
+            position: relative;
+            transform: rotate(-3deg);
+        }
+
+        .mascot-body::before {
+            content: '';
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            right: 8px;
+            bottom: 8px;
+            background: radial-gradient(ellipse at 30% 30%, rgba(255,255,255,0.3) 0%, transparent 60%);
+            border-radius: 16px;
+        }
+
+        .mascot-face {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .mascot-eyes {
+            display: flex;
+            gap: 20px;
+        }
+
+        .mascot-eye {
+            width: 8px;
+            height: 8px;
+            background: #4a3728;
+            border-radius: 50%;
+        }
+
+        .mascot-mouth {
+            width: 16px;
+            height: 8px;
+            border: 2px solid #4a3728;
+            border-top: none;
+            border-radius: 0 0 10px 10px;
+        }
+
+        /* Sleep Score Factors */
+        .factors-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: #1a1a1a;
+            margin-bottom: 20px;
+        }
+
+        .factor-item {
+            margin-bottom: 24px;
+        }
+
+        .factor-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .factor-name {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 15px;
+            color: #1a1a1a;
+            font-weight: 400;
+        }
+
+        .factor-name i {
+            font-size: 12px;
+            color: #9ca3af;
+        }
+
+        .factor-status {
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .factor-status.attention {
+            color: #ff6b4a;
+        }
+
+        .factor-status.good {
+            color: #6b7280;
+        }
+
+        .factor-bar {
+            height: 6px;
+            background: #e5e7eb;
+            border-radius: 3px;
+            overflow: hidden;
+        }
+
+        .factor-bar-fill {
+            height: 100%;
+            border-radius: 3px;
+        }
+
+        .factor-bar-fill.attention {
+            background: #ff6b4a;
+        }
+
+        .factor-bar-fill.good {
+            background: #9ca3af;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="header-left">
+                <i class="fas fa-chevron-left back-btn"></i>
+                <h1 class="header-title">Sleep</h1>
+            </div>
+            <div class="header-right">
+                <i class="fas fa-share-nodes"></i>
+                <i class="fas fa-chart-simple"></i>
+                <i class="fas fa-ellipsis-vertical"></i>
+            </div>
+        </div>
+
+        <!-- Weekly Chart -->
+        <div class="weekly-chart">
+            <div class="chart-container">
+                <div class="chart-day">
+                    <div class="chart-bar" style="height: 45px;"></div>
+                    <span class="chart-label">21</span>
+                </div>
+                <div class="chart-day">
+                    <div class="chart-bar" style="height: 55px;"></div>
+                    <span class="chart-label">22</span>
+                </div>
+                <div class="chart-day">
+                    <div class="chart-bar" style="height: 85px;"></div>
+                    <span class="chart-label">23</span>
+                </div>
+                <div class="chart-day">
+                    <div class="chart-bar" style="height: 30px;"></div>
+                    <span class="chart-label">24</span>
+                </div>
+                <div class="chart-day">
+                    <div class="chart-bar" style="height: 50px;"></div>
+                    <span class="chart-label active">25</span>
+                </div>
+                <div class="chart-day">
+                    <div class="chart-bar" style="height: 42px;"></div>
+                    <span class="chart-label">26</span>
+                </div>
+                
+                <!-- Today's bubble -->
+                <div class="today-bubble">
+                    <span class="today-hours">7 h</span>
+                    <div class="today-bar"></div>
+                    <span class="today-date">27/1</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sleep Time Card -->
+        <div class="card">
+            <div class="sleep-time-header">
+                <span class="sleep-time-title">Sleep time</span>
+                <i class="fas fa-chevron-right chevron"></i>
+            </div>
+            <div class="sleep-time-main">
+                <i class="fas fa-bed bed-icon"></i>
+                <div class="sleep-duration">
+                    <span class="number">3</span>
+                    <span class="unit">h</span>
+                    <span class="number">1</span>
+                    <span class="unit">m</span>
+                </div>
+            </div>
+            <div class="sleep-details">
+                <div class="time-range">01:03 - 07:04</div>
+                <div>Actual sleep time&nbsp;&nbsp;&nbsp;5 h 37 m</div>
+            </div>
+        </div>
+
+        <!-- Sleep Score Card -->
+        <div class="card">
+            <div class="sleep-score-header">
+                <span class="sleep-score-title">Sleep score</span>
+                <i class="fas fa-chevron-right chevron" style="font-size: 14px; color: #9ca3af;"></i>
+            </div>
+            
+            <div class="score-main">
+                <div class="score-left">
+                    <span class="attention-label">Attention</span>
+                    <div class="score-value">
+                        <span class="score-number">50</span>
+                        <span class="score-change">
+                            <i class="fas fa-caret-down"></i>
+                            4
+                        </span>
+                    </div>
+                </div>
+                <div class="mascot">
+                    <div class="mascot-body">
+                        <div class="mascot-face">
+                            <div class="mascot-eyes">
+                                <div class="mascot-eye"></div>
+                                <div class="mascot-eye"></div>
+                            </div>
+                            <div class="mascot-mouth"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="factors-title">Sleep score factors</h3>
+
+            <div class="factor-item">
+                <div class="factor-header">
+                    <span class="factor-name">
+                        Actual sleep time
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+                    <span class="factor-status attention">Attention</span>
+                </div>
+                <div class="factor-bar">
+                    <div class="factor-bar-fill attention" style="width: 12%;"></div>
+                </div>
+            </div>
+
+            <div class="factor-item">
+                <div class="factor-header">
+                    <span class="factor-name">
+                        Deep sleep
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+                    <span class="factor-status good">Good</span>
+                </div>
+                <div class="factor-bar">
+                    <div class="factor-bar-fill good" style="width: 78%;"></div>
+                </div>
+            </div>
+
+            <div class="factor-item">
+                <div class="factor-header">
+                    <span class="factor-name">
+                        REM sleep
+                        <i class="fas fa-chevron-right"></i>
+                    </span>
+                    <span class="factor-status attention">Attention</span>
+                </div>
+                <div class="factor-bar">
+                    <div class="factor-bar-fill attention" style="width: 45%;"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
