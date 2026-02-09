@@ -1,0 +1,1756 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EzRealty ERP — The Operating System for Real Estate Empires</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --midnight: #0a0b0f;
+  --obsidian: #111318;
+  --graphite: #1a1c24;
+  --slate: #252833;
+  --smoke: #8b8fa3;
+  --silver: #b4b8cc;
+  --pearl: #e8e9f0;
+  --white: #ffffff;
+  --gold-deep: #b8860b;
+  --gold: #d4a843;
+  --gold-light: #f0d78c;
+  --gold-glow: rgba(212, 168, 67, 0.15);
+  --emerald: #2a9d6a;
+  --emerald-glow: rgba(42, 157, 106, 0.12);
+  --font-display: 'Playfair Display', Georgia, serif;
+  --font-body: 'DM Sans', -apple-system, sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--midnight);
+  color: var(--silver);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ========== NOISE TEXTURE OVERLAY ========== */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* ========== SCROLLBAR ========== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--midnight); }
+::-webkit-scrollbar-thumb { background: var(--gold-deep); border-radius: 3px; }
+
+/* ========== UTILITY ========== */
+.container { max-width: 1240px; margin: 0 auto; padding: 0 2rem; }
+.gold-text { color: var(--gold); }
+.emerald-text { color: var(--emerald); }
+
+/* ========== NAVIGATION ========== */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1.25rem 0;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  backdrop-filter: blur(0px);
+}
+
+nav.scrolled {
+  background: rgba(10, 11, 15, 0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(212, 168, 67, 0.08);
+  padding: 0.8rem 0;
+}
+
+nav .container {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  text-decoration: none;
+}
+
+.logo-icon {
+  width: 38px;
+  height: 38px;
+  background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-weight: 900;
+  font-size: 1.1rem;
+  color: var(--midnight);
+  position: relative;
+}
+
+.logo-icon::after {
+  content: '';
+  position: absolute;
+  inset: -1px;
+  border-radius: 9px;
+  background: linear-gradient(135deg, var(--gold-light), transparent);
+  z-index: -1;
+  opacity: 0.5;
+}
+
+.logo-text {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: var(--white);
+  letter-spacing: -0.02em;
+}
+
+.logo-text span { color: var(--gold); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2.5rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--smoke);
+  text-decoration: none;
+  font-size: 0.88rem;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: color 0.3s;
+  position: relative;
+}
+
+.nav-links a::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold);
+  transition: width 0.3s;
+}
+
+.nav-links a:hover { color: var(--gold); }
+.nav-links a:hover::after { width: 100%; }
+
+.btn-demo {
+  background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+  color: var(--midnight) !important;
+  padding: 0.65rem 1.6rem;
+  border-radius: 6px;
+  font-weight: 700;
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 2px 12px rgba(212, 168, 67, 0.2);
+}
+
+.btn-demo:hover {
+  box-shadow: 0 4px 24px rgba(212, 168, 67, 0.35);
+  transform: translateY(-1px);
+}
+
+.btn-demo::after { display: none !important; }
+
+/* ========== HERO ========== */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  padding: 8rem 0 6rem;
+  overflow: hidden;
+}
+
+.hero-bg {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-bg::before {
+  content: '';
+  position: absolute;
+  top: -30%;
+  right: -15%;
+  width: 900px;
+  height: 900px;
+  background: radial-gradient(circle, rgba(212, 168, 67, 0.06) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.hero-bg::after {
+  content: '';
+  position: absolute;
+  bottom: -20%;
+  left: -10%;
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(42, 157, 106, 0.04) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+/* Animated grid */
+.grid-lines {
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(rgba(212, 168, 67, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(212, 168, 67, 0.03) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 60% 60% at 70% 40%, black 20%, transparent 80%);
+  animation: gridPulse 8s ease-in-out infinite;
+}
+
+@keyframes gridPulse {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+
+.hero .container {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 4rem;
+  align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.6rem;
+  padding: 0.45rem 1.1rem;
+  border: 1px solid rgba(212, 168, 67, 0.2);
+  border-radius: 100px;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.8rem;
+  background: rgba(212, 168, 67, 0.05);
+  animation: fadeSlideUp 0.8s ease-out;
+}
+
+.badge-dot {
+  width: 6px;
+  height: 6px;
+  background: var(--emerald);
+  border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(42, 157, 106, 0.4); }
+  50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(42, 157, 106, 0); }
+}
+
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(2.8rem, 5.2vw, 4.2rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.12;
+  letter-spacing: -0.03em;
+  margin-bottom: 1.5rem;
+  animation: fadeSlideUp 0.8s ease-out 0.15s both;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold);
+  position: relative;
+}
+
+.hero h1 em::after {
+  content: '';
+  position: absolute;
+  bottom: 4px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold), transparent);
+  opacity: 0.4;
+}
+
+.hero-sub {
+  font-size: 1.15rem;
+  color: var(--smoke);
+  line-height: 1.8;
+  max-width: 520px;
+  margin-bottom: 2.5rem;
+  animation: fadeSlideUp 0.8s ease-out 0.3s both;
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  margin-bottom: 3.5rem;
+  animation: fadeSlideUp 0.8s ease-out 0.45s both;
+}
+
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: linear-gradient(135deg, var(--gold), var(--gold-deep));
+  color: var(--midnight);
+  padding: 0.9rem 2.2rem;
+  border-radius: 8px;
+  font-weight: 700;
+  font-size: 0.92rem;
+  letter-spacing: 0.03em;
+  text-decoration: none;
+  transition: all 0.3s;
+  box-shadow: 0 4px 20px rgba(212, 168, 67, 0.25);
+  border: none;
+  cursor: pointer;
+}
+
+.btn-primary:hover {
+  box-shadow: 0 6px 32px rgba(212, 168, 67, 0.4);
+  transform: translateY(-2px);
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: transparent;
+  color: var(--pearl);
+  padding: 0.9rem 2rem;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 0.92rem;
+  text-decoration: none;
+  transition: all 0.3s;
+  border: 1px solid var(--slate);
+  cursor: pointer;
+}
+
+.btn-secondary:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: rgba(212, 168, 67, 0.04);
+}
+
+.hero-proof {
+  display: flex;
+  gap: 2.5rem;
+  animation: fadeSlideUp 0.8s ease-out 0.6s both;
+}
+
+.proof-item {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+}
+
+.proof-number {
+  font-family: var(--font-display);
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.proof-label {
+  font-size: 0.75rem;
+  color: var(--smoke);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Hero visual — dashboard mockup */
+.hero-visual {
+  position: relative;
+  animation: fadeSlideUp 1s ease-out 0.3s both;
+}
+
+.dashboard-mock {
+  background: var(--graphite);
+  border: 1px solid var(--slate);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow:
+    0 24px 80px rgba(0,0,0,0.4),
+    0 0 0 1px rgba(255,255,255,0.03) inset;
+  transform: perspective(1200px) rotateY(-6deg) rotateX(2deg);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dashboard-mock:hover {
+  transform: perspective(1200px) rotateY(-2deg) rotateX(1deg);
+}
+
+.mock-toolbar {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.9rem 1.2rem;
+  background: var(--obsidian);
+  border-bottom: 1px solid var(--slate);
+}
+
+.mock-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--slate);
+}
+.mock-dot:first-child { background: #ff5f57; }
+.mock-dot:nth-child(2) { background: #ffbd2e; }
+.mock-dot:nth-child(3) { background: #28ca41; }
+
+.mock-url {
+  flex: 1;
+  margin-left: 0.8rem;
+  padding: 0.35rem 1rem;
+  background: rgba(255,255,255,0.03);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  color: var(--smoke);
+}
+
+.mock-body { padding: 1.5rem; }
+
+.mock-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.2rem;
+}
+
+.mock-greeting h3 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  color: var(--white);
+  margin-bottom: 0.15rem;
+}
+
+.mock-greeting p {
+  font-size: 0.7rem;
+  color: var(--smoke);
+}
+
+.mock-live-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.65rem;
+  font-weight: 600;
+  color: var(--emerald);
+  padding: 0.3rem 0.7rem;
+  background: var(--emerald-glow);
+  border-radius: 100px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.mock-live-dot {
+  width: 5px;
+  height: 5px;
+  background: var(--emerald);
+  border-radius: 50%;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.mock-kpis {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.8rem;
+  margin-bottom: 1.2rem;
+}
+
+.mock-kpi {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 10px;
+  padding: 0.9rem;
+}
+
+.mock-kpi-label {
+  font-size: 0.6rem;
+  color: var(--smoke);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.3rem;
+}
+
+.mock-kpi-value {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.mock-kpi-change {
+  font-size: 0.6rem;
+  font-weight: 600;
+  color: var(--emerald);
+  margin-top: 0.15rem;
+}
+
+.mock-chart {
+  background: rgba(255,255,255,0.02);
+  border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 10px;
+  padding: 1rem;
+  height: 120px;
+  position: relative;
+  overflow: hidden;
+}
+
+.mock-chart-title {
+  font-size: 0.65rem;
+  color: var(--smoke);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 0.6rem;
+}
+
+.chart-bars {
+  display: flex;
+  align-items: flex-end;
+  gap: 6px;
+  height: 70px;
+  padding-top: 0.5rem;
+}
+
+.chart-bar {
+  flex: 1;
+  border-radius: 3px 3px 0 0;
+  animation: barGrow 1.2s ease-out forwards;
+  transform-origin: bottom;
+  opacity: 0;
+}
+
+@keyframes barGrow {
+  from { transform: scaleY(0); opacity: 0; }
+  to { transform: scaleY(1); opacity: 1; }
+}
+
+.chart-bar:nth-child(1) { height: 45%; background: linear-gradient(to top, var(--gold-deep), var(--gold)); animation-delay: 0.8s; }
+.chart-bar:nth-child(2) { height: 62%; background: linear-gradient(to top, var(--gold-deep), var(--gold)); animation-delay: 0.9s; }
+.chart-bar:nth-child(3) { height: 38%; background: linear-gradient(to top, var(--gold-deep), var(--gold)); animation-delay: 1.0s; }
+.chart-bar:nth-child(4) { height: 80%; background: linear-gradient(to top, var(--gold-deep), var(--gold)); animation-delay: 1.1s; }
+.chart-bar:nth-child(5) { height: 55%; background: linear-gradient(to top, var(--gold-deep), var(--gold)); animation-delay: 1.2s; }
+.chart-bar:nth-child(6) { height: 71%; background: linear-gradient(to top, var(--gold-deep), var(--gold)); animation-delay: 1.3s; }
+.chart-bar:nth-child(7) { height: 90%; background: linear-gradient(to top, var(--gold-deep), var(--gold)); animation-delay: 1.4s; }
+.chart-bar:nth-child(8) { height: 65%; background: linear-gradient(to top, var(--gold-deep), var(--gold)); animation-delay: 1.5s; }
+.chart-bar:nth-child(9) { height: 78%; background: linear-gradient(to top, var(--gold-deep), var(--gold)); animation-delay: 1.6s; }
+.chart-bar:nth-child(10) { height: 95%; background: linear-gradient(to top, var(--emerald), #34d399); animation-delay: 1.7s; }
+.chart-bar:nth-child(11) { height: 85%; background: linear-gradient(to top, var(--emerald), #34d399); animation-delay: 1.8s; }
+.chart-bar:nth-child(12) { height: 100%; background: linear-gradient(to top, var(--emerald), #34d399); animation-delay: 1.9s; }
+
+/* Floating glow behind dashboard */
+.dashboard-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 80%;
+  height: 80%;
+  background: radial-gradient(circle, rgba(212, 168, 67, 0.08) 0%, transparent 60%);
+  filter: blur(40px);
+  z-index: -1;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ========== SECTION: PAIN POINTS ========== */
+.pain-section {
+  padding: 7rem 0;
+  position: relative;
+}
+
+.pain-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--slate), transparent);
+}
+
+.section-label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1rem;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 3.5vw, 2.8rem);
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  margin-bottom: 1rem;
+  max-width: 600px;
+}
+
+.section-desc {
+  font-size: 1.05rem;
+  color: var(--smoke);
+  max-width: 550px;
+  margin-bottom: 3.5rem;
+}
+
+.pain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.pain-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.005));
+  border: 1px solid rgba(255,255,255,0.05);
+  border-radius: 14px;
+  padding: 2rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.pain-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.pain-card:hover {
+  border-color: rgba(212, 168, 67, 0.15);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.3);
+}
+
+.pain-card:hover::before { opacity: 1; }
+
+.pain-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: var(--gold-glow);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  margin-bottom: 1.2rem;
+}
+
+.pain-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.6rem;
+}
+
+.pain-card p {
+  font-size: 0.88rem;
+  color: var(--smoke);
+  line-height: 1.65;
+}
+
+/* ========== MODULES SECTION ========== */
+.modules-section {
+  padding: 7rem 0;
+  background: var(--obsidian);
+  position: relative;
+}
+
+.modules-section::before,
+.modules-section::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--slate), transparent);
+}
+.modules-section::before { top: 0; }
+.modules-section::after { bottom: 0; }
+
+.modules-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.modules-header .section-title,
+.modules-header .section-desc {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.module-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1px;
+  background: var(--slate);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--slate);
+}
+
+.module-card {
+  background: var(--obsidian);
+  padding: 2rem 1.5rem;
+  transition: all 0.4s;
+  cursor: default;
+  position: relative;
+}
+
+.module-card:hover {
+  background: var(--graphite);
+}
+
+.module-card:hover .module-num { color: var(--gold); }
+
+.module-num {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--slate);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.8rem;
+  transition: color 0.3s;
+}
+
+.module-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--pearl);
+  margin-bottom: 0.5rem;
+  line-height: 1.3;
+}
+
+.module-card p {
+  font-size: 0.8rem;
+  color: var(--smoke);
+  line-height: 1.6;
+}
+
+/* ========== LIFECYCLE SECTION ========== */
+.lifecycle-section {
+  padding: 7rem 0;
+  position: relative;
+}
+
+.lifecycle-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.lifecycle-header .section-title,
+.lifecycle-header .section-desc {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lifecycle-track {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  position: relative;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.lifecycle-track::before {
+  content: '';
+  position: absolute;
+  top: 28px;
+  left: 5%;
+  right: 5%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--gold-deep), var(--gold), var(--emerald));
+  opacity: 0.3;
+}
+
+.lifecycle-step {
+  flex: 1;
+  text-align: center;
+  padding: 0 0.8rem;
+  position: relative;
+}
+
+.step-dot {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--graphite);
+  border: 2px solid var(--gold);
+  margin: 20px auto 1.2rem;
+  position: relative;
+  z-index: 2;
+  transition: all 0.3s;
+}
+
+.lifecycle-step:hover .step-dot {
+  background: var(--gold);
+  box-shadow: 0 0 16px rgba(212, 168, 67, 0.4);
+}
+
+.step-num {
+  font-family: var(--font-mono);
+  font-size: 0.6rem;
+  color: var(--gold);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.4rem;
+}
+
+.lifecycle-step h4 {
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.35rem;
+}
+
+.lifecycle-step p {
+  font-size: 0.72rem;
+  color: var(--smoke);
+  line-height: 1.5;
+}
+
+/* ========== METRICS SECTION ========== */
+.metrics-section {
+  padding: 7rem 0;
+  background: var(--obsidian);
+  position: relative;
+  overflow: hidden;
+}
+
+.metrics-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--slate), transparent);
+}
+
+.metrics-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+}
+
+.metrics-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+}
+
+.metric-item {
+  position: relative;
+}
+
+.metric-value {
+  font-family: var(--font-display);
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--white);
+  line-height: 1;
+  margin-bottom: 0.3rem;
+}
+
+.metric-value span { color: var(--gold); }
+
+.metric-label {
+  font-size: 0.85rem;
+  color: var(--smoke);
+  line-height: 1.5;
+}
+
+.metric-bar {
+  width: 100%;
+  height: 3px;
+  background: var(--slate);
+  border-radius: 2px;
+  margin-top: 0.8rem;
+  overflow: hidden;
+}
+
+.metric-bar-fill {
+  height: 100%;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--gold-deep), var(--gold));
+  animation: fillBar 2s ease-out forwards;
+  transform-origin: left;
+  width: 0%;
+}
+
+@keyframes fillBar {
+  to { width: var(--fill); }
+}
+
+/* ========== DIFFERENTIATORS SECTION ========== */
+.diff-section {
+  padding: 7rem 0;
+  position: relative;
+}
+
+.diff-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--slate), transparent);
+}
+
+.diff-header {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+
+.diff-header .section-title,
+.diff-header .section-desc {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.diff-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+}
+
+.diff-card {
+  padding: 2.5rem 2rem;
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(212, 168, 67, 0.03), transparent);
+  border: 1px solid rgba(255,255,255,0.04);
+  transition: all 0.4s;
+  position: relative;
+}
+
+.diff-card:hover {
+  border-color: rgba(212, 168, 67, 0.12);
+  transform: translateY(-3px);
+}
+
+.diff-icon {
+  font-size: 2rem;
+  margin-bottom: 1.2rem;
+  display: block;
+}
+
+.diff-card h3 {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: 0.6rem;
+}
+
+.diff-card p {
+  font-size: 0.88rem;
+  color: var(--smoke);
+  line-height: 1.65;
+}
+
+/* ========== ARCHITECTURE BANNER ========== */
+.arch-banner {
+  padding: 5rem 0;
+  background: var(--obsidian);
+  position: relative;
+  overflow: hidden;
+}
+
+.arch-banner::before,
+.arch-banner::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--slate), transparent);
+}
+
+.arch-banner::before { top: 0; }
+.arch-banner::after { bottom: 0; }
+
+.arch-inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.arch-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.arch-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 10px;
+  border: 1px solid var(--slate);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.2rem;
+  flex-shrink: 0;
+}
+
+.arch-text h4 {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: var(--pearl);
+  margin-bottom: 0.1rem;
+}
+
+.arch-text p {
+  font-size: 0.75rem;
+  color: var(--smoke);
+}
+
+/* ========== CTA SECTION ========== */
+.cta-section {
+  padding: 8rem 0;
+  position: relative;
+  text-align: center;
+  overflow: hidden;
+}
+
+.cta-section::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(212, 168, 67, 0.06) 0%, transparent 60%);
+  border-radius: 50%;
+}
+
+.cta-section .section-title {
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+.cta-sub {
+  font-size: 1.1rem;
+  color: var(--smoke);
+  max-width: 500px;
+  margin: 1rem auto 2.5rem;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  margin-bottom: 2.5rem;
+}
+
+.cta-trust {
+  font-size: 0.75rem;
+  color: var(--smoke);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.cta-trust span {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+/* ========== FOOTER ========== */
+footer {
+  padding: 3.5rem 0 2.5rem;
+  border-top: 1px solid rgba(255,255,255,0.04);
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer-left p {
+  font-size: 0.78rem;
+  color: var(--smoke);
+  margin-top: 0.8rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-links a {
+  font-size: 0.8rem;
+  color: var(--smoke);
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.footer-links a:hover { color: var(--gold); }
+
+.built-by {
+  font-size: 0.7rem;
+  color: var(--slate);
+  text-align: center;
+  margin-top: 2.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid rgba(255,255,255,0.03);
+}
+
+.built-by a { color: var(--gold-deep); text-decoration: none; }
+.built-by a:hover { color: var(--gold); }
+
+/* ========== SCROLL ANIMATIONS ========== */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ========== MOBILE MENU ========== */
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.mobile-toggle span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: var(--pearl);
+  margin: 5px 0;
+  transition: all 0.3s;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 1024px) {
+  .hero .container { grid-template-columns: 1fr; text-align: center; }
+  .hero-sub { margin-left: auto; margin-right: auto; }
+  .hero-actions { justify-content: center; }
+  .hero-proof { justify-content: center; }
+  .hero-visual { display: none; }
+  .module-grid { grid-template-columns: repeat(2, 1fr); }
+  .pain-grid { grid-template-columns: repeat(2, 1fr); }
+  .metrics-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .diff-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 768px) {
+  .nav-links { display: none; }
+  .mobile-toggle { display: block; }
+  .nav-links.open {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: rgba(10, 11, 15, 0.98);
+    backdrop-filter: blur(20px);
+    padding: 2rem;
+    gap: 1.5rem;
+    border-bottom: 1px solid var(--slate);
+  }
+  .module-grid { grid-template-columns: 1fr; }
+  .pain-grid { grid-template-columns: 1fr; }
+  .diff-grid { grid-template-columns: 1fr; }
+  .lifecycle-track { flex-direction: column; gap: 1.5rem; }
+  .lifecycle-track::before { display: none; }
+  .lifecycle-step { text-align: left; display: flex; gap: 1rem; align-items: flex-start; padding: 0; }
+  .step-dot { margin: 0.15rem 0 0; flex-shrink: 0; }
+  .arch-inner { flex-direction: column; align-items: flex-start; gap: 1.5rem; }
+  .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
+  .cta-actions { flex-direction: column; align-items: center; }
+  .hero-actions { flex-direction: column; align-items: center; }
+  .hero-proof { flex-wrap: wrap; gap: 1.5rem; }
+  .metrics-list { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAVIGATION ===== -->
+<nav id="mainNav">
+  <div class="container">
+    <a href="#" class="logo">
+      <div class="logo-icon">Ez</div>
+      <div class="logo-text">EzRealty <span>ERP</span></div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#problem">The Problem</a></li>
+      <li><a href="#modules">Modules</a></li>
+      <li><a href="#lifecycle">Lifecycle</a></li>
+      <li><a href="#metrics">Impact</a></li>
+      <li><a href="#edge">Why EzRealty</a></li>
+      <li><a href="#cta" class="btn-demo">Request Demo</a></li>
+    </ul>
+    <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-bg">
+    <div class="grid-lines"></div>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Purpose-Built for Real Estate
+      </div>
+      <h1>The Operating System<br>for Real Estate <em>Empires</em></h1>
+      <p class="hero-sub">From land acquisition to handover — EzRealty ERP is the single, unified platform that gives property developers in Ghana complete command over every project, every cedi, and every customer.</p>
+      <div class="hero-actions">
+        <a href="#cta" class="btn-primary">
+          <span>Request a Demo</span>
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
+        <a href="#modules" class="btn-secondary">
+          <span>Explore Modules</span>
+        </a>
+      </div>
+      <div class="hero-proof">
+        <div class="proof-item">
+          <div class="proof-number">12+</div>
+          <div class="proof-label">Core Modules</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-number">500+</div>
+          <div class="proof-label">Concurrent Users</div>
+        </div>
+        <div class="proof-item">
+          <div class="proof-number">99.9%</div>
+          <div class="proof-label">Uptime SLA</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-visual">
+      <div class="dashboard-glow"></div>
+      <div class="dashboard-mock">
+        <div class="mock-toolbar">
+          <div class="mock-dot"></div>
+          <div class="mock-dot"></div>
+          <div class="mock-dot"></div>
+          <div class="mock-url">app.ezrealty.com/dashboard</div>
+        </div>
+        <div class="mock-body">
+          <div class="mock-header">
+            <div class="mock-greeting">
+              <h3>Good morning, Kwame</h3>
+              <p>East Legon Heights — 3 active projects</p>
+            </div>
+            <div class="mock-live-badge">
+              <span class="mock-live-dot"></span>
+              Live
+            </div>
+          </div>
+          <div class="mock-kpis">
+            <div class="mock-kpi">
+              <div class="mock-kpi-label">Revenue (YTD)</div>
+              <div class="mock-kpi-value">GH₵ 24.8M</div>
+              <div class="mock-kpi-change">↑ 18.3%</div>
+            </div>
+            <div class="mock-kpi">
+              <div class="mock-kpi-label">Units Sold</div>
+              <div class="mock-kpi-value">147</div>
+              <div class="mock-kpi-change">↑ 24 this month</div>
+            </div>
+            <div class="mock-kpi">
+              <div class="mock-kpi-label">Collections</div>
+              <div class="mock-kpi-value">92.4%</div>
+              <div class="mock-kpi-change">↑ 6.1% vs Q3</div>
+            </div>
+          </div>
+          <div class="mock-chart">
+            <div class="mock-chart-title">Monthly Revenue — All Projects</div>
+            <div class="chart-bars">
+              <div class="chart-bar"></div>
+              <div class="chart-bar"></div>
+              <div class="chart-bar"></div>
+              <div class="chart-bar"></div>
+              <div class="chart-bar"></div>
+              <div class="chart-bar"></div>
+              <div class="chart-bar"></div>
+              <div class="chart-bar"></div>
+              <div class="chart-bar"></div>
+              <div class="chart-bar"></div>
+              <div class="chart-bar"></div>
+              <div class="chart-bar"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAIN POINTS ===== -->
+<section class="pain-section" id="problem">
+  <div class="container">
+    <div class="section-label reveal">The Problem</div>
+    <h2 class="section-title reveal">Real estate runs on chaos.<br>It doesn't have to.</h2>
+    <p class="section-desc reveal">Ghana's property developers lose millions each year to fragmented tools, manual compliance, and broken workflows. Sound familiar?</p>
+    <div class="pain-grid">
+      <div class="pain-card reveal">
+        <div class="pain-icon">🔀</div>
+        <h3>Fragmented Systems</h3>
+        <p>Spreadsheets for sales. WhatsApp for site updates. Separate software for accounts. Nothing talks to anything — and data falls through the cracks.</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">📋</div>
+        <h3>Compliance Nightmares</h3>
+        <p>Lands Commission submissions, EPA permits, Town Planning approvals, stamp duty — tracked manually with missed deadlines and penalty risk.</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">💸</div>
+        <h3>Cash Flow Blindness</h3>
+        <p>No real-time view of project costs, outstanding payments, or true profitability. You're making decisions on stale data — or gut instinct.</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">🏗️</div>
+        <h3>Construction Overruns</h3>
+        <p>BOQ variances, contractor disputes, material waste — without a system linking procurement, site and finance, overruns are inevitable.</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">👥</div>
+        <h3>Buyer Drop-Off</h3>
+        <p>From enquiry to handover, the customer journey is disjointed. Leads go cold. Payments slip. Handover complaints pile up.</p>
+      </div>
+      <div class="pain-card reveal">
+        <div class="pain-icon">📊</div>
+        <h3>No Strategic Visibility</h3>
+        <p>Leadership can't see a consolidated view across projects and branches. Decision-making is reactive, not data-driven.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MODULES ===== -->
+<section class="modules-section" id="modules">
+  <div class="container">
+    <div class="modules-header">
+      <div class="section-label reveal">Core Modules</div>
+      <h2 class="section-title reveal">Every function. One platform.<br>Zero excuses.</h2>
+      <p class="section-desc reveal">12 deeply integrated modules designed around how property developers actually work — not how generic ERPs think you should.</p>
+    </div>
+    <div class="module-grid reveal">
+      <div class="module-card">
+        <div class="module-num">01</div>
+        <h3>Land Acquisition & Due Diligence</h3>
+        <p>GIS mapping, title search tracking, EPA/Town Planning workflows, stamp duty calculation.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">02</div>
+        <h3>Project Planning & Approvals</h3>
+        <p>Feasibility studies, regulatory approvals, architectural plan management, project setup.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">03</div>
+        <h3>Construction Management</h3>
+        <p>BOQ tracking, contractor coordination, site inspections, variation orders, quality control.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">04</div>
+        <h3>Procurement & Inventory</h3>
+        <p>RFQ management, supplier scoring, purchase orders, GRN, stock control, material costing.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">05</div>
+        <h3>Sales & CRM</h3>
+        <p>Lead pipeline, unit allocation, reservation workflow, commission tracking, campaign analytics.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">06</div>
+        <h3>Customer Portal</h3>
+        <p>Self-service payment tracking, construction progress, document access, support tickets.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">07</div>
+        <h3>Finance & Accounting</h3>
+        <p>Project-based GL, AR/AP, bank reconciliation, IFRS reporting, multi-currency support.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">08</div>
+        <h3>Payment Collections</h3>
+        <p>Mobile Money (MTN, Vodafone, AirtelTigo), installment schedules, auto-reminders, receipts.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">09</div>
+        <h3>HR & Payroll</h3>
+        <p>Employee management, SSNIT/Tier 2/3, PAYE computation, leave, performance, bank files.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">10</div>
+        <h3>Legal & Compliance</h3>
+        <p>Contract management, AML monitoring, compliance calendars, audit trails, document vault.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">11</div>
+        <h3>Document Management</h3>
+        <p>Centralized repository, version control, digital signatures, access permissions, search.</p>
+      </div>
+      <div class="module-card">
+        <div class="module-num">12</div>
+        <h3>Analytics & BI</h3>
+        <p>Executive dashboards, project profitability, sales velocity, cash forecasting, custom reports.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== LIFECYCLE ===== -->
+<section class="lifecycle-section" id="lifecycle">
+  <div class="container">
+    <div class="lifecycle-header">
+      <div class="section-label reveal">End-to-End Coverage</div>
+      <h2 class="section-title reveal">One platform. The entire<br>development lifecycle.</h2>
+      <p class="section-desc reveal">EzRealty tracks every project from the moment you identify land to the day you hand over keys — and the after-sales service that follows.</p>
+    </div>
+    <div class="lifecycle-track reveal">
+      <div class="lifecycle-step">
+        <div class="step-dot"></div>
+        <div>
+          <div class="step-num">01</div>
+          <h4>Land Acquisition</h4>
+          <p>Search, due diligence, negotiation & registration</p>
+        </div>
+      </div>
+      <div class="lifecycle-step">
+        <div class="step-dot"></div>
+        <div>
+          <div class="step-num">02</div>
+          <h4>Planning</h4>
+          <p>Feasibility, design, regulatory approvals</p>
+        </div>
+      </div>
+      <div class="lifecycle-step">
+        <div class="step-dot"></div>
+        <div>
+          <div class="step-num">03</div>
+          <h4>Construction</h4>
+          <p>BOQ, contractors, inspections, quality</p>
+        </div>
+      </div>
+      <div class="lifecycle-step">
+        <div class="step-dot"></div>
+        <div>
+          <div class="step-num">04</div>
+          <h4>Sales</h4>
+          <p>Marketing, leads, reservations, agreements</p>
+        </div>
+      </div>
+      <div class="lifecycle-step">
+        <div class="step-dot"></div>
+        <div>
+          <div class="step-num">05</div>
+          <h4>Collections</h4>
+          <p>Payments, installments, Mobile Money</p>
+        </div>
+      </div>
+      <div class="lifecycle-step">
+        <div class="step-dot"></div>
+        <div>
+          <div class="step-num">06</div>
+          <h4>Handover</h4>
+          <p>Snagging, documentation, key delivery</p>
+        </div>
+      </div>
+      <div class="lifecycle-step">
+        <div class="step-dot"></div>
+        <div>
+          <div class="step-num">07</div>
+          <h4>After-Sales</h4>
+          <p>Warranty, support, customer service</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== METRICS ===== -->
+<section class="metrics-section" id="metrics">
+  <div class="container">
+    <div class="metrics-inner">
+      <div>
+        <div class="section-label reveal">Measurable Impact</div>
+        <h2 class="section-title reveal">Numbers that move<br>the boardroom.</h2>
+        <p class="section-desc reveal">EzRealty doesn't just digitise your operations — it transforms them. These are the outcomes our architecture is engineered to deliver.</p>
+      </div>
+      <div class="metrics-list">
+        <div class="metric-item reveal">
+          <div class="metric-value">60<span>%</span></div>
+          <div class="metric-label">Reduction in administrative overhead</div>
+          <div class="metric-bar"><div class="metric-bar-fill" style="--fill: 60%"></div></div>
+        </div>
+        <div class="metric-item reveal">
+          <div class="metric-value">40<span>%</span></div>
+          <div class="metric-label">Improvement in payment collections</div>
+          <div class="metric-bar"><div class="metric-bar-fill" style="--fill: 40%"></div></div>
+        </div>
+        <div class="metric-item reveal">
+          <div class="metric-value">100<span>%</span></div>
+          <div class="metric-label">On-time regulatory submissions</div>
+          <div class="metric-bar"><div class="metric-bar-fill" style="--fill: 100%"></div></div>
+        </div>
+        <div class="metric-item reveal">
+          <div class="metric-value">50<span>%</span></div>
+          <div class="metric-label">Faster handover & fewer complaints</div>
+          <div class="metric-bar"><div class="metric-bar-fill" style="--fill: 50%"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIFFERENTIATORS ===== -->
+<section class="diff-section" id="edge">
+  <div class="container">
+    <div class="diff-header">
+      <div class="section-label reveal">The EzRealty Edge</div>
+      <h2 class="section-title reveal">Built for Ghana.<br>Engineered for scale.</h2>
+      <p class="section-desc reveal">This isn't a generic ERP with a real estate skin. Every line of code was written for property developers operating in the Ghanaian regulatory and business landscape.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card reveal">
+        <span class="diff-icon">🏛️</span>
+        <h3>Ghana-Native Compliance</h3>
+        <p>Lands Commission, EPA, Town Planning, GRA, SSNIT, AML — all built-in. Automated deadline tracking, document checklists, and regulatory submission workflows you won't find in any imported ERP.</p>
+      </div>
+      <div class="diff-card reveal">
+        <span class="diff-icon">📱</span>
+        <h3>Mobile Money at the Core</h3>
+        <p>MTN MoMo, Vodafone Cash, AirtelTigo Money integrated natively — not bolted on. Automated reconciliation, instant receipts, and real-time collection dashboards.</p>
+      </div>
+      <div class="diff-card reveal">
+        <span class="diff-icon">🏗️</span>
+        <h3>Project-as-Profit-Centre</h3>
+        <p>Every development is an independent P&L. Track costs, revenues, margins, and cash flow per project — then consolidate across your entire portfolio instantly.</p>
+      </div>
+      <div class="diff-card reveal">
+        <span class="diff-icon">🗺️</span>
+        <h3>GIS & Spatial Intelligence</h3>
+        <p>Plot-level mapping, site visualization, spatial search, and location-aware dashboards. See your land bank, active sites, and sold units on a live interactive map.</p>
+      </div>
+      <div class="diff-card reveal">
+        <span class="diff-icon">🔐</span>
+        <h3>Enterprise-Grade Security</h3>
+        <p>Role-based access across branches, full audit trails, document encryption, AML transaction monitoring, and 99.9% uptime SLA with disaster recovery.</p>
+      </div>
+      <div class="diff-card reveal">
+        <span class="diff-icon">📈</span>
+        <h3>IFRS-Compliant Financials</h3>
+        <p>Revenue recognition per IFRS 15, percentage-of-completion accounting, multi-currency support, and financial statements your auditors and investors will respect.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ARCHITECTURE STRIP ===== -->
+<section class="arch-banner">
+  <div class="container">
+    <div class="arch-inner reveal">
+      <div class="arch-item">
+        <div class="arch-icon">☁️</div>
+        <div class="arch-text">
+          <h4>Cloud-Native</h4>
+          <p>Azure / AWS hosted</p>
+        </div>
+      </div>
+      <div class="arch-item">
+        <div class="arch-icon">🔗</div>
+        <div class="arch-text">
+          <h4>API-First</h4>
+          <p>Open integration layer</p>
+        </div>
+      </div>
+      <div class="arch-item">
+        <div class="arch-icon">🏢</div>
+        <div class="arch-text">
+          <h4>Multi-Branch</h4>
+          <p>Centralized + autonomous</p>
+        </div>
+      </div>
+      <div class="arch-item">
+        <div class="arch-icon">📱</div>
+        <div class="arch-text">
+          <h4>Mobile-Ready</h4>
+          <p>iOS, Android & Web</p>
+        </div>
+      </div>
+      <div class="arch-item">
+        <div class="arch-icon">⚡</div>
+        <div class="arch-text">
+          <h4>Sub-Second</h4>
+          <p>500+ concurrent users</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section" id="cta">
+  <div class="container">
+    <div class="section-label reveal">Get Started</div>
+    <h2 class="section-title reveal">Ready to run your real estate<br>business like an <em style="font-family: var(--font-display); color: var(--gold); font-style: italic;">empire?</em></h2>
+    <p class="cta-sub reveal">Schedule a personalised demo and see how EzRealty ERP transforms your operations from day one.</p>
+    <div class="cta-actions reveal">
+      <a href="mailto:hello@ezrealty.com" class="btn-primary" style="font-size: 1rem; padding: 1rem 2.5rem;">
+        <span>Request a Demo</span>
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 8h10m0 0L9 4m4 4L9 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+      <a href="#" class="btn-secondary" style="font-size: 1rem; padding: 1rem 2.5rem;">
+        Download Brochure
+      </a>
+    </div>
+    <div class="cta-trust reveal">
+      <span>🔒 Enterprise security</span>
+      <span>🇬🇭 Built for Ghana</span>
+      <span>📞 Dedicated onboarding</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <div class="container">
+    <div class="footer-inner">
+      <div class="footer-left">
+        <a href="#" class="logo">
+          <div class="logo-icon">Ez</div>
+          <div class="logo-text">EzRealty <span>ERP</span></div>
+        </a>
+        <p>The operating system for real estate empires.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#modules">Modules</a>
+        <a href="#metrics">Impact</a>
+        <a href="#edge">Why EzRealty</a>
+        <a href="#cta">Contact</a>
+      </div>
+    </div>
+    <div class="built-by">
+      Designed & Developed by <a href="https://adullamsolutions.com" target="_blank">Adullam Solutions Company Limited</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll effect
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => {
+  nav.classList.toggle('scrolled', window.scrollY > 50);
+});
+
+// Mobile menu
+document.getElementById('mobileToggle').addEventListener('click', () => {
+  document.getElementById('navLinks').classList.toggle('open');
+});
+
+// Scroll reveal
+const reveals = document.querySelectorAll('.reveal');
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      setTimeout(() => entry.target.classList.add('visible'), i * 80);
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+
+reveals.forEach(el => observer.observe(el));
+
+// Metric bar animation on scroll
+const metricBars = document.querySelectorAll('.metric-bar-fill');
+const barObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.style.animation = 'fillBar 1.5s ease-out forwards';
+    }
+  });
+}, { threshold: 0.5 });
+
+metricBars.forEach(bar => barObserver.observe(bar));
+
+// Smooth scroll for anchor links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+  anchor.addEventListener('click', function(e) {
+    e.preventDefault();
+    const target = document.querySelector(this.getAttribute('href'));
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      document.getElementById('navLinks').classList.remove('open');
+    }
+  });
+});
+</script>
+</body>
+</html>
