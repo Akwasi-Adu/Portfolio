@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -15,7 +15,11 @@
 <meta name="twitter:title" content="ERP Consultant | National Communications Authority (NCA) | Projects | Akwasi Adu-Kyeremeh">
 <meta name="twitter:description" content="Implemented a comprehensive ERP system for the National Communications Authority (NCA), the regulatory body for electronic communications in Ghana.">
 <meta name="twitter:image" content="https://akwasi.dev/portfolio/images/nca-logo2.png">
-<link rel="stylesheet" href="/portfolio/css/style.css">
+<!-- Google Fonts -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/portfolio/css/ai-pages.css">
 <link rel="icon" type="image/png" href="/portfolio/images/favicon.png">
   <meta name="theme-color" content="#0b1221">
 
@@ -33,20 +37,25 @@
 </script>
 </head>
 <body>
-<header>
-  <nav>
-    <ul>
-      <li><a href="/#home">Home</a></li>
-      <li><a href="/projects.html">Projects</a></li>
-      <li><a href="/blog.html">Blog</a></li>
-      <li><a href="/cv.html">CV</a></li>
-      <li><a href="/#contact">Contact</a></li>
-    </ul>
-  </nav>
+<header class="ai-header">
+  <div class="ai-header-inner">
+    <a href="/index-ai.html" class="ai-logo">akwasi<span>.dev</span></a>
+    <nav>
+      <button class="ai-menu-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="ai-nav-list">
+        <li><a href="/index-ai.html" class="ai-nav-link">Home</a></li>
+        <li><a href="/projects.html" class="ai-nav-link active">Projects</a></li>
+        <li><a href="/blog.html" class="ai-nav-link">Blog</a></li>
+        <li><a href="/index-ai.html#contact" class="ai-nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
-<main>
+<main class="ai-page-main">
 
-<article id="project-details-page" style="max-width: 900px; margin: 0 auto; padding: 2rem;">
+<article id="project-details-page" class="ai-detail-page" style="max-width: 900px; margin: 0 auto; padding: 2rem;">
   <img src="/portfolio/images/nca-logo2.png" alt="Screenshot for ERP Consultant | National Communications Authority (NCA)" class="project-screenshot" style="display: block; margin: 0 auto 2rem; max-width: 100%; border-radius: 8px;">
   <h1 style="text-align: center; margin-bottom: 1rem;">ERP Consultant | National Communications Authority (NCA)</h1>
   <div style="text-align: center; margin-bottom: 2rem; color: #666;">
@@ -69,6 +78,12 @@
   <p style="text-align: center; margin-top: 3rem;"><a href="/projects.html">← Back to Projects</a></p>
 </article>
 </main>
-<footer><p>&copy; 2026 Akwasi Adu-Kyeremeh. All rights reserved.</p></footer>
+<footer class="ai-footer">
+  <div class="ai-container">
+    <p>&copy; 2025 <a href="https://akwasi.dev">Akwasi Adu-Kyeremeh</a>. All rights reserved.</p>
+  </div>
+</footer>
+<button class="ai-back-to-top" aria-label="Back to top">â†‘</button>
+<script src="/portfolio/js/ai-pages.js"></script>
 </body>
 </html>

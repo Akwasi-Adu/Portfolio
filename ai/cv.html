@@ -1,231 +1,401 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="author" content="Akwasi Adu-Kyeremeh">
   <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Akwasi Adu-Kyeremeh | Portfolio">
-  <meta property="og:description" content="Explore the portfolio of Akwasi Adu-Kyeremeh — full-stack developer & ERP consultant based in Accra, Ghana.">
+  <meta property="og:title" content="CV | Akwasi Adu-Kyeremeh">
+  <meta property="og:description"
+    content="Explore the portfolio of Akwasi Adu-Kyeremeh — full-stack developer & ERP consultant based in Accra, Ghana.">
   <meta property="og:image" content="https://akwasi.dev/portfolio/images/og-image.jpg">
-  <meta property="og:url" content="https://akwasi.dev/index.html">
+  <meta property="og:url" content="https://akwasi.dev/cv.html">
   <meta property="og:type" content="website">
+  <meta name="theme-color" content="#0b1221">
   <title>CV | Akwasi Adu-Kyeremeh</title>
-  <link rel="stylesheet" href="portfolio/css/style.css">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="portfolio/css/ai-pages.css">
   <link rel="icon" type="image/png" href="portfolio/images/favicon.png">
 
-  <!-- Animation Styles -->
   <style>
-    .fade-in {
-      opacity: 0;
-      transform: translateY(20px);
-      transition: all 0.6s ease-out;
+    /* ========== CV Layout ========== */
+    .cv-container {
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 2rem;
+      margin-top: 1rem;
     }
-    .fade-in.visible {
+
+    /* ---- Sidebar ---- */
+    .cv-sidebar {
+      background: var(--ai-bg-card);
+      border: 1px solid var(--ai-border);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 90px;
+      align-self: start;
+    }
+
+    .cv-sidebar h1 {
+      font-family: var(--ai-font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--ai-text-primary);
+      margin-bottom: 1.25rem;
+      line-height: 1.3;
+    }
+
+    .cv-sidebar ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem;
+    }
+
+    .cv-sidebar ul li {
+      font-size: 0.85rem;
+      color: var(--ai-text-secondary);
+      margin-bottom: 0.5rem;
+      line-height: 1.5;
+    }
+
+    .cv-sidebar ul li a {
+      color: var(--ai-purple);
+      text-decoration: none;
+      transition: color var(--ai-transition);
+    }
+
+    .cv-sidebar ul li a:hover {
+      color: var(--ai-cyan);
+    }
+
+    .cv-sidebar h2 {
+      font-family: var(--ai-font-display);
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--ai-text-primary);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 1px solid var(--ai-border);
+    }
+
+    .cv-sidebar .highlight-list li {
+      font-size: 0.8rem;
+      color: var(--ai-text-tertiary);
+      margin-bottom: 0.6rem;
+      line-height: 1.6;
+    }
+
+    /* Skills Tags */
+    .cv-tag-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+    }
+
+    .cv-tag {
+      display: inline-block;
+      font-family: var(--ai-font-mono);
+      font-size: 0.7rem;
+      padding: 0.3rem 0.65rem;
+      background: rgba(139, 92, 246, 0.1);
+      border: 1px solid rgba(139, 92, 246, 0.2);
+      border-radius: 6px;
+      color: var(--ai-text-secondary);
+      transition: all var(--ai-transition);
+    }
+
+    .cv-tag:hover {
+      border-color: var(--ai-purple);
+      color: var(--ai-text-primary);
+      background: rgba(139, 92, 246, 0.15);
+    }
+
+    /* ---- Main Content ---- */
+    .cv-main {
+      min-width: 0;
+    }
+
+    .cv-title-typing {
+      font-family: var(--ai-font-mono);
+      font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+      font-weight: 600;
+      color: var(--ai-cyan);
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 0.15em solid var(--ai-purple);
+      width: 0;
+      animation: cv-typing 2.5s steps(40, end) forwards, cv-blink 0.75s step-end infinite;
+      margin-bottom: 0.75rem;
+    }
+
+    @keyframes cv-typing {
+      from {
+        width: 0;
+      }
+
+      to {
+        width: 100%;
+      }
+    }
+
+    @keyframes cv-blink {
+
+      from,
+      to {
+        border-color: transparent;
+      }
+
+      50% {
+        border-color: var(--ai-purple);
+      }
+    }
+
+    .cv-download {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--ai-purple);
+      text-decoration: none;
+      margin-bottom: 2rem;
+      transition: color var(--ai-transition);
+    }
+
+    .cv-download:hover {
+      color: var(--ai-cyan);
+    }
+
+    /* CV Sections */
+    .cv-section {
+      background: var(--ai-bg-card);
+      border: 1px solid var(--ai-border);
+      border-radius: 14px;
+      padding: 1.5rem;
+      margin-bottom: 1.25rem;
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      transform: translateY(16px);
+      transition: all 0.5s ease-out;
+    }
+
+    .cv-section.visible {
       opacity: 1;
       transform: translateY(0);
     }
-    .typing {
-      font-family: monospace;
-      white-space: nowrap;
-      overflow: hidden;
-      border-right: 0.15em solid orange;
-      width: 0;
-      animation: typing 2.5s steps(40, end) forwards, blink 0.75s step-end infinite;
-    }
-    @keyframes typing {
-      from { width: 0; }
-      to { width: 100%; }
-    }
-    @keyframes blink {
-      from, to { border-color: transparent; }
-      50% { border-color: orange; }
+
+    .cv-section h2 {
+      font-family: var(--ai-font-display);
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--ai-text-primary);
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--ai-border);
+      position: relative;
     }
 
-    .typing {
-  display: inline-block;
-  max-width: 100%;
-}
+    .cv-section h2::after {
+      content: '';
+      position: absolute;
+      bottom: -1px;
+      left: 0;
+      width: 40px;
+      height: 2px;
+      background: linear-gradient(90deg, var(--ai-purple), var(--ai-cyan));
+      border-radius: 2px;
+    }
 
+    .cv-section p {
+      font-size: 0.9rem;
+      color: var(--ai-text-secondary);
+      line-height: 1.75;
+    }
 
-    .print-button {
-  background-color: #0073e6;
-  color: white;
-  padding: 10px 16px;
-  border: none;
-  cursor: pointer;
-  font-size: 14px;
-  border-radius: 4px;
-  margin-bottom: 1rem;
-}
-.print-button:hover {
-  background-color: #005bb5;
-}
+    .cv-section ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
 
-@media print {
-  header, footer, nav, .print-button {
-    display: none !important;
-  }
+    .cv-section ul li {
+      position: relative;
+      padding-left: 1.2rem;
+      font-size: 0.875rem;
+      color: var(--ai-text-secondary);
+      line-height: 1.7;
+      margin-bottom: 0.5rem;
+    }
 
-  body {
-    background: white !important;
-    color: black !important;
-    font-size: 12pt;
-    margin: 0;
-    padding: 0;
-  }
+    .cv-section ul li::before {
+      content: '▸';
+      position: absolute;
+      left: 0;
+      color: var(--ai-purple);
+      font-weight: 700;
+    }
 
-  #cv-container {
-    display: block !important;
-    margin: 0 auto;
-    padding: 20px;
-    width: 100%;
-  }
+    /* ========== Print Styles ========== */
+    @media print {
 
-  .tag-cloud {
-    display: none;
-  }
+      header,
+      footer,
+      nav,
+      .ai-back-to-top,
+      .ai-menu-toggle {
+        display: none !important;
+      }
 
-  section, h2, ul {
-    page-break-inside: avoid;
-  }
-}
+      body {
+        background: white !important;
+        color: black !important;
+        font-size: 11pt;
+        margin: 0;
+        padding: 0;
+      }
 
-/* === Print-Friendly Overrides === */
-body.print-mode .typing {
-  animation: none !important;
-  border: none !important;
-  width: auto !important;
-  font-family: monospace;
-  font-size: 24px;
-  font-weight: bold;
-}
+      .ai-page-main {
+        padding-top: 0 !important;
+      }
 
-body.print-mode .fade-in {
-  opacity: 1 !important;
-  transform: none !important;
-  transition: none !important;
-}
+      .cv-container {
+        display: flex;
+        flex-direction: column-reverse;
+      }
 
-/* Let skills show up when printing */
-body.print-mode .tag-cloud {
-  display: flex !important;
-  flex-wrap: wrap;
-  gap: 6px;
-}
+      .cv-sidebar {
+        position: static;
+        background: #f5f5f5;
+        border: 1px solid #ddd;
+      }
 
+      .cv-sidebar h1,
+      .cv-sidebar h2,
+      .cv-section h2 {
+        color: #111 !important;
+      }
 
-body.print-mode .print-button,
-body.print-mode .download-button,
-body.print-mode header,
-body.print-mode footer,
-body.print-mode nav {
-  display: none !important;
-}
+      .cv-sidebar ul li,
+      .cv-sidebar .highlight-list li,
+      .cv-section p,
+      .cv-section ul li {
+        color: #333 !important;
+      }
 
-body.print-mode .typing {
-  animation: none !important;
-  width: auto !important;
-  border: none !important;
-}
+      .cv-section {
+        background: none;
+        border: 1px solid #ddd;
+        opacity: 1 !important;
+        transform: none !important;
+      }
 
-/* This overrides the typing animation for print or print-mode */
-/* Print-mode via class */
-body.print-mode .typing {
-  animation: none !important;
-  border: none !important;
-  width: auto !important;
-  font-family: monospace;
-  font-size: 24px;
-  font-weight: bold;
-  display: block;
-  margin-bottom: 1rem;
-}
+      .cv-section h2::after {
+        background: #333;
+      }
 
-/* Print-mode via print media query */
-@media print {
-  .typing {
-    animation: none !important;
-    border: none !important;
-    width: auto !important;
-    font-family: monospace;
-    font-size: 24px;
-    font-weight: bold;
-    display: block;
-    margin-bottom: 1rem;
-  }
-}
+      .cv-title-typing {
+        animation: none !important;
+        border: none !important;
+        width: auto !important;
+        color: #111;
+        font-size: 18pt;
+      }
 
+      .cv-tag {
+        background: #eee;
+        border-color: #ccc;
+        color: #333;
+      }
 
-@media (max-width: 768px) {
-  #cv-container {
-    flex-direction: column-reverse;
-    padding: 10px;
-  }
+      .cv-download {
+        display: none;
+      }
 
-  #cv-left, #cv-right {
-    margin-left: 0 !important;
-    padding: 10px;
-  }
+      section,
+      h2,
+      ul {
+        page-break-inside: avoid;
+      }
+    }
 
-  .typing {
-    font-size: 1.2rem;
-    white-space: normal; /* Allow wrapping */
-    width: 100% !important;
-    animation: none !important;
-    border: none;
-  }
+    /* ========== Mobile ========== */
+    @media (max-width: 768px) {
+      .cv-container {
+        grid-template-columns: 1fr;
+      }
 
-  .fade-in {
-    transform: none;
-    opacity: 1;
-  }
+      .cv-sidebar {
+        position: static;
+        order: -1;
+      }
 
-  .tag-cloud {
-    justify-content: center;
-  }
-}
-
-
+      .cv-title-typing {
+        font-size: 1rem;
+        white-space: normal;
+        width: 100% !important;
+        animation: none !important;
+        border: none;
+      }
+    }
   </style>
 
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-EPKW2QTNQL"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
+    function gtag() { dataLayer.push(arguments); }
     gtag('js', new Date());
     gtag('config', 'G-EPKW2QTNQL');
   </script>
 </head>
 
 <body>
-  <header>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="projects.html">Projects</a></li>
-        <li><a href="blog.html">Blog</a></li>
-        <li><a href="cv.html" class="active">CV</a></li>
-        <li><a href="index.html#contact">Contact</a></li>
-      </ul>
-    </nav>
+  <!-- AI Header -->
+  <header class="ai-header">
+    <div class="ai-header-inner">
+      <a href="index-ai.html" class="ai-logo">akwasi<span>.dev</span></a>
+      <nav>
+        <button class="ai-menu-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="ai-nav-list">
+          <li><a href="index-ai.html" class="ai-nav-link">Home</a></li>
+          <li><a href="projects.html" class="ai-nav-link">Projects</a></li>
+          <li><a href="blog.html" class="ai-nav-link">Blog</a></li>
+          <li><a href="index-ai.html#contact" class="ai-nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
   </header>
 
-  <main>
-    <div id="cv-container">
-      <div id="cv-right">
-        <h1 class="typing">ERP Solutions Architect & Full Stack Developer</h1>
-        <p><a href="Akwasi_CV.pdf" download>📄 Download Full CV (Auto-Generated)</a></p>
+  <main class="ai-page-main">
+    <div class="cv-container">
 
-        <div class="fade-in">
+      <!-- Main Content -->
+      <div class="cv-main">
+        <h1 class="cv-title-typing">ERP Solutions Architect & Full Stack Developer</h1>
+        <a href="Akwasi_CV.pdf" download class="cv-download">📄 Download Full CV (Auto-Generated)</a>
+
+        <div class="cv-section">
           <h2>Snapshot</h2>
           <p>
-            ERP Consultant and Full-Stack Developer with deep experience designing and implementing enterprise systems across the EMEA region. Delivered over 40 high-impact ERP rollouts, empowering 130+ organizations through automation, process optimization, and scalable custom applications.
+            ERP Consultant and Full-Stack Developer with deep experience designing and implementing enterprise systems
+            across the EMEA region. Delivered over 40 high-impact ERP rollouts, empowering 130+ organizations through
+            automation, process optimization, and scalable custom applications.
           </p>
         </div>
 
-        <div class="fade-in">
+        <div class="cv-section">
           <h2>Core Capabilities</h2>
           <ul>
             <li>ERP Systems Architecture (SAP, Sage, Microsoft Dynamics)</li>
@@ -237,7 +407,7 @@ body.print-mode .typing {
           </ul>
         </div>
 
-        <div class="fade-in">
+        <div class="cv-section">
           <h2>Work Highlights</h2>
           <ul>
             <li>Designed a multinational ERP rollout across 5 countries, streamlining logistics & finance.</li>
@@ -247,7 +417,7 @@ body.print-mode .typing {
           </ul>
         </div>
 
-        <div class="fade-in">
+        <div class="cv-section">
           <h2>Current Focus</h2>
           <ul>
             <li>ERP Solution Strategy & Systems Architecture</li>
@@ -256,11 +426,9 @@ body.print-mode .typing {
           </ul>
         </div>
 
-        <div class="fade-in">
+        <div class="cv-section">
           <h2>Certifications & Education</h2>
           <ul>
-            <!-- <li>AWS Certified Solutions Architect – Professional</li> -->
-            <!-- <li>Microsoft Certified: Azure Developer Associate</li> -->
             <li>Dynamics 365 Business Central Developer Associate</li>
             <li>SAP S/4HANA Financial Accounting</li>
             <li>Sage Certified Implementation Consultant</li>
@@ -270,61 +438,57 @@ body.print-mode .typing {
         </div>
       </div>
 
-      <div id="cv-left">
+      <!-- Sidebar -->
+      <aside class="cv-sidebar">
         <h1>Akwasi Adu-Kyeremeh</h1>
         <ul>
           <li>📞 +233-50-1522233</li>
           <li>📧 me@akwasi.dev</li>
           <li>🌍 Accra, Ghana</li>
-          <li><a href="https://github.com/Akwasi-Adu" style="color: white;">GitHub</a></li>
-          <li><a href="https://linkedin.com/in/akwasi" style="color: white;">LinkedIn</a></li>
+          <li><a href="https://github.com/Akwasi-Adu">GitHub ↗</a></li>
+          <li><a href="https://linkedin.com/in/akwasi">LinkedIn ↗</a></li>
         </ul>
 
         <h2>Highlights</h2>
-        <ul>
+        <ul class="highlight-list">
           <li>Delivered 40+ successful implementations across 20+ industries in the EMEA region.</li>
           <li>Provided technical support, training, and business solutions to 130+ clients.</li>
           <li>Executed mission-critical projects for government and public sector partners.</li>
         </ul>
 
         <h2>Skills</h2>
-        <div class="tag-cloud">
-          <span class="tag">ERP Strategy</span>
-          <span class="tag">Project Management</span>
-          <span class="tag">Full Stack Development</span>
-          <span class="tag">Custom Integrations</span>
-          <!-- <span class="tag">ASP.NET</span>
-          <span class="tag">C#</span>
-          <span class="tag">React</span>
-          <span class="tag">Java</span>
-          <span class="tag">Kotlin</span>
-          <span class="tag">MSSQL</span>
-          <span class="tag">Pervasive SQL</span> -->
-          <!-- <span class="tag">DevOps Automation</span> -->
-          <!-- <span class="tag">Government Projects</span>
-          <span class="tag">SAP</span>
-          <span class="tag">Sage</span>
-          <span class="tag">Azure</span> -->
+        <div class="cv-tag-cloud">
+          <span class="cv-tag">ERP Strategy</span>
+          <span class="cv-tag">Project Management</span>
+          <span class="cv-tag">Full Stack Development</span>
+          <span class="cv-tag">Custom Integrations</span>
         </div>
-      </div>
+      </aside>
     </div>
   </main>
 
-  <footer>
-    <p>&copy; 2025 Akwasi Adu-Kyeremeh. All rights reserved.</p>
+  <!-- AI Footer -->
+  <footer class="ai-footer">
+    <div class="ai-container">
+      <p>&copy; 2025 <a href="https://akwasi.dev">Akwasi Adu-Kyeremeh</a>. All rights reserved.</p>
+    </div>
   </footer>
+  <button class="ai-back-to-top" aria-label="Back to top">↑</button>
 
-  <!-- JS to handle scroll-based animation -->
+  <!-- Scripts -->
+  <script src="portfolio/js/ai-pages.js"></script>
   <script>
-    const faders = document.querySelectorAll('.fade-in');
-    const observer = new IntersectionObserver(entries => {
+    // Fade-in observer for CV sections
+    const cvSections = document.querySelectorAll('.cv-section');
+    const cvObserver = new IntersectionObserver(entries => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('visible');
         }
       });
     }, { threshold: 0.1 });
-    faders.forEach(el => observer.observe(el));
+    cvSections.forEach(el => cvObserver.observe(el));
   </script>
 </body>
+
 </html>
