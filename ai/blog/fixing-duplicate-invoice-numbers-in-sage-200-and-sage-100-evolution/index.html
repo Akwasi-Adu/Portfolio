@@ -1,4 +1,4 @@
-Ôªø<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="utf-8">
@@ -45,16 +45,16 @@
 <body>
 <header class="ai-header">
   <div class="ai-header-inner">
-    <a href="/index-ai.html" class="ai-logo">akwasi<span>.dev</span></a>
+    <a href="/index.html" class="ai-logo">akwasi<span>.dev</span></a>
     <nav>
       <button class="ai-menu-toggle" aria-label="Toggle menu">
         <span></span><span></span><span></span>
       </button>
       <ul class="ai-nav-list">
-        <li><a href="/index-ai.html" class="ai-nav-link">Home</a></li>
+        <li><a href="/index.html" class="ai-nav-link">Home</a></li>
         <li><a href="/projects.html" class="ai-nav-link">Projects</a></li>
         <li><a href="/blog.html" class="ai-nav-link">Blog</a></li>
-        <li><a href="/index-ai.html#contact" class="ai-nav-link">Contact</a></li>
+        <li><a href="/index.html#contact" class="ai-nav-link">Contact</a></li>
       </ul>
     </nav>
   </div>
@@ -128,23 +128,23 @@
         font-weight: 600;
       }
     </style>
-    <html><head></head><body><p>If you‚Äôve worked with Sage 200 Evolution or Sage 100 Evolution since version 10, you may have encountered a rather annoying bug: <strong>duplicate invoice numbering</strong>. Even when you‚Äôve set your database to use <strong>manual invoice numbering</strong> and checked the option to disallow duplicates, the system can still sneakily allow duplicate invoice numbers.</p>
+    <html><head></head><body><p>If youíve worked with Sage 200 Evolution or Sage 100 Evolution since version 10, you may have encountered a rather annoying bug: <strong>duplicate invoice numbering</strong>. Even when youíve set your database to use <strong>manual invoice numbering</strong> and checked the option to disallow duplicates, the system can still sneakily allow duplicate invoice numbers.</p>
     
             <p>Here's a screenshot of the configuration option where the bug seems to take effect:  
             <img src="/portfolio/images/blog/trigger.png" alt="Configuration option for disallowing duplicate invoice numbers"></p>
     
-            <p>Frustrating, right? Even with subsequent updates, this issue persists. Over time, I realized I couldn‚Äôt keep waiting for Sage to fix it‚ÄîI had to take matters into my own hands for the sake of my clients.</p>
+            <p>Frustrating, right? Even with subsequent updates, this issue persists. Over time, I realized I couldnít keep waiting for Sage to fix itóI had to take matters into my own hands for the sake of my clients.</p>
     
             <p>So, I came up with a solution: a <strong>SQL trigger</strong> that ensures no duplicate invoice numbers are allowed when saving or posting an invoice. Let me walk you through the process.</p>
     
             <h3>How the Fix Works</h3>
-            <p>The bug exists because the system doesn‚Äôt effectively validate invoice numbers when saving a document to the database. To counter this, I created a trigger on the <code>INVNUM</code> table (this is where Sage Evolution stores inventory-related documents, such as invoices).</p>
+            <p>The bug exists because the system doesnít effectively validate invoice numbers when saving a document to the database. To counter this, I created a trigger on the <code>INVNUM</code> table (this is where Sage Evolution stores inventory-related documents, such as invoices).</p>
     
-            <p>Here‚Äôs what the trigger does in simple terms:</p>
+            <p>Hereís what the trigger does in simple terms:</p>
             <ol>
                 <li><strong>Focus on Incomplete Documents:</strong> The trigger works specifically for documents with <code>DocType = 0</code>. This indicates an unsaved or "fresh" document.</li>
                 <li><strong>Check for Duplicates:</strong> When a new document is saved or updated, the trigger compares the <code>InvNumber</code> of the incoming row with existing records in the table.</li>
-                <li><strong>Exclude Current Row:</strong> To ensure the system doesn‚Äôt falsely flag the row being processed, it excludes the current row from the check using the primary key (<code>AutoIndex</code> in this case).</li>
+                <li><strong>Exclude Current Row:</strong> To ensure the system doesnít falsely flag the row being processed, it excludes the current row from the check using the primary key (<code>AutoIndex</code> in this case).</li>
                 <li><strong>Raise an Error if a Duplicate Exists:</strong> If duplicates are found, the trigger raises an error, prevents the document from saving, and rolls back the transaction.</li>
             </ol>
     
@@ -184,15 +184,15 @@
             </pre>
     
             <h3>Why This Works</h3>
-            <p>By introducing this trigger, we ensure that the system performs the necessary validation at the database level. Even if Sage‚Äôs application logic fails to catch duplicates, this safety net ensures your records stay clean and consistent.</p>
+            <p>By introducing this trigger, we ensure that the system performs the necessary validation at the database level. Even if Sageís application logic fails to catch duplicates, this safety net ensures your records stay clean and consistent.</p>
     
             <h3>Closing Thoughts</h3>
-            <p>This workaround isn‚Äôt perfect‚Äîit‚Äôs more of a patch than a permanent fix. Ideally, Sage should address this bug in future releases. But until they do, this solution has proven effective for my clients, and it might help you too!</p>
+            <p>This workaround isnít perfectóitís more of a patch than a permanent fix. Ideally, Sage should address this bug in future releases. But until they do, this solution has proven effective for my clients, and it might help you too!</p>
     
-            <p>If you have any questions or want to share how you‚Äôve tackled similar bugs, feel free to drop a comment below.</p>
+            <p>If you have any questions or want to share how youíve tackled similar bugs, feel free to drop a comment below.</p>
         </body></html>
   </div>
-  <p style="text-align: center; margin-top: 3rem;"><a href="/blog.html">‚Üê Back to Blog</a></p>
+  <p style="text-align: center; margin-top: 3rem;"><a href="/blog.html">? Back to Blog</a></p>
 </article>
 </main>
 <footer class="ai-footer">
@@ -200,7 +200,7 @@
     <p>&copy; 2025 <a href="https://akwasi.dev">Akwasi Adu-Kyeremeh</a>. All rights reserved.</p>
   </div>
 </footer>
-<button class="ai-back-to-top" aria-label="Back to top">√¢‚Ä†‚Äò</button>
+<button class="ai-back-to-top" aria-label="Back to top">‚Üë</button>
 <script src="/portfolio/js/ai-pages.js"></script>
 </body>
 </html>
