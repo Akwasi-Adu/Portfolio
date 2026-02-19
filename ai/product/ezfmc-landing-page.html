@@ -1,0 +1,2072 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EzFMC — Every Litre. Every Station. Total Command.</title>
+    <meta name="description"
+        content="EzFMC is the purpose-built ERP for Oil Marketing Companies in Ghana. NPA compliance, UPPF automation, station operations, finance, and AI intelligence — all in one platform.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+        rel="stylesheet">
+    <style>
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box
+        }
+
+        :root {
+            --bg-deepest: #06090f;
+            --bg-deep: #0b1120;
+            --bg-card: #111827;
+            --bg-card-hover: #1a2540;
+            --border: #1e293b;
+            --border-glow: #334155;
+            --text-dim: #64748b;
+            --text-mid: #94a3b8;
+            --text-light: #cbd5e1;
+            --text-bright: #f1f5f9;
+            --white: #fff;
+            --blue: #0ea5e9;
+            --blue-deep: #0369a1;
+            --blue-glow: rgba(14, 165, 233, .12);
+            --blue-glow-strong: rgba(14, 165, 233, .25);
+            --amber: #f59e0b;
+            --amber-deep: #b45309;
+            --amber-glow: rgba(245, 158, 11, .10);
+            --amber-glow-strong: rgba(245, 158, 11, .25);
+            --green: #22c55e;
+            --green-glow: rgba(34, 197, 94, .12);
+            --red: #ef4444;
+            --red-glow: rgba(239, 68, 68, .10);
+            --font-head: 'Space Grotesk', sans-serif;
+            --font-body: 'Inter', sans-serif;
+            --font-mono: 'JetBrains Mono', monospace;
+        }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        body {
+            font-family: var(--font-body);
+            background: var(--bg-deepest);
+            color: var(--text-mid);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased
+        }
+
+        ::-webkit-scrollbar {
+            width: 5px
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-deepest)
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: var(--blue-deep);
+            border-radius: 3px
+        }
+
+        .ctn {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem
+        }
+
+        /* === NAV === */
+        .nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 1rem 0;
+            transition: all .4s ease
+        }
+
+        .nav.scrolled {
+            background: rgba(6, 9, 15, .92);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid var(--border);
+            padding: .7rem 0
+        }
+
+        .nav .ctn {
+            display: flex;
+            align-items: center;
+            justify-content: space-between
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: .6rem;
+            text-decoration: none
+        }
+
+        .logo-mark {
+            width: 36px;
+            height: 36px;
+            border-radius: 8px;
+            background: linear-gradient(135deg, var(--blue), var(--blue-deep));
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-weight: 700;
+            font-size: .85rem;
+            color: var(--white);
+            box-shadow: 0 0 20px var(--blue-glow-strong)
+        }
+
+        .logo-name {
+            font-family: var(--font-head);
+            font-weight: 700;
+            font-size: 1.2rem;
+            color: var(--white);
+            letter-spacing: -.02em
+        }
+
+        .logo-name span {
+            color: var(--amber)
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+            list-style: none
+        }
+
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: .85rem;
+            font-weight: 500;
+            transition: color .3s
+        }
+
+        .nav-links a:hover {
+            color: var(--blue)
+        }
+
+        .btn-cta {
+            background: var(--blue);
+            color: var(--white) !important;
+            padding: .55rem 1.4rem;
+            border-radius: 6px;
+            font-weight: 600;
+            font-size: .82rem;
+            letter-spacing: .02em;
+            transition: all .3s;
+            box-shadow: 0 0 16px var(--blue-glow-strong)
+        }
+
+        .btn-cta:hover {
+            background: #38bdf8;
+            box-shadow: 0 0 28px var(--blue-glow-strong);
+            transform: translateY(-1px)
+        }
+
+        .mob-tog {
+            display: none;
+            background: 0;
+            border: 0;
+            cursor: pointer;
+            padding: .4rem
+        }
+
+        .mob-tog span {
+            display: block;
+            width: 20px;
+            height: 2px;
+            background: var(--text-light);
+            margin: 4px 0;
+            transition: .3s
+        }
+
+        /* === HERO === */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding: 7rem 0 5rem;
+            overflow: hidden
+        }
+
+        .hero-glow {
+            position: absolute;
+            top: -200px;
+            right: -100px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, var(--blue-glow) 0%, transparent 70%);
+            pointer-events: none
+        }
+
+        .hero-glow2 {
+            position: absolute;
+            bottom: -200px;
+            left: -100px;
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--amber-glow) 0%, transparent 70%);
+            pointer-events: none
+        }
+
+        .hero .ctn {
+            position: relative;
+            z-index: 2;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            padding: .35rem 1rem;
+            border: 1px solid var(--border);
+            border-radius: 100px;
+            font-size: .72rem;
+            font-weight: 600;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: 1.5rem;
+            background: var(--blue-glow)
+        }
+
+        .hero-badge .dot {
+            width: 6px;
+            height: 6px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: blink 2s infinite
+        }
+
+        @keyframes blink {
+
+            0%,
+            100% {
+                opacity: 1
+            }
+
+            50% {
+                opacity: .3
+            }
+        }
+
+        .hero h1 {
+            font-family: var(--font-head);
+            font-size: clamp(2.6rem, 5vw, 3.8rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.1;
+            letter-spacing: -.03em;
+            margin-bottom: 1.5rem
+        }
+
+        .hero h1 .accent {
+            background: linear-gradient(135deg, var(--amber), #fbbf24);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            color: var(--text-mid);
+            line-height: 1.8;
+            max-width: 500px;
+            margin-bottom: 2.5rem
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1rem;
+            align-items: center;
+            margin-bottom: 3rem
+        }
+
+        .btn-main {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: linear-gradient(135deg, var(--amber), var(--amber-deep));
+            color: #000;
+            padding: .85rem 2rem;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: .9rem;
+            text-decoration: none;
+            transition: all .3s;
+            box-shadow: 0 4px 20px var(--amber-glow-strong);
+            border: 0;
+            cursor: pointer
+        }
+
+        .btn-main:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 30px var(--amber-glow-strong)
+        }
+
+        .btn-ghost {
+            display: inline-flex;
+            align-items: center;
+            gap: .5rem;
+            background: 0;
+            color: var(--text-light);
+            padding: .85rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: .9rem;
+            text-decoration: none;
+            border: 1px solid var(--border);
+            transition: all .3s;
+            cursor: pointer
+        }
+
+        .btn-ghost:hover {
+            border-color: var(--blue);
+            color: var(--blue);
+            background: var(--blue-glow)
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 2.5rem
+        }
+
+        .stat {
+            display: flex;
+            flex-direction: column;
+            gap: .1rem
+        }
+
+        .stat-val {
+            font-family: var(--font-head);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--white)
+        }
+
+        .stat-lbl {
+            font-size: .7rem;
+            color: var(--text-dim);
+            letter-spacing: .06em;
+            text-transform: uppercase
+        }
+
+        /* Hero Gauges Panel */
+        .gauges-panel {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 1.5rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, .4);
+            position: relative;
+            overflow: hidden
+        }
+
+        .gauges-panel::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--blue), transparent);
+            opacity: .4
+        }
+
+        .gp-head {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.2rem;
+            padding-bottom: .8rem;
+            border-bottom: 1px solid var(--border)
+        }
+
+        .gp-title {
+            font-family: var(--font-mono);
+            font-size: .7rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: .1em
+        }
+
+        .gp-live {
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            font-size: .65rem;
+            font-weight: 600;
+            color: var(--green);
+            padding: .2rem .6rem;
+            background: var(--green-glow);
+            border-radius: 100px
+        }
+
+        .gp-live .dot {
+            width: 5px;
+            height: 5px;
+            background: var(--green);
+            border-radius: 50%;
+            animation: blink 1.5s infinite
+        }
+
+        .gauge-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.2rem
+        }
+
+        .gauge {
+            text-align: center;
+            padding: 1rem .5rem;
+            background: rgba(255, 255, 255, .01);
+            border: 1px solid rgba(255, 255, 255, .04);
+            border-radius: 12px
+        }
+
+        .gauge-circle {
+            width: 80px;
+            height: 80px;
+            margin: 0 auto .6rem;
+            position: relative
+        }
+
+        .gauge-circle svg {
+            width: 80px;
+            height: 80px;
+            transform: rotate(-90deg)
+        }
+
+        .gauge-circle .track {
+            fill: none;
+            stroke: var(--border);
+            stroke-width: 5
+        }
+
+        .gauge-circle .fill {
+            fill: none;
+            stroke-width: 5;
+            stroke-linecap: round;
+            stroke-dasharray: 220;
+            stroke-dashoffset: 220;
+            animation: gaugeFill 2s ease-out forwards
+        }
+
+        .gauge-circle .fill.blue {
+            stroke: var(--blue)
+        }
+
+        .gauge-circle .fill.amber {
+            stroke: var(--amber)
+        }
+
+        .gauge-circle .fill.green {
+            stroke: var(--green)
+        }
+
+        .gauge-val {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-mono);
+            font-size: .85rem;
+            font-weight: 600;
+            color: var(--white)
+        }
+
+        @keyframes gaugeFill {
+            to {
+                stroke-dashoffset: var(--offset)
+            }
+        }
+
+        .gauge-label {
+            font-size: .65rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: .05em
+        }
+
+        .ticker {
+            background: rgba(255, 255, 255, .02);
+            border: 1px solid rgba(255, 255, 255, .04);
+            border-radius: 8px;
+            padding: .6rem 1rem;
+            overflow: hidden;
+            position: relative
+        }
+
+        .ticker-inner {
+            display: flex;
+            gap: 2rem;
+            animation: scroll 20s linear infinite;
+            white-space: nowrap
+        }
+
+        @keyframes scroll {
+            0% {
+                transform: translateX(0)
+            }
+
+            100% {
+                transform: translateX(-50%)
+            }
+        }
+
+        .ticker-item {
+            font-family: var(--font-mono);
+            font-size: .65rem;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            gap: .4rem;
+            flex-shrink: 0
+        }
+
+        .ticker-item .up {
+            color: var(--green)
+        }
+
+        .ticker-item .down {
+            color: var(--red)
+        }
+
+        /* === BEFORE / AFTER === */
+        .ba-section {
+            padding: 6rem 0;
+            position: relative
+        }
+
+        .ba-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent)
+        }
+
+        .ba-head {
+            text-align: center;
+            margin-bottom: 3.5rem
+        }
+
+        .sec-tag {
+            font-family: var(--font-mono);
+            font-size: .7rem;
+            font-weight: 600;
+            letter-spacing: .15em;
+            text-transform: uppercase;
+            color: var(--blue);
+            margin-bottom: .8rem
+        }
+
+        .sec-title {
+            font-family: var(--font-head);
+            font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1.15;
+            letter-spacing: -.02em;
+            margin-bottom: .8rem
+        }
+
+        .sec-desc {
+            font-size: 1rem;
+            color: var(--text-dim);
+            max-width: 550px;
+            margin: 0 auto
+        }
+
+        .ba-grid {
+            display: grid;
+            grid-template-columns: 1fr 60px 1fr;
+            gap: 0;
+            align-items: stretch
+        }
+
+        .ba-col {
+            padding: 2.5rem;
+            border-radius: 16px;
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem
+        }
+
+        .ba-before {
+            background: linear-gradient(135deg, rgba(239, 68, 68, .04), rgba(239, 68, 68, .01));
+            border: 1px solid rgba(239, 68, 68, .12)
+        }
+
+        .ba-after {
+            background: linear-gradient(135deg, rgba(34, 197, 94, .04), rgba(34, 197, 94, .01));
+            border: 1px solid rgba(34, 197, 94, .12)
+        }
+
+        .ba-col-title {
+            font-family: var(--font-mono);
+            font-size: .7rem;
+            font-weight: 600;
+            letter-spacing: .12em;
+            text-transform: uppercase;
+            padding: .3rem .8rem;
+            border-radius: 4px;
+            display: inline-block;
+            width: fit-content
+        }
+
+        .ba-before .ba-col-title {
+            color: var(--red);
+            background: var(--red-glow)
+        }
+
+        .ba-after .ba-col-title {
+            color: var(--green);
+            background: var(--green-glow)
+        }
+
+        .ba-item {
+            display: flex;
+            gap: .8rem;
+            align-items: flex-start
+        }
+
+        .ba-icon {
+            width: 28px;
+            height: 28px;
+            border-radius: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .8rem;
+            flex-shrink: 0;
+            margin-top: .1rem
+        }
+
+        .ba-before .ba-icon {
+            background: var(--red-glow);
+            color: var(--red)
+        }
+
+        .ba-after .ba-icon {
+            background: var(--green-glow);
+            color: var(--green)
+        }
+
+        .ba-item h4 {
+            font-family: var(--font-head);
+            font-size: .92rem;
+            font-weight: 600;
+            color: var(--text-bright);
+            margin-bottom: .2rem
+        }
+
+        .ba-item p {
+            font-size: .82rem;
+            color: var(--text-dim);
+            line-height: 1.55
+        }
+
+        .ba-divider {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative
+        }
+
+        .ba-divider::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            width: 1px;
+            background: linear-gradient(180deg, transparent, var(--border), transparent)
+        }
+
+        .ba-arrow {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--amber);
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 2;
+            box-shadow: 0 0 20px var(--amber-glow)
+        }
+
+        /* === MODULES TABS === */
+        .mod-section {
+            padding: 6rem 0;
+            background: var(--bg-deep);
+            position: relative
+        }
+
+        .mod-section::before,
+        .mod-section::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent)
+        }
+
+        .mod-section::before {
+            top: 0
+        }
+
+        .mod-section::after {
+            bottom: 0
+        }
+
+        .mod-head {
+            text-align: center;
+            margin-bottom: 3rem
+        }
+
+        .mod-tabs {
+            display: flex;
+            justify-content: center;
+            gap: .5rem;
+            margin-bottom: 2.5rem;
+            flex-wrap: wrap
+        }
+
+        .mod-tab {
+            font-family: var(--font-head);
+            font-size: .85rem;
+            font-weight: 600;
+            padding: .6rem 1.3rem;
+            border-radius: 8px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            color: var(--text-dim);
+            cursor: pointer;
+            transition: all .3s
+        }
+
+        .mod-tab:hover {
+            border-color: var(--blue);
+            color: var(--text-light)
+        }
+
+        .mod-tab.active {
+            background: var(--blue-glow);
+            border-color: var(--blue);
+            color: var(--blue);
+            box-shadow: 0 0 16px var(--blue-glow)
+        }
+
+        .mod-panel {
+            display: none;
+            animation: fadeUp .4s ease
+        }
+
+        .mod-panel.active {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1rem
+        }
+
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(12px)
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0)
+            }
+        }
+
+        .mod-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.5rem;
+            transition: all .35s;
+            position: relative;
+            overflow: hidden
+        }
+
+        .mod-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--blue), var(--amber));
+            opacity: 0;
+            transition: opacity .3s
+        }
+
+        .mod-card:hover {
+            border-color: var(--border-glow);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, .3)
+        }
+
+        .mod-card:hover::before {
+            opacity: 1
+        }
+
+        .mod-card-num {
+            font-family: var(--font-mono);
+            font-size: .6rem;
+            color: var(--border-glow);
+            letter-spacing: .1em;
+            margin-bottom: .6rem
+        }
+
+        .mod-card h3 {
+            font-family: var(--font-head);
+            font-size: 1rem;
+            font-weight: 600;
+            color: var(--text-bright);
+            margin-bottom: .4rem
+        }
+
+        .mod-card p {
+            font-size: .8rem;
+            color: var(--text-dim);
+            line-height: 1.6
+        }
+
+        /* === PIPELINE === */
+        .pipe-section {
+            padding: 6rem 0;
+            position: relative
+        }
+
+        .pipe-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent)
+        }
+
+        .pipe-head {
+            text-align: center;
+            margin-bottom: 4rem
+        }
+
+        .pipeline {
+            display: flex;
+            align-items: stretch;
+            gap: 0;
+            position: relative;
+            max-width: 1100px;
+            margin: 0 auto;
+            overflow-x: auto;
+            padding-bottom: 1rem
+        }
+
+        .pipeline::before {
+            content: '';
+            position: absolute;
+            top: 36px;
+            left: 3%;
+            right: 3%;
+            height: 3px;
+            background: var(--bg-card);
+            border-radius: 2px;
+            z-index: 0
+        }
+
+        .pipeline::after {
+            content: '';
+            position: absolute;
+            top: 36px;
+            left: 3%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--blue), var(--amber), var(--green));
+            border-radius: 2px;
+            animation: pipeFlow 3s ease-out forwards;
+            width: 0;
+            z-index: 1
+        }
+
+        @keyframes pipeFlow {
+            to {
+                width: 94%
+            }
+        }
+
+        .pipe-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+            padding: 0 .5rem;
+            min-width: 130px
+        }
+
+        .pipe-node {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: var(--bg-card);
+            border: 3px solid var(--border);
+            margin: 26px auto 1rem;
+            transition: all .5s;
+            position: relative
+        }
+
+        .pipe-step:hover .pipe-node {
+            border-color: var(--amber);
+            box-shadow: 0 0 16px var(--amber-glow-strong);
+            background: var(--amber)
+        }
+
+        .pipe-step-num {
+            font-family: var(--font-mono);
+            font-size: .55rem;
+            color: var(--blue);
+            letter-spacing: .1em;
+            margin-bottom: .3rem
+        }
+
+        .pipe-step h4 {
+            font-family: var(--font-head);
+            font-size: .88rem;
+            font-weight: 600;
+            color: var(--text-bright);
+            margin-bottom: .25rem
+        }
+
+        .pipe-step p {
+            font-size: .68rem;
+            color: var(--text-dim);
+            line-height: 1.45
+        }
+
+        /* === METRICS === */
+        .metrics-section {
+            padding: 6rem 0;
+            background: var(--bg-deep);
+            position: relative;
+            overflow: hidden
+        }
+
+        .metrics-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent)
+        }
+
+        .metrics-inner {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 5rem;
+            align-items: center
+        }
+
+        .metric-cards {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.2rem
+        }
+
+        .metric-card {
+            background: rgba(255, 255, 255, .02);
+            border: 1px solid var(--border);
+            border-radius: 14px;
+            padding: 1.5rem;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            transition: all .3s
+        }
+
+        .metric-card:hover {
+            border-color: var(--border-glow);
+            box-shadow: 0 0 20px rgba(14, 165, 233, .06)
+        }
+
+        .metric-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--blue), transparent);
+            opacity: .3
+        }
+
+        .metric-val {
+            font-family: var(--font-head);
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: var(--white);
+            line-height: 1;
+            margin-bottom: .3rem
+        }
+
+        .metric-val span {
+            color: var(--amber)
+        }
+
+        .metric-lbl {
+            font-size: .82rem;
+            color: var(--text-dim);
+            line-height: 1.45
+        }
+
+        .metric-bar {
+            width: 100%;
+            height: 3px;
+            background: var(--border);
+            border-radius: 2px;
+            margin-top: .8rem;
+            overflow: hidden
+        }
+
+        .metric-bar-fill {
+            height: 100%;
+            border-radius: 2px;
+            background: linear-gradient(90deg, var(--blue), var(--amber));
+            width: 0;
+            transition: width 1.5s ease-out
+        }
+
+        /* === DIFFERENTIATORS === */
+        .diff-section {
+            padding: 6rem 0;
+            position: relative
+        }
+
+        .diff-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent)
+        }
+
+        .diff-head {
+            text-align: center;
+            margin-bottom: 3.5rem
+        }
+
+        .diff-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem
+        }
+
+        .diff-card {
+            padding: 2rem 1.5rem;
+            border-radius: 14px;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            transition: all .4s;
+            position: relative;
+            overflow: hidden
+        }
+
+        .diff-card::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, var(--blue-glow), transparent);
+            opacity: 0;
+            transition: opacity .3s
+        }
+
+        .diff-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--border-glow);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, .3)
+        }
+
+        .diff-card:hover::before {
+            opacity: 1
+        }
+
+        .diff-card>* {
+            position: relative;
+            z-index: 1
+        }
+
+        .diff-ico {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            display: block
+        }
+
+        .diff-card h3 {
+            font-family: var(--font-head);
+            font-size: 1.05rem;
+            font-weight: 600;
+            color: var(--text-bright);
+            margin-bottom: .5rem
+        }
+
+        .diff-card p {
+            font-size: .85rem;
+            color: var(--text-dim);
+            line-height: 1.6
+        }
+
+        /* === TECH STRIP === */
+        .tech-strip {
+            padding: 4rem 0;
+            background: var(--bg-deep);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border)
+        }
+
+        .tech-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+            flex-wrap: wrap
+        }
+
+        .tech-item {
+            display: flex;
+            align-items: center;
+            gap: .8rem
+        }
+
+        .tech-ico {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+            flex-shrink: 0;
+            background: rgba(255, 255, 255, .02)
+        }
+
+        .tech-txt h4 {
+            font-size: .85rem;
+            font-weight: 600;
+            color: var(--text-light)
+        }
+
+        .tech-txt p {
+            font-size: .7rem;
+            color: var(--text-dim)
+        }
+
+        /* === CTA === */
+        .cta {
+            padding: 7rem 0;
+            position: relative;
+            text-align: center;
+            overflow: hidden
+        }
+
+        .cta::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 500px;
+            height: 500px;
+            background: radial-gradient(circle, var(--blue-glow) 0%, transparent 60%);
+            border-radius: 50%
+        }
+
+        .cta .sec-title {
+            max-width: 650px;
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        .cta-sub {
+            font-size: 1.05rem;
+            color: var(--text-dim);
+            max-width: 480px;
+            margin: .8rem auto 2.5rem
+        }
+
+        .cta-btns {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-bottom: 2rem;
+            flex-wrap: wrap
+        }
+
+        .cta-trust {
+            font-size: .72rem;
+            color: var(--text-dim);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: wrap
+        }
+
+        .cta-trust span {
+            display: flex;
+            align-items: center;
+            gap: .3rem
+        }
+
+        /* === FOOTER === */
+        .footer {
+            padding: 3rem 0 2rem;
+            border-top: 1px solid var(--border)
+        }
+
+        .footer-inner {
+            display: flex;
+            justify-content: space-between;
+            align-items: center
+        }
+
+        .footer-left p {
+            font-size: .75rem;
+            color: var(--text-dim);
+            margin-top: .6rem
+        }
+
+        .footer-links {
+            display: flex;
+            gap: 1.5rem
+        }
+
+        .footer-links a {
+            font-size: .78rem;
+            color: var(--text-dim);
+            text-decoration: none;
+            transition: color .3s
+        }
+
+        .footer-links a:hover {
+            color: var(--blue)
+        }
+
+        .built-by {
+            font-size: .68rem;
+            color: var(--border-glow);
+            text-align: center;
+            margin-top: 2rem;
+            padding-top: 1.2rem;
+            border-top: 1px solid rgba(255, 255, 255, .03)
+        }
+
+        .built-by a {
+            color: var(--amber-deep);
+            text-decoration: none
+        }
+
+        .built-by a:hover {
+            color: var(--amber)
+        }
+
+        /* === REVEAL === */
+        .rv {
+            opacity: 0;
+            transform: translateY(24px);
+            transition: all .6s cubic-bezier(.16, 1, .3, 1)
+        }
+
+        .rv.vis {
+            opacity: 1;
+            transform: translateY(0)
+        }
+
+        /* === RESPONSIVE === */
+        @media(max-width:1024px) {
+            .hero .ctn {
+                grid-template-columns: 1fr;
+                text-align: center
+            }
+
+            .hero-sub {
+                margin-left: auto;
+                margin-right: auto
+            }
+
+            .hero-btns {
+                justify-content: center
+            }
+
+            .hero-stats {
+                justify-content: center
+            }
+
+            .gauges-panel {
+                display: none
+            }
+
+            .ba-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem
+            }
+
+            .ba-divider {
+                display: none
+            }
+
+            .metrics-inner {
+                grid-template-columns: 1fr;
+                gap: 3rem
+            }
+
+            .diff-grid {
+                grid-template-columns: repeat(2, 1fr)
+            }
+        }
+
+        @media(max-width:768px) {
+            .nav-links {
+                display: none
+            }
+
+            .mob-tog {
+                display: block
+            }
+
+            .nav-links.open {
+                display: flex;
+                flex-direction: column;
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: rgba(6, 9, 15, .98);
+                backdrop-filter: blur(20px);
+                padding: 1.5rem;
+                gap: 1.2rem;
+                border-bottom: 1px solid var(--border)
+            }
+
+            .diff-grid {
+                grid-template-columns: 1fr
+            }
+
+            .mod-panel.active {
+                grid-template-columns: 1fr
+            }
+
+            .pipeline {
+                flex-direction: column;
+                gap: 1rem
+            }
+
+            .pipeline::before,
+            .pipeline::after {
+                display: none
+            }
+
+            .pipe-step {
+                text-align: left;
+                display: flex;
+                gap: 1rem;
+                align-items: flex-start;
+                padding: 0
+            }
+
+            .pipe-node {
+                margin: 0;
+                flex-shrink: 0
+            }
+
+            .metric-cards {
+                grid-template-columns: 1fr
+            }
+
+            .tech-inner {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1.2rem
+            }
+
+            .footer-inner {
+                flex-direction: column;
+                gap: 1.2rem;
+                text-align: center
+            }
+
+            .cta-btns {
+                flex-direction: column;
+                align-items: center
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                align-items: center
+            }
+
+            .hero-stats {
+                flex-wrap: wrap;
+                gap: 1.5rem
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- ===== NAV ===== -->
+    <nav class="nav" id="mainNav">
+        <div class="ctn">
+            <a href="#" class="logo">
+                <div class="logo-mark">Ez</div>
+                <div class="logo-name">EzFMC<span>.</span></div>
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#problem">Pain Points</a></li>
+                <li><a href="#modules">Modules</a></li>
+                <li><a href="#lifecycle">Lifecycle</a></li>
+                <li><a href="#impact">Impact</a></li>
+                <li><a href="#edge">Why EzFMC</a></li>
+                <li><a href="#cta" class="btn-cta">Request Demo</a></li>
+            </ul>
+            <button class="mob-tog" id="mobTog" aria-label="Menu"><span></span><span></span><span></span></button>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero">
+        <div class="hero-glow"></div>
+        <div class="hero-glow2"></div>
+        <div class="ctn">
+            <div>
+                <div class="hero-badge"><span class="dot"></span> Built for Ghana's OMCs</div>
+                <h1>Every Litre.<br>Every Station.<br><span class="accent">Total Command.</span></h1>
+                <p class="hero-sub">From BDC procurement to the pump, from NPA compliance to your financial statements —
+                    EzFMC is the unified command centre that gives Oil Marketing Companies complete control over every
+                    operation, every cedi, and every regulatory obligation.</p>
+                <div class="hero-btns">
+                    <a href="#cta" class="btn-main">Request a Demo →</a>
+                    <a href="#modules" class="btn-ghost">Explore Modules</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <div class="stat-val">16</div>
+                        <div class="stat-lbl">Core Modules</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-val">25+</div>
+                        <div class="stat-lbl">NPA Components</div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-val">100%</div>
+                        <div class="stat-lbl">UPPF Automation</div>
+                    </div>
+                </div>
+            </div>
+            <div class="gauges-panel">
+                <div class="gp-head">
+                    <div class="gp-title">EzFMC Command Centre</div>
+                    <div class="gp-live"><span class="dot"></span> Live</div>
+                </div>
+                <div class="gauge-row">
+                    <div class="gauge">
+                        <div class="gauge-circle">
+                            <svg viewBox="0 0 80 80">
+                                <circle class="track" cx="40" cy="40" r="35" />
+                                <circle class="fill blue" cx="40" cy="40" r="35" style="--offset:55" />
+                            </svg>
+                            <div class="gauge-val">GH₵ 4.2M</div>
+                        </div>
+                        <div class="gauge-label">Revenue MTD</div>
+                    </div>
+                    <div class="gauge">
+                        <div class="gauge-circle">
+                            <svg viewBox="0 0 80 80">
+                                <circle class="track" cx="40" cy="40" r="35" />
+                                <circle class="fill amber" cx="40" cy="40" r="35" style="--offset:88" />
+                            </svg>
+                            <div class="gauge-val">318K L</div>
+                        </div>
+                        <div class="gauge-label">Litres Sold</div>
+                    </div>
+                    <div class="gauge">
+                        <div class="gauge-circle">
+                            <svg viewBox="0 0 80 80">
+                                <circle class="track" cx="40" cy="40" r="35" />
+                                <circle class="fill green" cx="40" cy="40" r="35" style="--offset:22" />
+                            </svg>
+                            <div class="gauge-val">GH₵ 89K</div>
+                        </div>
+                        <div class="gauge-label">UPPF Claims</div>
+                    </div>
+                </div>
+                <div class="ticker">
+                    <div class="ticker-inner">
+                        <div class="ticker-item">⛽ Spintex PMS <span class="up">↑ 12.7%</span></div>
+                        <div class="ticker-item">⛽ Kasoa AGO <span class="up">↑ 8.1%</span></div>
+                        <div class="ticker-item">📋 UPPF Jan Filed <span class="up">✓</span></div>
+                        <div class="ticker-item">🔔 EPA Cert expires in 14d</div>
+                        <div class="ticker-item">💰 Dealer Bal GH₵ 265K</div>
+                        <div class="ticker-item">📊 Variance 0.3% <span class="up">✓</span></div>
+                        <div class="ticker-item">⛽ Spintex PMS <span class="up">↑ 12.7%</span></div>
+                        <div class="ticker-item">⛽ Kasoa AGO <span class="up">↑ 8.1%</span></div>
+                        <div class="ticker-item">📋 UPPF Jan Filed <span class="up">✓</span></div>
+                        <div class="ticker-item">🔔 EPA Cert expires in 14d</div>
+                        <div class="ticker-item">💰 Dealer Bal GH₵ 265K</div>
+                        <div class="ticker-item">📊 Variance 0.3% <span class="up">✓</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== BEFORE / AFTER ===== -->
+    <section class="ba-section" id="problem">
+        <div class="ctn">
+            <div class="ba-head rv">
+                <div class="sec-tag">The Problem → The Solution</div>
+                <h2 class="sec-title">From chaos to command.</h2>
+                <p class="sec-desc">Ghana's OMCs lose millions each year to fragmented tools and manual compliance.
+                    Here's how EzFMC changes everything.</p>
+            </div>
+            <div class="ba-grid rv">
+                <div class="ba-col ba-before">
+                    <div class="ba-col-title">✕ Without EzFMC</div>
+                    <div class="ba-item">
+                        <div class="ba-icon">🔀</div>
+                        <div>
+                            <h4>Fragmented Systems</h4>
+                            <p>Spreadsheets, WhatsApp, separate accounting software. Nothing connected.</p>
+                        </div>
+                    </div>
+                    <div class="ba-item">
+                        <div class="ba-icon">📋</div>
+                        <div>
+                            <h4>NPA Compliance Chaos</h4>
+                            <p>25+ pricing components tracked manually. Missed deadlines, penalties.</p>
+                        </div>
+                    </div>
+                    <div class="ba-item">
+                        <div class="ba-icon">💸</div>
+                        <div>
+                            <h4>Cash Flow Blindness</h4>
+                            <p>No real-time view of station revenue, dealer balances, or true margins.</p>
+                        </div>
+                    </div>
+                    <div class="ba-item">
+                        <div class="ba-icon">⛽</div>
+                        <div>
+                            <h4>Inventory Black Holes</h4>
+                            <p>Tank dip discrepancies and unreconciled deliveries. Variance is invisible.</p>
+                        </div>
+                    </div>
+                    <div class="ba-item">
+                        <div class="ba-icon">🧮</div>
+                        <div>
+                            <h4>Manual UPPF Claims</h4>
+                            <p>Monthly Excel calculations. Freight zone lookups by hand. Hours of error-prone work.</p>
+                        </div>
+                    </div>
+                    <div class="ba-item">
+                        <div class="ba-icon">📊</div>
+                        <div>
+                            <h4>No Strategic Visibility</h4>
+                            <p>COCO, DODO, CODO: each a silo. Decision-making is reactive.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="ba-divider">
+                    <div class="ba-arrow">→</div>
+                </div>
+                <div class="ba-col ba-after">
+                    <div class="ba-col-title">✓ With EzFMC</div>
+                    <div class="ba-item">
+                        <div class="ba-icon">🔗</div>
+                        <div>
+                            <h4>Unified Platform</h4>
+                            <p>One system: procurement, stations, finance, compliance, HR, AI. All connected.</p>
+                        </div>
+                    </div>
+                    <div class="ba-item">
+                        <div class="ba-icon">⚡</div>
+                        <div>
+                            <h4>Instant NPA Updates</h4>
+                            <p>One entry updates all 25+ components, every station, every price. Automatic.</p>
+                        </div>
+                    </div>
+                    <div class="ba-item">
+                        <div class="ba-icon">📈</div>
+                        <div>
+                            <h4>Real-Time Financials</h4>
+                            <p>Live GL posting, station-level P&L, aging reports, dealer credit at a glance.</p>
+                        </div>
+                    </div>
+                    <div class="ba-item">
+                        <div class="ba-icon">🎯</div>
+                        <div>
+                            <h4>Precision Inventory</h4>
+                            <p>GRV ↔ tank ↔ session linked. Temperature-corrected. WAC costed. Zero guesswork.</p>
+                        </div>
+                    </div>
+                    <div class="ba-item">
+                        <div class="ba-icon">🤖</div>
+                        <div>
+                            <h4>Auto UPPF Filing</h4>
+                            <p>NPA distance matrix built in. Calculations instant. 22.5% deductions handled.</p>
+                        </div>
+                    </div>
+                    <div class="ba-item">
+                        <div class="ba-icon">🗺️</div>
+                        <div>
+                            <h4>Portfolio Command</h4>
+                            <p>All models, all stations, one dashboard. AI-powered insights on demand.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== MODULES (TABBED) ===== -->
+    <section class="mod-section" id="modules">
+        <div class="ctn">
+            <div class="mod-head rv">
+                <div class="sec-tag">Core Modules</div>
+                <h2 class="sec-title">16 modules. One platform.<br>Zero excuses.</h2>
+                <p class="sec-desc">Purpose-built for how OMCs actually operate — not how generic ERPs think you should.
+                </p>
+            </div>
+            <div class="mod-tabs rv" id="modTabs">
+                <button class="mod-tab active" data-tab="ops">⛽ Operations</button>
+                <button class="mod-tab" data-tab="fin">💰 Finance</button>
+                <button class="mod-tab" data-tab="comp">📋 Compliance</button>
+                <button class="mod-tab" data-tab="intel">🤖 Intelligence</button>
+            </div>
+            <div id="panel-ops" class="mod-panel active">
+                <div class="mod-card">
+                    <div class="mod-card-num">01</div>
+                    <h3>Procurement & Purchase Orders</h3>
+                    <p>BDC ordering, multi-product POs, credit checks, approval workflows, automatic NPA pricing.</p>
+                </div>
+                <div class="mod-card">
+                    <div class="mod-card-num">02</div>
+                    <h3>Dispatch & Logistics</h3>
+                    <p>Transporter assignment, vehicle & driver tracking, compartment loading, waybill generation,
+                        seals.</p>
+                </div>
+                <div class="mod-card">
+                    <div class="mod-card-num">03</div>
+                    <h3>Station Operations</h3>
+                    <p>Tank dip recording, delivery receiving (GRV), variance tracking, station expenses with approvals.
+                    </p>
+                </div>
+                <div class="mod-card">
+                    <div class="mod-card-num">04</div>
+                    <h3>Pump & Session Management</h3>
+                    <p>Shift open/close, meter readings, attendant assignment, cash reconciliation, electronic journal.
+                    </p>
+                </div>
+                <div class="mod-card">
+                    <div class="mod-card-num">05</div>
+                    <h3>Tank & Inventory</h3>
+                    <p>Real-time tank levels, temperature-corrected volumes, WAC costing, stock transfers, perpetual
+                        inventory.</p>
+                </div>
+                <div class="mod-card">
+                    <div class="mod-card-num">06</div>
+                    <h3>Mart & C-Store</h3>
+                    <p>Non-fuel retail management, POS integration, mart inventory, pricing control, sales tracking.</p>
+                </div>
+            </div>
+            <div id="panel-fin" class="mod-panel">
+                <div class="mod-card">
+                    <div class="mod-card-num">07</div>
+                    <h3>Finance & Accounting</h3>
+                    <p>Segmented chart of accounts, journal entries, trial balance, income statement, balance sheet,
+                        cash flow.</p>
+                </div>
+                <div class="mod-card">
+                    <div class="mod-card-num">08</div>
+                    <h3>AP/AR & Banking</h3>
+                    <p>Vendor invoices, customer receipts, dealer credit, aging reports, bank reconciliation,
+                        multi-currency.</p>
+                </div>
+                <div class="mod-card">
+                    <div class="mod-card-num">09</div>
+                    <h3>HR & Payroll</h3>
+                    <p>Employee management, SSNIT/Tier 2/3, PAYE, leave management, performance reviews, payslips.</p>
+                </div>
+                <div class="mod-card">
+                    <div class="mod-card-num">10</div>
+                    <h3>Fixed Assets</h3>
+                    <p>Asset register, depreciation schedules, transfers, disposals, lifecycle tracking for
+                        infrastructure.</p>
+                </div>
+                <div class="mod-card">
+                    <div class="mod-card-num">11</div>
+                    <h3>Sales & CRM</h3>
+                    <p>Lead pipeline, corporate sales, quote management, delivery scheduling, collections tracking.</p>
+                </div>
+            </div>
+            <div id="panel-comp" class="mod-panel">
+                <div class="mod-card">
+                    <div class="mod-card-num">12</div>
+                    <h3>NPA Pricing Engine</h3>
+                    <p>25+ price components modeled. Price windows with effective dates. Automatic ex-depot, dealer, and
+                        pump price calculations.</p>
+                </div>
+                <div class="mod-card">
+                    <div class="mod-card-num">13</div>
+                    <h3>UPPF & Freight Claims</h3>
+                    <p>NPA-approved distance matrix, automatic UPPF calculations, 22.5% tanker owner deductions,
+                        transporter claims.</p>
+                </div>
+                <div class="mod-card">
+                    <div class="mod-card-num">14</div>
+                    <h3>Compliance & Certification</h3>
+                    <p>EPA permits, fire certificates, pump calibrations, expiry alerts, compliance dashboard,
+                        audit-ready trails.</p>
+                </div>
+                <div class="mod-card">
+                    <div class="mod-card-num">15</div>
+                    <h3>Internal Audit</h3>
+                    <p>Audit planning, finding documentation, corrective actions, 5C framework, automated gap detection.
+                    </p>
+                </div>
+            </div>
+            <div id="panel-intel" class="mod-panel">
+                <div class="mod-card">
+                    <div class="mod-card-num">16</div>
+                    <h3>EzPilot AI Assistant</h3>
+                    <p>Ask in plain English: "What was total sales at Spintex last week?" Instant answers across all 16
+                        modules. Your AI co-pilot.</p>
+                </div>
+                <div class="mod-card">
+                    <div class="mod-card-num">—</div>
+                    <h3>Anomaly Detection</h3>
+                    <p>System flags unusual patterns — variance spikes, revenue drops, compliance gaps — before they
+                        become problems.</p>
+                </div>
+                <div class="mod-card">
+                    <div class="mod-card-num">—</div>
+                    <h3>Demand Forecasting</h3>
+                    <p>Predictive analytics for fuel demand, inventory planning, and cash flow projection across all
+                        stations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== PIPELINE LIFECYCLE ===== -->
+    <section class="pipe-section" id="lifecycle">
+        <div class="ctn">
+            <div class="pipe-head rv">
+                <div class="sec-tag">End-to-End Coverage</div>
+                <h2 class="sec-title">One platform. The entire fuel<br>operations lifecycle.</h2>
+                <p class="sec-desc">Every litre tracked from BDC order to the pump — and every cedi it generates along
+                    the way.</p>
+            </div>
+            <div class="pipeline rv">
+                <div class="pipe-step">
+                    <div class="pipe-node"></div>
+                    <div>
+                        <div class="pipe-step-num">01</div>
+                        <h4>Procurement</h4>
+                        <p>BDC ordering, pricing, credit & approval</p>
+                    </div>
+                </div>
+                <div class="pipe-step">
+                    <div class="pipe-node"></div>
+                    <div>
+                        <div class="pipe-step-num">02</div>
+                        <h4>Dispatch</h4>
+                        <p>Logistics, waybills, seals, compartments</p>
+                    </div>
+                </div>
+                <div class="pipe-step">
+                    <div class="pipe-node"></div>
+                    <div>
+                        <div class="pipe-step-num">03</div>
+                        <h4>Receiving</h4>
+                        <p>GRV, dip readings, variance, AP creation</p>
+                    </div>
+                </div>
+                <div class="pipe-step">
+                    <div class="pipe-node"></div>
+                    <div>
+                        <div class="pipe-step-num">04</div>
+                        <h4>Station Ops</h4>
+                        <p>Sessions, pumps, attendants, cash drops</p>
+                    </div>
+                </div>
+                <div class="pipe-step">
+                    <div class="pipe-node"></div>
+                    <div>
+                        <div class="pipe-step-num">05</div>
+                        <h4>Compliance</h4>
+                        <p>UPPF, certs, NPA filings</p>
+                    </div>
+                </div>
+                <div class="pipe-step">
+                    <div class="pipe-node"></div>
+                    <div>
+                        <div class="pipe-step-num">06</div>
+                        <h4>Finance</h4>
+                        <p>GL posting, AP/AR, statements</p>
+                    </div>
+                </div>
+                <div class="pipe-step">
+                    <div class="pipe-node"></div>
+                    <div>
+                        <div class="pipe-step-num">07</div>
+                        <h4>Intelligence</h4>
+                        <p>AI insights, forecasting</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== METRICS ===== -->
+    <section class="metrics-section" id="impact">
+        <div class="ctn">
+            <div class="metrics-inner">
+                <div class="rv">
+                    <div class="sec-tag">Measurable Impact</div>
+                    <h2 class="sec-title">Numbers that move<br>the boardroom.</h2>
+                    <p class="sec-desc">EzFMC doesn't just digitise your operations — it transforms them. These are the
+                        outcomes our architecture delivers.</p>
+                </div>
+                <div class="metric-cards">
+                    <div class="metric-card rv">
+                        <div class="metric-val">70<span>%</span></div>
+                        <div class="metric-lbl">Reduction in manual reconciliation</div>
+                        <div class="metric-bar">
+                            <div class="metric-bar-fill" data-fill="70"></div>
+                        </div>
+                    </div>
+                    <div class="metric-card rv">
+                        <div class="metric-val">100<span>%</span></div>
+                        <div class="metric-lbl">NPA price-change compliance</div>
+                        <div class="metric-bar">
+                            <div class="metric-bar-fill" data-fill="100"></div>
+                        </div>
+                    </div>
+                    <div class="metric-card rv">
+                        <div class="metric-val">60<span>%</span></div>
+                        <div class="metric-lbl">Faster UPPF claim processing</div>
+                        <div class="metric-bar">
+                            <div class="metric-bar-fill" data-fill="60"></div>
+                        </div>
+                    </div>
+                    <div class="metric-card rv">
+                        <div class="metric-val">45<span>%</span></div>
+                        <div class="metric-lbl">Reduction in variance losses</div>
+                        <div class="metric-bar">
+                            <div class="metric-bar-fill" data-fill="45"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== DIFFERENTIATORS ===== -->
+    <section class="diff-section" id="edge">
+        <div class="ctn">
+            <div class="diff-head rv">
+                <div class="sec-tag">The EzFMC Edge</div>
+                <h2 class="sec-title">Built for Ghana's fuel industry.<br>Engineered for scale.</h2>
+                <p class="sec-desc">Not a generic ERP with an oil & gas skin. Every line of code is written for OMCs
+                    under Ghanaian NPA regulations.</p>
+            </div>
+            <div class="diff-grid">
+                <div class="diff-card rv"><span class="diff-ico">🏛️</span>
+                    <h3>Ghana-Native NPA Compliance</h3>
+                    <p>25+ NPA price components, BOST margins, taxes, levies — all built-in. One price window entry
+                        updates everything.</p>
+                </div>
+                <div class="diff-card rv"><span class="diff-ico">⚡</span>
+                    <h3>Automated UPPF & Freight</h3>
+                    <p>NPA-approved distance matrices, instant UPPF calculations, 22.5% tanker owner deductions,
+                        transporter claims — filed on time, every month.</p>
+                </div>
+                <div class="diff-card rv"><span class="diff-ico">🤖</span>
+                    <h3>EzPilot AI Intelligence</h3>
+                    <p>"What was total sales at Spintex last week?" — instant answers from your AI co-pilot, powered by
+                        live data across all 16 modules.</p>
+                </div>
+                <div class="diff-card rv"><span class="diff-ico">🔗</span>
+                    <h3>Plug-and-Play GL Integration</h3>
+                    <p>Every GRV, delivery, session close, and UPPF claim auto-generates correct journal entries. Your
+                        GL is always audit-ready.</p>
+                </div>
+                <div class="diff-card rv"><span class="diff-ico">🏢</span>
+                    <h3>Multi-Model OMC Support</h3>
+                    <p>COCO, DODO, CODO — all three models with distinct workflows, pricing logic, inventory treatment,
+                        and commission calc. One platform.</p>
+                </div>
+                <div class="diff-card rv"><span class="diff-ico">🔌</span>
+                    <h3>Third-Party Integration Ready</h3>
+                    <p>API-first architecture integrates with Sage Evolution, SAP, QuickBooks, or any existing system.
+                        Reliable outbox pattern — no transaction lost.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== TECH STRIP ===== -->
+    <section class="tech-strip">
+        <div class="ctn">
+            <div class="tech-inner rv">
+                <div class="tech-item">
+                    <div class="tech-ico">☁️</div>
+                    <div class="tech-txt">
+                        <h4>Cloud-Native</h4>
+                        <p>Azure / AWS hosted</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-ico">🔗</div>
+                    <div class="tech-txt">
+                        <h4>API-First</h4>
+                        <p>Open integration layer</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-ico">⛽</div>
+                    <div class="tech-txt">
+                        <h4>Multi-Station</h4>
+                        <p>Centralised + autonomous</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-ico">📱</div>
+                    <div class="tech-txt">
+                        <h4>Mobile-Ready</h4>
+                        <p>iOS, Android & Web</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-ico">⚡</div>
+                    <div class="tech-txt">
+                        <h4>Sub-Second</h4>
+                        <p>500+ concurrent users</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CTA ===== -->
+    <section class="cta" id="cta">
+        <div class="ctn">
+            <div class="sec-tag rv">Get Started</div>
+            <h2 class="sec-title rv">Ready to take <span
+                    style="background:linear-gradient(135deg,var(--amber),#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">total
+                    command</span><br>of your fuel operations?</h2>
+            <p class="cta-sub rv">See how EzFMC transforms your OMC from day one.</p>
+            <div class="cta-btns rv">
+                <a href="mailto:hello@adullamsolutions.com?subject=EzFMC Demo Request" class="btn-main"
+                    style="font-size:.95rem;padding:1rem 2.2rem">Request a Demo →</a>
+                <a href="tel:+233000000000" class="btn-ghost" style="font-size:.95rem;padding:1rem 2.2rem">📞 Schedule a
+                    Call</a>
+                <a href="mailto:sales@adullamsolutions.com?subject=EzFMC Inquiry" class="btn-ghost"
+                    style="font-size:.95rem;padding:1rem 2.2rem;border-color:var(--blue);color:var(--blue)">✉️ Contact
+                    Sales</a>
+            </div>
+            <div class="cta-trust rv">
+                <span>🔒 Enterprise security</span>
+                <span>🇬🇭 Built for Ghana</span>
+                <span>⛽ Trusted by Nick Petroleum</span>
+                <span>📞 Dedicated onboarding</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+        <div class="ctn">
+            <div class="footer-inner">
+                <div class="footer-left">
+                    <a href="#" class="logo">
+                        <div class="logo-mark">Ez</div>
+                        <div class="logo-name">EzFMC<span>.</span></div>
+                    </a>
+                    <p>Every Litre. Every Station. Total Command.</p>
+                </div>
+                <div class="footer-links">
+                    <a href="#modules">Modules</a><a href="#impact">Impact</a><a href="#edge">Why EzFMC</a><a
+                        href="#cta">Contact</a>
+                </div>
+            </div>
+            <div class="built-by">Designed & Developed by <a href="https://adullamsolutions.com" target="_blank">Adullam
+                    Solutions Company Limited</a></div>
+        </div>
+    </footer>
+
+    <script>
+        // Nav scroll
+        const nav = document.getElementById('mainNav');
+        window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50));
+        // Mobile menu
+        document.getElementById('mobTog').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+        // Scroll reveal
+        const rvs = document.querySelectorAll('.rv');
+        const obs = new IntersectionObserver((entries) => { entries.forEach((e, i) => { if (e.isIntersecting) { setTimeout(() => e.target.classList.add('vis'), i * 60); obs.unobserve(e.target) } }) }, { threshold: .1, rootMargin: '0px 0px -30px 0px' });
+        rvs.forEach(el => obs.observe(el));
+        // Metric bar fills
+        const bars = document.querySelectorAll('.metric-bar-fill');
+        const barObs = new IntersectionObserver((entries) => { entries.forEach(e => { if (e.isIntersecting) { e.target.style.width = e.target.dataset.fill + '%'; barObs.unobserve(e.target) } }) }, { threshold: .5 });
+        bars.forEach(b => barObs.observe(b));
+        // Module tabs
+        document.querySelectorAll('.mod-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.mod-tab').forEach(t => t.classList.remove('active'));
+                document.querySelectorAll('.mod-panel').forEach(p => p.classList.remove('active'));
+                tab.classList.add('active');
+                document.getElementById('panel-' + tab.dataset.tab).classList.add('active');
+            });
+        });
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(a => {
+            a.addEventListener('click', function (e) { e.preventDefault(); const t = document.querySelector(this.getAttribute('href')); if (t) { t.scrollIntoView({ behavior: 'smooth', block: 'start' }); document.getElementById('navLinks').classList.remove('open') } });
+        });
+    </script>
+</body>
+
+</html>

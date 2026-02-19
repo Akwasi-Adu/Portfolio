@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="author" content="Akwasi Adu-Kyeremeh">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Akwasi Adu-Kyeremeh | Portfolio">
+  <meta property="og:description" content="Explore the portfolio of Akwasi Adu-Kyeremeh — full-stack developer & ERP consultant based in Accra, Ghana.">
+  <meta property="og:image" content="https://akwasi.dev/portfolio/images/og-image.jpg">
+  <meta property="og:url" content="https://akwasi.dev/index.html">
+  <meta property="og:type" content="website">
+  <title>CV | Akwasi Adu-Kyeremeh</title>
+  <link rel="stylesheet" href="portfolio/css/style.css">
+  <link rel="icon" type="image/png" href="portfolio/images/favicon.png">
+
+  <!-- Animation Styles -->
+  <style>
+    .fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.6s ease-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .typing {
+      font-family: monospace;
+      white-space: nowrap;
+      overflow: hidden;
+      border-right: 0.15em solid orange;
+      width: 0;
+      animation: typing 2.5s steps(40, end) forwards, blink 0.75s step-end infinite;
+    }
+    @keyframes typing {
+      from { width: 0; }
+      to { width: 100%; }
+    }
+    @keyframes blink {
+      from, to { border-color: transparent; }
+      50% { border-color: orange; }
+    }
+
+    .typing {
+  display: inline-block;
+  max-width: 100%;
+}
+
+
+    .print-button {
+  background-color: #0073e6;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+.print-button:hover {
+  background-color: #005bb5;
+}
+
+@media print {
+  header, footer, nav, .print-button {
+    display: none !important;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    margin: 0;
+    padding: 0;
+  }
+
+  #cv-container {
+    display: block !important;
+    margin: 0 auto;
+    padding: 20px;
+    width: 100%;
+  }
+
+  .tag-cloud {
+    display: none;
+  }
+
+  section, h2, ul {
+    page-break-inside: avoid;
+  }
+}
+
+/* === Print-Friendly Overrides === */
+body.print-mode .typing {
+  animation: none !important;
+  border: none !important;
+  width: auto !important;
+  font-family: monospace;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+body.print-mode .fade-in {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+}
+
+/* Let skills show up when printing */
+body.print-mode .tag-cloud {
+  display: flex !important;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+
+body.print-mode .print-button,
+body.print-mode .download-button,
+body.print-mode header,
+body.print-mode footer,
+body.print-mode nav {
+  display: none !important;
+}
+
+body.print-mode .typing {
+  animation: none !important;
+  width: auto !important;
+  border: none !important;
+}
+
+/* This overrides the typing animation for print or print-mode */
+/* Print-mode via class */
+body.print-mode .typing {
+  animation: none !important;
+  border: none !important;
+  width: auto !important;
+  font-family: monospace;
+  font-size: 24px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+/* Print-mode via print media query */
+@media print {
+  .typing {
+    animation: none !important;
+    border: none !important;
+    width: auto !important;
+    font-family: monospace;
+    font-size: 24px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 1rem;
+  }
+}
+
+
+@media (max-width: 768px) {
+  #cv-container {
+    flex-direction: column-reverse;
+    padding: 10px;
+  }
+
+  #cv-left, #cv-right {
+    margin-left: 0 !important;
+    padding: 10px;
+  }
+
+  .typing {
+    font-size: 1.2rem;
+    white-space: normal; /* Allow wrapping */
+    width: 100% !important;
+    animation: none !important;
+    border: none;
+  }
+
+  .fade-in {
+    transform: none;
+    opacity: 1;
+  }
+
+  .tag-cloud {
+    justify-content: center;
+  }
+}
+
+
+  </style>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EPKW2QTNQL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EPKW2QTNQL');
+  </script>
+</head>
+
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="projects.html">Projects</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="cv.html" class="active">CV</a></li>
+        <li><a href="index.html#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div id="cv-container">
+      <div id="cv-right">
+        <h1 class="typing">ERP Solutions Architect & Full Stack Developer</h1>
+        <p><a href="Akwasi_CV.pdf" download>📄 Download Full CV (Auto-Generated)</a></p>
+
+        <div class="fade-in">
+          <h2>Snapshot</h2>
+          <p>
+            ERP Consultant and Full-Stack Developer with deep experience designing and implementing enterprise systems across the EMEA region. Delivered over 40 high-impact ERP rollouts, empowering 130+ organizations through automation, process optimization, and scalable custom applications.
+          </p>
+        </div>
+
+        <div class="fade-in">
+          <h2>Core Capabilities</h2>
+          <ul>
+            <li>ERP Systems Architecture (SAP, Sage, Microsoft Dynamics)</li>
+            <li>Full Stack Development (C#, ASP.NET, Kotlin, Java, React)</li>
+            <li>Custom Software Design & System Integration</li>
+            <li>SQL & Database Optimization</li>
+            <li>Process Automation</li>
+            <li>Stakeholder & Government Engagement</li>
+          </ul>
+        </div>
+
+        <div class="fade-in">
+          <h2>Work Highlights</h2>
+          <ul>
+            <li>Designed a multinational ERP rollout across 5 countries, streamlining logistics & finance.</li>
+            <li>Built a nationwide recruitment platform for a scholarship program used by government agencies.</li>
+            <li>Led Microsoft Dynamics RMS deployment for a telecom giant with 100+ retail outlets.</li>
+            <li>Supported 130+ clients in 20+ industries through high-touch consulting and software delivery.</li>
+          </ul>
+        </div>
+
+        <div class="fade-in">
+          <h2>Current Focus</h2>
+          <ul>
+            <li>ERP Solution Strategy & Systems Architecture</li>
+            <li>Cross-functional Product Development & Leadership</li>
+            <li>Government Digital Transformation Advisory</li>
+          </ul>
+        </div>
+
+        <div class="fade-in">
+          <h2>Certifications & Education</h2>
+          <ul>
+            <!-- <li>AWS Certified Solutions Architect – Professional</li> -->
+            <!-- <li>Microsoft Certified: Azure Developer Associate</li> -->
+            <li>Dynamics 365 Business Central Developer Associate</li>
+            <li>SAP S/4HANA Financial Accounting</li>
+            <li>Sage Certified Implementation Consultant</li>
+            <li>University of Ghana – Accounting</li>
+            <li>University of London – Creative Programming For Digital Media</li>
+          </ul>
+        </div>
+      </div>
+
+      <div id="cv-left">
+        <h1>Akwasi Adu-Kyeremeh</h1>
+        <ul>
+          <li>📞 +233-50-1522233</li>
+          <li>📧 me@akwasi.dev</li>
+          <li>🌍 Accra, Ghana</li>
+          <li><a href="https://github.com/Akwasi-Adu" style="color: white;">GitHub</a></li>
+          <li><a href="https://linkedin.com/in/akwasi" style="color: white;">LinkedIn</a></li>
+        </ul>
+
+        <h2>Highlights</h2>
+        <ul>
+          <li>Delivered 40+ successful implementations across 20+ industries in the EMEA region.</li>
+          <li>Provided technical support, training, and business solutions to 130+ clients.</li>
+          <li>Executed mission-critical projects for government and public sector partners.</li>
+        </ul>
+
+        <h2>Skills</h2>
+        <div class="tag-cloud">
+          <span class="tag">ERP Strategy</span>
+          <span class="tag">Project Management</span>
+          <span class="tag">Full Stack Development</span>
+          <span class="tag">Custom Integrations</span>
+          <!-- <span class="tag">ASP.NET</span>
+          <span class="tag">C#</span>
+          <span class="tag">React</span>
+          <span class="tag">Java</span>
+          <span class="tag">Kotlin</span>
+          <span class="tag">MSSQL</span>
+          <span class="tag">Pervasive SQL</span> -->
+          <!-- <span class="tag">DevOps Automation</span> -->
+          <!-- <span class="tag">Government Projects</span>
+          <span class="tag">SAP</span>
+          <span class="tag">Sage</span>
+          <span class="tag">Azure</span> -->
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Akwasi Adu-Kyeremeh. All rights reserved.</p>
+  </footer>
+
+  <!-- JS to handle scroll-based animation -->
+  <script>
+    const faders = document.querySelectorAll('.fade-in');
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.1 });
+    faders.forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>

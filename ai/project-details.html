@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Project Details Page">
+  <meta name="keywords" content="Projects, portfolio, ERP, Full Stack Development">
+  <meta name="author" content="Akwasi Adu-Kyeremeh">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#060a14">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Akwasi Adu-Kyeremeh | Project Details">
+  <meta property="og:description"
+    content="Explore the portfolio of Akwasi Adu-Kyeremeh — AI Solutions Architect & ERP consultant based in Accra, Ghana.">
+  <meta property="og:image" content="https://akwasi.dev/portfolio/images/og-image.jpg">
+  <meta property="og:url" content="https://akwasi.dev/index.html">
+  <meta property="og:type" content="website">
+
+  <title>Project Details | Akwasi Adu-Kyeremeh</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="portfolio/css/ai-pages.css">
+  <link rel="icon" type="image/png" href="portfolio/images/favicon.png">
+
+  <!-- Redirect script (runs before render) -->
+  <script src="portfolio/js/projects.js"></script>
+  <script>
+    (function () {
+      const params = new URLSearchParams(location.search);
+      const id = params.get('id');
+      const data = window.projects;
+      if (!id || !Array.isArray(data)) return;
+      const p = data.find(x => String(x.id) === String(id));
+      if (!p) return;
+      const slugify = s => {
+        let cleaned = String(s);
+        if (cleaned.includes('|')) {
+          const parts = cleaned.split('|').map(p => p.trim());
+          cleaned = parts[0] + ' ' + parts[parts.length - 1];
+        }
+        const acronymMatch = cleaned.match(/\(([A-Z]{2,})\)/);
+        if (acronymMatch) {
+          cleaned = cleaned.replace(/\([^)]*\)/, ' ' + acronymMatch[1]);
+        }
+        cleaned = cleaned.replace(/&/g, 'and').replace(/[()]/g, '').replace(/,/g, '');
+        return cleaned.toLowerCase().trim()
+          .replace(/[^\w\s-]/g, '')
+          .replace(/\s+/g, '-')
+          .replace(/-+/g, '-');
+      };
+      const slug = p.slug || slugify(p.title || p.name || ('project-' + id));
+      location.replace(`/projects/${slug}/`);
+    })();
+  </script>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EPKW2QTNQL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag('js', new Date());
+    gtag('config', 'G-EPKW2QTNQL');
+  </script>
+</head>
+
+<body>
+  <!-- Header -->
+  <header class="ai-header">
+    <div class="ai-header-inner">
+      <a href="index-ai.html" class="ai-logo">akwasi<span>.dev</span></a>
+      <nav>
+        <button class="ai-menu-toggle" aria-label="Toggle menu">
+          <span></span><span></span><span></span>
+        </button>
+        <ul class="ai-nav-list">
+          <li><a href="index-ai.html" class="ai-nav-link">Home</a></li>
+          <li><a href="projects.html" class="ai-nav-link active">Projects</a></li>
+          <li><a href="blog.html" class="ai-nav-link">Blog</a></li>
+          <li><a href="index-ai.html#contact" class="ai-nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Project Details Section -->
+  <main id="project-details-page" class="ai-page-main ai-detail-page">
+    <!-- Back Button -->
+    <button onclick="window.history.back();" class="back-button">← Go Back</button>
+
+    <!-- Screenshot -->
+    <img id="project-screenshot" alt="Project Screenshot" class="project-screenshot">
+
+    <!-- Title -->
+    <h1 id="project-title"></h1>
+
+    <!-- Meta Details -->
+    <p><strong>Duration:</strong> <span id="project-duration"></span></p>
+    <p><strong>Project Name:</strong> <span id="project-name"></span></p>
+    <p><strong>Industry:</strong> <span id="project-industry"></span></p>
+
+    <!-- Details -->
+    <section>
+      <h2>Details</h2>
+      <p id="project-details"></p>
+    </section>
+
+    <!-- Highlights -->
+    <section>
+      <h2>Technical Highlights</h2>
+      <p id="project-highlights"></p>
+    </section>
+
+    <!-- Outcome -->
+    <section>
+      <h2>Outcome</h2>
+      <p id="project-outcome"></p>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="ai-footer">
+    <div class="ai-container">
+      <p>© 2025 <a href="https://akwasi.dev">Akwasi Adu-Kyeremeh</a>. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <button class="ai-back-to-top" aria-label="Back to top">↑</button>
+
+  <script src="portfolio/js/projects.js"></script>
+  <script src="portfolio/js/project-details-render.js"></script>
+  <script src="portfolio/js/ai-pages.js"></script>
+</body>
+
+</html>
