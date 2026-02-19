@@ -92,7 +92,7 @@ function esc(s) {
 }
 
 // Basic page template
-function makePage({ title, description, canonical, ogImage, body, jsonLd, extraHead = "" }) {
+function makePage({ title, description, canonical, ogImage, body, jsonLd, extraHead = "", activeNav = "" }) {
   return `<!DOCTYPE html>
 <html lang="en">
 <head>
@@ -110,30 +110,44 @@ function makePage({ title, description, canonical, ogImage, body, jsonLd, extraH
 <meta name="twitter:title" content="${esc(title)}">
 <meta name="twitter:description" content="${esc(description)}">
 <meta name="twitter:image" content="${esc(ogImage || "https://akwasi.dev/portfolio/images/og-image.jpg")}">
-<link rel="stylesheet" href="/portfolio/css/style.css">
+<meta name="theme-color" content="#060a14">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800;900&family=Inter:wght@400;500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="/portfolio/css/ai-pages.css">
 <link rel="icon" type="image/png" href="/portfolio/images/favicon.png">
-  <meta name="theme-color" content="#0b1221">
 ${extraHead}
 <script type="application/ld+json">
 ${JSON.stringify(jsonLd, null, 2)}
 </script>
 </head>
 <body>
-<header>
-  <nav>
-    <ul>
-      <li><a href="/#home">Home</a></li>
-      <li><a href="/projects.html">Projects</a></li>
-      <li><a href="/blog.html">Blog</a></li>
-      <li><a href="/cv.html">CV</a></li>
-      <li><a href="/#contact">Contact</a></li>
-    </ul>
-  </nav>
+<header class="ai-header">
+  <div class="ai-header-inner">
+    <a href="/" class="ai-logo">akwasi<span>.dev</span></a>
+    <nav>
+      <button class="ai-menu-toggle" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+      <ul class="ai-nav-list">
+        <li><a href="/" class="ai-nav-link">Home</a></li>
+        <li><a href="/projects.html" class="ai-nav-link${activeNav === 'projects' ? ' active' : ''}">Projects</a></li>
+        <li><a href="/blog.html" class="ai-nav-link${activeNav === 'blog' ? ' active' : ''}">Blog</a></li>
+        <li><a href="/#contact" class="ai-nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
 </header>
-<main>
+<main class="ai-page-main">
 ${body}
 </main>
-<footer><p>&copy; ${new Date().getFullYear()} Akwasi Adu-Kyeremeh. All rights reserved.</p></footer>
+<footer class="ai-footer">
+  <div class="ai-container">
+    <p>&copy; ${new Date().getFullYear()} <a href="https://akwasi.dev">Akwasi Adu-Kyeremeh</a>. All rights reserved.</p>
+  </div>
+</footer>
+<button class="ai-back-to-top" aria-label="Back to top">↑</button>
+<script src="/portfolio/js/ai-pages.js"></script>
 </body>
 </html>`;
 }
@@ -189,78 +203,15 @@ function toSlug(s) {
       .concat(Array.isArray(b.images) ? b.images.map(absoluteUrl) : []);
     const allImages = Array.from(new Set([...declaredImgs, ...inlineImgs]));
 
-    // FIXED: Normalize all asset paths in content and add proper article styling
+    // Blog detail body with dark AI theme classes
     const body = `
-<article class="blog-details" style="max-width: 900px; margin: 0 auto; padding: 2rem;">
-  <h1 style="text-align: center; margin-bottom: 0.5rem;">${esc(b.title)}</h1>
-  <p style="text-align: center; color: #666; margin-bottom: 2rem;"><em>${new Date(b.date).toLocaleDateString()}</em></p>
-  <div style="text-align: left; line-height: 1.8;">
-    <style>
-      .blog-details h2 { 
-        color: #2563eb; 
-        margin-top: 2rem; 
-        margin-bottom: 1rem; 
-        padding-bottom: 0.5rem;
-        border-bottom: 2px solid #e5e7eb;
-      }
-      .blog-details h3 { 
-        color: #1e40af; 
-        margin-top: 1.5rem; 
-        margin-bottom: 0.75rem; 
-      }
-      .blog-details p { 
-        margin-bottom: 1rem; 
-        line-height: 1.8;
-      }
-      .blog-details ul, .blog-details ol { 
-        margin: 1rem 0 1rem 2rem; 
-        padding-left: 1rem;
-        line-height: 1.8;
-      }
-      .blog-details li { 
-        margin-bottom: 0.5rem; 
-      }
-      .blog-details code { 
-        background-color: #f3f4f6; 
-        padding: 0.2rem 0.4rem; 
-        border-radius: 3px; 
-        font-family: monospace;
-        font-size: 0.9em;
-      }
-      .blog-details pre { 
-        background-color: #1e293b; 
-        color: #e2e8f0; 
-        padding: 1rem; 
-        border-radius: 6px; 
-        overflow-x: auto;
-        margin: 1rem 0;
-      }
-      .blog-details pre code { 
-        background: none; 
-        color: inherit; 
-        padding: 0;
-      }
-      .blog-details blockquote {
-        border-left: 4px solid #2563eb;
-        padding-left: 1rem;
-        margin: 1rem 0;
-        color: #666;
-        font-style: italic;
-      }
-      .blog-details a {
-        color: #2563eb;
-        text-decoration: underline;
-      }
-      .blog-details a:hover {
-        color: #1e40af;
-      }
-      .blog-details strong {
-        font-weight: 600;
-      }
-    </style>
+<article class="ai-blog-detail">
+  <h1>${esc(b.title)}</h1>
+  <p style="margin-bottom: 2rem;"><em style="font-family: var(--ai-font-mono); font-size: 0.8rem; color: var(--ai-text-tertiary);">${new Date(b.date).toLocaleDateString()}</em></p>
+  <div>
     ${normalizeHtmlAssets(b.content || "")}
   </div>
-  <p style="text-align: center; margin-top: 3rem;"><a href="/blog.html">← Back to Blog</a></p>
+  <p style="text-align: center; margin-top: 3rem;"><a href="/blog.html" class="ai-btn ai-btn-ghost">← Back to Blog</a></p>
 </article>`;
 
     const jsonLd = {
@@ -281,7 +232,8 @@ function toSlug(s) {
       canonical: url,
       ogImage: allImages[0] || undefined,
       body,
-      jsonLd
+      jsonLd,
+      activeNav: 'blog'
     });
 
     const outDir = path.join(OUT, "blog", slug);
@@ -305,29 +257,29 @@ function toSlug(s) {
     const highlightsHtml = Array.isArray(p.highlights) ? p.highlights.map(h => `<li>${h}</li>`).join("") : "";
     const outcomeHtml = p.outcome ? esc(p.outcome) : "";
 
-    // FIXED: Use toRootAbsolute for screenshot
+    // Project detail body with dark AI theme classes
     const body = `
-<article id="project-details-page" style="max-width: 900px; margin: 0 auto; padding: 2rem;">
-  ${p.screenshot ? `<img src="${esc(toRootAbsolute(p.screenshot))}" alt="Screenshot for ${esc(p.title || p.name)}" class="project-screenshot" style="display: block; margin: 0 auto 2rem; max-width: 100%; border-radius: 8px;">` : ""}
-  <h1 style="text-align: center; margin-bottom: 1rem;">${esc(p.title || p.name)}</h1>
-  <div style="text-align: center; margin-bottom: 2rem; color: #666;">
+<article id="project-details-page" class="ai-detail-page">
+  ${p.screenshot ? `<img src="${esc(toRootAbsolute(p.screenshot))}" alt="Screenshot for ${esc(p.title || p.name)}" class="project-screenshot">` : ""}
+  <h1>${esc(p.title || p.name)}</h1>
+  <div style="margin-bottom: 2rem;">
     ${p.duration ? `<p><strong>Duration:</strong> ${esc(p.duration)}</p>` : ""}
     ${p.name ? `<p><strong>Project Name:</strong> ${esc(p.name)}</p>` : ""}
     ${p.industry ? `<p><strong>Industry:</strong> ${Array.isArray(p.industry) ? esc(p.industry.join(", ")) : esc(p.industry)}</p>` : ""}
   </div>
-  <section style="margin-bottom: 2rem;">
-    <h2 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 0.5rem;">Details</h2>
-    <ul style="line-height: 1.8; padding-left: 1.5rem;">${detailsHtml}</ul>
+  <section>
+    <h2>Details</h2>
+    <ul>${detailsHtml}</ul>
   </section>
-  ${highlightsHtml ? `<section style="margin-bottom: 2rem;">
-    <h2 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 0.5rem;">Technical Highlights</h2>
-    <ul style="line-height: 1.8; padding-left: 1.5rem;">${highlightsHtml}</ul>
+  ${highlightsHtml ? `<section>
+    <h2>Technical Highlights</h2>
+    <ul>${highlightsHtml}</ul>
   </section>` : ""}
-  ${outcomeHtml ? `<section style="margin-bottom: 2rem;">
-    <h2 style="color: #2563eb; border-bottom: 2px solid #2563eb; padding-bottom: 0.5rem;">Outcome</h2>
-    <p style="line-height: 1.8;">${outcomeHtml}</p>
+  ${outcomeHtml ? `<section>
+    <h2>Outcome</h2>
+    <p>${outcomeHtml}</p>
   </section>` : ""}
-  <p style="text-align: center; margin-top: 3rem;"><a href="/projects.html">← Back to Projects</a></p>
+  <p style="text-align: center; margin-top: 3rem;"><a href="/projects.html" class="ai-btn ai-btn-ghost">← Back to Projects</a></p>
 </article>`;
 
     const jsonLd = {
@@ -345,7 +297,8 @@ function toSlug(s) {
       canonical: url,
       ogImage: projImages[0] || undefined,
       body,
-      jsonLd
+      jsonLd,
+      activeNav: 'projects'
     });
 
     const outDir = path.join(OUT, "projects", slug);
