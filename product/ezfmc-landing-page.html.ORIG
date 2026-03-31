@@ -1469,9 +1469,6 @@
 
     <!-- ===== HERO ===== -->
     <section class="hero">
-        <video autoplay loop muted playsinline aria-hidden="true" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.25; filter: contrast(1.1) brightness(0.7);">
-            <source src="Videos/Ghana_Fuel_Tanker_Dust_Cloud.mp4" type="video/mp4">
-        </video>
         <div class="hero-glow"></div>
         <div class="hero-glow2"></div>
         <div class="ctn">
@@ -1672,28 +1669,6 @@
                 <h2 class="sec-title">16 modules. One platform.<br>Zero excuses.</h2>
                 <p class="sec-desc">Purpose-built for how OMCs actually operate — not how generic ERPs think you should.
                 </p>
-            </div>
-            <style>
-                .showcase-row { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-                @media(max-width: 768px) { .showcase-row { grid-template-columns: 1fr; gap: 2rem; } .showcase-reverse { display: flex; flex-direction: column-reverse; } }
-            </style>
-            <div class="mod-showcase rv" style="display: flex; flex-direction: column; gap: 6rem; margin-bottom: 5rem;">
-                <!-- Row 1 -->
-                <div class="showcase-row">
-                    <img src="Images/tablet_composite.png" alt="EzFMC on Tablet at Depot" style="width: 100%; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
-                    <div>
-                        <h3 style="color: var(--white); font-family: var(--font-head); font-size: 1.8rem; margin-bottom: 1rem; line-height: 1.2;">Command from the Field</h3>
-                        <p style="color: var(--text-dim); margin-bottom: 1.5rem;">The tablet interface brings the power of EzFMC directly to the dispatch yard and fuel pump. Real-time GRV, dispatch tracking, and station operations without the clipboard.</p>
-                    </div>
-                </div>
-                <!-- Row 2 -->
-                <div class="showcase-row showcase-reverse">
-                    <div>
-                        <h3 style="color: var(--white); font-family: var(--font-head); font-size: 1.8rem; margin-bottom: 1rem; line-height: 1.2;">Control from the Boardroom</h3>
-                        <p style="color: var(--text-dim); margin-bottom: 1.5rem;">High-level multi-currency financials, automated UPPF matrix, NPA pricing adjustments, and predictive AI insights via EzPilot—all in one enterprise command center.</p>
-                    </div>
-                    <img src="Images/monitor_composite.png" alt="EzFMC in Control Room" style="width: 100%; border-radius: 16px; border: 1px solid var(--border); box-shadow: 0 20px 40px rgba(0,0,0,0.5);">
-                </div>
             </div>
             <div class="mod-tabs rv" id="modTabs">
                 <button class="mod-tab active" data-tab="ops">⛽ Operations</button>
@@ -2017,20 +1992,9 @@
         </div>
     </section>
 
-    <!-- ===== CHAOS TO COMMAND PORTRAIT ===== -->
-    <section style="padding: 2rem 0 6rem; text-align: center; background: var(--bg-deepest);">
-        <div class="ctn rv">
-            <h2 style="font-family: var(--font-head); font-size: 2.2rem; color: var(--white); margin-bottom: 3rem;">Stop the paperwork. Start the automation.</h2>
-            <img src="Images/manager_chaos.png" loading="lazy" alt="Station Manager Chaos vs Command" style="max-width: 900px; width: 100%; border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 30px 60px rgba(0,0,0,0.6);">
-        </div>
-    </section>
-
     <!-- ===== CTA ===== -->
     <section class="cta" id="cta">
-        <video autoplay loop muted playsinline aria-hidden="true" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 0; opacity: 0.15; filter: contrast(1.2);">
-            <source src="Videos/Futuristic_Command_Center_Video_Generated.mp4" type="video/mp4">
-        </video>
-        <div class="ctn" style="position: relative; z-index: 2;">
+        <div class="ctn">
             <div class="sec-tag rv">Get Started</div>
             <h2 class="sec-title rv">Ready to take <span
                     style="background:linear-gradient(135deg,var(--amber),#fbbf24);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">total
