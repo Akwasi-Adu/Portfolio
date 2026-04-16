@@ -1,0 +1,992 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EzPOS — Every Sale. Every Channel. Total Control.</title>
+<meta name="description" content="EzPOS is the next-generation, offline-first Point of Sale platform for retail, hospitality, and services across West Africa. AI-powered intelligence, multi-location management, omnichannel commerce — one platform.">
+<link rel="icon" type="image/svg+xml" href="ezpos-favicon.svg">
+<link rel="alternate icon" type="image/png" sizes="32x32" href="ezpos-favicon.svg">
+<link rel="apple-touch-icon" href="ezpos-favicon.svg">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800;900&family=Syne:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --void: #07080c;
+  --deep: #0c0e16;
+  --surface: #12151f;
+  --card: #181c28;
+  --card-hover: #1e2333;
+  --border: #252a3a;
+  --border-glow: #333a4f;
+  --muted: #5c6380;
+  --mid: #8b91a8;
+  --light: #c4c8d8;
+  --bright: #eceef4;
+  --white: #ffffff;
+  --mint: #00e68a;
+  --mint-deep: #00b36b;
+  --mint-glow: rgba(0, 230, 138, 0.10);
+  --mint-glow-strong: rgba(0, 230, 138, 0.22);
+  --violet: #8b5cf6;
+  --violet-glow: rgba(139, 92, 246, 0.10);
+  --coral: #ff6b6b;
+  --coral-glow: rgba(255, 107, 107, 0.10);
+  --sky: #38bdf8;
+  --sky-glow: rgba(56, 189, 248, 0.10);
+  --font-display: 'Syne', sans-serif;
+  --font-body: 'Outfit', sans-serif;
+  --font-mono: 'IBM Plex Mono', monospace;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--void);
+  color: var(--mid);
+  line-height: 1.7;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+}
+
+::-webkit-scrollbar { width: 5px; }
+::-webkit-scrollbar-track { background: var(--void); }
+::-webkit-scrollbar-thumb { background: var(--mint-deep); border-radius: 3px; }
+
+.ctn { max-width: 1220px; margin: 0 auto; padding: 0 2rem; }
+
+/* Reveal animation */
+.rv { opacity: 0; transform: translateY(20px); transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1); }
+.rv.vis { opacity: 1; transform: translateY(0); }
+
+/* ========== NAV ========== */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  padding: 1.1rem 0; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.nav.scrolled {
+  background: rgba(7, 8, 12, 0.92);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+  padding: 0.7rem 0;
+}
+.nav .ctn { display: flex; align-items: center; justify-content: space-between; }
+
+.logo { display: flex; align-items: center; gap: 0.6rem; text-decoration: none; }
+.logo-mark {
+  width: 38px; height: 38px; border-radius: 10px;
+  background: linear-gradient(135deg, var(--mint), var(--mint-deep));
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-mono); font-weight: 600; font-size: 0.8rem;
+  color: var(--void); box-shadow: 0 0 24px var(--mint-glow-strong);
+  position: relative;
+}
+.logo-mark::after {
+  content: ''; position: absolute; inset: -1px; border-radius: 11px;
+  background: linear-gradient(135deg, rgba(0,230,138,0.4), transparent);
+  z-index: -1; opacity: 0.5;
+}
+.logo-name {
+  font-family: var(--font-display); font-weight: 800; font-size: 1.25rem;
+  color: var(--white); letter-spacing: -0.03em;
+}
+.logo-name span { color: var(--mint); }
+
+.nav-links { display: flex; align-items: center; gap: 2.2rem; list-style: none; }
+.nav-links a {
+  color: var(--muted); text-decoration: none; font-size: 0.85rem;
+  font-weight: 500; transition: color 0.3s; position: relative;
+}
+.nav-links a::after {
+  content: ''; position: absolute; bottom: -4px; left: 0; width: 0;
+  height: 1.5px; background: var(--mint); transition: width 0.3s;
+}
+.nav-links a:hover { color: var(--mint); }
+.nav-links a:hover::after { width: 100%; }
+
+.btn-cta {
+  background: linear-gradient(135deg, var(--mint), var(--mint-deep)) !important;
+  color: var(--void) !important; padding: 0.6rem 1.5rem; border-radius: 8px;
+  font-weight: 700; font-size: 0.82rem; letter-spacing: 0.02em;
+  transition: all 0.3s; box-shadow: 0 2px 16px var(--mint-glow-strong);
+  text-decoration: none;
+}
+.btn-cta:hover { box-shadow: 0 4px 28px var(--mint-glow-strong); transform: translateY(-1px); }
+.btn-cta::after { display: none !important; }
+
+.mob-tog { display: none; background: 0; border: 0; cursor: pointer; padding: 0.4rem; }
+.mob-tog span { display: block; width: 20px; height: 2px; background: var(--light); margin: 4px 0; transition: 0.3s; }
+
+/* ========== HERO ========== */
+.hero {
+  min-height: 100vh; display: flex; align-items: center;
+  position: relative; padding: 7rem 0 5rem; overflow: hidden;
+}
+
+.hero-glow {
+  position: absolute; top: -250px; right: -150px; width: 800px; height: 800px;
+  background: radial-gradient(circle, var(--mint-glow) 0%, transparent 65%);
+  pointer-events: none;
+}
+.hero-glow2 {
+  position: absolute; bottom: -200px; left: -100px; width: 600px; height: 600px;
+  background: radial-gradient(circle, var(--violet-glow) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.hero-grid {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(0,230,138,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,230,138,0.025) 1px, transparent 1px);
+  background-size: 70px 70px;
+  mask-image: radial-gradient(ellipse 55% 55% at 65% 45%, black 15%, transparent 75%);
+  animation: gridPulse 8s ease-in-out infinite;
+}
+@keyframes gridPulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+
+.hero .ctn {
+  position: relative; z-index: 2;
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+}
+
+.hero-badge {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  padding: 0.4rem 1.1rem; border: 1px solid rgba(0,230,138,0.2);
+  border-radius: 100px; font-size: 0.72rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase; color: var(--mint);
+  background: rgba(0,230,138,0.05); margin-bottom: 1.8rem;
+  animation: fadeSlideUp 0.8s ease-out;
+}
+.badge-dot {
+  width: 6px; height: 6px; background: var(--mint); border-radius: 50%;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 0 0 rgba(0,230,138,0.4); }
+  50% { opacity: 0.8; box-shadow: 0 0 0 6px rgba(0,230,138,0); }
+}
+
+.hero h1 {
+  font-family: var(--font-display); font-size: clamp(2.6rem, 5vw, 3.8rem);
+  font-weight: 900; color: var(--white); line-height: 1.08;
+  letter-spacing: -0.04em; margin-bottom: 1.5rem;
+  animation: fadeSlideUp 0.8s ease-out 0.15s both;
+}
+.hero h1 .accent {
+  background: linear-gradient(135deg, var(--mint), #6ee7b7);
+  -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+}
+
+.hero-sub {
+  font-size: 1.08rem; color: var(--mid); line-height: 1.8;
+  max-width: 480px; margin-bottom: 2.5rem;
+  animation: fadeSlideUp 0.8s ease-out 0.3s both;
+}
+
+.hero-btns {
+  display: flex; gap: 1rem; align-items: center; margin-bottom: 3rem;
+  animation: fadeSlideUp 0.8s ease-out 0.45s both;
+}
+.btn-main {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: linear-gradient(135deg, var(--mint), var(--mint-deep));
+  color: var(--void); padding: 0.9rem 2.2rem; border-radius: 10px;
+  font-weight: 700; font-size: 0.92rem; text-decoration: none;
+  transition: all 0.3s; box-shadow: 0 4px 24px var(--mint-glow-strong);
+  border: 0; cursor: pointer;
+}
+.btn-main:hover { transform: translateY(-2px); box-shadow: 0 6px 32px var(--mint-glow-strong); }
+
+.btn-ghost {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  background: 0; color: var(--light); padding: 0.9rem 2rem;
+  border-radius: 10px; font-weight: 600; font-size: 0.92rem;
+  text-decoration: none; border: 1px solid var(--border); transition: all 0.3s; cursor: pointer;
+}
+.btn-ghost:hover { border-color: var(--mint); color: var(--mint); background: var(--mint-glow); }
+
+.hero-stats {
+  display: flex; gap: 2.5rem;
+  animation: fadeSlideUp 0.8s ease-out 0.6s both;
+}
+.stat-val {
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 800; color: var(--white);
+}
+.stat-lbl {
+  font-size: 0.68rem; color: var(--muted); letter-spacing: 0.06em; text-transform: uppercase;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Hero POS Mockup */
+.pos-mock {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+  overflow: hidden; box-shadow: 0 24px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.02) inset;
+  transform: perspective(1200px) rotateY(-5deg) rotateX(2deg);
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  animation: fadeSlideUp 1s ease-out 0.3s both;
+}
+.pos-mock:hover { transform: perspective(1200px) rotateY(-2deg) rotateX(1deg); }
+
+.mock-bar {
+  display: flex; align-items: center; gap: 0.5rem;
+  padding: 0.8rem 1.2rem; background: var(--deep); border-bottom: 1px solid var(--border);
+}
+.mock-dot { width: 9px; height: 9px; border-radius: 50%; background: var(--border); }
+.mock-dot:nth-child(1) { background: #ff5f57; }
+.mock-dot:nth-child(2) { background: #ffbd2e; }
+.mock-dot:nth-child(3) { background: #28ca41; }
+.mock-url {
+  flex: 1; margin-left: 0.8rem; padding: 0.3rem 0.9rem;
+  background: rgba(255,255,255,0.03); border-radius: 6px;
+  font-family: var(--font-mono); font-size: 0.68rem; color: var(--muted);
+}
+
+.mock-body { padding: 1.2rem; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 0.8rem; }
+
+.mock-search {
+  grid-column: 1 / -1; display: flex; gap: 0.5rem;
+  padding: 0.5rem 0.8rem; background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.06); border-radius: 8px;
+  font-family: var(--font-mono); font-size: 0.65rem; color: var(--muted);
+  align-items: center;
+}
+.mock-search .ico { color: var(--mint); margin-right: 0.3rem; }
+
+.mock-products { display: flex; flex-direction: column; gap: 0.5rem; }
+.mock-product {
+  display: flex; align-items: center; gap: 0.6rem; padding: 0.6rem;
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 8px; transition: border-color 0.3s;
+}
+.mock-product:hover { border-color: rgba(0,230,138,0.2); }
+.mock-product-img {
+  width: 36px; height: 36px; border-radius: 6px; flex-shrink: 0;
+}
+.mock-product-img.shoe1 { background: linear-gradient(135deg, #2d2d3d, #3d3d55); }
+.mock-product-img.shoe2 { background: linear-gradient(135deg, #3d2d2d, #553d3d); }
+.mock-product-img.shoe3 { background: linear-gradient(135deg, #2d3d2d, #3d553d); }
+.mock-product-info { flex: 1; }
+.mock-product-name { font-size: 0.68rem; color: var(--light); font-weight: 600; }
+.mock-product-meta { font-size: 0.58rem; color: var(--muted); }
+.mock-product-price { font-family: var(--font-mono); font-size: 0.7rem; color: var(--mint); font-weight: 600; }
+
+.mock-cart {
+  background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.04);
+  border-radius: 10px; padding: 0.8rem; display: flex; flex-direction: column; gap: 0.5rem;
+}
+.mock-cart-head {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-bottom: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.05);
+}
+.mock-cart-title { font-size: 0.65rem; font-weight: 700; color: var(--light); text-transform: uppercase; letter-spacing: 0.08em; }
+.mock-cart-count {
+  font-size: 0.58rem; font-weight: 600; color: var(--void);
+  background: var(--mint); padding: 0.15rem 0.5rem; border-radius: 100px;
+}
+
+.mock-cart-item {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 0.62rem; color: var(--light); padding: 0.3rem 0;
+}
+.mock-cart-item-price { font-family: var(--font-mono); color: var(--mint); font-weight: 500; }
+
+.mock-cart-total {
+  border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.5rem;
+  margin-top: auto; display: flex; flex-direction: column; gap: 0.2rem;
+}
+.mock-cart-line {
+  display: flex; justify-content: space-between; font-size: 0.6rem; color: var(--muted);
+}
+.mock-cart-line.total { color: var(--white); font-weight: 700; font-size: 0.75rem; }
+.mock-cart-line.total span:last-child { color: var(--mint); font-family: var(--font-mono); }
+
+.mock-pay-btn {
+  margin-top: 0.4rem; padding: 0.5rem; border-radius: 6px; text-align: center;
+  background: linear-gradient(135deg, var(--mint), var(--mint-deep));
+  font-size: 0.68rem; font-weight: 700; color: var(--void); letter-spacing: 0.04em;
+}
+
+.mock-glow {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%);
+  width: 80%; height: 80%;
+  background: radial-gradient(circle, rgba(0,230,138,0.06) 0%, transparent 60%);
+  filter: blur(40px); z-index: -1;
+}
+
+/* ========== PAIN POINTS ========== */
+.pain-section { padding: 7rem 0; position: relative; }
+.pain-section::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+
+.sec-tag {
+  font-family: var(--font-mono); font-size: 0.7rem; font-weight: 600;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--mint); margin-bottom: 0.8rem;
+}
+.sec-title {
+  font-family: var(--font-display); font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+  font-weight: 800; color: var(--white); line-height: 1.15;
+  letter-spacing: -0.03em; margin-bottom: 0.8rem;
+}
+.sec-desc { font-size: 1rem; color: var(--muted); max-width: 550px; }
+
+.pain-head { margin-bottom: 3.5rem; }
+
+.pain-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+
+.pain-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.005));
+  border: 1px solid rgba(255,255,255,0.05); border-radius: 14px;
+  padding: 2rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  position: relative; overflow: hidden;
+}
+.pain-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--mint), transparent);
+  opacity: 0; transition: opacity 0.4s;
+}
+.pain-card:hover { border-color: rgba(0,230,138,0.15); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+.pain-card:hover::before { opacity: 1; }
+
+.pain-ico {
+  width: 44px; height: 44px; border-radius: 10px; background: var(--mint-glow);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.2rem; margin-bottom: 1.2rem;
+}
+.pain-card h3 {
+  font-family: var(--font-display); font-size: 1.1rem; font-weight: 700;
+  color: var(--white); margin-bottom: 0.5rem;
+}
+.pain-card p { font-size: 0.88rem; color: var(--muted); line-height: 1.65; }
+
+/* ========== MODULES ========== */
+.mod-section { padding: 7rem 0; background: var(--deep); position: relative; }
+.mod-section::before, .mod-section::after {
+  content: ''; position: absolute; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+.mod-section::before { top: 0; }
+.mod-section::after { bottom: 0; }
+
+.mod-head { text-align: center; margin-bottom: 4rem; }
+.mod-head .sec-title, .mod-head .sec-desc { margin-left: auto; margin-right: auto; }
+
+.mod-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px;
+  background: var(--border); border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--border);
+}
+.mod-card {
+  background: var(--deep); padding: 2rem 1.5rem; transition: all 0.4s; cursor: default;
+}
+.mod-card:hover { background: var(--surface); }
+.mod-card:hover .mod-num { color: var(--mint); }
+.mod-num {
+  font-family: var(--font-mono); font-size: 0.62rem; color: var(--border-glow);
+  letter-spacing: 0.1em; margin-bottom: 0.7rem; transition: color 0.3s;
+}
+.mod-card h3 {
+  font-family: var(--font-display); font-size: 1.02rem; font-weight: 700;
+  color: var(--bright); margin-bottom: 0.45rem; line-height: 1.3;
+}
+.mod-card p { font-size: 0.78rem; color: var(--muted); line-height: 1.6; }
+
+/* ========== VARIANT MATRIX SHOWCASE ========== */
+.matrix-section { padding: 7rem 0; position: relative; }
+
+.matrix-inner {
+  display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+}
+
+.matrix-visual {
+  background: var(--surface); border: 1px solid var(--border); border-radius: 14px;
+  padding: 1.5rem; overflow: hidden;
+}
+.matrix-title-bar {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 1rem; padding-bottom: 0.8rem; border-bottom: 1px solid var(--border);
+}
+.matrix-title-bar h4 {
+  font-family: var(--font-mono); font-size: 0.7rem; color: var(--muted);
+  text-transform: uppercase; letter-spacing: 0.1em;
+}
+.matrix-title-bar .badge {
+  font-size: 0.6rem; font-weight: 600; color: var(--mint);
+  background: var(--mint-glow); padding: 0.2rem 0.6rem; border-radius: 100px;
+}
+
+.size-grid { display: grid; grid-template-columns: auto repeat(6, 1fr); gap: 2px; }
+.size-grid .hdr {
+  font-family: var(--font-mono); font-size: 0.6rem; color: var(--muted);
+  text-align: center; padding: 0.5rem 0.3rem; font-weight: 600;
+}
+.size-grid .row-label {
+  font-size: 0.65rem; color: var(--light); font-weight: 600; padding: 0.5rem 0.6rem;
+  display: flex; align-items: center;
+}
+.size-grid .cell {
+  text-align: center; padding: 0.45rem 0.3rem; border-radius: 4px;
+  font-family: var(--font-mono); font-size: 0.62rem; font-weight: 500;
+  transition: all 0.2s;
+}
+.cell.high { background: rgba(0,230,138,0.12); color: var(--mint); }
+.cell.med { background: rgba(245,158,11,0.12); color: #f59e0b; }
+.cell.low { background: rgba(255,107,107,0.12); color: var(--coral); }
+.cell.out { background: rgba(255,255,255,0.02); color: var(--border-glow); }
+
+/* ========== METRICS ========== */
+.metrics-section { padding: 7rem 0; background: var(--deep); position: relative; }
+.metrics-section::before, .metrics-section::after {
+  content: ''; position: absolute; left: 0; right: 0; height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border), transparent);
+}
+.metrics-section::before { top: 0; }
+.metrics-section::after { bottom: 0; }
+
+.metrics-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+.metrics-list { display: flex; flex-direction: column; gap: 1.8rem; }
+.metric-item {}
+.metric-val {
+  font-family: var(--font-display); font-size: 2.5rem; font-weight: 800; color: var(--white);
+}
+.metric-val span { font-size: 1.5rem; color: var(--mint); }
+.metric-lbl { font-size: 0.88rem; color: var(--muted); margin-bottom: 0.5rem; }
+.metric-bar {
+  width: 100%; height: 4px; background: var(--border); border-radius: 2px; overflow: hidden;
+}
+.metric-bar-fill {
+  height: 100%; border-radius: 2px; width: 0;
+  background: linear-gradient(90deg, var(--mint-deep), var(--mint));
+  transition: width 1.5s ease-out;
+}
+
+/* ========== DIFFERENTIATORS ========== */
+.diff-section { padding: 7rem 0; position: relative; }
+.diff-head { text-align: center; margin-bottom: 3.5rem; }
+.diff-head .sec-title, .diff-head .sec-desc { margin-left: auto; margin-right: auto; }
+
+.diff-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.diff-card {
+  background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.005));
+  border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; padding: 2rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); position: relative; overflow: hidden;
+}
+.diff-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+  background: linear-gradient(90deg, transparent, var(--mint), transparent);
+  opacity: 0; transition: opacity 0.4s;
+}
+.diff-card:hover { border-color: rgba(0,230,138,0.15); transform: translateY(-4px); box-shadow: 0 12px 40px rgba(0,0,0,0.3); }
+.diff-card:hover::before { opacity: 1; }
+.diff-ico { font-size: 1.5rem; margin-bottom: 1rem; display: block; }
+.diff-card h3 {
+  font-family: var(--font-display); font-size: 1.05rem; font-weight: 700;
+  color: var(--white); margin-bottom: 0.5rem;
+}
+.diff-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.65; }
+
+/* ========== TECH STRIP ========== */
+.tech-strip { padding: 3rem 0; background: var(--deep); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+.tech-inner {
+  display: flex; justify-content: space-between; align-items: center; gap: 2rem;
+}
+.tech-item { display: flex; align-items: center; gap: 0.8rem; }
+.tech-ico { font-size: 1.3rem; }
+.tech-txt h4 { font-size: 0.82rem; font-weight: 700; color: var(--bright); }
+.tech-txt p { font-size: 0.68rem; color: var(--muted); }
+
+/* ========== CTA ========== */
+.cta-section {
+  padding: 8rem 0; text-align: center; position: relative; overflow: hidden;
+}
+.cta-section::before {
+  content: ''; position: absolute; top: -200px; left: 50%; transform: translateX(-50%);
+  width: 800px; height: 800px;
+  background: radial-gradient(circle, rgba(0,230,138,0.06) 0%, transparent 60%);
+  pointer-events: none;
+}
+.cta-section .ctn { position: relative; z-index: 2; }
+.cta-sub {
+  font-size: 1.1rem; color: var(--muted); max-width: 500px;
+  margin: 1rem auto 2.5rem;
+}
+.cta-btns { display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem; }
+.cta-trust {
+  display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;
+  font-size: 0.78rem; color: var(--muted);
+}
+
+/* ========== FOOTER ========== */
+.footer {
+  padding: 3rem 0 2rem; border-top: 1px solid var(--border);
+}
+.footer-inner {
+  display: flex; justify-content: space-between; align-items: center;
+  padding-bottom: 2rem; border-bottom: 1px solid var(--border);
+}
+.footer-inner p { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
+.footer-links { display: flex; gap: 2rem; }
+.footer-links a {
+  color: var(--muted); text-decoration: none; font-size: 0.85rem;
+  font-weight: 500; transition: color 0.3s;
+}
+.footer-links a:hover { color: var(--mint); }
+.built-by {
+  text-align: center; padding-top: 1.5rem; font-size: 0.75rem; color: var(--border-glow);
+}
+.built-by a { color: var(--mint); text-decoration: none; }
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 968px) {
+  .hero .ctn { grid-template-columns: 1fr; gap: 3rem; }
+  .pos-mock { transform: none; }
+  .pos-mock:hover { transform: none; }
+  .pain-grid, .diff-grid { grid-template-columns: 1fr 1fr; }
+  .mod-grid { grid-template-columns: repeat(2, 1fr); }
+  .matrix-inner, .metrics-inner { grid-template-columns: 1fr; gap: 3rem; }
+  .tech-inner { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+}
+
+@media (max-width: 640px) {
+  .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(7,8,12,0.97); backdrop-filter: blur(20px); padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); gap: 1.2rem; }
+  .nav-links.open { display: flex; }
+  .mob-tog { display: block; }
+  .hero h1 { font-size: 2rem; }
+  .hero-btns { flex-direction: column; align-items: flex-start; }
+  .hero-stats { gap: 1.5rem; }
+  .pain-grid, .diff-grid { grid-template-columns: 1fr; }
+  .mod-grid { grid-template-columns: 1fr; }
+  .cta-btns { flex-direction: column; align-items: center; }
+  .cta-trust { flex-direction: column; align-items: center; }
+  .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
+  .footer-links { flex-wrap: wrap; justify-content: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== NAV ===== -->
+<nav class="nav" id="mainNav">
+  <div class="ctn">
+    <a href="#" class="logo">
+      <div class="logo-mark">Ez</div>
+      <div class="logo-name">EzPOS<span>.</span></div>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#problems">Why EzPOS</a></li>
+      <li><a href="#modules">Modules</a></li>
+      <li><a href="#matrix">Variant Matrix</a></li>
+      <li><a href="#impact">Impact</a></li>
+      <li><a href="#edge">Edge</a></li>
+      <li><a href="#cta" class="btn-cta">Request Demo</a></li>
+    </ul>
+    <button class="mob-tog" id="mobTog"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-glow2"></div>
+  <div class="hero-grid"></div>
+  <div class="ctn">
+    <div>
+      <div class="hero-badge"><span class="badge-dot"></span> Now Accepting Early Access</div>
+      <h1>Sell smarter.<br>Operate leaner.<br><span class="accent">Grow faster.</span></h1>
+      <p class="hero-sub">The offline-first, AI-powered point of sale platform built for retail, hospitality, and services across West Africa. Every sale, every channel, one command centre.</p>
+      <div class="hero-btns">
+        <a href="mailto:me@akwasi.dev?subject=EzPOS Demo Request" class="btn-main">Request a Demo →</a>
+        <a href="#modules" class="btn-ghost">Explore Modules</a>
+      </div>
+      <div class="hero-stats">
+        <div><div class="stat-val">99.99%</div><div class="stat-lbl">Uptime Offline</div></div>
+        <div><div class="stat-val">&lt;100ms</div><div class="stat-lbl">Search Speed</div></div>
+        <div><div class="stat-val">500+</div><div class="stat-lbl">Variants/Product</div></div>
+      </div>
+    </div>
+    <div style="position:relative">
+      <div class="pos-mock">
+        <div class="mock-bar">
+          <div class="mock-dot"></div><div class="mock-dot"></div><div class="mock-dot"></div>
+          <div class="mock-url">pos.ezpos.app/terminal/01</div>
+        </div>
+        <div class="mock-body">
+          <div class="mock-search"><span class="ico">🔍</span> Search products, scan barcode, or browse categories...</div>
+          <div class="mock-products">
+            <div class="mock-product">
+              <div class="mock-product-img shoe1"></div>
+              <div class="mock-product-info">
+                <div class="mock-product-name">Nike Air Max 90</div>
+                <div class="mock-product-meta">Size 42 · Black · 12 in stock</div>
+              </div>
+              <div class="mock-product-price">GHS 890</div>
+            </div>
+            <div class="mock-product">
+              <div class="mock-product-img shoe2"></div>
+              <div class="mock-product-info">
+                <div class="mock-product-name">Adidas Samba OG</div>
+                <div class="mock-product-meta">Size 40 · White · 8 in stock</div>
+              </div>
+              <div class="mock-product-price">GHS 720</div>
+            </div>
+            <div class="mock-product">
+              <div class="mock-product-img shoe3"></div>
+              <div class="mock-product-info">
+                <div class="mock-product-name">Clarks Desert Boot</div>
+                <div class="mock-product-meta">Size 44 · Tan · 3 in stock</div>
+              </div>
+              <div class="mock-product-price">GHS 1,250</div>
+            </div>
+          </div>
+          <div class="mock-cart">
+            <div class="mock-cart-head">
+              <div class="mock-cart-title">Current Sale</div>
+              <div class="mock-cart-count">3 items</div>
+            </div>
+            <div class="mock-cart-item"><span>Nike Air Max 90 × 1</span><span class="mock-cart-item-price">GHS 890</span></div>
+            <div class="mock-cart-item"><span>Adidas Samba OG × 2</span><span class="mock-cart-item-price">GHS 1,440</span></div>
+            <div class="mock-cart-total">
+              <div class="mock-cart-line"><span>Subtotal</span><span>GHS 2,330.00</span></div>
+              <div class="mock-cart-line"><span>VAT (15%)</span><span>GHS 349.50</span></div>
+              <div class="mock-cart-line"><span>NHIL (2.5%)</span><span>GHS 58.25</span></div>
+              <div class="mock-cart-line total"><span>Total</span><span>GHS 2,737.75</span></div>
+            </div>
+            <div class="mock-pay-btn">💳 Process Payment (F8)</div>
+          </div>
+        </div>
+      </div>
+      <div class="mock-glow"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PAIN POINTS ===== -->
+<section class="pain-section" id="problems">
+  <div class="ctn">
+    <div class="pain-head rv">
+      <div class="sec-tag">The Problem</div>
+      <h2 class="sec-title">Your current POS is<br>costing you money.</h2>
+      <p class="sec-desc">Spreadsheets, paper receipts, and disconnected systems are silently draining your business. Sound familiar?</p>
+    </div>
+    <div class="pain-grid">
+      <div class="pain-card rv">
+        <div class="pain-ico">📡</div>
+        <h3>Internet goes down, sales stop</h3>
+        <p>Most POS systems die when the Wi-Fi drops. In Ghana, that means hours of lost revenue and frustrated customers waiting to pay.</p>
+      </div>
+      <div class="pain-card rv">
+        <div class="pain-ico">👟</div>
+        <h3>Size 42? Let me check the back</h3>
+        <p>Without variant tracking, you're guessing which sizes, colours, and styles you actually have. Customers leave while you rummage through boxes.</p>
+      </div>
+      <div class="pain-card rv">
+        <div class="pain-ico">🏪</div>
+        <h3>Branch 2 has no idea what Branch 1 sold</h3>
+        <p>Multiple locations running separate systems means blind spots on stock levels, sales performance, and customer behaviour across your business.</p>
+      </div>
+      <div class="pain-card rv">
+        <div class="pain-ico">📱</div>
+        <h3>MoMo? We don't track that</h3>
+        <p>Mobile money payments scattered across personal phones with no reconciliation. End-of-day cash counts never balance because half the payments are invisible.</p>
+      </div>
+      <div class="pain-card rv">
+        <div class="pain-ico">📊</div>
+        <h3>What's my profit? I'll tell you in January</h3>
+        <p>No real-time visibility into margins, top sellers, dead stock, or customer credit exposure. Decisions made by gut feel, not data.</p>
+      </div>
+      <div class="pain-card rv">
+        <div class="pain-ico">🔒</div>
+        <h3>Cashier discounts, no questions asked</h3>
+        <p>No approval workflows, no audit trails, no fraud detection. Unauthorised discounts, voids, and returns leak money you'll never trace.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== MODULES ===== -->
+<section class="mod-section" id="modules">
+  <div class="ctn">
+    <div class="mod-head">
+      <div class="sec-tag rv">Modules</div>
+      <h2 class="sec-title rv">Everything you need.<br>Nothing you don't.</h2>
+      <p class="sec-desc rv">Ten deeply integrated modules that work together to run your entire business from one platform.</p>
+    </div>
+    <div class="mod-grid">
+      <div class="mod-card rv"><div class="mod-num">01</div><h3>POS Terminal</h3><p>Lightning-fast checkout with barcode scanning, split payments, held transactions, and full keyboard shortcut support. Works offline.</p></div>
+      <div class="mod-card rv"><div class="mod-num">02</div><h3>Inventory & Variants</h3><p>Multi-dimensional size/colour/width matrix with 500+ variants per product. Real-time stock across all locations.</p></div>
+      <div class="mod-card rv"><div class="mod-num">03</div><h3>Customer CRM</h3><p>Rich customer profiles with purchase history, size preferences, credit management, and segmentation for targeted campaigns.</p></div>
+      <div class="mod-card rv"><div class="mod-num">04</div><h3>Loyalty Programme</h3><p>Points-based rewards with tiers, birthday bonuses, referral tracking, and digital loyalty cards.</p></div>
+      <div class="mod-card rv"><div class="mod-num">05</div><h3>Multi-Location</h3><p>Centralised control with decentralised execution. Stock transfers, location-specific pricing, and consolidated reporting.</p></div>
+      <div class="mod-card rv"><div class="mod-num">06</div><h3>Payments</h3><p>Cash, MTN MoMo, Vodafone Cash, AirtelTigo, cards via Paystack/Flutterwave, customer credit, gift cards — all auto-reconciled.</p></div>
+      <div class="mod-card rv"><div class="mod-num">07</div><h3>Reporting & Dashboards</h3><p>Real-time sales, inventory health, customer insights, and financial reports. Interactive dashboards with drill-down by location.</p></div>
+      <div class="mod-card rv"><div class="mod-num">08</div><h3>EzPilot AI</h3><p>"What's my best-selling size this month?" — instant answers from your AI co-pilot, powered by live data across all modules.</p></div>
+      <div class="mod-card rv"><div class="mod-num">09</div><h3>E-Commerce</h3><p>Built-in online storefront with shared inventory. Buy Online, Pick Up In Store. Social commerce integrations.</p></div>
+      <div class="mod-card rv"><div class="mod-num">10</div><h3>Accounting</h3><p>Auto-generated journal entries from every transaction. Ghana tax compliance (VAT, NHIL, GETFund). API-first integration with any existing ERP or accounting system.</p></div>
+      <div class="mod-card rv"><div class="mod-num">11</div><h3>Staff Management</h3><p>Role-based access, PIN login, shift management, commission tracking, manager override workflows, and full audit trails.</p></div>
+      <div class="mod-card rv"><div class="mod-num">12</div><h3>Purchasing</h3><p>Supplier management, purchase orders, goods receipt, AP ageing, and automated reorder alerts based on sales velocity.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== VARIANT MATRIX ===== -->
+<section class="matrix-section" id="matrix">
+  <div class="ctn">
+    <div class="matrix-inner">
+      <div>
+        <div class="sec-tag rv">Built for Complex Retail</div>
+        <h2 class="sec-title rv">500 variants per product.<br>One click to find any SKU.</h2>
+        <p class="sec-desc rv" style="margin-bottom:2rem;">Shoes come in 8 sizes, 3 widths, and 5 colours. That's 120 SKUs for one style. EzPOS handles this natively with a visual matrix grid — not 120 separate product entries.</p>
+        <div class="rv">
+          <div style="display:flex;gap:1.5rem;margin-bottom:1.5rem;">
+            <div><div class="stat-val" style="font-size:1.2rem;">4D</div><div class="stat-lbl">Dimensions</div></div>
+            <div><div class="stat-val" style="font-size:1.2rem;">Auto</div><div class="stat-lbl">SKU Generation</div></div>
+            <div><div class="stat-val" style="font-size:1.2rem;">FEFO</div><div class="stat-lbl">Stock Rotation</div></div>
+          </div>
+        </div>
+      </div>
+      <div class="matrix-visual rv">
+        <div class="matrix-title-bar">
+          <h4>Nike Air Max 90 — Stock Matrix</h4>
+          <div class="badge">Live Stock</div>
+        </div>
+        <div class="size-grid">
+          <div class="hdr"></div>
+          <div class="hdr">EU 38</div><div class="hdr">EU 39</div><div class="hdr">EU 40</div>
+          <div class="hdr">EU 41</div><div class="hdr">EU 42</div><div class="hdr">EU 43</div>
+          <div class="row-label">⬛ Black</div>
+          <div class="cell high">12</div><div class="cell high">8</div><div class="cell med">4</div>
+          <div class="cell high">15</div><div class="cell high">10</div><div class="cell med">3</div>
+          <div class="row-label">⬜ White</div>
+          <div class="cell med">5</div><div class="cell med">3</div><div class="cell low">1</div>
+          <div class="cell high">7</div><div class="cell med">4</div><div class="cell out">0</div>
+          <div class="row-label">🔵 Navy</div>
+          <div class="cell high">9</div><div class="cell high">6</div><div class="cell med">3</div>
+          <div class="cell low">2</div><div class="cell high">8</div><div class="cell med">5</div>
+          <div class="row-label">🔴 Red</div>
+          <div class="cell med">4</div><div class="cell low">2</div><div class="cell out">0</div>
+          <div class="cell med">3</div><div class="cell low">1</div><div class="cell out">0</div>
+          <div class="row-label">🟢 Olive</div>
+          <div class="cell high">7</div><div class="cell med">5</div><div class="cell med">4</div>
+          <div class="cell high">6</div><div class="cell med">3</div><div class="cell low">2</div>
+        </div>
+        <div style="margin-top:1rem;display:flex;gap:1rem;font-size:0.6rem;color:var(--muted);">
+          <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:rgba(0,230,138,0.3);vertical-align:middle;margin-right:3px;"></span> 5+ units</span>
+          <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:rgba(245,158,11,0.3);vertical-align:middle;margin-right:3px;"></span> Low stock</span>
+          <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:rgba(255,107,107,0.3);vertical-align:middle;margin-right:3px;"></span> Critical</span>
+          <span><span style="display:inline-block;width:8px;height:8px;border-radius:2px;background:rgba(255,255,255,0.05);vertical-align:middle;margin-right:3px;"></span> Out</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== METRICS ===== -->
+<section class="metrics-section" id="impact">
+  <div class="ctn">
+    <div class="metrics-inner">
+      <div>
+        <div class="sec-tag rv">Measurable Impact</div>
+        <h2 class="sec-title rv">Numbers that move<br>the bottom line.</h2>
+        <p class="sec-desc rv">EzPOS doesn't just digitise your checkout — it transforms how your entire business operates.</p>
+      </div>
+      <div class="metrics-list">
+        <div class="metric-item rv">
+          <div class="metric-val">70<span>%</span></div>
+          <div class="metric-lbl">Faster checkout per transaction</div>
+          <div class="metric-bar"><div class="metric-bar-fill" data-fill="70"></div></div>
+        </div>
+        <div class="metric-item rv">
+          <div class="metric-val">99.99<span>%</span></div>
+          <div class="metric-lbl">Zero lost sales — even when internet drops</div>
+          <div class="metric-bar"><div class="metric-bar-fill" data-fill="99"></div></div>
+        </div>
+        <div class="metric-item rv">
+          <div class="metric-val">45<span>%</span></div>
+          <div class="metric-lbl">Reduction in stock discrepancies</div>
+          <div class="metric-bar"><div class="metric-bar-fill" data-fill="45"></div></div>
+        </div>
+        <div class="metric-item rv">
+          <div class="metric-val">3<span>×</span></div>
+          <div class="metric-lbl">Increase in customer return rate with loyalty programme</div>
+          <div class="metric-bar"><div class="metric-bar-fill" data-fill="80"></div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== DIFFERENTIATORS ===== -->
+<section class="diff-section" id="edge">
+  <div class="ctn">
+    <div class="diff-head">
+      <div class="sec-tag rv">The EzPOS Edge</div>
+      <h2 class="sec-title rv">Built for West Africa.<br>Engineered for the world.</h2>
+      <p class="sec-desc rv">Not a foreign POS with a currency symbol swap. Every feature is designed for how business actually works here.</p>
+    </div>
+    <div class="diff-grid">
+      <div class="diff-card rv">
+        <span class="diff-ico">📡</span>
+        <h3>Offline-First, Always</h3>
+        <p>Full POS operation without internet. Transactions queue locally and sync automatically when connectivity returns. Zero lost sales, guaranteed.</p>
+      </div>
+      <div class="diff-card rv">
+        <span class="diff-ico">📱</span>
+        <h3>Mobile Money Native</h3>
+        <p>MTN MoMo, Vodafone Cash, AirtelTigo Money built-in — not bolted on. USSD push, QR payments, automatic reconciliation, real-time settlement tracking.</p>
+      </div>
+      <div class="diff-card rv">
+        <span class="diff-ico">🤖</span>
+        <h3>EzPilot AI Intelligence</h3>
+        <p>"Which shoe sizes should I reorder for the Osu branch?" — natural language queries powered by live data across all your locations and modules.</p>
+      </div>
+      <div class="diff-card rv">
+        <span class="diff-ico">🏷️</span>
+        <h3>Variant Matrix Engine</h3>
+        <p>4-dimensional product matrix (size, colour, width, material) with up to 500 SKU variants per product. Built for footwear, apparel, and complex retail catalogues.</p>
+      </div>
+      <div class="diff-card rv">
+        <span class="diff-ico">🇬🇭</span>
+        <h3>Ghana Tax Compliant</h3>
+        <p>VAT, NHIL, GETFund, COVID levy — all calculated automatically per product category. GRA-ready tax invoices and periodic return data exports.</p>
+      </div>
+      <div class="diff-card rv">
+        <span class="diff-ico">🔗</span>
+        <h3>Plugs Into Your Accounting</h3>
+        <p>Already running an ERP or accounting system? EzPOS integrates seamlessly — auto-post GL entries, sync debtors and creditors, reconcile inventory values. No double entry, no rip-and-replace.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TECH STRIP ===== -->
+<section class="tech-strip">
+  <div class="ctn">
+    <div class="tech-inner rv">
+      <div class="tech-item">
+        <div class="tech-ico">☁️</div>
+        <div class="tech-txt"><h4>Cloud-Native</h4><p>Azure hosted</p></div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-ico">📡</div>
+        <div class="tech-txt"><h4>Offline-First</h4><p>PWA with local sync</p></div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-ico">🏪</div>
+        <div class="tech-txt"><h4>Multi-Location</h4><p>Centralised + autonomous</p></div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-ico">📱</div>
+        <div class="tech-txt"><h4>Any Device</h4><p>Tablet, desktop, mobile</p></div>
+      </div>
+      <div class="tech-item">
+        <div class="tech-ico">⚡</div>
+        <div class="tech-txt"><h4>Sub-Second</h4><p>&lt; 100ms product search</p></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta-section" id="cta">
+  <div class="ctn">
+    <div class="sec-tag rv">Get Started</div>
+    <h2 class="sec-title rv" style="margin-left:auto;margin-right:auto;text-align:center;">Ready to take <span style="background:linear-gradient(135deg,var(--mint),#6ee7b7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text">total control</span><br>of your sales operations?</h2>
+    <p class="cta-sub rv">See how EzPOS transforms your business from day one.</p>
+    <div class="cta-btns rv">
+      <a href="mailto:me@akwasi.dev?subject=EzPOS Demo Request" class="btn-main" style="font-size:.95rem;padding:1rem 2.2rem">Request a Demo →</a>
+      <a href="tel:+233000000000" class="btn-ghost" style="font-size:.95rem;padding:1rem 2.2rem">📞 Schedule a Call</a>
+      <a href="mailto:me@akwasi.dev?subject=EzPOS Inquiry" class="btn-ghost" style="font-size:.95rem;padding:1rem 2.2rem;border-color:var(--mint);color:var(--mint)">✉️ Contact Sales</a>
+    </div>
+    <div class="cta-trust rv">
+      <span>🔒 Enterprise security</span>
+      <span>🇬🇭 Built for Ghana</span>
+      <span>📡 Works offline</span>
+      <span>📞 Dedicated onboarding</span>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <div class="ctn">
+    <div class="footer-inner">
+      <div>
+        <a href="#" class="logo">
+          <div class="logo-mark">Ez</div>
+          <div class="logo-name">EzPOS<span>.</span></div>
+        </a>
+        <p>Every Sale. Every Channel. Total Control.</p>
+      </div>
+      <div class="footer-links">
+        <a href="#problems">Why EzPOS</a>
+        <a href="#modules">Modules</a>
+        <a href="#impact">Impact</a>
+        <a href="#edge">Edge</a>
+        <a href="#cta">Contact</a>
+      </div>
+    </div>
+    <div class="built-by">Designed & Developed by <a href="https://adullamsolutions.com" target="_blank">Adullam Solutions Company Limited</a></div>
+  </div>
+</footer>
+
+<script>
+// Nav scroll
+const nav = document.getElementById('mainNav');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', scrollY > 50));
+
+// Mobile menu
+document.getElementById('mobTog').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+
+// Scroll reveal
+const rvs = document.querySelectorAll('.rv');
+const obs = new IntersectionObserver((entries) => {
+  entries.forEach((e, i) => {
+    if (e.isIntersecting) {
+      setTimeout(() => e.target.classList.add('vis'), i * 60);
+      obs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+rvs.forEach(el => obs.observe(el));
+
+// Metric bar fills
+const bars = document.querySelectorAll('.metric-bar-fill');
+const barObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.style.width = e.target.dataset.fill + '%';
+      barObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.5 });
+bars.forEach(b => barObs.observe(b));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    const t = document.querySelector(this.getAttribute('href'));
+    if (t) { t.scrollIntoView({ behavior: 'smooth', block: 'start' }); document.getElementById('navLinks').classList.remove('open'); }
+  });
+});
+</script>
+</body>
+</html>

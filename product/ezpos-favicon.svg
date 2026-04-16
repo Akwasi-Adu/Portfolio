@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#00e68a"/>
+      <stop offset="100%" stop-color="#00b36b"/>
+    </linearGradient>
+  </defs>
+  <rect width="32" height="32" rx="8" fill="url(#g)"/>
+  <text
+    x="16"
+    y="22"
+    text-anchor="middle"
+    font-family="'IBM Plex Mono', 'Courier New', monospace"
+    font-weight="600"
+    font-size="13"
+    letter-spacing="-0.5"
+    fill="#07080c"
+  >Ez</text>
+</svg>
