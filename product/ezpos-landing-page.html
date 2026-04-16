@@ -563,19 +563,46 @@ body::before {
   .mod-grid { grid-template-columns: repeat(2, 1fr); }
   .matrix-inner, .metrics-inner { grid-template-columns: 1fr; gap: 3rem; }
   .tech-inner { flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+  /* Keep mockup readable on tablets */
+  .mock-body { grid-template-columns: 1fr 0.8fr; gap: 0.6rem; }
 }
 
 @media (max-width: 640px) {
   .nav-links { display: none; flex-direction: column; position: absolute; top: 100%; left: 0; right: 0; background: rgba(7,8,12,0.97); backdrop-filter: blur(20px); padding: 1.5rem 2rem; border-bottom: 1px solid var(--border); gap: 1.2rem; }
   .nav-links.open { display: flex; }
   .mob-tog { display: block; }
-  .hero h1 { font-size: 2rem; }
-  .hero-btns { flex-direction: column; align-items: flex-start; }
-  .hero-stats { gap: 1.5rem; }
+
+  /* Hero text */
+  .hero { padding: 6rem 0 4rem; }
+  .hero h1 { font-size: 2.1rem; }
+  .hero-sub { max-width: 100%; font-size: 0.95rem; }
+
+  /* Stats: wrap so third item drops to second row instead of clipping */
+  .hero-stats { gap: 1.2rem 2rem; flex-wrap: wrap; }
+
+  /* Hero buttons */
+  .hero-btns { flex-direction: column; align-items: stretch; }
+  .btn-main, .btn-ghost { justify-content: center; }
+
+  /* POS mockup: collapse to single column, hide cart panel */
+  .mock-body { grid-template-columns: 1fr; padding: 0.9rem; }
+  .mock-cart { display: none; }
+  .mock-products { gap: 0.4rem; }
+
+  /* Sections */
   .pain-grid, .diff-grid { grid-template-columns: 1fr; }
   .mod-grid { grid-template-columns: 1fr; }
-  .cta-btns { flex-direction: column; align-items: center; }
+
+  /* Size matrix: allow horizontal scroll on small screens */
+  .matrix-visual { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .size-grid { min-width: 340px; }
+
+  /* CTA */
+  .cta-btns { flex-direction: column; align-items: stretch; }
+  .cta-btns .btn-main, .cta-btns .btn-ghost { text-align: center; justify-content: center; }
   .cta-trust { flex-direction: column; align-items: center; }
+
+  /* Footer */
   .footer-inner { flex-direction: column; gap: 1.5rem; text-align: center; }
   .footer-links { flex-wrap: wrap; justify-content: center; }
 }
