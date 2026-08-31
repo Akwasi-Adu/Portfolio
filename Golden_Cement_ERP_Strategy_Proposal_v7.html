@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Golden Cement ERP Strategy & Solution Proposal — v7</title>
+<style>
+:root {
+  --navy:#15385f;
+  --navy2:#0c2745;
+  --blue:#2c5aa0;
+  --gold:#c69b3c;
+  --gold2:#f6edda;
+  --green:#267a4c;
+  --greenbg:#eaf6ef;
+  --red:#9e3636;
+  --redbg:#fbefef;
+  --amber:#9a6b00;
+  --amberbg:#fff6db;
+  --ink:#273444;
+  --muted:#657487;
+  --line:#d9e0e7;
+  --panel:#f6f8fb;
+  --white:#fff;
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body {
+  font-family: "Aptos","Calibri","Segoe UI",Arial,sans-serif;
+  color:var(--ink); background:#eef2f6; margin:0; line-height:1.48;
+}
+.page {
+  width:min(1100px, calc(100% - 32px)); margin:22px auto; background:white;
+  box-shadow:0 8px 28px rgba(15,39,68,.10); border-radius:8px; overflow:hidden;
+}
+.cover {
+  min-height:760px; padding:74px 76px 54px; color:white; position:relative;
+  background:linear-gradient(135deg,var(--navy2) 0%,var(--navy) 58%,#284f78 100%);
+}
+.cover:after {
+  content:""; position:absolute; right:-120px; bottom:-180px; width:430px; height:430px;
+  border:50px solid rgba(198,155,60,.20); border-radius:50%;
+}
+.eyebrow { text-transform:uppercase; letter-spacing:2.2px; font-size:12px; font-weight:700; color:#e1c889; }
+.cover h1 { font-size:43px; line-height:1.08; margin:25px 0 10px; max-width:760px; }
+.cover h2 { font-size:22px; font-weight:400; color:#d9e7f4; max-width:760px; margin:0; }
+.cover .tagline { margin-top:38px; font-size:17px; max-width:760px; color:#f1f5f9; }
+.cover-meta {
+  position:absolute; left:76px; bottom:58px; right:76px; display:grid; grid-template-columns:1fr 1fr; gap:30px;
+  border-top:1px solid rgba(255,255,255,.3); padding-top:22px; font-size:13px;
+}
+.cover-meta strong { color:#f0d99a; }
+.toolbar { display:flex; justify-content:flex-end; padding:12px 18px; background:#fff; border-bottom:1px solid var(--line); }
+.toolbar button {
+  border:1px solid var(--navy); background:var(--navy); color:white; padding:9px 14px; border-radius:5px; cursor:pointer;
+}
+.content { padding:48px 58px 66px; }
+h1.section-title {
+  color:var(--navy); font-size:25px; margin:38px 0 18px; padding-bottom:7px; border-bottom:3px solid var(--gold);
+}
+h2 { color:var(--navy); font-size:18px; margin:28px 0 10px; }
+h3 { color:#33465b; font-size:15px; margin:20px 0 8px; }
+p, li { font-size:13px; }
+.lead { font-size:16px; line-height:1.58; color:#34475b; }
+.small { font-size:11px; color:var(--muted); }
+.muted { color:var(--muted); }
+.grid2 { display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+.grid3 { display:grid; grid-template-columns:repeat(3,1fr); gap:16px; }
+.grid4 { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; }
+.card {
+  border:1px solid var(--line); background:white; border-radius:7px; padding:18px; break-inside:avoid;
+}
+.card h3 { margin-top:0; color:var(--navy); }
+.kpi { font-size:26px; font-weight:750; color:var(--navy); }
+.kpi-label { font-size:11px; text-transform:uppercase; letter-spacing:.8px; color:var(--muted); }
+.highlight {
+  background:#edf4fb; border-left:5px solid var(--blue); padding:18px 20px; margin:18px 0; border-radius:4px;
+}
+.recommend {
+  background:linear-gradient(90deg,#eaf6ef,#f4fbf7); border:1px solid #b9dfca;
+  border-left:6px solid var(--green); padding:21px; margin:20px 0; border-radius:6px;
+}
+.warning { background:var(--amberbg); border-left:5px solid #e2b338; padding:16px 18px; margin:16px 0; }
+.risk { background:var(--redbg); border-left:5px solid #cc6969; padding:16px 18px; margin:16px 0; }
+.quote {
+  padding:22px 24px; background:var(--navy); color:white; border-radius:7px; font-size:17px; line-height:1.55; margin:22px 0;
+}
+.quote strong { color:#f0d99a; }
+table { width:100%; border-collapse:collapse; margin:15px 0 22px; font-size:11.5px; break-inside:auto; }
+th { background:var(--navy); color:white; text-align:left; padding:10px 8px; vertical-align:top; }
+td { border:1px solid var(--line); padding:9px 8px; vertical-align:top; }
+tr:nth-child(even) td { background:#fafbfd; }
+.good { color:var(--green); font-weight:700; }
+.mid { color:var(--amber); font-weight:700; }
+.weak { color:var(--red); font-weight:700; }
+.badge {
+  display:inline-block; border-radius:99px; padding:3px 8px; font-size:10px; font-weight:700; margin-right:4px;
+}
+.badge-blue { background:#eaf1fb; color:var(--blue); }
+.badge-green { background:var(--greenbg); color:var(--green); }
+.badge-gold { background:var(--gold2); color:#775513; }
+.option {
+  border-top:5px solid var(--navy); position:relative; overflow:hidden;
+}
+.option.recommended { border-top-color:var(--green); }
+.ribbon {
+  position:absolute; right:-43px; top:18px; transform:rotate(35deg); background:var(--green); color:#fff;
+  padding:5px 45px; font-size:10px; font-weight:700; letter-spacing:.5px;
+}
+.option .name { font-weight:800; font-size:18px; color:var(--navy); margin-bottom:5px; }
+.option .role { font-size:11px; text-transform:uppercase; letter-spacing:.8px; color:var(--muted); }
+.cost { font-size:20px; font-weight:800; color:var(--navy); margin:10px 0 2px; }
+.score {
+  display:inline-flex; align-items:center; gap:6px; padding:4px 8px; border-radius:4px; background:#f1f5f9; font-weight:700; font-size:11px;
+}
+.bar-row { display:grid; grid-template-columns:130px 1fr 110px; gap:10px; align-items:center; margin:10px 0; font-size:11px; }
+.bar-track { background:#e7ecf1; border-radius:10px; overflow:hidden; height:14px; }
+.bar-fill { height:100%; background:linear-gradient(90deg,var(--blue),var(--navy)); }
+.bar-fill.custom { background:linear-gradient(90deg,#4ca66d,var(--green)); }
+.steps { counter-reset:step; margin:12px 0; }
+.step { position:relative; margin:0 0 13px 35px; padding:0 0 13px 15px; border-left:2px solid #d7e1eb; }
+.step:before {
+  counter-increment:step; content:counter(step); position:absolute; left:-15px; top:-1px; width:28px; height:28px;
+  border-radius:50%; background:var(--navy); color:white; display:flex; align-items:center; justify-content:center; font-size:11px; font-weight:700;
+}
+.checklist { list-style:none; padding:0; }
+.checklist li { padding-left:21px; position:relative; margin:6px 0; }
+.checklist li:before { content:"✓"; position:absolute; left:0; color:var(--green); font-weight:800; }
+.xlist { list-style:none; padding:0; }
+.xlist li { padding-left:21px; position:relative; margin:6px 0; }
+.xlist li:before { content:"×"; position:absolute; left:0; color:var(--red); font-weight:800; }
+.toc { columns:2; column-gap:35px; }
+.toc a { display:block; text-decoration:none; color:var(--navy); padding:5px 0; font-size:12px; border-bottom:1px dotted #dbe2e9; }
+.arch {
+  font-family:"Cascadia Mono","Consolas",monospace; font-size:11.5px; line-height:1.6; background:#102c4b; color:#e9f1f8; padding:20px; border-radius:6px; overflow:auto;
+}
+.footer {
+  margin-top:45px; padding-top:18px; border-top:2px solid var(--navy); font-size:10px; color:var(--muted);
+  display:flex; justify-content:space-between; gap:20px;
+}
+.page-break { break-before:page; page-break-before:always; }
+.nowrap { white-space:nowrap; }
+.source-list li { margin:8px 0; font-size:10.5px; }
+a { color:var(--blue); }
+@media (max-width:800px) {
+  .content { padding:30px 22px; }
+
+  .cover {
+    min-height:0;
+    padding:42px 28px 38px;
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+  }
+
+  .cover:after {
+    right:-180px;
+    bottom:-230px;
+    width:390px;
+    height:390px;
+    border-width:42px;
+  }
+
+  .eyebrow {
+    font-size:10px;
+    letter-spacing:1.5px;
+  }
+
+  .cover h1 {
+    font-size:clamp(34px, 10vw, 48px);
+    line-height:1.08;
+    margin:20px 0 14px;
+    max-width:none;
+    overflow-wrap:anywhere;
+  }
+
+  .cover h2 {
+    font-size:clamp(18px, 5vw, 24px);
+    line-height:1.45;
+    max-width:none;
+  }
+
+  .cover .tagline {
+    margin-top:26px;
+    font-size:15px;
+    line-height:1.55;
+    max-width:none;
+  }
+
+  .cover-meta {
+    position:relative;
+    left:auto;
+    right:auto;
+    bottom:auto;
+    margin-top:34px;
+    padding-top:20px;
+    grid-template-columns:1fr;
+    gap:18px;
+    width:100%;
+    font-size:12px;
+    line-height:1.55;
+    z-index:2;
+  }
+
+  .cover-meta > div {
+    min-width:0;
+  }
+
+  .grid2,.grid3,.grid4 { grid-template-columns:1fr; }
+  .toc { columns:1; }
+  .bar-row { grid-template-columns:90px 1fr 85px; }
+  table { font-size:10px; }
+  .content { overflow-x: hidden; }
+}
+@media (max-width:480px) {
+  .page {
+    width:100%;
+    margin:0;
+    border-radius:0;
+  }
+
+  .cover {
+    padding:34px 22px 32px;
+  }
+
+  .cover h1 {
+    font-size:clamp(32px, 11vw, 42px);
+    line-height:1.06;
+  }
+
+  .cover h2 {
+    font-size:17px;
+    line-height:1.42;
+  }
+
+  .cover .tagline {
+    font-size:14px;
+    line-height:1.5;
+  }
+
+  .cover-meta {
+    margin-top:28px;
+    padding-top:18px;
+    gap:16px;
+    font-size:11.5px;
+  }
+
+  .toolbar {
+    padding:10px 12px;
+  }
+}
+
+@media print {
+  body { background:white; }
+  .page { width:100%; margin:0; box-shadow:none; border-radius:0; }
+  .toolbar { display:none; }
+  .content { padding:34px 42px; }
+  .cover { min-height:98vh; }
+  a { color:inherit; text-decoration:none; }
+  .card, .highlight, .recommend, .warning, .risk, table { break-inside:avoid; }
+}
+
+.ref-marker {
+  font-size: 9px;
+  vertical-align: super;
+  color: var(--blue);
+  font-weight: 800;
+  margin-left: 2px;
+}
+.source-url {
+  display:block;
+  margin-top:3px;
+  font-size:9.5px;
+  color:var(--blue);
+  word-break:break-all;
+}
+.arch-svg-wrap {
+  margin:18px 0 22px;
+  border:1px solid #d5dee8;
+  border-radius:8px;
+  background:#f7f9fc;
+  padding:14px;
+  break-inside:avoid;
+}
+.arch-svg {
+  width:100%;
+  height:auto;
+  display:block;
+}
+.arch-note {
+  margin-top:10px;
+  font-size:10.5px;
+  color:var(--muted);
+}
+.arch-legend {
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  margin-top:12px;
+}
+.arch-legend .card {
+  padding:12px;
+}
+@media (max-width:800px) {
+  .arch-legend { grid-template-columns:1fr; }
+}
+
+
+.ref-marker a {
+  color: var(--blue);
+  text-decoration: none;
+  font-weight: 800;
+}
+.ref-marker a:hover {
+  text-decoration: underline;
+}
+.source-link {
+  display:inline-block;
+  margin-top:7px;
+  font-size:10px;
+  font-weight:700;
+  color:var(--blue);
+  text-decoration:none;
+  border-bottom:1px solid rgba(44,90,160,.35);
+}
+.source-link:hover {
+  border-bottom-color:var(--blue);
+}
+.back-link {
+  display:inline-block;
+  margin-top:6px;
+  margin-left:10px;
+  font-size:9.5px;
+  color:var(--muted);
+  text-decoration:none;
+}
+.back-link:hover {
+  color:var(--blue);
+}
+.source-domain {
+  display:block;
+  margin-top:3px;
+  font-size:9px;
+  color:var(--muted);
+  word-break:break-word;
+}
+html {
+  scroll-padding-top: 20px;
+}
+
+
+.table-scroll {
+  width: 100%;
+}
+.scroll-cue {
+  display: none;
+  font-size: 10px;
+  color: var(--muted);
+  margin: 4px 0 8px;
+}
+.table-scroll.wide-table table {
+  min-width: 820px;
+}
+@media (max-width:800px) {
+  .table-scroll.wide-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    border: 1px solid var(--line);
+    border-radius: 8px;
+    background: white;
+    margin: 12px 0 18px;
+  }
+
+  .table-scroll.wide-table table {
+    margin: 0;
+    min-width: 820px;
+  }
+
+  .table-scroll.wide-table th,
+  .table-scroll.wide-table td {
+    font-size: 10.5px;
+    min-width: 140px;
+  }
+
+  .table-scroll.wide-table th:first-child,
+  .table-scroll.wide-table td:first-child {
+    position: sticky;
+    left: 0;
+    z-index: 2;
+    background: inherit;
+  }
+
+  .table-scroll.wide-table th:first-child {
+    background: var(--navy);
+    z-index: 3;
+  }
+
+  .table-scroll.wide-table td:first-child {
+    background: #fafbfd;
+    box-shadow: 2px 0 0 rgba(217,224,231,.9);
+    min-width: 150px;
+  }
+
+  .scroll-cue {
+    display: block;
+  }
+}
+
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="toolbar"><button onclick="window.print()">Print / Save as PDF</button></div>
+
+  <section class="cover">
+    <div class="eyebrow">Confidential — ERP Strategy & Solution Proposal</div>
+    <h1>Golden Cement Enterprise Resource Planning Platform</h1>
+    <h2>Comparative assessment of SAP, Sage X3, Microsoft Dynamics 365 and a purpose-built Golden Cement ERP</h2>
+    <p class="tagline">A decision framework for selecting an ERP platform that combines manufacturing control, financial integrity, plant integration, operational speed and long-term commercial value.</p>
+    <div class="cover-meta">
+      <div>
+        <strong>Prepared for</strong><br>
+        Golden Cement<br>
+        Cement Manufacturing
+      </div>
+      <div>
+        <strong>Prepared by</strong><br>
+        Akwasi Adu-Kyeremeh — ERP Solutions Architect<br>
+        me@akwasi.dev · akwasi.dev<br>
+        31 August 2026
+      </div>
+    </div>
+  </section>
+
+  <div class="content">
+    <h1 class="section-title">Document Purpose</h1>
+    <p class="lead">Golden Cement is making a foundational technology decision at the start of its manufacturing operations. The objective should not be to purchase the best-known ERP brand in isolation; it should be to select the platform and implementation model that best supports the company's production, quality, maintenance, stores, procurement, finance, dealer, credit, dispatch and management requirements over the next five to ten years.</p>
+
+    <div class="highlight">
+      <strong>Scope of this proposal.</strong> This document compares four practical strategic routes: <strong>SAP S/4HANA Cloud</strong> as the global enterprise benchmark, <strong>Sage X3</strong> as a strong process-manufacturing ERP, <strong>Microsoft Dynamics 365 Finance + Supply Chain Management</strong> as Microsoft's enterprise manufacturing platform (with Business Central Premium shown as a lower-cost alternative), and a <strong>purpose-built Golden Cement ERP</strong> designed specifically around Golden Cement's operating model.
+    </div>
+
+    <h2>Contents</h2>
+    <div class="toc">
+      <a href="#executive">1. Executive Recommendation</a>
+      <a href="#requirements">2. Golden Cement ERP Requirements</a>
+      <a href="#options">3. Strategic ERP Options</a>
+      <a href="#features">4. Functional Comparison</a>
+      <a href="#costs">5. Cost & Five-Year TCO</a>
+      <a href="#custom">6. Purpose-Built Golden Cement ERP</a>
+      <a href="#architecture">7. Solution Architecture</a>
+      <a href="#implementation">8. Implementation Approach</a>
+      <a href="#risk">9. Risk & Business Continuity</a>
+      <a href="#commercial">10. Preliminary Commercial Model</a>
+      <a href="#next">11. Recommended Next Steps</a>
+      <a href="#assumptions">12. Assumptions & Sources</a>
+    </div>
+
+    <section id="executive">
+      <h1 class="section-title">1. Executive Recommendation</h1>
+      <div class="recommend">
+        <h3>Recommended Direction: Purpose-Built Golden Cement ERP — subject to formal discovery and specialist validation</h3>
+        <p>For a greenfield cement operation, Golden Cement has a rare opportunity to avoid inheriting decades of generic ERP complexity. A purpose-built platform can reproduce the <strong>relevant enterprise controls</strong> expected from leading ERP systems while being designed directly around Golden Cement's actual plant, quality, maintenance, dealer, credit, weighbridge and dispatch workflows.</p>
+        <p>The recommended approach is therefore to complete a structured ERP Discovery & Solution Blueprint, benchmark every critical requirement against SAP, Sage and Microsoft, obtain formal quotations against the same signed scope, and proceed with the purpose-built solution where it can satisfy the required control standard while delivering a stronger combination of operational fit, adaptability and total ownership value.</p>
+      </div>
+
+      <div class="grid4">
+        <div class="card"><div class="kpi">Public</div><div class="kpi-label">Competitor price anchors shown from verifiable sources</div></div>
+        <div class="card"><div class="kpi">4–6 mo.</div><div class="kpi-label">Target first operational pilot</div></div>
+        <div class="card"><div class="kpi">≤50</div><div class="kpi-label">Full named users proposed in initial custom user band</div></div>
+        <div class="card"><div class="kpi">1 Team</div><div class="kpi-label">Direct accountability from design through support</div></div>
+      </div>
+
+      <div class="quote"><strong>The proposition is not “custom software is better than SAP.”</strong> The proposition is: benchmark the controls Golden Cement actually requires against mature enterprise ERPs, implement those controls rigorously, and combine them with a platform designed around the precise operating model of the plant rather than paying for complexity that may add little value to this specific operation.</div>
+
+      <h2>Why the custom option deserves serious consideration</h2>
+      <div class="grid2">
+        <div class="card">
+          <h3>Enterprise capability without enterprise overhead</h3>
+          <ul class="checklist">
+            <li>Finance, procurement, inventory, manufacturing, quality and maintenance controls benchmarked against mature ERP systems.</li>
+            <li>Purpose-built cement production, laboratory, weighbridge and dispatch workflows.</li>
+            <li>Modern role-based approvals, audit trails, reporting, APIs, security and disaster-recovery design.</li>
+            <li>No need to reproduce global features Golden Cement does not require.</li>
+          </ul>
+        </div>
+        <div class="card">
+          <h3>Commercial and operational agility</h3>
+          <ul class="checklist">
+            <li>Potentially lower total ownership cost than tier-one enterprise ERP deployments, while avoiding unnecessary per-user escalation in the proposed initial user band.</li>
+            <li>Changes can be made directly against Golden Cement's priorities instead of waiting on vendor/partner product constraints.</li>
+            <li>Local product ownership, implementation support and direct access to the solution team.</li>
+            <li>API-first architecture preserves the option to coexist with or integrate into SAP, Sage or Microsoft later.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section id="requirements" class="page-break">
+      <h1 class="section-title">2. Golden Cement ERP Requirements</h1>
+      <p>For a full cement manufacturing operation, the ERP must support more than accounting and inventory. It must connect the commercial business to a process-manufacturing environment in which raw materials, production recipes, plant availability, laboratory quality, energy, equipment reliability and truck dispatch directly affect profitability.</p>
+
+      <table>
+        <thead><tr><th>Functional Domain</th><th>Core Requirements</th><th>Priority</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Finance & Controlling</strong></td><td>GL, AP, AR, banking, fixed assets, budgets, cost centres, profit centres, inventory valuation, production costing, WIP, standard vs actual cost, variance analysis, month-end controls.</td><td class="good">Critical</td></tr>
+          <tr><td><strong>Procurement</strong></td><td>Requisitions, approvals, RFQs, bid comparison, POs, contracts, receipts, supplier performance, invoice matching, landed cost and audit controls.</td><td class="good">Critical</td></tr>
+          <tr><td><strong>Inventory & Engineering Stores</strong></td><td>Multiple stores/warehouses, bins, lot/batch tracking, stock transfers, reservations, cycle counts, valuation, reorder policies, critical spares, slow-moving stock.</td><td class="good">Critical</td></tr>
+          <tr><td><strong>Process Manufacturing</strong></td><td>Recipes/formulas, production versions, process/batch orders, material consumption, yield, losses, WIP, actual output, energy/fuel capture, mass balance and production KPIs.</td><td class="good">Critical</td></tr>
+          <tr><td><strong>Quality & Laboratory</strong></td><td>Sampling, test parameters, tolerance ranges, inspection lots, release/hold/reject, retests, certificates, non-conformance and trend analysis.</td><td class="good">Critical</td></tr>
+          <tr><td><strong>Plant Maintenance</strong></td><td>Equipment hierarchy, preventive schedules, breakdowns, work orders, technicians, spares, downtime, MTBF, MTTR, shutdown planning and maintenance cost.</td><td class="good">Critical</td></tr>
+          <tr><td><strong>Sales, Dealer & Credit</strong></td><td>Customer/dealer master, price lists, discounts, territories, credit limits, exposure, blocked orders, allocations, deliveries, invoices and receivables.</td><td class="good">Critical</td></tr>
+          <tr><td><strong>Dispatch & Weighbridge</strong></td><td>Truck registration, queues, tare/gross/net, loading authorization, delivery document, seal/gate pass, turnaround time, GPS/POD and exception control.</td><td class="good">Critical</td></tr>
+          <tr><td><strong>Integration</strong></td><td>Weighbridges, PLC/SCADA/historian interfaces, laboratory systems, banks, payment channels, GPS/fleet, email/SMS and external services.</td><td class="good">Critical</td></tr>
+          <tr><td><strong>Analytics & Governance</strong></td><td>Executive dashboards, plant KPIs, security, RBAC, approvals, segregation of duties, audit trail, backups, DR, change control and integration monitoring.</td><td class="good">Critical</td></tr>
+        </tbody>
+      </table>
+
+      <div class="warning"><strong>Important discovery point:</strong> The final design depends materially on whether Golden Cement is an integrated clinker-producing plant, a clinker grinding/packing operation, or a combination. That question affects quarry, kiln, process-order, energy, quality and costing scope.</div>
+    </section>
+
+    <section id="options">
+      <h1 class="section-title">3. Strategic ERP Options</h1>
+      <div class="grid2">
+        <div class="card option">
+          <div class="role">Enterprise Benchmark</div>
+          <div class="name">SAP S/4HANA Cloud</div>
+          <p>Best-in-class breadth across finance, procurement, manufacturing, quality, maintenance, warehouse, sales and enterprise controls. Strongest ecosystem and long-term vendor continuity.</p>
+          <div class="cost">Golden Cement planning TCO: $800k–$1.8m+</div>
+          <div class="small">≈ GH₵9.01m–GH₵20.26m+ · not an SAP quotation</div>
+          <p><span class="badge badge-blue">Highest maturity</span><span class="badge badge-gold">Highest cost</span></p>
+        </div>
+
+        <div class="card option">
+          <div class="role">Process-Manufacturing Alternative</div>
+          <div class="name">Sage X3</div>
+          <p>Strong process manufacturing, formula/recipe management, quality, traceability, finance and supply-chain capability with less complexity than SAP.</p>
+          <div class="cost">Golden Cement planning TCO: $350k–$900k+</div>
+          <div class="small">≈ GH₵3.94m–GH₵10.13m+ · final price requires Sage partner quote</div>
+          <p><span class="badge badge-blue">Strong process fit</span><span class="badge badge-gold">Partner dependent</span></p>
+        </div>
+
+        <div class="card option">
+          <div class="role">Microsoft Enterprise ERP</div>
+          <div class="name">Dynamics 365 Finance + Supply Chain</div>
+          <p>Modern enterprise finance and supply-chain platform with explicit process-manufacturing support, formulas, batch orders and deep Microsoft/Azure/Power Platform integration.</p>
+          <div class="cost">Golden Cement planning TCO: $450k–$900k+</div>
+          <div class="small">≈ GH₵5.07m–GH₵10.13m+ · not a Microsoft partner quotation</div>
+          <p><span class="badge badge-blue">Strong ecosystem</span><span class="badge badge-gold">Implementation complexity</span></p>
+        </div>
+
+        <div class="card option recommended">
+          <div class="ribbon">RECOMMENDED</div>
+          <div class="role">Purpose-Built Platform</div>
+          <div class="name">Golden Cement ERP</div>
+          <p>Custom enterprise platform designed around Golden Cement's exact cement, quality, maintenance, dealer, credit, weighbridge, dispatch and management workflows.</p>
+          <div class="cost">Proposed 5-year TCO: GH₵3.30m–GH₵4.95m</div>
+          <div class="small">≈ $293k–$440k at the planning FX rate</div>
+          <p><span class="badge badge-green">Best fit potential</span><span class="badge badge-green">Strong value proposition</span></p>
+        </div>
+      </div>
+
+      <h2>Microsoft Business Central Premium — lower-cost alternative</h2>
+      <p>Business Central Premium deserves explicit consideration because it may be the <strong>lowest-cost packaged route</strong> in a standard manufacturing scenario. Microsoft's current public list price is <strong>$110 per full Premium user per month</strong>, so 20 full users equal approximately <strong>$26,400 per year</strong> before partner services, extensions and add-ons. A current Microsoft manufacturing partner publicly advertises a 16-week Business Central manufacturing implementation starting at <strong>$80,000</strong>, including core financials, manufacturing configuration, data migration, training, testing and go-live support. A separate Microsoft Marketplace manufacturing package is advertised at $35,900 but must be combined with accounting and distribution packages. Golden Cement should therefore not assume that the custom option is automatically the cheapest. The key fit-gap question is whether standard Business Central manufacturing adequately covers cement-specific process/formula requirements, laboratory quality, plant maintenance, weighbridge/dispatch and required integrations without substantial extensions. For deeper formula/batch-oriented process manufacturing, Dynamics 365 Supply Chain Management is the more direct Microsoft comparator.</p>
+    </section>
+
+    <section id="features" class="page-break">
+      <h1 class="section-title">4. Functional & Strategic Comparison</h1>
+      <div class="scroll-cue">Swipe horizontally to view all columns →</div>
+      <div class="table-scroll wide-table">
+<table>
+        <thead>
+          <tr><th>Criterion</th><th>SAP S/4HANA</th><th>Sage X3</th><th>Dynamics 365 F+SCM</th><th>Purpose-Built Golden Cement ERP</th></tr>
+        </thead>
+        <tbody>
+          <tr><td><strong>Finance / Accounting Control</strong></td><td class="good">Excellent</td><td class="good">Very strong</td><td class="good">Excellent</td><td><span class="mid">Target: Very strong</span><br>Designed and independently validated against required controls.</td></tr>
+          <tr><td><strong>Process Manufacturing</strong></td><td class="good">Excellent</td><td class="good">Very strong</td><td class="good">Excellent</td><td><span class="good">Purpose-built</span><br>Cement recipes, production orders, yield, mass balance and cost designed specifically for plant requirements.</td></tr>
+          <tr><td><strong>Quality / Laboratory</strong></td><td class="good">Excellent</td><td class="good">Very strong</td><td class="good">Very strong</td><td><span class="good">Purpose-built</span><br>Can mirror actual Golden Cement sampling, tests and release rules.</td></tr>
+          <tr><td><strong>Plant Maintenance</strong></td><td class="good">Excellent</td><td class="good">Strong</td><td class="good">Excellent</td><td><span class="good">Purpose-built</span><br>Focus only on plant hierarchy, PM, breakdowns, spares and shutdown workflows actually used.</td></tr>
+          <tr><td><strong>Procurement / Inventory</strong></td><td class="good">Excellent</td><td class="good">Excellent</td><td class="good">Excellent</td><td class="good">Strong / tailored</td></tr>
+          <tr><td><strong>Dealer / Credit / Allocation</strong></td><td class="good">Strong</td><td class="good">Strong</td><td class="good">Strong</td><td class="good">Excellent fit potential</td></tr>
+          <tr><td><strong>Weighbridge / Dispatch</strong></td><td class="mid">Usually integrated/customized</td><td class="mid">Usually integrated/customized</td><td class="mid">Usually integrated/customized</td><td class="good">Native core workflow</td></tr>
+          <tr><td><strong>Golden Cement-specific UX</strong></td><td class="mid">Configurable</td><td class="good">Customisable</td><td class="good">Highly extensible</td><td class="good">Designed from first principles</td></tr>
+          <tr><td><strong>Change / Innovation Speed</strong></td><td class="weak">Partner / release dependent</td><td class="mid">Partner dependent</td><td class="mid">Partner + platform dependent</td><td class="good">Direct product team</td></tr>
+          <tr><td><strong>Global Ecosystem / Vendor Continuity</strong></td><td class="good">Best</td><td class="good">Strong</td><td class="good">Best-class ecosystem</td><td class="weak">Must be mitigated contractually and operationally</td></tr>
+          <tr><td><strong>Local Direct Support</strong></td><td class="mid">Partner model</td><td class="mid">Partner model</td><td class="mid">Partner model</td><td class="good">Direct solution ownership</td></tr>
+          <tr><td><strong>5-Year TCO</strong></td><td class="weak">Highest</td><td class="mid">Medium</td><td class="mid">Medium-high</td><td class="good">Lowest comparable enterprise path</td></tr>
+        </tbody>
+      </table>
+      </div>
+
+      <h2>Product maturity today vs Golden Cement fit after implementation</h2>
+      <table>
+        <thead><tr><th></th><th>SAP</th><th>Sage X3</th><th>Dynamics 365</th><th>Purpose-Built</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Product maturity available today</strong></td><td>5 / 5</td><td>4.5 / 5</td><td>5 / 5</td><td>2.5 / 5 — solution must be built</td></tr>
+          <tr><td><strong>Potential Golden Cement-specific fit after implementation</strong></td><td>4 / 5</td><td>4.2 / 5</td><td>4.3 / 5</td><td><strong>5 / 5 target</strong></td></tr>
+        </tbody>
+      </table>
+      <p class="small">This distinction is deliberate. The custom option should not be presented as more mature than SAP or Microsoft today. Its advantage is the ability to convert a validated Golden Cement blueprint into a much tighter operational fit without carrying global ERP complexity.</p>
+
+      <h2>Where the custom solution should match the enterprise systems</h2>
+      <div class="grid3">
+        <div class="card"><h3>Must Match</h3><ul class="checklist"><li>Double-entry accounting</li><li>Inventory integrity</li><li>Production costing</li><li>Audit trails</li><li>RBAC / approvals</li><li>Batch/lot traceability</li><li>Backups & DR</li></ul></div>
+        <div class="card"><h3>Should Outperform</h3><ul class="checklist"><li>Dealer workflow</li><li>Credit + allocation</li><li>Weighbridge / dispatch</li><li>Mobile/field UX</li><li>Local integrations</li><li>Plant-specific dashboards</li><li>Change turnaround</li></ul></div>
+        <div class="card"><h3>Should Not Replicate</h3><ul class="xlist"><li>Global payroll for every country</li><li>Global tax/localization catalogues</li><li>Massive generic GRC suites</li><li>Global supplier marketplaces</li><li>Thousands of unused configuration paths</li><li>Industry features irrelevant to cement</li></ul></div>
+      </div>
+    </section>
+
+    <section id="costs">
+      <h1 class="section-title" id="pricing-comparison">5. Pricing Evidence & Five-Year Total Cost of Ownership</h1>
+
+      <div class="recommend">
+        <h3>Pricing methodology: public evidence first, planning estimate second</h3>
+        <p>To make this comparison independently auditable, this proposal separates <strong>publicly verifiable price anchors</strong> from <strong>Golden Cement planning allowances</strong>. Public anchors show what a client can reasonably confirm online today or in published procurement/partner material. Planning allowances then estimate what a broader cement-manufacturing deployment may cost after adding implementation, integrations, migration, training, support and complexity. The planning figures are not represented as vendor quotations.</p>
+      </div>
+
+      <div class="scroll-cue">Swipe horizontally to view all columns →</div>
+      <div class="table-scroll wide-table">
+<table>
+        <thead>
+          <tr>
+            <th>Solution</th>
+            <th>Publicly Verifiable Baseline / Market Anchor</th>
+            <th>What the Baseline Does NOT Prove</th>
+            <th>Golden Cement 5-Year Planning Allowance</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>SAP S/4HANA Cloud Public Edition</strong><span class="ref-marker"><a href="#source-1" title="Jump to source 1">[1]</a></span></td>
+            <td>
+              A UK Government Digital Marketplace pricing document from an SAP Gold Partner publishes a <strong>15-FUE base edition at £74,160/year</strong>, with some compliance/BTP items listed separately.
+              <br><span class="small">Public procurement benchmark, not a universal/current SAP list price for Ghana.</span>
+            </td>
+            <td>Does not include a Golden Cement-specific implementation, cement process design, plant interfaces, migration, change management, training or post-go-live services.</td>
+            <td><strong>$800k–$1.8m+</strong><br><span class="small">≈ GH₵9.01m–GH₵20.26m+</span></td>
+          </tr>
+
+          <tr>
+            <td><strong>Sage X3</strong><span class="ref-marker"><a href="#source-2" title="Jump to source 2">[2]</a><a href="#source-3" title="Jump to source 3">[3]</a></span></td>
+            <td>
+              Sage itself requires customers to request pricing. A current Sage X3 partner publishes a <strong>5-full-user manufacturing subscription starting at $25,000/year</strong> and <strong>implementation services starting at $150,000</strong>.
+            </td>
+            <td>Five users are not Golden Cement's 20-user planning case; add-ons, hosting, support, integrations, process complexity and implementation scope can materially change cost.</td>
+            <td><strong>$350k–$900k+</strong><br><span class="small">≈ GH₵3.94m–GH₵10.13m+</span></td>
+          </tr>
+
+          <tr>
+            <td><strong>Dynamics 365 Finance + Supply Chain Management</strong><span class="ref-marker"><a href="#source-4" title="Jump to source 4">[4]</a><a href="#source-5" title="Jump to source 5">[5]</a><a href="#source-6" title="Jump to source 6">[6]</a></span></td>
+            <td>
+              Microsoft currently lists Finance and Supply Chain Management at <strong>$210/user/month</strong> each. Eligible users can add the second qualifying application at a <strong>$30 attach price</strong>. If all 20 users required both applications, the simple list-price reference is approximately <strong>$57,600/year</strong>. Microsoft Marketplace also contains a Finance + SCM implementation offer at <strong>CA$100,000</strong>.
+            </td>
+            <td>The implementation offer is a defined partner package, not a cement-specific quote. Additional plant interfaces, custom development, data complexity, support and modules can raise TCO substantially.</td>
+            <td><strong>$450k–$900k+</strong><br><span class="small">≈ GH₵5.07m–GH₵10.13m+</span></td>
+          </tr>
+
+          <tr>
+            <td><strong>Business Central Premium</strong><span class="ref-marker"><a href="#source-7" title="Jump to source 7">[7]</a><a href="#source-8" title="Jump to source 8">[8]</a></span></td>
+            <td>
+              Microsoft lists Premium at <strong>$110/user/month</strong>, or <strong>$26,400/year for 20 full users</strong>. A Microsoft manufacturing partner publicly advertises a <strong>$80,000 / 16-week</strong> manufacturing implementation including financials, manufacturing configuration, migration, training, testing and go-live support.
+            </td>
+            <td>Standard packages do not establish fit for Golden Cement's full process-manufacturing, maintenance, laboratory, weighbridge, dispatch and plant-integration requirements. Extensions may materially change cost.</td>
+            <td><strong>$220k–$500k+</strong><br><span class="small">≈ GH₵2.48m–GH₵5.63m+</span></td>
+          </tr>
+
+          <tr class="total-row">
+            <td><strong>Purpose-Built Golden Cement ERP</strong></td>
+            <td>
+              <strong>Our proposed commercial model:</strong> initial implementation budget <strong>GH₵1.80m–GH₵2.70m</strong>; annual platform, hosting, maintenance and standard support <strong>GH₵300k–GH₵450k/year</strong>; initial deployment includes up to 50 full named users.
+            </td>
+            <td>The product must still be validated through discovery, specialist review, prototype, UAT, security testing, continuity controls and agreed service levels. It does not have the global vendor ecosystem of SAP/Microsoft/Sage.</td>
+            <td class="good"><strong>GH₵3.30m–GH₵4.95m</strong><br><span class="small">≈ $293k–$440k</span></td>
+          </tr>
+        </tbody>
+      </table>
+      </div>
+
+      <p class="small"><strong>Source markers:</strong> [1]–[8] refer to the independently checkable pricing and implementation sources listed in <strong>Appendix A — Pricing & Capability Sources</strong> near the end of this proposal.</p>
+
+      <div class="warning">
+        <strong>Important conclusion:</strong> the purpose-built solution is <strong>not presented as the cheapest ERP under every scenario</strong>. Business Central can be cheaper where Golden Cement's requirements fit standard functionality. The custom proposition is instead intended to provide a particularly strong balance of enterprise controls, cement-specific fit, direct adaptability, user-cost predictability and five-year ownership cost.
+      </div>
+
+      <h2>20-user licensing perspective</h2>
+      <table>
+        <thead><tr><th>Product</th><th>20-User Public Reference</th><th>Interpretation</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Business Central Premium</strong></td><td><strong>$26,400/year</strong></td><td>20 × $110 × 12. Clear public Microsoft list price. Manufacturing is included in Premium, but extensions/implementation/support are separate.</td></tr>
+          <tr><td><strong>Dynamics 365 Finance + SCM</strong></td><td><strong>≈ $57,600/year</strong></td><td>Reference assumes each of 20 users requires a $210 base application plus eligible $30 attach application. Actual license mix may be lower or higher.</td></tr>
+          <tr><td><strong>Sage X3</strong></td><td><strong>Quote required</strong></td><td>Sage does not publish a comparable 20-user rate card. Public partner anchor: 5-user manufacturing subscription starts around $25,000/year.</td></tr>
+          <tr><td><strong>SAP S/4HANA Cloud</strong></td><td><strong>Not a simple 20 × user price</strong></td><td>SAP Cloud ERP uses FUE/use categories and commercial packages. Public 15-FUE procurement examples are more meaningful than multiplying named users.</td></tr>
+          <tr><td><strong>Purpose-Built Golden Cement ERP</strong></td><td><strong>Up to 50 full users included</strong></td><td>Designed to avoid additional full-user licence cost at Golden Cement's current 20-user baseline within the initial agreed user band.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Why packaged implementation prices can differ dramatically</h2>
+      <p>A publicly advertised “implementation starting at $80,000” and a $500,000 implementation estimate can both be legitimate because they may describe very different scopes. Key cost drivers include process redesign, number of legal entities/sites, process manufacturing depth, finance/control requirements, historical data migration, plant and laboratory interfaces, custom development, reporting, testing, user training, change management, go-live coverage and support obligations.</p>
+
+      <div class="highlight">
+        <strong>Golden Cement procurement recommendation:</strong> request that every ERP bidder quote against the <em>same signed requirements catalogue</em> and break its proposal into software/subscription, implementation/consulting, integrations, migration, training/change management, testing/go-live, annual support and optional services. This converts the comparison from marketing claims into an auditable commercial decision.
+      </div>
+
+      <h2>Apples-to-apples implementation comparison</h2>
+      <table>
+        <thead><tr><th>Cost Area</th><th>Packaged ERP Route</th><th>Purpose-Built Golden Cement ERP</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Software / Subscription</strong></td><td>Vendor licence/use subscriptions, often per-user or use-category based and subject to vendor commercial terms.</td><td>Annual platform licence with initial deployment including up to 50 full named users.</td></tr>
+          <tr><td><strong>Implementation / Consulting</strong></td><td>Partner-led process consulting, configuration, solution design and project governance; exact fee depends heavily on scope.</td><td><strong>GH₵250k–GH₵350k</strong> separately allocated for business-process consulting and implementation.</td></tr>
+          <tr><td><strong>Integration / Migration</strong></td><td>Often partner-quoted separately or constrained by assumptions in fixed implementation packages.</td><td><strong>GH₵200k–GH₵300k</strong> planning allowance for agreed data migration and third-party interfaces.</td></tr>
+          <tr><td><strong>Testing / Go-Live</strong></td><td>UAT, reconciliation, performance testing, cutover and hypercare may be included, capped or separately billed.</td><td><strong>GH₵150k–GH₵200k</strong> explicitly allocated.</td></tr>
+          <tr><td><strong>Training / Knowledge Transfer</strong></td><td>Can range from basic remote user training to a full change-management programme.</td><td><strong>GH₵100k–GH₵150k</strong> explicitly allocated to role-based training and knowledge transfer.</td></tr>
+          <tr><td><strong>Ongoing Support</strong></td><td>Vendor subscription plus partner or managed-service support, depending on package.</td><td><strong>GH₵300k–GH₵450k/year</strong> for licence, hosting, maintenance and standard support; critical 24/7 SLA optional.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Costs frequently omitted from ERP comparisons</h2>
+      <div class="grid2">
+        <ul class="checklist card">
+          <li>Business-process consulting and process redesign</li>
+          <li>Data cleansing and migration</li>
+          <li>Plant, laboratory and weighbridge integrations</li>
+          <li>Custom reports and dashboards</li>
+          <li>Testing, UAT and user backfill</li>
+          <li>Training and change management</li>
+        </ul>
+        <ul class="checklist card">
+          <li>Post-go-live managed services</li>
+          <li>Release regression testing</li>
+          <li>Disaster recovery and backup testing</li>
+          <li>Travel / on-site consultancy</li>
+          <li>Third-party extensions and integration services</li>
+          <li>Future user/site expansion and license uplifts</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="custom" class="page-break">
+      <h1 class="section-title">6. Proposed Purpose-Built Golden Cement ERP</h1>
+      <p class="lead">The proposed solution would not be a generic accounting package with manufacturing screens added later. It would be a modular enterprise platform in which production, quality, maintenance, inventory, finance, dealer sales, credit and dispatch share a single governed data model.</p>
+
+      <div class="quote"><strong>Design principle:</strong> replicate the controls and business outcomes Golden Cement would reasonably expect from a leading ERP — not the thousands of global functions Golden Cement may never use.</div>
+
+      <h2>Recommended module structure</h2>
+      <table>
+        <thead><tr><th>Module</th><th>Principal Capabilities</th><th>Custom Advantage</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Platform & Security</strong></td><td>Identity, RBAC, organization, workflow, approvals, document management, audit, notifications, delegation.</td><td>Golden Cement-specific roles and approval hierarchy from day one.</td></tr>
+          <tr><td><strong>Finance & Controlling</strong></td><td>GL, AP, AR, cash/bank, fixed assets, budgeting, cost centres, production cost, WIP, variance and management reporting.</td><td>Reporting designed around plant and management decisions; no unnecessary global configuration.</td></tr>
+          <tr><td><strong>Procurement</strong></td><td>Requisition, RFQ/tender, quotation comparison, PO, contracts, GRV, three-way match, supplier performance.</td><td>Exact approval thresholds, buying categories and local supplier workflows.</td></tr>
+          <tr><td><strong>Inventory & Engineering Stores</strong></td><td>Warehouses/bins, batch/lot, transfers, reservations, cycle counts, valuation, critical spares and replenishment.</td><td>Purpose-built engineering-store and plant-spares workflows.</td></tr>
+          <tr><td><strong>Manufacturing</strong></td><td>Recipes/formulas, production versions, production/process orders, material issue, output, yield/loss, WIP, mass balance, energy/fuel and production KPIs.</td><td>Cement production model rather than generic discrete-manufacturing assumptions.</td></tr>
+          <tr><td><strong>Quality & Laboratory</strong></td><td>Samples, inspection plans, test results, tolerances, release/hold/reject, retests, COA and non-conformance.</td><td>Lab screens and rules mirror Golden Cement's actual tests and quality gates.</td></tr>
+          <tr><td><strong>Asset Maintenance</strong></td><td>Equipment hierarchy, PM, breakdowns, work orders, spares, downtime, MTBF/MTTR and maintenance history.</td><td>Designed directly around installed plant equipment and criticality.</td></tr>
+          <tr><td><strong>Sales, Dealer & Credit</strong></td><td>Customer/dealer, price lists, orders, allocations, credit exposure, limits, blocks, override approval and billing.</td><td>Can encode Golden Cement's channel and allocation logic natively.</td></tr>
+          <tr><td><strong>Dispatch & Weighbridge</strong></td><td>Truck/driver, queue, tare/gross/net, loading authorization, gate pass, dispatch, GPS/POD and turnaround analytics.</td><td>First-class module rather than peripheral customization.</td></tr>
+          <tr><td><strong>Analytics</strong></td><td>Executive, finance, production, energy, maintenance, quality, sales and dispatch dashboards.</td><td>Every KPI designed for Golden Cement management rather than generic templates.</td></tr>
+          <tr><td><strong>Integration Hub</strong></td><td>APIs, queues, retries, monitoring, adapters for weighbridge, SCADA/historian, LIMS, banks, GPS, email/SMS.</td><td>Single accountable integration layer with complete diagnostics and auditability.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Representative end-to-end process</h2>
+      <div class="arch">Raw material receipt
+      ↓
+Quality inspection / release
+      ↓
+Raw material inventory
+      ↓
+Production / process order
+      ↓
+Material consumption + energy/fuel + output
+      ↓
+Clinker / cement quality testing
+      ↓
+Finished-goods inventory / silo
+      ↓
+Dealer sales order + price + credit check
+      ↓
+Allocation + truck pre-registration
+      ↓
+Tare → loading → gross → net weight
+      ↓
+Delivery / invoice / gate pass
+      ↓
+Finance + inventory + costing + management dashboards</div>
+
+      <h2>Specific advantages of the custom route</h2>
+      <div class="grid3">
+        <div class="card"><h3>Cost</h3><p>Avoids high global software subscriptions, user expansion charges and unnecessary modules. Commercial model can be tied to plant/site value rather than individual logins.</p></div>
+        <div class="card"><h3>Speed of Change</h3><p>Golden Cement deals directly with the team that owns the platform. Approved changes can enter the product roadmap without waiting for a global vendor release cycle.</p></div>
+        <div class="card"><h3>Operational Fit</h3><p>Weighbridge, laboratory, dealer, allocation, dispatch and plant-specific workflows are treated as core product functions.</p></div>
+        <div class="card"><h3>User Experience</h3><p>Interfaces can be simplified by role: plant operator, laboratory analyst, maintenance engineer, storekeeper, finance user, dispatcher and executive.</p></div>
+        <div class="card"><h3>Local Integration</h3><p>Local banks, communications, transport systems and Ghana-specific business processes can be prioritized without waiting for marketplace add-ons.</p></div>
+        <div class="card"><h3>Future Optionality</h3><p>API-first modular architecture means the operational platform can later integrate with SAP, Microsoft or Sage if Golden Cement's enterprise architecture evolves.</p></div>
+      </div>
+    </section>
+
+    <section id="architecture">
+      <h1 class="section-title">7. Recommended Architecture</h1>
+
+      <div class="arch-svg-wrap">
+        <svg class="arch-svg" viewBox="0 0 1200 560" role="img" aria-label="Golden Cement ERP recommended architecture diagram">
+          <defs>
+            <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth">
+              <path d="M0,0 L0,6 L9,3 z" fill="#486985"></path>
+            </marker>
+            <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+              <feDropShadow dx="0" dy="2" stdDeviation="3" flood-color="#0c2745" flood-opacity="0.12"/>
+            </filter>
+          </defs>
+
+          <!-- Title band -->
+          <rect x="60" y="30" width="1080" height="62" rx="10" fill="#15385f" filter="url(#shadow)"/>
+          <text x="600" y="59" text-anchor="middle" fill="#ffffff" font-size="22" font-weight="700">Golden Cement Management &amp; Analytics</text>
+          <text x="600" y="80" text-anchor="middle" fill="#dce8f3" font-size="13">Executive dashboards • Plant KPIs • Financial reporting • Operational intelligence</text>
+
+          <!-- Connector -->
+          <line x1="600" y1="92" x2="600" y2="125" stroke="#486985" stroke-width="3" marker-end="url(#arrow)"/>
+
+          <!-- ERP platform container -->
+          <rect x="70" y="130" width="1060" height="208" rx="12" fill="#eef4fa" stroke="#15385f" stroke-width="2.5" filter="url(#shadow)"/>
+          <rect x="70" y="130" width="1060" height="46" rx="12" fill="#15385f"/>
+          <text x="600" y="159" text-anchor="middle" fill="#ffffff" font-size="20" font-weight="700">Golden Cement ERP Platform</text>
+
+          <!-- Functional modules row 1 -->
+          <rect x="95" y="195" width="190" height="52" rx="8" fill="#ffffff" stroke="#7f9bb8" stroke-width="1.5"/>
+          <text x="190" y="217" text-anchor="middle" fill="#15385f" font-size="15" font-weight="700">Finance &amp; Controlling</text>
+          <text x="190" y="236" text-anchor="middle" fill="#5d7186" font-size="11">GL • AP • AR • Costing • Assets</text>
+
+          <rect x="305" y="195" width="190" height="52" rx="8" fill="#ffffff" stroke="#7f9bb8" stroke-width="1.5"/>
+          <text x="400" y="217" text-anchor="middle" fill="#15385f" font-size="15" font-weight="700">Procurement &amp; Inventory</text>
+          <text x="400" y="236" text-anchor="middle" fill="#5d7186" font-size="11">PO • GRV • Stores • Spares</text>
+
+          <rect x="515" y="195" width="190" height="52" rx="8" fill="#ffffff" stroke="#7f9bb8" stroke-width="1.5"/>
+          <text x="610" y="217" text-anchor="middle" fill="#15385f" font-size="15" font-weight="700">Manufacturing &amp; Quality</text>
+          <text x="610" y="236" text-anchor="middle" fill="#5d7186" font-size="11">Recipes • Orders • QC • Yield</text>
+
+          <rect x="725" y="195" width="190" height="52" rx="8" fill="#ffffff" stroke="#7f9bb8" stroke-width="1.5"/>
+          <text x="820" y="217" text-anchor="middle" fill="#15385f" font-size="15" font-weight="700">Maintenance &amp; Engineering</text>
+          <text x="820" y="236" text-anchor="middle" fill="#5d7186" font-size="11">PM • Work Orders • Downtime</text>
+
+          <rect x="935" y="195" width="170" height="52" rx="8" fill="#ffffff" stroke="#7f9bb8" stroke-width="1.5"/>
+          <text x="1020" y="217" text-anchor="middle" fill="#15385f" font-size="15" font-weight="700">Sales / Credit / Dealer</text>
+          <text x="1020" y="236" text-anchor="middle" fill="#5d7186" font-size="11">Orders • Limits • Allocations</text>
+
+          <!-- Functional modules row 2 -->
+          <rect x="250" y="267" width="270" height="48" rx="8" fill="#ffffff" stroke="#7f9bb8" stroke-width="1.5"/>
+          <text x="385" y="289" text-anchor="middle" fill="#15385f" font-size="15" font-weight="700">Dispatch &amp; Weighbridge</text>
+          <text x="385" y="307" text-anchor="middle" fill="#5d7186" font-size="11">Queue • Tare/Gross/Net • Gate Pass • POD</text>
+
+          <rect x="540" y="267" width="410" height="48" rx="8" fill="#ffffff" stroke="#7f9bb8" stroke-width="1.5"/>
+          <text x="745" y="289" text-anchor="middle" fill="#15385f" font-size="15" font-weight="700">Workflow • Security • Audit • Reporting • Notifications</text>
+          <text x="745" y="307" text-anchor="middle" fill="#5d7186" font-size="11">Shared enterprise services across every module</text>
+
+          <!-- Connector -->
+          <line x1="600" y1="338" x2="600" y2="370" stroke="#486985" stroke-width="3" marker-end="url(#arrow)"/>
+
+          <!-- Integration Hub -->
+          <rect x="360" y="375" width="480" height="60" rx="10" fill="#c69b3c" filter="url(#shadow)"/>
+          <text x="600" y="401" text-anchor="middle" fill="#102c4b" font-size="19" font-weight="800">Integration Hub</text>
+          <text x="600" y="421" text-anchor="middle" fill="#4c421e" font-size="12">APIs • Queues • Retries • Monitoring • Adapters • Auditability</text>
+
+          <!-- Connector -->
+          <line x1="600" y1="435" x2="600" y2="465" stroke="#486985" stroke-width="3" marker-end="url(#arrow)"/>
+
+          <!-- External systems -->
+          <rect x="55" y="475" width="170" height="50" rx="8" fill="#ffffff" stroke="#879bad" stroke-width="1.5"/>
+          <text x="140" y="497" text-anchor="middle" fill="#15385f" font-size="14" font-weight="700">Weighbridges</text>
+          <text x="140" y="515" text-anchor="middle" fill="#5d7186" font-size="10.5">Scales / gate devices</text>
+
+          <rect x="245" y="475" width="170" height="50" rx="8" fill="#ffffff" stroke="#879bad" stroke-width="1.5"/>
+          <text x="330" y="497" text-anchor="middle" fill="#15385f" font-size="14" font-weight="700">LIMS / Laboratory</text>
+          <text x="330" y="515" text-anchor="middle" fill="#5d7186" font-size="10.5">Tests / instruments</text>
+
+          <rect x="435" y="475" width="200" height="50" rx="8" fill="#ffffff" stroke="#879bad" stroke-width="1.5"/>
+          <text x="535" y="497" text-anchor="middle" fill="#15385f" font-size="14" font-weight="700">SCADA / Historian</text>
+          <text x="535" y="515" text-anchor="middle" fill="#5d7186" font-size="10.5">Plant production data</text>
+
+          <rect x="655" y="475" width="160" height="50" rx="8" fill="#ffffff" stroke="#879bad" stroke-width="1.5"/>
+          <text x="735" y="497" text-anchor="middle" fill="#15385f" font-size="14" font-weight="700">Banks / Payments</text>
+          <text x="735" y="515" text-anchor="middle" fill="#5d7186" font-size="10.5">Banking / collections</text>
+
+          <rect x="835" y="475" width="160" height="50" rx="8" fill="#ffffff" stroke="#879bad" stroke-width="1.5"/>
+          <text x="915" y="497" text-anchor="middle" fill="#15385f" font-size="14" font-weight="700">GPS / Fleet</text>
+          <text x="915" y="515" text-anchor="middle" fill="#5d7186" font-size="10.5">Tracking / POD</text>
+
+          <rect x="1015" y="475" width="130" height="50" rx="8" fill="#ffffff" stroke="#879bad" stroke-width="1.5"/>
+          <text x="1080" y="497" text-anchor="middle" fill="#15385f" font-size="14" font-weight="700">Other APIs</text>
+          <text x="1080" y="515" text-anchor="middle" fill="#5d7186" font-size="10.5">SMS / external</text>
+
+          <!-- Integration fan-out -->
+          <line x1="600" y1="465" x2="140" y2="465" stroke="#8ca0b5" stroke-width="2"/>
+          <line x1="600" y1="465" x2="1080" y2="465" stroke="#8ca0b5" stroke-width="2"/>
+          <line x1="140" y1="465" x2="140" y2="475" stroke="#8ca0b5" stroke-width="2"/>
+          <line x1="330" y1="465" x2="330" y2="475" stroke="#8ca0b5" stroke-width="2"/>
+          <line x1="535" y1="465" x2="535" y2="475" stroke="#8ca0b5" stroke-width="2"/>
+          <line x1="735" y1="465" x2="735" y2="475" stroke="#8ca0b5" stroke-width="2"/>
+          <line x1="915" y1="465" x2="915" y2="475" stroke="#8ca0b5" stroke-width="2"/>
+          <line x1="1080" y1="465" x2="1080" y2="475" stroke="#8ca0b5" stroke-width="2"/>
+
+          <!-- Edge gateway callout -->
+          <rect x="850" y="382" width="260" height="44" rx="8" fill="#eaf6ef" stroke="#4d9b69" stroke-width="1.5"/>
+          <text x="980" y="400" text-anchor="middle" fill="#267a4c" font-size="13.5" font-weight="700">Edge / Plant Gateway</text>
+          <text x="980" y="417" text-anchor="middle" fill="#4e6f5d" font-size="10.5">Selective buffering / OT protocol adapters</text>
+          <line x1="840" y1="405" x2="850" y2="405" stroke="#4d9b69" stroke-width="2"/>
+        </svg>
+
+        <div class="arch-note"><strong>Architectural boundary:</strong> PLC/DCS/SCADA remains responsible for real-time and safety-critical plant control. The ERP manages business transactions, production records, costing, quality, maintenance, sales, dispatch and governed integration around those systems.</div>
+      </div>
+
+      <div class="arch-legend">
+        <div class="card"><strong>ERP Core</strong><br><span class="small">Business processes and controlled transaction processing.</span></div>
+        <div class="card"><strong>Integration Hub</strong><br><span class="small">Secure interface layer with monitoring, retry and audit controls.</span></div>
+        <div class="card"><strong>Plant / External Systems</strong><br><span class="small">Operational technology and third-party systems remain decoupled from ERP internals.</span></div>
+      </div>
+
+<div class="highlight"><strong>Boundary of responsibility.</strong> The ERP should not control kilns, motors, valves or safety-critical industrial processes. PLC/DCS/SCADA remains responsible for real-time plant control; the ERP consumes approved production/measurement data and manages the business transactions, costing, quality, maintenance and planning around those operations.</div>
+
+      <h2>Core technology principles</h2>
+      <div class="grid2">
+        <ul class="checklist card">
+          <li>Modular architecture with clearly separated business domains</li>
+          <li>API-first integration</li>
+          <li>Asynchronous message/queue capability for plant interfaces</li>
+          <li>Idempotent transactions and retry controls</li>
+          <li>Immutable audit events for critical transactions</li>
+        </ul>
+        <ul class="checklist card">
+          <li>Role-based and least-privilege security</li>
+          <li>Automated backups, tested recovery and DR</li>
+          <li>Monitoring, health checks and integration alerts</li>
+          <li>Mobile/responsive access where operationally useful</li>
+          <li>Selective offline/store-and-forward for plant-edge workflows</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="implementation" class="page-break">
+      <h1 class="section-title">8. Implementation Approach</h1>
+      <p>A custom enterprise system should not begin with unrestricted coding. The implementation is designed to progressively remove business and technical uncertainty before Golden Cement commits to each subsequent phase.</p>
+
+      <div class="steps">
+        <div class="step"><h3>ERP Discovery & Solution Blueprint — 4 to 6 weeks</h3><p>Executive workshops; plant/process mapping; requirements catalogue; chart of accounts/costing review; integration inventory; role/approval model; SAP/Sage/Microsoft benchmark; architecture; fit-gap; final implementation plan and commercial baseline.</p></div>
+        <div class="step"><h3>High-Risk Prototype — 6 to 8 weeks</h3><p>Prove the vertical manufacturing spine: raw materials → QC → production → finished cement → sales/credit → weighbridge/dispatch → accounting impact.</p></div>
+        <div class="step"><h3>Core Build & Iterative Demonstrations — 20 to 28 weeks</h3><p>Module development in controlled increments with fortnightly demonstrations and requirements traceability.</p></div>
+        <div class="step"><h3>Pilot, Data Migration & UAT — 6 to 8 weeks</h3><p>Realistic data, user acceptance, control validation, reconciliation, performance testing, security testing and cutover rehearsal.</p></div>
+        <div class="step"><h3>Go-Live & Hypercare — 4 weeks</h3><p>Phased cutover, on-site operational support, enhanced monitoring, issue triage and daily management review during stabilization.</p></div>
+        <div class="step"><h3>Managed Product Lifecycle — ongoing</h3><p>Support SLA, maintenance, security updates, planned releases, new integrations, KPI development and controlled change requests.</p></div>
+      </div>
+
+      <h2>Client participation required</h2>
+      <table>
+        <thead><tr><th>Golden Cement Team</th><th>Required Participation</th></tr></thead>
+        <tbody>
+          <tr><td>Executive Sponsor / Steering Committee</td><td>Strategic decisions, scope governance, prioritization and escalation.</td></tr>
+          <tr><td>Finance</td><td>Chart of accounts, controls, taxes, costing, inventory valuation, budgets, reporting and reconciliation.</td></tr>
+          <tr><td>Production</td><td>Process maps, recipes, capacity, output, losses, production confirmation and KPIs.</td></tr>
+          <tr><td>Quality / Laboratory</td><td>Sampling plans, tests, specification limits, release and non-conformance rules.</td></tr>
+          <tr><td>Engineering / Maintenance</td><td>Equipment register, maintenance plans, breakdown workflows, spares and shutdowns.</td></tr>
+          <tr><td>Sales / Credit / Logistics</td><td>Dealer model, pricing, allocations, credit, transport, weighbridge and dispatch.</td></tr>
+          <tr><td>IT / Plant Systems</td><td>Infrastructure, security, network, device, SCADA/historian, LIMS, scale and integration coordination.</td></tr>
+        </tbody>
+      </table>
+    </section>
+
+    <section id="risk">
+      <h1 class="section-title">9. Risk, Continuity & Enterprise Assurance</h1>
+      <p>The principal weakness of any purpose-built solution is not whether modern software can technically perform the required processes. The concern is <strong>vendor continuity, implementation discipline and key-person dependency</strong>. The proposal should therefore address those risks explicitly rather than ignore them.</p>
+
+      <table>
+        <thead><tr><th>Risk</th><th>Enterprise Vendor Advantage</th><th>Custom Solution Mitigation</th></tr></thead>
+        <tbody>
+          <tr><td>Vendor / key-person dependency</td><td>SAP/Microsoft/Sage have global teams and ecosystems.</td><td>Multi-person delivery team, code review, documentation, runbooks, client admin training, defined succession, source-code escrow triggers.</td></tr>
+          <tr><td>Manufacturing / costing design error</td><td>Mature standard product and experienced specialists.</td><td>Independent cement/process SME and manufacturing-accounting validation before production scope is frozen.</td></tr>
+          <tr><td>24/7 factory support</td><td>Large partner support ecosystems.</td><td>Tiered SLA, monitoring, redundancy, incident escalation, on-call critical support and tested recovery.</td></tr>
+          <tr><td>Security / resilience</td><td>Large vendor security programs.</td><td>Secure SDLC, third-party security review, least privilege, encryption, automated backups, DR testing and audit logging.</td></tr>
+          <tr><td>Future platform transition</td><td>Standard ERP product lifecycle.</td><td>Open APIs, data export, documented integration contracts and architecture capable of becoming an operational layer around a future SAP/Sage/Microsoft core.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="risk"><strong>Contractual safeguard:</strong> Golden Cement should own its data and receive clearly defined continuity protections. The software provider should retain ownership of reusable core platform IP, while source-code escrow or equivalent continuity rights can be triggered by agreed events such as permanent cessation of support or insolvency.</div>
+    </section>
+
+    <section id="commercial" class="page-break">
+      <h1 class="section-title">10. Preliminary Commercial Model — Purpose-Built Option</h1>
+      <div class="warning">The values below are <strong>budgetary proposal ranges</strong> pending discovery. They have been deliberately positioned to remain commercially competitive with credible Sage/Microsoft alternatives while still funding the implementation, testing, training, resilience and specialist validation expected of a system supporting a cement manufacturer. A fixed implementation price should only be issued after the Solution Blueprint validates production, finance, integration, user, plant and availability requirements.</div>
+
+      <div class="highlight">
+        <strong>Pricing position:</strong> this proposal does not rely on the claim that custom software is always cheaper. A tightly scoped Business Central deployment may enter below this budget. Golden Cement is being offered a broader purpose-built solution with cement-specific operational workflows, predictable user economics and direct development ownership at a five-year cost intended to remain well below a typical tier-one SAP programme and competitive with more extensively configured Sage X3 or Dynamics 365 programmes.
+      </div>
+
+      <table>
+        <thead><tr><th>Commercial Component</th><th>Indicative Investment</th><th>Includes</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>Phase 0 — ERP Discovery & Solution Blueprint</strong></td>
+            <td class="nowrap"><strong>GH₵200k–GH₵300k</strong></td>
+            <td>Executive and departmental workshops, cement-process mapping, requirements catalogue, fit-gap analysis, control design, architecture, integration inventory, implementation roadmap and final scope baseline.</td>
+          </tr>
+          <tr>
+            <td><strong>Core Software Development & Product Configuration</strong></td>
+            <td><strong>GH₵900k–GH₵1.40m</strong></td>
+            <td>Development/configuration of the agreed ERP modules, workflow and approval engine, reporting layer, security model, audit framework, APIs and Golden Cement-specific operational functionality.</td>
+          </tr>
+          <tr>
+            <td><strong>Implementation & Business Process Consulting</strong></td>
+            <td><strong>GH₵250k–GH₵350k</strong></td>
+            <td>Solution configuration, process redesign, master-data setup, finance/control alignment, department implementation workshops, operating procedures, role mapping and implementation governance.</td>
+          </tr>
+          <tr>
+            <td><strong>Integration & Data Migration</strong></td>
+            <td><strong>GH₵200k–GH₵300k</strong></td>
+            <td>Migration tooling and support plus agreed interfaces to weighbridges, laboratory/plant systems, banks/payment channels, email/SMS, GPS/fleet and other approved third-party systems.</td>
+          </tr>
+          <tr>
+            <td><strong>Testing, UAT, Go-Live & Hypercare</strong></td>
+            <td><strong>GH₵150k–GH₵200k</strong></td>
+            <td>System/integration testing, reconciliation, performance and security testing, UAT support, cutover rehearsal, production deployment and enhanced stabilization support after go-live.</td>
+          </tr>
+          <tr>
+            <td><strong>Training & Knowledge Transfer</strong></td>
+            <td><strong>GH₵100k–GH₵150k</strong></td>
+            <td>Role-based end-user training, departmental super-user training, IT administrator training, train-the-trainer sessions, manuals, SOPs, quick-reference guides and training environment support.</td>
+          </tr>
+          <tr class="total-row">
+            <td><strong>Indicative Initial Project Investment</strong></td>
+            <td><strong>GH₵1.80m–GH₵2.70m</strong></td>
+            <td>Total of discovery, core software, consulting/implementation, integration/migration, testing/go-live and training. Final fixed price follows the signed Solution Blueprint.</td>
+          </tr>
+          <tr>
+            <td><strong>Annual Platform Licence, Hosting, Maintenance & Standard Support</strong></td>
+            <td><strong>GH₵300k–GH₵450k / year</strong></td>
+            <td>Platform licence, cloud infrastructure allowance, monitoring, backups, security/maintenance releases, product updates and business-hours support. Critical 24/7 SLA is quoted separately.</td>
+          </tr>
+          <tr>
+            <td><strong>Initial User Entitlement</strong></td>
+            <td><strong>Included</strong></td>
+            <td>Up to 50 full named users for the initial Golden Cement plant under the proposed commercial model, covering the current 20-user planning baseline without per-user cost escalation.</td>
+          </tr>
+          <tr class="total-row">
+            <td><strong>Estimated 5-Year TCO</strong></td>
+            <td class="good"><strong>GH₵3.30m–GH₵4.95m</strong></td>
+            <td>Initial project investment plus five annual platform/support allowances. Excludes major new plants, major new-scope programmes, industrial hardware and optional 24/7 critical support.</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h2>Training & knowledge-transfer programme</h2>
+      <p>Training is treated as a formal implementation workstream rather than an incidental handover activity. The programme would be tailored to Golden Cement's operating model and final role structure.</p>
+      <table>
+        <thead><tr><th>Training Group</th><th>Indicative Coverage</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Finance & Controlling</strong></td><td>GL, AP, AR, banking, fixed assets, month-end, budgeting, inventory valuation, production costing, WIP and variance reporting.</td></tr>
+          <tr><td><strong>Procurement & Stores</strong></td><td>Requisitions, approvals, RFQs/POs, receipts, inventory movements, stock counts, reservations, critical spares and audit controls.</td></tr>
+          <tr><td><strong>Production</strong></td><td>Recipes/formulas, production/process orders, material consumption, production confirmations, yield/loss, mass balance, energy/fuel and production KPIs.</td></tr>
+          <tr><td><strong>Quality / Laboratory</strong></td><td>Sampling, inspection plans, test entry, tolerances, retests, release/hold/reject, certificates and non-conformance.</td></tr>
+          <tr><td><strong>Engineering / Maintenance</strong></td><td>Equipment hierarchy, preventive maintenance, breakdowns, work orders, labour/spares, downtime and maintenance KPIs.</td></tr>
+          <tr><td><strong>Sales / Credit / Dispatch</strong></td><td>Dealer/customer orders, pricing, credit limits, allocations, truck processing, weighbridge, delivery, gate pass and dispatch exceptions.</td></tr>
+          <tr><td><strong>Management / Power Users</strong></td><td>Dashboards, approvals, exception management, reporting, drill-downs and departmental super-user administration.</td></tr>
+          <tr><td><strong>IT Administrators</strong></td><td>User/security administration, configuration, integration monitoring, backups/recovery, support diagnostics and escalation procedures.</td></tr>
+        </tbody>
+      </table>
+
+      <div class="highlight">
+        <strong>Knowledge-transfer deliverables:</strong> user manuals, administrator guide, SOPs, quick-reference guides, training environment, selected recorded sessions where appropriate, super-user capability building and train-the-trainer sessions. This materially reduces vendor/key-person dependency after go-live.
+      </div>
+
+      <h2>Suggested payment structure after blueprint</h2>
+      <p class="small">The following percentages would apply to the agreed post-blueprint implementation contract value (software development, implementation consulting, integrations, testing/go-live and training), not to the separately contracted Phase 0 Discovery fee.</p>
+      <table>
+        <thead><tr><th>Milestone</th><th>%</th><th>Commercial Trigger</th></tr></thead>
+        <tbody>
+          <tr><td>Implementation Mobilization</td><td>20%</td><td>Contract execution, project team mobilization and environment setup.</td></tr>
+          <tr><td>Foundation + Finance/Procurement/Inventory Release</td><td>20%</td><td>Demonstrated against signed acceptance criteria.</td></tr>
+          <tr><td>Manufacturing + Quality + Maintenance Release</td><td>25%</td><td>Demonstrated end-to-end production/control scenario.</td></tr>
+          <tr><td>Sales/Credit + Dispatch/Weighbridge + Integrations</td><td>20%</td><td>Integrated operational workflow demonstrated.</td></tr>
+          <tr><td>UAT / Go-Live Readiness</td><td>10%</td><td>UAT sign-off and cutover approval.</td></tr>
+          <tr><td>Stabilization / Final Acceptance</td><td>5%</td><td>Agreed stabilization criteria achieved.</td></tr>
+        </tbody>
+      </table>
+
+      <h2>Commercial protections for Golden Cement</h2>
+      <div class="grid2">
+        <ul class="checklist card">
+          <li>Milestone payments linked to demonstrable deliverables</li>
+          <li>Formal change-control mechanism</li>
+          <li>Requirements traceability and acceptance criteria</li>
+          <li>Defined warranty/hypercare period</li>
+          <li>Service-level options with measurable response targets</li>
+        </ul>
+        <ul class="checklist card">
+          <li>Data ownership retained by Golden Cement</li>
+          <li>Documented APIs and data-export capability</li>
+          <li>Source-code continuity/escrow option</li>
+          <li>Backup and disaster-recovery obligations</li>
+          <li>Independent security and controls validation option</li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="next">
+      <h1 class="section-title">11. Recommended Next Steps</h1>
+      <div class="recommend">
+        <h3>Step 1 — Authorize the ERP Discovery & Solution Blueprint</h3>
+        <p>This is the lowest-risk next decision because the output remains valuable regardless of whether Golden Cement ultimately selects the purpose-built solution, SAP, Sage or Microsoft. It gives management a common requirements baseline and prevents the company from evaluating products against incomplete or inconsistent assumptions.</p>
+      </div>
+
+      <ol>
+        <li><strong>Nominate an executive sponsor and cross-functional ERP steering team.</strong></li>
+        <li><strong>Confirm the plant operating model</strong> — integrated clinker production, grinding/packing, or both.</li>
+        <li><strong>Provide existing project documentation</strong> — plant layout, equipment vendors, product list, production capacity, organization structure and process/SOP information.</li>
+        <li><strong>Conduct structured discovery workshops</strong> with Production, Quality, Engineering, Finance, Procurement/Stores, Sales/Credit, Logistics/Dispatch and IT.</li>
+        <li><strong>Obtain formal SAP/Sage/Microsoft partner quotations</strong> against the same signed requirements catalogue.</li>
+        <li><strong>Demonstrate a high-risk custom prototype</strong> covering production, quality, credit, weighbridge, dispatch and financial impact.</li>
+        <li><strong>Complete a final board-level decision matrix and five-year TCO</strong> using actual quotes and validated scope.</li>
+        <li><strong>Proceed to implementation only after scope, controls, integration responsibilities and acceptance criteria are signed.</strong></li>
+      </ol>
+
+      <div class="quote"><strong>Recommended decision philosophy:</strong> choose the platform that produces the best operating outcome after accounting for manufacturing depth, financial controls, implementation risk, integration, support, flexibility and five-year ownership — not simply the lowest licence fee or the largest vendor name.</div>
+    </section>
+
+    <section id="assumptions" class="page-break">
+      <h1 class="section-title">12. Assumptions & Commercial Notes</h1>
+      <h2>Key assumptions</h2>
+      <ul>
+        <li>Initial planning baseline: approximately 20 principal ERP users, with additional light/operational users to be validated.</li>
+        <li>Single initial Golden Cement plant/site unless discovery establishes otherwise.</li>
+        <li>Manufacturing scope includes process-manufacturing requirements, quality, maintenance, engineering stores, sales/credit, dispatch and finance.</li>
+        <li>Industrial control hardware, PLC/DCS/SCADA procurement, weighbridge hardware, laboratory equipment and telecom/network upgrades are excluded from ERP estimates.</li>
+        <li>All cost ranges are exclusive of applicable taxes and may change after detailed scope or vendor quotation.</li>
+        <li>Planning FX rate used: <strong>US$1 = GH₵11.2571</strong> as at 31 August 2026. Refresh before commercial submission.</li>
+      </ul>
+
+      <h1 class="section-title">Appendix A — Pricing & Capability Sources</h1><p class="small">The references below are included so Golden Cement can independently verify the principal public pricing anchors and capability claims used in this proposal. Accessed 31 August 2026 unless otherwise noted.</p>
+      <div class="highlight">
+        <strong>Digital navigation:</strong> reference markers such as <strong>[1]</strong> in the pricing tables jump to the relevant appendix entry. External source links open separately so the proposal remains available while the source is reviewed. When exported to PDF using a modern browser, these internal and external hyperlinks are intended to remain clickable.
+      </div>
+      <ol class="source-list">
+        <li id="source-1">
+          <strong>[1] SAP S/4HANA Cloud public procurement benchmark.</strong> UK Government Digital Marketplace pricing document from SAP Gold Partner Vision33 publishes a GROW with SAP S/4HANA Public Cloud 15-FUE Base Edition at £74,160/year, with some compliance/BTP items separately priced.
+          <a class="source-link" href="https://assets.applytosupply.digitalmarketplace.service.gov.uk/g-cloud-14/documents/722143/968008848951010-pricing-document-2024-12-03-1625.pdf" target="_blank" rel="noopener noreferrer">Open UK Government pricing document ↗</a>
+          <a class="back-link" href="#pricing-comparison">↩ Back to pricing comparison</a>
+          <span class="source-domain">assets.applytosupply.digitalmarketplace.service.gov.uk</span>
+        </li>
+        <li id="source-2">
+          <strong>[2] Sage X3 official process-manufacturing capability reference.</strong> Sage positions X3 for process manufacturing, batch management, formulation, quality and traceability; commercial pricing is request/quote based.
+          <a class="source-link" href="https://www.sage.com/africa/sage-business-cloud/sage-x3/industry/process-manufacturing/" target="_blank" rel="noopener noreferrer">Open Sage X3 process manufacturing page ↗</a>
+          <a class="back-link" href="#pricing-comparison">↩ Back to pricing comparison</a>
+          <span class="source-domain">sage.com</span>
+        </li>
+        <li id="source-3">
+          <strong>[3] Sage X3 public partner cost anchor.</strong> RKL eSolutions publishes a 5-full-user manufacturing subscription starting at $25,000/year and implementation services starting at $150,000, with final services individually scoped.
+          <a class="source-link" href="https://www.rklesolutions.com/sage-x3-cost" target="_blank" rel="noopener noreferrer">Open Sage X3 pricing benchmark ↗</a>
+          <a class="back-link" href="#pricing-comparison">↩ Back to pricing comparison</a>
+          <span class="source-domain">rklesolutions.com</span>
+        </li>
+        <li id="source-4">
+          <strong>[4] Microsoft Dynamics 365 Finance official pricing.</strong> Finance public list price currently shown at $210/user/month.
+          <a class="source-link" href="https://www.microsoft.com/en-us/dynamics-365/products/finance/pricing" target="_blank" rel="noopener noreferrer">Open Microsoft Finance pricing ↗</a>
+          <a class="back-link" href="#pricing-comparison">↩ Back to pricing comparison</a>
+          <span class="source-domain">microsoft.com</span>
+        </li>
+        <li id="source-5">
+          <strong>[5] Microsoft Dynamics 365 Supply Chain Management official pricing.</strong> Supply Chain Management public list price currently shown at $210/user/month.
+          <a class="source-link" href="https://www.microsoft.com/en-us/dynamics-365/products/supply-chain-management/pricing" target="_blank" rel="noopener noreferrer">Open Microsoft SCM pricing ↗</a>
+          <a class="back-link" href="#pricing-comparison">↩ Back to pricing comparison</a>
+          <span class="source-domain">microsoft.com</span>
+        </li>
+        <li id="source-6">
+          <strong>[6] Microsoft Dynamics 365 licensing / attach guidance.</strong> Microsoft publishes qualifying base-and-attach licensing combinations for Dynamics 365 applications.
+          <a class="source-link" href="https://www.microsoft.com/licensing/guidance/Dynamics-365-Business-Central" target="_blank" rel="noopener noreferrer">Open Microsoft licensing guidance ↗</a>
+          <a class="back-link" href="#pricing-comparison">↩ Back to pricing comparison</a>
+          <span class="source-domain">microsoft.com/licensing</span>
+        </li>
+        <li id="source-7">
+          <strong>[7] Microsoft Business Central official pricing.</strong> Premium public list price currently shown at $110/user/month; Premium includes manufacturing.
+          <a class="source-link" href="https://www.microsoft.com/en-us/dynamics-365/products/business-central/pricing" target="_blank" rel="noopener noreferrer">Open Microsoft Business Central pricing ↗</a>
+          <a class="back-link" href="#pricing-comparison">↩ Back to pricing comparison</a>
+          <span class="source-domain">microsoft.com</span>
+        </li>
+        <li id="source-8">
+          <strong>[8] Business Central manufacturing implementation benchmark.</strong> Rand Group advertises a manufacturing implementation starting at $80,000 over 16 weeks, including core financials, manufacturing configuration, data migration, training, testing and go-live support.
+          <a class="source-link" href="https://www.randgroup.com/microsoft/manufacturing/business-central-manufacturing/" target="_blank" rel="noopener noreferrer">Open BC manufacturing implementation benchmark ↗</a>
+          <a class="back-link" href="#pricing-comparison">↩ Back to pricing comparison</a>
+          <span class="source-domain">randgroup.com</span>
+        </li>
+        <li id="source-9">
+          <strong>[9] Business Central Marketplace implementation benchmark.</strong> Vokeso lists a $35,900 Manufacturing Standard Implementation package and states that it must be combined with accounting and distribution packages.
+          <a class="source-link" href="https://marketplace.microsoft.com/en-us/marketplace/consulting-services/vokeso1647520348972.pack_man_std" target="_blank" rel="noopener noreferrer">Open Microsoft Marketplace listing ↗</a>
+          <a class="back-link" href="#pricing-comparison">↩ Back to pricing comparison</a>
+          <span class="source-domain">marketplace.microsoft.com</span>
+        </li>
+        <li id="source-10">
+          <strong>[10] Dynamics 365 Finance + Supply Chain implementation benchmark.</strong> CentriLogic lists a Finance & Supply Chain implementation professional-services offer in Microsoft Marketplace.
+          <a class="source-link" href="https://marketplace.microsoft.com/en-us/product/centrilogic.d365_f_o_standard_implementation" target="_blank" rel="noopener noreferrer">Open Dynamics implementation listing ↗</a>
+          <a class="back-link" href="#pricing-comparison">↩ Back to pricing comparison</a>
+          <span class="source-domain">marketplace.microsoft.com</span>
+        </li>
+        <li id="source-11">
+          <strong>[11] Exchange-rate reference.</strong> Planning conversion used in this proposal: US$1 = GH₵11.2571 as at 31 August 2026. Exchange rates should be refreshed immediately before commercial submission.
+          <a class="back-link" href="#pricing-comparison">↩ Back to pricing comparison</a>
+        </li>
+      </ol>
+
+      <div class="warning"><strong>Commercial disclaimer.</strong> Public vendor/partner figures are reproduced only as transparent market anchors and should be independently checked by Golden Cement. SAP, Sage and Microsoft five-year figures shown in this proposal are <strong>Golden Cement planning allowances, not vendor quotations</strong> and are not intended to imply minimum prices. Exact licensing, subscription, implementation and support cost depends on edition, use rights, partner, modules, user mix, data volumes, integrations, localization, negotiated discounts and scope. Golden Cement is encouraged to obtain formal competing quotations against the same signed requirements catalogue.</div>
+
+      <h2>Proposal validity</h2>
+      <p>The purpose-built commercial ranges are valid for planning purposes for 30 days and are subject to refinement following ERP Discovery & Solution Blueprint. The five-year TCO shown for the custom option comprises the GH₵1.80m–GH₵2.70m initial project range plus five annual GH₵300k–GH₵450k platform/licence/hosting/maintenance/support allowances. No final implementation commitment should be inferred until both parties sign an agreed scope, acceptance criteria, timeline and contract.</p>
+
+      <div class="footer">
+        <div>Prepared for Golden Cement · Confidential</div>
+        <div>Akwasi Adu-Kyeremeh · ERP Solutions Architect · me@akwasi.dev</div>
+      </div>
+    </section>
+  </div>
+</div>
+</body>
+</html>
