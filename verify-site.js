@@ -56,9 +56,29 @@ requireText('index.html', [
   'id="latest-blogs"',
   'Writing &amp; Learning',
   'https://aspnetcoremastery.akwasi.dev/',
-  'href="/privacy.html"'
+  'href="/privacy.html"',
+  '/projects/retail-management-system-specialist-vodafone-ghana-airtel-tigo-ghana-chad-and-congo/'
 ]);
-requireText('portfolio/js/ai-homepage.js', ['contact_form_attempt', 'contact_form_success', 'contact_form_error']);
+requireText('portfolio/js/ai-homepage.js', [
+  'contact_form_attempt',
+  'contact_form_success',
+  'contact_form_error',
+  "service_9hvqsd3",
+  "template_yk503fe"
+]);
+const projectsRenderer = requireText('portfolio/js/projects-render.js', [
+  'projectUrl(project)',
+  '/projects/${project.slug || projectSlug(project.title || project.name)}/'
+]);
+if (projectsRenderer.includes('project-details.html?id=')) {
+  throw new Error('The projects renderer still uses query-string detail URLs.');
+}
+requireText('projects.html', [
+  'data-project-category="Products"',
+  'data-project-category="Custom Software"',
+  'data-project-category="ERP &amp; Consulting"',
+  'id="products-showcase"'
+]);
 
 const publicFiles = ['index.html', 'blog.html', 'blog-details.html', 'privacy.html', 'cv_ORIG.html'];
 for (const relativePath of publicFiles) {

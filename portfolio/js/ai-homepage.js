@@ -342,7 +342,14 @@
 
             // EmailJS send
             if (typeof emailjs !== 'undefined') {
-                emailjs.sendForm('service_2r2c7we', 'template_q2p8hhb', form)
+                const templateParams = {
+                    from_name: form.elements.name.value,
+                    reply_to: form.elements.email.value,
+                    message: form.elements.message.value,
+                    phone: form.elements.phone.value
+                };
+
+                emailjs.send('service_9hvqsd3', 'template_yk503fe', templateParams)
                     .then(function () {
                         if (spinner) spinner.style.display = 'none';
                         if (success) {

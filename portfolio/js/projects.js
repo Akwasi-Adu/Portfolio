@@ -718,4 +718,9 @@ const projectDates = {
 };
 
 projects.forEach(project => Object.assign(project, projectDates[project.id]));
+projects.forEach(project => {
+    project.category = [1, 4, 5, 22, 23].includes(project.id)
+        ? "Custom Software"
+        : "ERP & Consulting";
+});
 window.projects = projects;

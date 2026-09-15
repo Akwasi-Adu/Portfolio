@@ -300,6 +300,106 @@ img {
     color: var(--ai-text-primary);
 }
 
+/* ========== PROJECT CATEGORIES ========== */
+.ai-project-type-nav {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 3rem;
+}
+
+.ai-project-type {
+    padding: 0.75rem 1rem;
+    color: var(--ai-text-secondary);
+    background: var(--ai-bg-card);
+    border: 1px solid var(--ai-border);
+    border-radius: 999px;
+    cursor: pointer;
+    font: 600 0.875rem var(--ai-font-display);
+    transition: all var(--ai-transition);
+}
+
+.ai-project-type:hover,
+.ai-project-type.active {
+    color: var(--ai-text-primary);
+    background: rgba(139, 92, 246, 0.15);
+    border-color: var(--ai-purple);
+}
+
+.ai-work-section {
+    margin-bottom: 4rem;
+}
+
+.ai-work-heading {
+    margin-bottom: 1.5rem;
+}
+
+.ai-work-heading h2 {
+    margin: 0.25rem 0 0.5rem;
+    color: var(--ai-text-primary);
+    font-family: var(--ai-font-display);
+    font-size: clamp(1.5rem, 3vw, 2rem);
+}
+
+.ai-work-heading > p:last-child {
+    color: var(--ai-text-secondary);
+}
+
+.ai-work-kicker,
+.ai-project-category,
+.ai-product-status {
+    color: var(--ai-cyan);
+    font: 600 0.72rem var(--ai-font-mono);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.ai-products-showcase-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 1.25rem;
+}
+
+.ai-product-summary {
+    display: flex;
+    min-height: 285px;
+    flex-direction: column;
+    padding: 1.5rem;
+    background: linear-gradient(145deg, rgba(139, 92, 246, 0.1), var(--ai-bg-card));
+    border: 1px solid var(--ai-border);
+    border-radius: 16px;
+    transition: all var(--ai-transition);
+}
+
+.ai-product-summary:hover {
+    transform: translateY(-3px);
+    border-color: var(--ai-border-hover);
+}
+
+.ai-product-summary-icon {
+    margin-bottom: 1rem;
+    font-size: 2rem;
+}
+
+.ai-product-summary h3 {
+    margin: 0.35rem 0 0.75rem;
+    color: var(--ai-text-primary);
+    font: 700 1.25rem var(--ai-font-display);
+}
+
+.ai-product-summary > p:not(.ai-product-status) {
+    margin-bottom: 1.25rem;
+    color: var(--ai-text-secondary);
+    font-size: 0.875rem;
+    line-height: 1.65;
+}
+
+.ai-product-summary a {
+    margin-top: auto;
+    color: var(--ai-purple-light);
+    font-weight: 700;
+}
+
 /* ========== PROJECTS GRID ========== */
 .ai-projects-grid {
     display: grid;
@@ -731,4 +831,18 @@ img {
         flex-direction: column;
         align-items: stretch;
     }
+}
+
+.ai-project-category {
+    display: inline-block;
+    margin-bottom: 0.75rem;
+}
+
+.ai-projects-empty {
+    grid-column: 1 / -1;
+    padding: 2rem;
+    color: var(--ai-text-secondary);
+    text-align: center;
+    border: 1px dashed var(--ai-border);
+    border-radius: 12px;
 }

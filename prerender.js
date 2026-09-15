@@ -349,15 +349,16 @@ function toSlug(s) {
   // 6) Pre-render projects.html with all projects
   const projectCards = projects.map(p => {
     const slug = p.slug || toSlug(p.title || p.name);
-    return `<div class="project-card">
+    return `<article class="ai-project-card project-card">
       ${p.logo ? `<img src="${esc(toRootAbsolute(p.logo))}" alt="${esc(p.name)} Logo" class="project-logo">` : ""}
+      <span class="ai-project-category">${esc(p.category || "Client Work")}</span>
       <h2>${esc(p.title)}</h2>
       <p><strong>Duration:</strong> ${esc(p.duration)}</p>
       <p><strong>Project Name:</strong> ${esc(p.name)}</p>
       <p><strong>Industries:</strong> ${esc(Array.isArray(p.industry) ? p.industry.join(", ") : p.industry)}</p>
       <p>${esc(p.summary)}</p>
       <a href="/projects/${slug}/" class="project-link">View Details</a>
-    </div>`;
+    </article>`;
   }).join("");
 
   const projectsIndexPath = path.join(SRC, "projects.html");
