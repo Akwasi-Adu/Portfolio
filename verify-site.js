@@ -52,7 +52,15 @@ if (!article || article.externalUrl !== articleUrl || article.standalone !== tru
 }
 
 const oldAddress = 'akwasi@rhema-systems.com.gh';
-const publicFiles = ['index.html', 'blog.html', 'blog-details.html', 'privacy.html', 'ai/index-ai.html', 'cv_ORIG.html'];
+requireText('index.html', [
+  'id="latest-blogs"',
+  'Writing &amp; Learning',
+  'https://aspnetcoremastery.akwasi.dev/',
+  'href="/privacy.html"'
+]);
+requireText('portfolio/js/ai-homepage.js', ['contact_form_attempt', 'contact_form_success', 'contact_form_error']);
+
+const publicFiles = ['index.html', 'blog.html', 'blog-details.html', 'privacy.html', 'cv_ORIG.html'];
 for (const relativePath of publicFiles) {
   const text = fs.readFileSync(path.join(root, relativePath), 'utf8');
   if (text.includes(oldAddress)) throw new Error(`${relativePath} still contains the old public email address.`);

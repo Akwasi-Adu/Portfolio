@@ -38,9 +38,9 @@ function sortProjects(criteria) {
     } else if (criteria === "name-desc") {
         filteredProjects.sort((a, b) => b.name.localeCompare(a.name));
     } else if (criteria === "duration-asc") {
-        filteredProjects.sort((a, b) => new Date(a.duration.split("–")[0]) - new Date(b.duration.split("–")[0]));
+        filteredProjects.sort((a, b) => Date.parse(a.startDate) - Date.parse(b.startDate));
     } else if (criteria === "duration-desc") {
-        filteredProjects.sort((a, b) => new Date(b.duration.split("–")[0]) - new Date(a.duration.split("–")[0]));
+        filteredProjects.sort((a, b) => Date.parse(b.startDate) - Date.parse(a.startDate));
     }
     renderProjects();
 }

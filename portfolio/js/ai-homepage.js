@@ -315,6 +315,12 @@
     }
 
     // ========== EMAILJS CONTACT FORM ==========
+    function trackContactEvent(eventName, parameters) {
+        if (typeof gtag === 'function') {
+            gtag('event', eventName, parameters || {});
+        }
+    }
+
     function initContactForm() {
         const form = document.getElementById('ai-contact-form');
         if (!form) return;
@@ -327,8 +333,12 @@
             const submitBtn = form.querySelector('button[type="submit"]');
 
             if (spinner) spinner.style.display = 'block';
-            if (success) success.style.display = 'none';
+            if (success) {
+                success.style.display = 'none';
+                success.textContent = '';
+            }
             if (submitBtn) submitBtn.disabled = true;
+            trackContactEvent('contact_form_attempt');
 
             // EmailJS send
             if (typeof emailjs !== 'undefined') {
@@ -338,7 +348,9 @@
                         if (success) {
                             success.style.display = 'block';
                             success.textContent = '✓ Message sent successfully!';
+                            success.style.color = '';
                         }
+                        trackContactEvent('contact_form_success');
                         form.reset();
                         if (submitBtn) submitBtn.disabled = false;
 
@@ -353,12 +365,18 @@
                             success.style.color = '#f43f5e';
                         }
                         if (submitBtn) submitBtn.disabled = false;
+                        trackContactEvent('contact_form_error', { reason: 'emailjs_error' });
                         console.error('EmailJS error:', error);
                     });
             } else {
                 if (spinner) spinner.style.display = 'none';
-                alert('Email service not loaded. Please email me directly.');
+                if (success) {
+                    success.style.display = 'block';
+                    success.textContent = 'The form could not load. Please email me directly at me@akwasi.dev.';
+                    success.style.color = '#f43f5e';
+                }
                 if (submitBtn) submitBtn.disabled = false;
+                trackContactEvent('contact_form_error', { reason: 'emailjs_unavailable' });
             }
         });
     }
