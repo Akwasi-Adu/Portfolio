@@ -2,7 +2,8 @@
   "name": "akwasi-dev-prerender",
   "private": true,
   "scripts": {
-    "build": "node prerender.js"
+    "build": "node prerender.js",
+    "verify": "node verify-site.js"
   },
   "dependencies": {
     "cheerio": "^1.1.2",

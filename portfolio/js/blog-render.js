@@ -39,12 +39,13 @@ function renderBlogs() {
         
         // Use slug if available, otherwise generate from title
         const slug = blog.slug || slugifyTitle(blog.title);
+        const href = blog.externalUrl || `/blog/${slug}/`;
 
         post.innerHTML = `
-            <h2>${blog.title}</h2>
+            <h2><a href="${href}" onclick="trackBlogClick('${blog.title}')">${blog.title}</a></h2>
             <p><em>${new Date(blog.date).toLocaleDateString()}</em></p>
             <p>${blog.summary}</p>
-            <a href="/blog/${slug}/" class="read-more" onclick="trackBlogClick('${blog.title}')">Read More</a>
+            <a href="${href}" class="read-more" onclick="trackBlogClick('${blog.title}')">Read More</a>
         `;
         
 
@@ -60,7 +61,7 @@ function searchBlogs(query) {
 function filterBlogsByCategory(category) {
     filteredBlogs = category === "all" 
         ? [...blogs] 
-        : blogs.filter(blog => blog.category === category);
+        : blogs.filter(blog => Array.isArray(blog.categories) && blog.categories.includes(category));
     renderBlogs();
 }
 

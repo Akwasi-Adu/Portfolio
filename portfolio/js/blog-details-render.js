@@ -28,7 +28,7 @@ function loadBlogDetails() {
             div.innerHTML = `
                 <h3>${post.title}</h3>
                 <p>${post.summary}</p>
-                <a href="blog-details.html?id=${post.id}" class="read-more">Read More</a>
+                <a href="${post.externalUrl || `blog-details.html?id=${post.id}`}" class="read-more">Read More</a>
             `;
             relatedContainer.appendChild(div);
         });

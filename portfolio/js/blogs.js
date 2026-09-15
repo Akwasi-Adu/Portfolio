@@ -1,5 +1,18 @@
 const blogs = [
     {
+        id: 10,
+        title: `Dangote Refinery Is Going Public: My Notes on the IPO From Ghana`,
+        slug: `dangote-refinery-ipo-notes-from-ghana`,
+        externalUrl: `/blog/dangote-refinery-ipo-notes-from-ghana/`,
+        standalone: true,
+        heroImage: `/portfolio/images/blog/dangote-refinery-ipo-social-card.png`,
+        summary: `I went through the Dangote Petroleum Refinery IPO numbers, valuation, risks and the Ghana access question. The refinery is exceptional, but the investment decision is not as obvious as the headlines make it look.`,
+        content: ``,
+        categories: ["Finance & Investing", "Business & Markets", "Africa"],
+        date: "2026-09-15",
+        lastUpdated: "2026-09-15"
+    },
+    {
         id: 1,
         title: `Pastel Partner Error Code 20`,
         summary: "This is one of the rather common error codes that Pastel Partner users commonly encounter...",
@@ -565,4 +578,5 @@ Cheers!</p>
       
     
 ];
+window.blogs = blogs;
 window.projects = blogs;

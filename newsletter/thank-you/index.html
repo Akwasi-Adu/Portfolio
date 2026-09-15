@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Subscription Received | Akwasi.dev Market Notes</title>
+  <meta name="description" content="Your subscription to Akwasi.dev Market Notes has been received.">
+  <meta name="robots" content="noindex, follow">
+  <meta name="theme-color" content="#060a14">
+  <link rel="canonical" href="https://akwasi.dev/newsletter/thank-you/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/portfolio/css/ai-pages.css">
+  <link rel="icon" type="image/png" href="/portfolio/images/favicon.png">
+  <style>
+    .confirmation-page {
+      width: min(760px, calc(100% - 32px));
+      min-height: calc(100vh - 160px);
+      margin: 0 auto;
+      padding: 160px 0 80px;
+      display: grid;
+      align-content: center;
+    }
+    .confirmation-card {
+      padding: clamp(28px, 6vw, 54px);
+      border: 1px solid rgba(139, 92, 246, 0.28);
+      border-radius: 20px;
+      background: linear-gradient(145deg, rgba(18, 27, 47, 0.96), rgba(8, 13, 25, 0.98));
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.28);
+    }
+    .confirmation-mark {
+      width: 56px;
+      height: 56px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 24px;
+      border-radius: 50%;
+      color: #07101d;
+      background: linear-gradient(135deg, #f4c96b, #8b5cf6);
+      font: 800 28px/1 Outfit, sans-serif;
+    }
+    .confirmation-card h1 { margin: 0 0 16px; font-size: clamp(34px, 7vw, 58px); line-height: 1.05; }
+    .confirmation-card p { max-width: 610px; color: var(--ai-text-secondary); font-size: 17px; line-height: 1.75; }
+    .confirmation-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .confirmation-note { margin-top: 30px; padding-top: 22px; border-top: 1px solid rgba(255, 255, 255, 0.1); font-size: 13px !important; }
+  </style>
+
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-EPKW2QTNQL"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-EPKW2QTNQL');
+    gtag('event', 'newsletter_confirmation_page_view', { source: 'brevo_signup_form' });
+  </script>
+</head>
+<body>
+  <header class="ai-header">
+    <div class="ai-header-inner">
+      <a href="/index.html" class="ai-logo">akwasi<span>.dev</span></a>
+      <nav>
+        <button class="ai-menu-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+        <ul class="ai-nav-list">
+          <li><a href="/index.html" class="ai-nav-link">Home</a></li>
+          <li><a href="/projects.html" class="ai-nav-link">Projects</a></li>
+          <li><a href="/blog.html" class="ai-nav-link">Blog</a></li>
+          <li><a href="/index.html#contact" class="ai-nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main class="confirmation-page">
+    <section class="confirmation-card" aria-labelledby="confirmation-title">
+      <div class="confirmation-mark" aria-hidden="true">✓</div>
+      <p class="ai-eyebrow">Akwasi.dev Market Notes</p>
+      <h1 id="confirmation-title">You’re on the list.</h1>
+      <p>Thanks for subscribing. I’ll send the important updates on the Dangote Refinery IPO and occasional notes on technology, business and African markets. No daily noise.</p>
+      <div class="confirmation-actions">
+        <a class="ai-btn ai-btn-primary" href="/blog/dangote-refinery-ipo-notes-from-ghana/">Return to the article</a>
+        <a class="ai-btn ai-btn-ghost" href="/blog.html">Explore more writing</a>
+      </div>
+      <p class="confirmation-note">You can unsubscribe from any email. If you did not request these updates, contact <a href="mailto:me@akwasi.dev">me@akwasi.dev</a>.</p>
+    </section>
+  </main>
+
+  <footer class="ai-footer">
+    <div class="ai-container"><p>© 2026 <a href="https://akwasi.dev">Akwasi Adu-Kyeremeh</a>. All rights reserved. <a href="/privacy.html">Privacy</a></p></div>
+  </footer>
+  <script src="/portfolio/js/ai-pages.js"></script>
+</body>
+</html>
