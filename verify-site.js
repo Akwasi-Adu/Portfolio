@@ -20,7 +20,9 @@ requireText('blog/dangote-refinery-ipo-notes-from-ghana/index.html', [
   '<title>Dangote Refinery Is Going Public: My Notes on the IPO From Ghana | Akwasi Adu-Kyeremeh</title>',
   'id="ghana-broker-mechanics"',
   'I do not own shares in Dangote Petroleum Refinery',
-  '/portfolio/images/blog/dangote-refinery-ipo-social-card.png',
+  '/portfolio/images/blog/dangote-refinery-ipo-social-card-v2.jpg',
+  '<meta property="og:image:secure_url"',
+  '<meta property="og:image:type" content="image/jpeg">',
   '/portfolio/js/newsletter-config.js',
   'href="/privacy.html"'
 ]);
@@ -29,8 +31,12 @@ requireText('portfolio/js/newsletter-config.js', [
   'formAction'
 ]);
 
-if (!fs.existsSync(path.join(root, 'portfolio', 'images', 'blog', 'dangote-refinery-ipo-social-card.png'))) {
-  throw new Error('The article social card is missing.');
+const socialCardPath = path.join(root, 'portfolio', 'images', 'blog', 'dangote-refinery-ipo-social-card-v2.jpg');
+if (!fs.existsSync(socialCardPath)) {
+  throw new Error('The optimized article social card is missing.');
+}
+if (fs.statSync(socialCardPath).size > 300000) {
+  throw new Error('The optimized article social card exceeds 300 KB.');
 }
 
 requireText('privacy.html', ['Privacy Notice', 'me@akwasi.dev', 'Brevo', 'Google Analytics']);
