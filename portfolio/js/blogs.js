@@ -5,7 +5,7 @@ const blogs = [
         slug: `dangote-refinery-ipo-notes-from-ghana`,
         externalUrl: `/blog/dangote-refinery-ipo-notes-from-ghana/`,
         standalone: true,
-        heroImage: `/portfolio/images/blog/dangote-refinery-ipo-social-card.png`,
+        heroImage: `/portfolio/images/blog/dangote-refinery-ipo-social-card-v2.jpg`,
         summary: `I went through the Dangote Petroleum Refinery IPO numbers, valuation, risks and the Ghana access question. The refinery is exceptional, but the investment decision is not as obvious as the headlines make it look.`,
         content: ``,
         categories: ["Finance & Investing", "Business & Markets", "Africa"],
