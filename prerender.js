@@ -25,6 +25,11 @@ function toRootAbsolute(u) {
   return '/' + u.replace(/^\.?\//, '');
 }
 
+function blogHref(blog) {
+  const slug = blog.slug || toSlug(blog.title);
+  return blog.externalUrl || `/blog/${slug}/`;
+}
+
 // NEW: Normalize all asset paths in HTML content to root-absolute
 function normalizeHtmlAssets(html) {
   const $ = cheerio.load(html || "");
@@ -194,7 +199,22 @@ function toSlug(s) {
   // 3) Build blog detail pages
   for (const b of blogs) {
     const slug = b.slug || toSlug(b.title);
-    const url = `https://akwasi.dev/blog/${slug}/`;
+    const href = blogHref(b);
+    const url = absoluteUrl(href);
+
+    if (b.standalone) {
+      if (!href.startsWith('/')) {
+        throw new Error(`Standalone blog URL must be site-rooted: ${href}`);
+      }
+      const relativePath = href.replace(/^\/+|\/+$/g, '');
+      const standaloneFile = path.extname(relativePath)
+        ? path.join(OUT, relativePath)
+        : path.join(OUT, relativePath, 'index.html');
+      if (!fs.existsSync(standaloneFile)) {
+        throw new Error(`Standalone blog file is missing: ${standaloneFile}`);
+      }
+      continue;
+    }
 
     // Collect images: explicit fields + inline images in content
     const inlineImgs = extractImageSrcs(b.content);
@@ -309,12 +329,12 @@ function toSlug(s) {
   // 5) Pre-render blog.html with all blog posts
   const sortedBlogs = [...blogs].sort((a, b) => new Date(b.date) - new Date(a.date));
   const blogCards = sortedBlogs.map(b => {
-    const slug = b.slug || toSlug(b.title);
+    const href = blogHref(b);
     return `<article class="blog-post">
-      <h2><a href="/blog/${slug}/">${esc(b.title)}</a></h2>
+      <h2><a href="${esc(href)}">${esc(b.title)}</a></h2>
       <p><em>${new Date(b.date).toLocaleDateString()}</em></p>
       <p>${esc(b.summary || "")}</p>
-      <a class="read-more" href="/blog/${slug}/">Read More</a>
+      <a class="read-more" href="${esc(href)}">Read More</a>
     </article>`;
   }).join("");
 
@@ -355,9 +375,9 @@ function toSlug(s) {
 
     // Latest blogs block
     const latest = sortedBlogs.slice(0, 3).map(b => {
-      const slug = b.slug || toSlug(b.title);
+      const href = blogHref(b);
       return `<div class="blog-post">
-        <h3><a href="/blog/${slug}/">${esc(b.title)}</a></h3>
+        <h3><a href="${esc(href)}">${esc(b.title)}</a></h3>
         <p><em>${new Date(b.date).toLocaleDateString()}</em></p>
         <p>${esc(b.summary || "")}</p>
       </div>`;
@@ -392,14 +412,14 @@ const staticUrls = [
   { loc: `${siteBase}/`, changefreq: "weekly", priority: "1.0", lastmod: isoDate(new Date()) },
   { loc: `${siteBase}/projects.html`, changefreq: "weekly", priority: "0.9", lastmod: isoDate(new Date()) },
   { loc: `${siteBase}/blog.html`, changefreq: "weekly", priority: "0.9", lastmod: isoDate(new Date()) },
-  { loc: `${siteBase}/cv.html`, changefreq: "monthly", priority: "0.5", lastmod: isoDate(new Date()) }
+  { loc: `${siteBase}/cv.html`, changefreq: "monthly", priority: "0.5", lastmod: isoDate(new Date()) },
+  { loc: `${siteBase}/privacy.html`, changefreq: "yearly", priority: "0.3", lastmod: isoDate(new Date()) }
 ];
 
 // Per-entry URLs
 const blogUrls = blogs.map(b => {
-  const slug = b.slug || toSlug(b.title);
   return {
-    loc: `${siteBase}/blog/${slug}/`,
+    loc: absoluteUrl(blogHref(b)),
     changefreq: "monthly",
     priority: "0.8",
     lastmod: isoDate(b.lastUpdated || b.date || new Date())
@@ -496,8 +516,7 @@ const imageItems = [];
 
 // blogs → collect images from heroImage/images/content
 for (const b of blogs) {
-  const slug = b.slug || toSlug(b.title);
-  const loc = `${siteBaseAbs}/blog/${slug}/`;
+  const loc = absoluteUrl(blogHref(b));
   const inlineImgs = extractImageSrcs(b.content);
   const declaredImgs = []
     .concat(b.heroImage ? [absoluteUrl(b.heroImage)] : [])

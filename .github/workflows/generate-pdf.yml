@@ -35,6 +35,8 @@ jobs:
       - name: Pre-render site
         run: npm run build
         # package.json must contain: "build": "node prerender.js"
+      - name: Verify static site
+        run: npm run verify
       # --- Generate CV PDF with Puppeteer ---
       - name: Ensure Puppeteer is installed (if not in package.json)
         run: |
