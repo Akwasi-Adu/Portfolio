@@ -683,4 +683,44 @@ const projects = [
         screenshot: "portfolio/images/pwc-logo.png"
     }
 ];
+
+// Machine-readable dates keep chronological sorting independent of display wording.
+const projectDates = {
+    1: { startDate: "2024-08-01", endDate: "2024-10-31" },
+    4: { startDate: "2024-11-01", endDate: "2024-12-31" },
+    5: { startDate: "2023-10-01", endDate: "2024-08-31" },
+    6: { startDate: "2018-04-01", endDate: "2020-10-31" },
+    7: { startDate: "2018-02-01", endDate: "2018-04-30" },
+    8: { startDate: "2015-01-01", endDate: "2015-03-31" },
+    9: { startDate: "2015-02-01", endDate: "2015-05-31" },
+    10: { startDate: "2014-11-01", endDate: "2015-05-31" },
+    11: { startDate: "2014-07-01", endDate: "2014-09-30" },
+    12: { startDate: "2014-02-01", endDate: "2014-05-31" },
+    13: { startDate: "2014-01-01", endDate: "2014-04-30" },
+    14: { startDate: "2014-01-01", endDate: "2014-03-31" },
+    15: { startDate: "2014-10-01", endDate: "2014-12-31" },
+    16: { startDate: "2015-05-01", endDate: "2015-08-31" },
+    17: { startDate: "2015-07-01", endDate: "2015-09-30" },
+    18: { startDate: "2015-08-01", endDate: "2015-11-30" },
+    19: { startDate: "2016-04-01", endDate: "2016-06-30" },
+    20: { startDate: "2016-06-01", endDate: "2016-09-30" },
+    21: { startDate: "2016-03-01", endDate: "2016-07-31" },
+    22: { startDate: "2022-03-01", endDate: "2022-10-31" },
+    23: { startDate: "2021-12-01", endDate: "2022-02-28" },
+    24: { startDate: "2012-06-01", endDate: "2012-08-31" },
+    25: { startDate: "2012-02-01", endDate: "2012-05-31" },
+    26: { startDate: "2012-01-01", endDate: "2012-03-31" },
+    27: { startDate: "2011-08-01", endDate: null },
+    28: { startDate: "2011-05-01", endDate: "2011-08-31" },
+    29: { startDate: "2011-01-01", endDate: "2011-04-30" },
+    30: { startDate: "2009-09-01", endDate: "2010-04-30" },
+    31: { startDate: "2012-06-01", endDate: null }
+};
+
+projects.forEach(project => Object.assign(project, projectDates[project.id]));
+projects.forEach(project => {
+    project.category = [1, 4, 5, 22, 23].includes(project.id)
+        ? "Custom Software"
+        : "ERP & Consulting";
+});
 window.projects = projects;

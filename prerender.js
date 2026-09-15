@@ -227,7 +227,7 @@ function toSlug(s) {
     const body = `
 <article class="ai-blog-detail">
   <h1>${esc(b.title)}</h1>
-  <p style="margin-bottom: 2rem;"><em style="font-family: var(--ai-font-mono); font-size: 0.8rem; color: var(--ai-text-tertiary);">${new Date(b.date).toLocaleDateString()}</em></p>
+  <p style="margin-bottom: 2rem;"><em style="font-family: var(--ai-font-mono); font-size: 0.8rem; color: var(--ai-text-tertiary);">${new Date(b.date).toLocaleDateString("en-US")}</em></p>
   <div>
     ${normalizeHtmlAssets(b.content || "")}
   </div>
@@ -332,7 +332,7 @@ function toSlug(s) {
     const href = blogHref(b);
     return `<article class="blog-post">
       <h2><a href="${esc(href)}">${esc(b.title)}</a></h2>
-      <p><em>${new Date(b.date).toLocaleDateString()}</em></p>
+      <p><em>${new Date(b.date).toLocaleDateString("en-US")}</em></p>
       <p>${esc(b.summary || "")}</p>
       <a class="read-more" href="${esc(href)}">Read More</a>
     </article>`;
@@ -349,15 +349,16 @@ function toSlug(s) {
   // 6) Pre-render projects.html with all projects
   const projectCards = projects.map(p => {
     const slug = p.slug || toSlug(p.title || p.name);
-    return `<div class="project-card">
+    return `<article class="ai-project-card project-card">
       ${p.logo ? `<img src="${esc(toRootAbsolute(p.logo))}" alt="${esc(p.name)} Logo" class="project-logo">` : ""}
+      <span class="ai-project-category">${esc(p.category || "Client Work")}</span>
       <h2>${esc(p.title)}</h2>
       <p><strong>Duration:</strong> ${esc(p.duration)}</p>
       <p><strong>Project Name:</strong> ${esc(p.name)}</p>
       <p><strong>Industries:</strong> ${esc(Array.isArray(p.industry) ? p.industry.join(", ") : p.industry)}</p>
       <p>${esc(p.summary)}</p>
       <a href="/projects/${slug}/" class="project-link">View Details</a>
-    </div>`;
+    </article>`;
   }).join("");
 
   const projectsIndexPath = path.join(SRC, "projects.html");
@@ -376,10 +377,15 @@ function toSlug(s) {
     // Latest blogs block
     const latest = sortedBlogs.slice(0, 3).map(b => {
       const href = blogHref(b);
-      return `<div class="blog-post">
-        <h3><a href="${esc(href)}">${esc(b.title)}</a></h3>
-        <p><em>${new Date(b.date).toLocaleDateString()}</em></p>
-        <p>${esc(b.summary || "")}</p>
+      const date = new Date(b.date).toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
+      });
+      return `<div class="ai-blog-card ai-reveal">
+        <div class="ai-blog-date">${esc(date)}</div>
+        <h3 class="ai-blog-title"><a href="${esc(href)}">${esc(b.title)}</a></h3>
+        <p class="ai-blog-excerpt">${esc(b.summary || "")}</p>
       </div>`;
     }).join("");
 

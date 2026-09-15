@@ -45,7 +45,14 @@
     <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer=""></script>
     <script defer="">
         window.addEventListener('DOMContentLoaded', function () {
-            emailjs.init("HNWqejSJ6lO8tpjjf");
+            emailjs.init({
+                publicKey: "HNWqejSJ6lO8tpjjf",
+                blockHeadless: true,
+                limitRate: {
+                    id: "contact-form",
+                    throttle: 30000
+                }
+            });
         });
     </script>
 
@@ -641,7 +648,7 @@
                                 enabling
                                 real-time inventory tracking, sales reporting, and enterprise-wide visibility.</p>
                         </div>
-                        <a href="project-details.html?id=30" class="ai-project-link">View Case Study</a>
+                        <a href="/projects/retail-management-system-specialist-vodafone-ghana-airtel-tigo-ghana-chad-and-congo/" class="ai-project-link">View Case Study</a>
                     </div>
 
                     <!-- PwC -->
@@ -667,7 +674,7 @@
                                 accounting
                                 software, enabling efficient preparation of client accounts.</p>
                         </div>
-                        <a href="project-details.html?id=31" class="ai-project-link">View Case Study</a>
+                        <a href="/projects/technical-support-specialist-accounting-software-solutions-for-pwc-ghana-and-sierra-leone/" class="ai-project-link">View Case Study</a>
                     </div>
 
                     <!-- MESTI -->
@@ -693,7 +700,7 @@
                                 stalled
                                 project and delivering full data management capabilities on tight deadline.</p>
                         </div>
-                        <a href="project-details.html?id=1" class="ai-project-link">View Case Study</a>
+                        <a href="/projects/full-stack-developer-ministry-of-environment-science-technology-and-innovation-mesti-ghana/" class="ai-project-link">View Case Study</a>
                     </div>
                 </div>
 
@@ -707,53 +714,32 @@
         <section class="ai-blog ai-section" id="blog">
             <div class="ai-container">
                 <div class="ai-section-header ai-reveal">
-                    <span class="ai-section-label">// latest_insights</span>
-                    <h2 class="ai-section-title">Recent Posts</h2>
+                    <span class="ai-section-label">// insights_and_learning</span>
+                    <h2 class="ai-section-title">Writing &amp; Learning</h2>
                 </div>
 
-                <div class="ai-blog-grid">
-                    <div class="ai-blog-card ai-reveal">
-                        <div class="ai-blog-date">September 5, 2025</div>
-                        <h3 class="ai-blog-title">
-                            <a href="/blog/fixing-conversion-failed-when-converting-date-andor-time-from-character-string-in-sage-intelligence-reporting/">
-                                Fixing 'Conversion failed when converting date and/or time from character string' in
-                                Sage Intelligence
-                                Reporting
-                            </a>
-                        </h3>
-                        <p class="ai-blog-excerpt">If you run Sage Intelligence reports and hit this error, especially
-                            in September,
-                            it may be caused by Windows regional month abbreviations. Here's why it happens and how to
-                            fix it.</p>
-                    </div>
+                <div class="ai-blog-grid" id="latest-blogs"><div class="ai-blog-card ai-reveal">
+        <div class="ai-blog-date">September 15, 2026</div>
+        <h3 class="ai-blog-title"><a href="/blog/dangote-refinery-ipo-notes-from-ghana/">Dangote Refinery Is Going Public: My Notes on the IPO From Ghana</a></h3>
+        <p class="ai-blog-excerpt">I went through the Dangote Petroleum Refinery IPO numbers, valuation, risks and the Ghana access question. The refinery is exceptional, but the investment decision is not as obvious as the headlines make it look.</p>
+      </div><div class="ai-blog-card ai-reveal">
+        <div class="ai-blog-date">September 5, 2025</div>
+        <h3 class="ai-blog-title"><a href="/blog/fixing-conversion-failed-when-converting-date-andor-time-from-character-string-in-sage-intelligence-reporting/">Fixing 'Conversion failed when converting date and/or time from character string' in Sage Intelligence Reporting</a></h3>
+        <p class="ai-blog-excerpt">If you run Sage Intelligence reports and hit this error, especially in September, it may be caused by Windows regional month abbreviations. Here’s why it happens and how to fix it.</p>
+      </div><div class="ai-blog-card ai-reveal">
+        <div class="ai-blog-date">May 22, 2025</div>
+        <h3 class="ai-blog-title"><a href="/blog/ai-in-erp-a-transformation-thats-reshaping-the-workforce/">AI in ERP: A Transformation That's Reshaping the Workforce</a></h3>
+        <p class="ai-blog-excerpt">When Microsoft embedded Copilot into Dynamics 365 or SAP introduced AI-driven cash application matching in S/4HANA, it wasn't just about new features—it was a signal that the future of enterprise technology is here...</p>
+      </div></div>
 
-                    <div class="ai-blog-card ai-reveal">
-                        <div class="ai-blog-date">May 22, 2025</div>
-                        <h3 class="ai-blog-title">
-                            <a href="/blog/ai-in-erp-a-transformation-thats-reshaping-the-workforce/">
-                                AI in ERP: A Transformation That's Reshaping the Workforce
-                            </a>
-                        </h3>
-                        <p class="ai-blog-excerpt">When Microsoft embedded Copilot into Dynamics 365 or SAP introduced
-                            AI-driven
-                            cash application matching in S/4HANA, it wasn't just about new features — it was a signal
-                            that the future
-                            of enterprise technology is here...</p>
+                <a class="ai-learning-card ai-reveal" href="https://aspnetcoremastery.akwasi.dev/" target="_blank" rel="noopener noreferrer">
+                    <div>
+                        <span class="ai-learning-label">Free learning resource</span>
+                        <h3>ASP.NET Core Mastery</h3>
+                        <p>A structured collection of 122 lessons across 20 parts, covering ASP.NET Core from foundations to practical application.</p>
                     </div>
-
-                    <div class="ai-blog-card ai-reveal">
-                        <div class="ai-blog-date">April 16, 2025</div>
-                        <h3 class="ai-blog-title">
-                            <a href="/blog/bulk-unapplication-of-customer-invoices-in-business-central/">
-                                Bulk Unapplication of Customer Invoices in Business Central
-                            </a>
-                        </h3>
-                        <p class="ai-blog-excerpt">Unapplying customer invoices tied to payments in bulk isn't directly
-                            supported in
-                            the BC UI — but here's how I tackled it with AL code, a report, and a config package
-                            workaround.</p>
-                    </div>
-                </div>
+                    <span class="ai-learning-link">Explore the tutorials →</span>
+                </a>
 
                 <div class="ai-view-all ai-reveal">
                     <a href="blog.html" class="ai-btn ai-btn-ghost">View All Posts</a>
@@ -822,7 +808,7 @@
                         that needs to ship fast — I'd love to hear about it.
                     </p>
 
-                    <form id="ai-contact-form" class="ai-contact-form">
+                    <form id="ai-contact-form" class="ai-contact-form" method="post" action="#contact">
                         <div class="ai-form-group">
                             <label for="ai-name">Name</label>
                             <input type="text" id="ai-name" name="name" placeholder="Your Name" required="">
@@ -839,8 +825,10 @@
                             <label for="ai-message">Message</label>
                             <textarea id="ai-message" name="message" placeholder="Tell me about your project..." rows="5" required=""></textarea>
                         </div>
-                        <div class="ai-form-status">
-                            <div id="ai-spinner">Sending...</div>
+                        <p class="ai-form-privacy">By submitting, you agree that I may use these details to respond to your enquiry. See the <a href="/privacy.html">Privacy Notice</a>.</p>
+                        <noscript><p class="ai-form-noscript">JavaScript is required to submit this form. Please email <a href="mailto:me@akwasi.dev">me@akwasi.dev</a> instead.</p></noscript>
+                        <div class="ai-form-status" role="status" aria-live="polite" aria-atomic="true">
+                            <div id="ai-spinner" aria-hidden="true">Sending...</div>
                             <div id="ai-success"></div>
                         </div>
                         <button type="submit" class="ai-btn ai-btn-primary" style="width:100%;">Send Message</button>
@@ -861,7 +849,7 @@
     <!-- ========== FOOTER ========== -->
     <footer class="ai-footer">
         <div class="ai-container">
-            <p>© 2025 <a href="https://akwasi.dev">Akwasi Adu-Kyeremeh</a>. All rights reserved.</p>
+            <p>© 2026 <a href="https://akwasi.dev">Akwasi Adu-Kyeremeh</a>. All rights reserved. · <a href="/privacy.html">Privacy</a></p>
         </div>
     </footer>
 
@@ -870,6 +858,9 @@
 
     <!-- Scripts -->
     <script src="portfolio/js/ai-homepage.js"></script>
+
+
+
 
 
 
