@@ -30,6 +30,12 @@ if (!fs.existsSync(path.join(root, 'portfolio', 'images', 'blog', 'dangote-refin
 }
 
 requireText('privacy.html', ['Privacy Notice', 'me@akwasi.dev', 'Brevo', 'Google Analytics']);
+requireText('newsletter/thank-you/index.html', [
+  'You’re on the list.',
+  'Akwasi.dev Market Notes',
+  '/blog/dangote-refinery-ipo-notes-from-ghana/',
+  'me@akwasi.dev'
+]);
 requireText('blog-sitemap.xml', [`https://akwasi.dev${articleUrl}`]);
 requireText('sitemap-static.xml', ['https://akwasi.dev/privacy.html']);
 
