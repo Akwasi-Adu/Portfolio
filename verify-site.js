@@ -24,6 +24,10 @@ requireText('blog/dangote-refinery-ipo-notes-from-ghana/index.html', [
   '/portfolio/js/newsletter-config.js',
   'href="/privacy.html"'
 ]);
+requireText('portfolio/js/newsletter-config.js', [
+  'https://0b003bf6.sibforms.com/serve/',
+  'formAction'
+]);
 
 if (!fs.existsSync(path.join(root, 'portfolio', 'images', 'blog', 'dangote-refinery-ipo-social-card.png'))) {
   throw new Error('The article social card is missing.');

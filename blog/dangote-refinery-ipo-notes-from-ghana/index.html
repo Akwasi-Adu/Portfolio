@@ -432,14 +432,17 @@
         <section class="newsletter" id="updates">
           <h3>Want the next material update?</h3>
           <p>I am tracking the Ghana-access question, meaningful changes to the offer, and anything that materially changes the investment case. Join the list and I will send the important updates, not daily noise.</p>
-          <form id="newsletter-form" class="newsletter-form" novalidate>
-            <input id="newsletter-email" name="email" type="email" autocomplete="email" placeholder="you@example.com" aria-label="Email address" required>
+          <form id="newsletter-form" class="newsletter-form" method="POST" novalidate>
+            <input id="newsletter-email" name="EMAIL" type="email" autocomplete="email" placeholder="you@example.com" aria-label="Email address" required>
             <button type="submit">Join the update list</button>
             <label class="newsletter-consent">
               <input id="newsletter-consent" type="checkbox" required>
               <span>I consent to receiving email updates from Akwasi Adu-Kyeremeh about this article and related market notes. I understand I can unsubscribe at any time and have read the <a href="/privacy.html">privacy notice</a>.</span>
             </label>
             <div id="newsletter-status" class="newsletter-status" role="status" aria-live="polite"></div>
+            <input type="text" name="email_address_check" value="" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-5000px;">
+            <input type="hidden" name="locale" value="en">
+            <input type="hidden" name="html_type" value="simple">
           </form>
         </section>
 
@@ -537,22 +540,25 @@
         }
       });
 
-      const NEWSLETTER_SIGNUP_URL = window.AKWASI_NEWSLETTER?.signupUrl || '';
+      const NEWSLETTER_FORM_ACTION = window.AKWASI_NEWSLETTER?.formAction || '';
       const form = document.getElementById('newsletter-form');
       const email = document.getElementById('newsletter-email');
       const consent = document.getElementById('newsletter-consent');
       const status = document.getElementById('newsletter-status');
 
-      form?.addEventListener('submit', async function (event) {
-        event.preventDefault();
+      if (form && NEWSLETTER_FORM_ACTION) form.action = NEWSLETTER_FORM_ACTION;
+
+      form?.addEventListener('submit', function (event) {
         status.textContent = '';
 
         if (!email.checkValidity()) {
+          event.preventDefault();
           status.textContent = 'Please enter a valid email address.';
           email.focus();
           return;
         }
         if (!consent.checked) {
+          event.preventDefault();
           status.textContent = 'Please confirm that you consent to receiving the updates.';
           consent.focus();
           return;
@@ -560,14 +566,15 @@
 
         track('newsletter_signup_attempt', { article: 'dangote_ipo_2026' });
 
-        if (!NEWSLETTER_SIGNUP_URL) {
+        if (!NEWSLETTER_FORM_ACTION) {
+          event.preventDefault();
           const subject = encodeURIComponent('Akwasi.dev Market Notes signup');
           status.innerHTML = 'Online signup is being connected. For now, <a href="mailto:me@akwasi.dev?subject=' + subject + '">email me to request an invitation</a>.';
           return;
         }
 
-        track('newsletter_signup', { article: 'dangote_ipo_2026', method: 'brevo_hosted_form' });
-        window.location.assign(NEWSLETTER_SIGNUP_URL);
+        status.textContent = 'Submitting your subscription…';
+        track('newsletter_signup', { article: 'dangote_ipo_2026', method: 'brevo_form_post' });
       });
     })();
   </script>
