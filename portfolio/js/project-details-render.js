@@ -11,7 +11,8 @@ function loadProjectDetails() {
 
     if (project) {
         document.getElementById("project-screenshot").src = project.screenshot;
-        document.getElementById("project-title").innerText = project.title;
+        document.getElementById("project-title").innerText = project.clientName;
+        document.getElementById("project-role").innerText = project.role;
         document.getElementById("project-duration").innerText = project.duration;
         document.getElementById("project-name").innerText = project.name;
         document.getElementById("project-industry").innerText = project.industry;

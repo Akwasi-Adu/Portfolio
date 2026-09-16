@@ -440,13 +440,24 @@ img {
     opacity: 1;
 }
 
-.ai-project-card .project-logo {
-    width: 56px;
-    height: 56px;
-    border-radius: 12px;
-    object-fit: cover;
+.ai-project-logo-frame {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 124px;
+    height: 78px;
+    padding: 8px;
     margin-bottom: 1rem;
-    background: var(--ai-bg-surface);
+    overflow: hidden;
+    background: #fff;
+    border-radius: 12px;
+}
+
+.ai-project-card .project-logo {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }
 
 .ai-project-card h2 {
@@ -456,6 +467,18 @@ img {
     color: var(--ai-text-primary);
     margin-bottom: 0.5rem;
     line-height: 1.35;
+}
+
+.ai-project-card .ai-project-name {
+    margin-bottom: 0.35rem;
+    color: var(--ai-text-primary);
+    font-weight: 600;
+}
+
+.ai-project-card .ai-project-role {
+    margin-bottom: 1rem;
+    color: var(--ai-text-tertiary);
+    font-size: 0.8rem;
 }
 
 .ai-project-card p {
