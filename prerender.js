@@ -280,9 +280,10 @@ function toSlug(s) {
     // Project detail body with dark AI theme classes
     const body = `
 <article id="project-details-page" class="ai-detail-page">
-  ${p.screenshot ? `<img src="${esc(toRootAbsolute(p.screenshot))}" alt="Screenshot for ${esc(p.title || p.name)}" class="project-screenshot">` : ""}
-  <h1>${esc(p.title || p.name)}</h1>
+  ${p.screenshot ? `<img src="${esc(toRootAbsolute(p.screenshot))}" alt="Image for ${esc(p.name)}" class="project-screenshot">` : ""}
+  <h1>${esc(p.clientName || p.title || p.name)}</h1>
   <div style="margin-bottom: 2rem;">
+    ${p.role ? `<p><strong>Role:</strong> ${esc(p.role)}</p>` : ""}
     ${p.duration ? `<p><strong>Duration:</strong> ${esc(p.duration)}</p>` : ""}
     ${p.name ? `<p><strong>Project Name:</strong> ${esc(p.name)}</p>` : ""}
     ${p.industry ? `<p><strong>Industry:</strong> ${Array.isArray(p.industry) ? esc(p.industry.join(", ")) : esc(p.industry)}</p>` : ""}
@@ -305,14 +306,14 @@ function toSlug(s) {
     const jsonLd = {
       "@context": "https://schema.org",
       "@type": "CreativeWork",
-      "name": p.title || p.name,
+      "name": `${p.clientName || p.title || p.name}: ${p.name}`,
       "description": p.summary || "",
       "url": url,
       ...(projImages.length ? { "image": projImages } : {})
     };
 
     const html = makePage({
-      title: `${(p.title || p.name)} | Projects | Akwasi Adu-Kyeremeh`,
+      title: `${p.clientName || p.title || p.name} | ${p.name} | Akwasi Adu-Kyeremeh`,
       description: p.summary || "Project by Akwasi Adu-Kyeremeh",
       canonical: url,
       ogImage: projImages[0] || undefined,
@@ -350,11 +351,12 @@ function toSlug(s) {
   const projectCards = projects.map(p => {
     const slug = p.slug || toSlug(p.title || p.name);
     return `<article class="ai-project-card project-card">
-      ${p.logo ? `<img src="${esc(toRootAbsolute(p.logo))}" alt="${esc(p.name)} Logo" class="project-logo">` : ""}
+      ${p.logo ? `<div class="ai-project-logo-frame"><img src="${esc(toRootAbsolute(p.logo))}" alt="${esc(p.clientName || p.name)} logo" class="project-logo"></div>` : ""}
       <span class="ai-project-category">${esc(p.category || "Client Work")}</span>
-      <h2>${esc(p.title)}</h2>
+      <h2>${esc(p.clientName || p.title)}</h2>
+      <p class="ai-project-name">${esc(p.name)}</p>
+      ${p.role ? `<p class="ai-project-role">${esc(p.role)}</p>` : ""}
       <p><strong>Duration:</strong> ${esc(p.duration)}</p>
-      <p><strong>Project Name:</strong> ${esc(p.name)}</p>
       <p><strong>Industries:</strong> ${esc(Array.isArray(p.industry) ? p.industry.join(", ") : p.industry)}</p>
       <p>${esc(p.summary)}</p>
       <a href="/projects/${slug}/" class="project-link">View Details</a>

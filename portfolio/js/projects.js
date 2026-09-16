@@ -722,5 +722,10 @@ projects.forEach(project => {
     project.category = [1, 4, 5, 22, 23].includes(project.id)
         ? "Custom Software"
         : "ERP & Consulting";
+    const [role, ...clientParts] = project.title.split("|");
+    project.role = role.trim();
+    project.clientName = project.id === 31
+        ? "PwC Ghana and Sierra Leone"
+        : clientParts.join("|").trim() || project.title;
 });
 window.projects = projects;

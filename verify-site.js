@@ -83,7 +83,22 @@ requireText('projects.html', [
   'data-project-category="Products"',
   'data-project-category="Custom Software"',
   'data-project-category="ERP &amp; Consulting"',
-  'id="products-showcase"'
+  'id="products-showcase"',
+  'class="ai-project-logo-frame"',
+  'class="ai-project-role"',
+  '<h2>Ministry of Finance, Ghana</h2>'
+]);
+
+const projectSandbox = { window: {} };
+vm.createContext(projectSandbox);
+vm.runInContext(fs.readFileSync(path.join(root, 'portfolio', 'js', 'projects.js'), 'utf8'), projectSandbox);
+const projectEntries = projectSandbox.window.projects;
+if (projectEntries.length !== 29 || projectEntries.some(project => !project.clientName || !project.role)) {
+  throw new Error('Project client names and roles are incomplete.');
+}
+requireText('projects/full-stack-developer-ministry-of-finance-ghana/index.html', [
+  '<h1>Ministry of Finance, Ghana</h1>',
+  '<strong>Role:</strong> Full-Stack Developer'
 ]);
 
 const publicFiles = ['index.html', 'blog.html', 'blog-details.html', 'privacy.html', 'cv_ORIG.html'];

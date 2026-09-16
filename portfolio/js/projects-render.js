@@ -60,11 +60,12 @@ function renderProjects(filteredProjects) {
         const card = document.createElement("article");
         card.className = "ai-project-card project-card";
         card.innerHTML = `
-            <img src="${project.logo}" alt="${project.name} Logo" class="project-logo">
+            <div class="ai-project-logo-frame"><img src="${project.logo}" alt="${project.clientName} logo" class="project-logo"></div>
             <span class="ai-project-category">${project.category}</span>
-            <h2>${project.title}</h2>
+            <h2>${project.clientName}</h2>
+            <p class="ai-project-name">${project.name}</p>
+            <p class="ai-project-role">${project.role}</p>
             <p><strong>Duration:</strong> ${project.duration}</p>
-            <p><strong>Project Name:</strong> ${project.name}</p>
             <p><strong>Industries:</strong> ${project.industry.join(", ")}</p>
             <p>${project.summary}</p>
             <a href="${projectUrl(project)}" class="project-link">View Details</a>`;
