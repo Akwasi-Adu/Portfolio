@@ -97,9 +97,18 @@ const projectSandbox = { window: {} };
 vm.createContext(projectSandbox);
 vm.runInContext(fs.readFileSync(path.join(root, 'portfolio', 'js', 'projects.js'), 'utf8'), projectSandbox);
 const projectEntries = projectSandbox.window.projects;
-if (projectEntries.length !== 29 || projectEntries.some(project => !project.clientName || !project.role)) {
+if (projectEntries.length !== 30 || projectEntries.some(project => !project.clientName || !project.role)) {
   throw new Error('Project client names and roles are incomplete.');
 }
+const tdcProject = projectEntries.find(project => project.id === 32);
+if (!tdcProject || tdcProject.clientName !== 'TDC Ghana Ltd' || tdcProject.role !== 'Finance Module Lead' || tdcProject.startDate !== '2026-05-01' || tdcProject.endDate !== null) {
+  throw new Error('TDC Ghana project entry is incomplete.');
+}
+requireText('projects/finance-module-lead-tdc-ghana-ltd/index.html', [
+  '<h1>TDC Ghana Ltd</h1>',
+  '<strong>Role:</strong> Finance Module Lead',
+  'May 2026'
+]);
 requireText('projects/full-stack-developer-ministry-of-finance-ghana/index.html', [
   '<h1>Ministry of Finance, Ghana</h1>',
   '<strong>Role:</strong> Full-Stack Developer'
