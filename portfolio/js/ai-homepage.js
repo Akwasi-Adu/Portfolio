@@ -395,11 +395,10 @@
 
         // Typewriter
         new Typewriter('ai-typewriter', [
-            'AI Solutions Architect.',
-            'Enterprise Builder.',
-            'Vibe Coder.',
+            'Enterprise Systems Architect.',
+            'Full-Stack Developer.',
             'ERP Specialist.',
-            '10x Shipping Speed.'
+            'AI-Assisted Builder.'
         ]);
 
         // Scroll animations

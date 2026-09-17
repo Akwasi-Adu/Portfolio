@@ -1,6 +1,6 @@
 /* ============================================
    AI-BRANDED HOMEPAGE STYLES
-   akwasi.dev — AI Solutions Architect
+   akwasi.dev — Enterprise Systems Architect
    Tech-forward dark aesthetic with artistic sensibility
    ============================================ */
 
@@ -640,12 +640,6 @@ ul {
     border-radius: 999px;
     margin-bottom: 1rem;
     font-weight: 500;
-}
-
-.ai-product-badge.vibe-coded {
-    background: var(--ai-purple-dim);
-    color: var(--ai-purple);
-    border: 1px solid rgba(139, 92, 246, 0.2);
 }
 
 .ai-product-badge.live {
