@@ -65,6 +65,10 @@ requireText('index.html', [
   'href="/privacy.html"',
   '/projects/retail-management-system-specialist-vodafone-ghana-airtel-tigo-ghana-chad-and-congo/'
 ]);
+requireText('portfolio/css/ai-homepage.css', [
+  '.ai-project-logo img',
+  'object-fit: contain;'
+]);
 requireText('portfolio/js/ai-homepage.js', [
   'contact_form_attempt',
   'contact_form_success',
