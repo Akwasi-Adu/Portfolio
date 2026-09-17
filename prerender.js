@@ -348,9 +348,11 @@ function toSlug(s) {
   }
 
   // 6) Pre-render projects.html with all projects
-  const projectCards = projects.map(p => {
-    const slug = p.slug || toSlug(p.title || p.name);
-    return `<article class="ai-project-card project-card">
+  const projectCards = [...projects]
+    .sort((a, b) => Date.parse(b.startDate) - Date.parse(a.startDate))
+    .map(p => {
+      const slug = p.slug || toSlug(p.title || p.name);
+      return `<article class="ai-project-card project-card">
       ${p.logo ? `<div class="ai-project-logo-frame"><img src="${esc(toRootAbsolute(p.logo))}" alt="${esc(p.clientName || p.name)} logo" class="project-logo"></div>` : ""}
       <span class="ai-project-category">${esc(p.category || "Client Work")}</span>
       <h2>${esc(p.clientName || p.title)}</h2>
@@ -361,7 +363,7 @@ function toSlug(s) {
       <p>${esc(p.summary)}</p>
       <a href="/projects/${slug}/" class="project-link">View Details</a>
     </article>`;
-  }).join("");
+    }).join("");
 
   const projectsIndexPath = path.join(SRC, "projects.html");
   if (fs.existsSync(projectsIndexPath)) {

@@ -77,13 +77,15 @@ requireText('portfolio/js/ai-homepage.js', [
   "template_yk503fe"
 ]);
 const projectsRenderer = requireText('portfolio/js/projects-render.js', [
+  'let activeSort = "duration-desc";',
   'projectUrl(project)',
   '/projects/${project.slug || projectSlug(project.title || project.name)}/'
 ]);
 if (projectsRenderer.includes('project-details.html?id=')) {
   throw new Error('The projects renderer still uses query-string detail URLs.');
 }
-requireText('projects.html', [
+const projectsIndex = requireText('projects.html', [
+  '<option value="duration-desc" selected="">Newest to Oldest</option>',
   'data-project-category="Products"',
   'data-project-category="Custom Software"',
   'data-project-category="ERP &amp; Consulting"',
@@ -92,6 +94,11 @@ requireText('projects.html', [
   'class="ai-project-role"',
   '<h2>Ministry of Finance, Ghana</h2>'
 ]);
+const cardPositions = ['TDC Ghana Ltd', 'Inter-Con Security, Ghana', 'Ministry of Environment, Science, Technology &amp; Innovation (MESTI), Ghana']
+  .map(client => projectsIndex.indexOf(`<h2>${client}</h2>`));
+if (cardPositions.some(position => position < 0) || cardPositions.some((position, index) => index > 0 && position <= cardPositions[index - 1])) {
+  throw new Error('Pre-rendered project cards are not newest-first.');
+}
 
 const projectSandbox = { window: {} };
 vm.createContext(projectSandbox);
