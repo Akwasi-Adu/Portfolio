@@ -1,5 +1,26 @@
 const projects = [
     {
+        id: 32,
+        title: "Finance Module Lead | TDC Ghana Ltd",
+        duration: "May 2026 – Present",
+        name: "Finance Module for a Custom ERP",
+        industry: ["Real Estate", "Property Development"],
+        summary: "Leading development of the Finance module for a ground-up ERP being built for TDC Ghana Ltd. The ongoing work covers core accounting workflows, financial controls, and reporting.",
+        details: [
+            "Leading the design and implementation of the ERP's Finance module as part of a wider, ground-up enterprise system for TDC Ghana Ltd.",
+            "Developing finance capabilities spanning the general ledger, accounts payable and receivable, cash and bank operations, period close, and financial reporting.",
+            "Working across ASP.NET Core APIs, a Next.js frontend, and a SQL Server data layer to connect financial workflows with the wider ERP."
+        ],
+        highlights: [
+            "<strong>Accounting foundations:</strong> Building ledger and subledger workflows with traceable financial transactions.",
+            "<strong>Finance controls:</strong> Developing approval, access, audit, and period-close controls for operational accountability.",
+            "<strong>Ground-up ERP:</strong> Integrating Finance with a broader, purpose-built enterprise platform."
+        ],
+        outcome: "In progress since May 2026. The Finance module is still under development; no go-live or completed business outcome is claimed yet.",
+        logo: "portfolio/images/tdc-ghana-logo.png",
+        screenshot: "portfolio/images/tdc-ghana-logo.png"
+    },
+    {
         id: 1,
         title: "Full-Stack Developer | Ministry of Environment, Science, Technology & Innovation (MESTI), Ghana",
         duration: "Aug 2024 – Oct 2024",
@@ -686,6 +707,7 @@ const projects = [
 
 // Machine-readable dates keep chronological sorting independent of display wording.
 const projectDates = {
+    32: { startDate: "2026-05-01", endDate: null },
     1: { startDate: "2024-08-01", endDate: "2024-10-31" },
     4: { startDate: "2024-11-01", endDate: "2024-12-31" },
     5: { startDate: "2023-10-01", endDate: "2024-08-31" },
@@ -719,7 +741,7 @@ const projectDates = {
 
 projects.forEach(project => Object.assign(project, projectDates[project.id]));
 projects.forEach(project => {
-    project.category = [1, 4, 5, 22, 23].includes(project.id)
+    project.category = [1, 4, 5, 22, 23, 32].includes(project.id)
         ? "Custom Software"
         : "ERP & Consulting";
     const [role, ...clientParts] = project.title.split("|");
