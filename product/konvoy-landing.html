@@ -241,16 +241,10 @@
         .cta .container { position: relative; z-index: 1; text-align: center; }
         .cta h2 { font-size: clamp(2.5rem, 5vw, 3.5rem); color: white; margin-bottom: 20px; }
         .cta > .container > p { font-size: 1.25rem; color: rgba(255, 255, 255, 0.9); margin-bottom: 48px; max-width: 600px; margin-left: auto; margin-right: auto; }
-        .waitlist-form { max-width: 700px; margin: 0 auto; background: white; border-radius: 24px; padding: 48px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3); }
-        .form-title { font-size: 1.5rem; color: var(--dark); margin-bottom: 8px; }
-        .form-subtitle { color: var(--gray); margin-bottom: 32px; }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px; }
-        .form-group { margin-bottom: 16px; }
-        .form-group label { display: block; font-size: 0.9rem; font-weight: 600; color: var(--dark); margin-bottom: 8px; }
-        .form-group input, .form-group select { width: 100%; padding: 14px 18px; font-family: var(--font-display); font-size: 1rem; border: 2px solid var(--gray-light); border-radius: 12px; transition: all 0.3s ease; background: white; }
-        .form-group input:focus, .form-group select:focus { outline: none; border-color: var(--primary); box-shadow: 0 0 0 4px rgba(255, 107, 53, 0.1); }
-        .form-submit { width: 100%; padding: 18px; font-size: 1.1rem; margin-top: 8px; }
+        .waitlist-form { max-width: 620px; margin: 0 auto; background: white; border-radius: 24px; padding: 32px; box-shadow: 0 30px 80px rgba(0, 0, 0, 0.3); }
+        .waitlist-embed { display: block; width: 100%; height: 600px; border: 0; }
         .form-note { font-size: 0.85rem; color: var(--gray); margin-top: 16px; text-align: center; }
+        .form-note a { color: #2558a5; text-decoration: underline; }
 
         /* Footer */
         footer { background: var(--dark); padding: 80px 0 40px; border-top: 1px solid rgba(255, 255, 255, 0.1); }
@@ -274,13 +268,11 @@
         @keyframes popIn { to { opacity: 1; transform: scale(1); } }
         .fade-in { opacity: 0; transform: translateY(30px); transition: all 0.8s ease; }
         .fade-in.visible { opacity: 1; transform: translateY(0); }
-        .toast { position: fixed; bottom: 30px; right: 30px; background: var(--success); color: white; padding: 16px 24px; border-radius: 12px; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3); transform: translateY(100px); opacity: 0; transition: all 0.4s ease; z-index: 9999; }
-        .toast.show { transform: translateY(0); opacity: 1; }
 
         /* Responsive */
         @media (max-width: 1200px) { .hero-visual { display: none; } .hero-content { max-width: 100%; text-align: center; } .hero-cta { justify-content: center; } }
         @media (max-width: 992px) { .nav-links { display: none; } .mobile-menu-btn { display: block; } .footer-content { grid-template-columns: 1fr 1fr; gap: 40px; } .timeline::before { left: 20px; } .timeline-item, .timeline-item:nth-child(odd) { flex-direction: column; } .timeline-marker { left: 20px; } .timeline-content, .timeline-item:nth-child(odd) .timeline-content { padding-left: 60px !important; padding-right: 0 !important; text-align: left !important; } .timeline-item:nth-child(odd) .timeline-features { justify-content: flex-start; } .stats-grid { grid-template-columns: repeat(2, 1fr); } }
-        @media (max-width: 768px) { .section { padding: 80px 0; } .footer-content { grid-template-columns: 1fr; gap: 32px; } .form-row { grid-template-columns: 1fr; } .waitlist-form { padding: 32px 24px; } .hero h1 { font-size: 2.25rem; } }
+        @media (max-width: 768px) { .section { padding: 80px 0; } .footer-content { grid-template-columns: 1fr; gap: 32px; } .waitlist-form { padding: 24px 12px; } .waitlist-embed { height: 740px; } .hero h1 { font-size: 2.25rem; } }
     </style>
 </head>
 <body>
@@ -752,30 +744,8 @@
             <h2 class="fade-in">Ready to transform your <span style="color: var(--dark);">group adventures?</span></h2>
             <p class="fade-in">Join the waitlist and be the first to know when Konvoy launches. Early adopters get exclusive perks!</p>
             <div class="waitlist-form fade-in">
-                <h3 class="form-title">Join the Waitlist</h3>
-                <p class="form-subtitle">Be among the first to experience Konvoy.</p>
-                <form id="waitlistForm" onsubmit="handleSubmit(event)">
-                    <div class="form-row">
-                        <div class="form-group"><label for="firstName">First Name</label><input type="text" id="firstName" name="firstName" placeholder="John" required></div>
-                        <div class="form-group"><label for="lastName">Last Name</label><input type="text" id="lastName" name="lastName" placeholder="Doe" required></div>
-                    </div>
-                    <div class="form-group"><label for="email">Email Address</label><input type="email" id="email" name="email" placeholder="john@example.com" required></div>
-                    <div class="form-group">
-                        <label for="groupType">Group Type</label>
-                        <select id="groupType" name="groupType" required>
-                            <option value="">Select your group type...</option>
-                            <option value="motorcycle">🏍️ Motorcycle Club</option>
-                            <option value="car">🚗 Car Enthusiasts</option>
-                            <option value="family">👨‍👩‍👧‍👦 Family</option>
-                            <option value="friends">👯 Friends</option>
-                            <option value="corporate">🏢 Corporate / Team Building</option>
-                            <option value="tour">🎫 Tour Operator</option>
-                            <option value="other">✨ Other</option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn btn-primary form-submit">🚀 Join the Waitlist</button>
-                </form>
-                <p class="form-note">🔒 We respect your privacy. No spam, ever. Unsubscribe anytime.</p>
+                <iframe class="waitlist-embed" title="Konvoy waitlist signup" src="https://0b003bf6.sibforms.com/v2/serve/MUIFAFobhh3rfHrWHeHDKMz7ZL0THLk_fBWp8O-4IWU68eTmeQaf1g54QlzznAyoPl-UzQk2rPVBhz3OftSfPhxr6GG9Fpzv2CE1JzKWPCzJyV3_LhS_J1noBl4BjMGSGr-a72vm5b157ntrd40mqZNn8_Y_ztMfWoLog8TSi5q6B0D7pO1vkaoTzKNMf1cvr-Bt8poSk1U7zmsshw==" loading="lazy" scrolling="auto"></iframe>
+                <p class="form-note">Join to receive Konvoy launch and early-access updates. Unsubscribe anytime. Brevo manages the waitlist; see our <a href="/privacy.html">privacy notice</a>.</p>
             </div>
         </div>
     </section>
@@ -787,7 +757,7 @@
                 <div class="footer-brand"><a href="#" class="logo"><span class="logo-icon">🚀</span>Konvoy</a><p>The world-class platform for planning, executing, and memorializing group travel adventures.</p></div>
                 <div class="footer-section"><h4>Product</h4><ul><li><a href="#features">Features</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#roadmap">Roadmap</a></li><li><a href="#developer">For Developers</a></li></ul></div>
                 <div class="footer-section"><h4>Company</h4><ul><li><a href="#">About Us</a></li><li><a href="#">Blog</a></li><li><a href="#">Careers</a></li><li><a href="#">Contact</a></li></ul></div>
-                <div class="footer-section"><h4>Legal</h4><ul><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Cookie Policy</a></li><li><a href="#">GDPR</a></li></ul></div>
+                <div class="footer-section"><h4>Legal</h4><ul><li><a href="/privacy.html">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Cookie Policy</a></li><li><a href="#">GDPR</a></li></ul></div>
             </div>
             <div class="footer-bottom">
                 <p>© 2026 Konvoy by Adullam Solutions Company Limited. All rights reserved.</p>
@@ -796,7 +766,6 @@
         </div>
     </footer>
 
-    <div class="toast" id="toast">🎉 You're on the list! We'll be in touch soon.</div>
 
     <script>
         // Navbar scroll effect
@@ -826,15 +795,6 @@
             const isActive = item.classList.contains('active');
             document.querySelectorAll('.accordion-item').forEach(i => i.classList.remove('active'));
             if (!isActive) item.classList.add('active');
-        }
-
-        // Form submission
-        function handleSubmit(e) {
-            e.preventDefault();
-            const toast = document.getElementById('toast');
-            toast.classList.add('show');
-            document.getElementById('waitlistForm').reset();
-            setTimeout(() => toast.classList.remove('show'), 4000);
         }
 
         // Smooth scroll

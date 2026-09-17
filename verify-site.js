@@ -53,6 +53,14 @@ requireText('konvoy/thank-you/index.html', [
   '/product/konvoy-landing.html',
   '/privacy.html'
 ]);
+const konvoyPage = requireText('product/konvoy-landing.html', [
+  'title="Konvoy waitlist signup"',
+  'https://0b003bf6.sibforms.com/v2/serve/MUIFAFobhh3rfHrWHeHDKMz7ZL0THLk_fBWp8O-4IWU68eTmeQaf1g54QlzznAyoPl-UzQk2rPVBhz3OftSfPhxr6GG9Fpzv2CE1JzKWPCzJyV3_LhS_J1noBl4BjMGSGr-a72vm5b157ntrd40mqZNn8_Y_ztMfWoLog8TSi5q6B0D7pO1vkaoTzKNMf1cvr-Bt8poSk1U7zmsshw==',
+  'href="/privacy.html"'
+]);
+if (konvoyPage.includes('handleSubmit(event)') || konvoyPage.includes("You're on the list!")) {
+  throw new Error('Konvoy still contains the simulated waitlist success flow.');
+}
 const ezfmcPage = requireText('product/ezfmc-landing-page.html', [
   'mailto:me@akwasi.dev?subject=EzFMC%20Demo%20Request',
   'mailto:me@akwasi.dev?subject=EzFMC%20Call%20Request',
