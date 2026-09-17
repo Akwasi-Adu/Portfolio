@@ -510,6 +510,15 @@
       const articleTitle = "Dangote Refinery Is Going Public: My Notes on the IPO From Ghana";
       const articleUrl = "https://akwasi.dev/blog/dangote-refinery-ipo-notes-from-ghana/";
 
+      function trackedShareUrl(source) {
+        const url = new URL(articleUrl);
+        url.searchParams.set('utm_source', source);
+        url.searchParams.set('utm_medium', 'social');
+        url.searchParams.set('utm_campaign', 'dangote_ipo_2026');
+        url.searchParams.set('utm_content', 'article_share_button');
+        return url.toString();
+      }
+
       function track(name, params) {
         if (typeof gtag === 'function') {
           gtag('event', name, Object.assign({ article_title: articleTitle }, params || {}));
@@ -524,12 +533,12 @@
 
       document.getElementById('share-linkedin')?.addEventListener('click', function () {
         track('article_share', { method: 'linkedin' });
-        window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(articleUrl), '_blank', 'noopener,noreferrer');
+        window.open('https://www.linkedin.com/sharing/share-offsite/?url=' + encodeURIComponent(trackedShareUrl('linkedin')), '_blank', 'noopener,noreferrer');
       });
 
       document.getElementById('share-whatsapp')?.addEventListener('click', function () {
         track('article_share', { method: 'whatsapp' });
-        window.open('https://wa.me/?text=' + encodeURIComponent(articleTitle + ' ' + articleUrl), '_blank', 'noopener,noreferrer');
+        window.open('https://wa.me/?text=' + encodeURIComponent(articleTitle + ' ' + trackedShareUrl('whatsapp')), '_blank', 'noopener,noreferrer');
       });
 
       document.getElementById('copy-link')?.addEventListener('click', async function () {

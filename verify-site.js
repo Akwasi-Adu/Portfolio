@@ -58,13 +58,19 @@ if (!article || article.externalUrl !== articleUrl || article.standalone !== tru
 }
 
 const oldAddress = 'akwasi@rhema-systems.com.gh';
-requireText('index.html', [
+const homepage = requireText('index.html', [
   'id="latest-blogs"',
   'Writing &amp; Learning',
   'https://aspnetcoremastery.akwasi.dev/',
   'href="/privacy.html"',
+  'Enterprise Depth.',
+  'AI-assisted workflows',
+  'Explore Selected Work',
   '/projects/retail-management-system-specialist-vodafone-ghana-airtel-tigo-ghana-chad-and-congo/'
 ]);
+if (/vibe.?cod|10x/i.test(homepage)) {
+  throw new Error('Homepage positioning still includes vibe coding or unsupported speed claims.');
+}
 requireText('portfolio/css/ai-homepage.css', [
   '.ai-project-logo img',
   'object-fit: contain;'
@@ -85,6 +91,8 @@ if (projectsRenderer.includes('project-details.html?id=')) {
   throw new Error('The projects renderer still uses query-string detail URLs.');
 }
 const projectsIndex = requireText('projects.html', [
+  '<h1 class="ai-page-title">Selected Work</h1>',
+  'All Categories',
   '<option value="duration-desc" selected="">Newest to Oldest</option>',
   'data-project-category="Products"',
   'data-project-category="Custom Software"',
@@ -93,6 +101,12 @@ const projectsIndex = requireText('projects.html', [
   'class="ai-project-logo-frame"',
   'class="ai-project-role"',
   '<h2>Ministry of Finance, Ghana</h2>'
+]);
+requireText('blog/dangote-refinery-ipo-notes-from-ghana/index.html', [
+  "url.searchParams.set('utm_medium', 'social')",
+  "url.searchParams.set('utm_campaign', 'dangote_ipo_2026')",
+  "trackedShareUrl('linkedin')",
+  "trackedShareUrl('whatsapp')"
 ]);
 const cardPositions = ['TDC Ghana Ltd', 'Inter-Con Security, Ghana', 'Ministry of Environment, Science, Technology &amp; Innovation (MESTI), Ghana']
   .map(client => projectsIndex.indexOf(`<h2>${client}</h2>`));
