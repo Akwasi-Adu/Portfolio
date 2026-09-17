@@ -46,6 +46,17 @@ requireText('newsletter/thank-you/index.html', [
   '/blog/dangote-refinery-ipo-notes-from-ghana/',
   'me@akwasi.dev'
 ]);
+const ezfmcPage = requireText('product/ezfmc-landing-page.html', [
+  'mailto:me@akwasi.dev?subject=EzFMC%20Demo%20Request',
+  'mailto:me@akwasi.dev?subject=EzFMC%20Call%20Request',
+  'mailto:me@akwasi.dev?subject=EzFMC%20Sales%20Inquiry'
+]);
+if (ezfmcPage.includes('tel:+233000000000') || ezfmcPage.includes('hello@adullamsolutions.com') || ezfmcPage.includes('sales@adullamsolutions.com')) {
+  throw new Error('EzFMC still contains an outdated contact destination.');
+}
+requireText('product/ezrealty-landing-page.html', [
+  'mailto:me@akwasi.dev?subject=EzRealty%20Demo%20Request'
+]);
 requireText('blog-sitemap.xml', [`https://akwasi.dev${articleUrl}`]);
 requireText('sitemap-static.xml', ['https://akwasi.dev/privacy.html']);
 
