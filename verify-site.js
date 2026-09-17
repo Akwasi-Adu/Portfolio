@@ -46,6 +46,13 @@ requireText('newsletter/thank-you/index.html', [
   '/blog/dangote-refinery-ipo-notes-from-ghana/',
   'me@akwasi.dev'
 ]);
+requireText('konvoy/thank-you/index.html', [
+  '<title>Waitlist Request Received | Konvoy</title>',
+  'https://akwasi.dev/konvoy/thank-you/',
+  'Thanks for joining the waitlist.',
+  '/product/konvoy-landing.html',
+  '/privacy.html'
+]);
 const ezfmcPage = requireText('product/ezfmc-landing-page.html', [
   'mailto:me@akwasi.dev?subject=EzFMC%20Demo%20Request',
   'mailto:me@akwasi.dev?subject=EzFMC%20Call%20Request',
