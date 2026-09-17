@@ -1,6 +1,6 @@
 let activeProjectCategory = "all";
 let activeIndustry = "all";
-let activeSort = "name-asc";
+let activeSort = "duration-desc";
 
 function projectSlug(title) {
     let cleaned = String(title);
