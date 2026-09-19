@@ -16,6 +16,23 @@ function requireText(relativePath, needles) {
   return text;
 }
 
+function htmlFilesUnder(relativeDirectory) {
+  const directory = path.join(root, relativeDirectory);
+  return fs.readdirSync(directory, { withFileTypes: true }).flatMap((entry) => {
+    const relativePath = path.join(relativeDirectory, entry.name);
+    if (entry.isDirectory()) return htmlFilesUnder(relativePath);
+    return entry.isFile() && path.extname(entry.name).toLowerCase() === '.html' ? [relativePath] : [];
+  });
+}
+
+for (const relativePath of ['blog', 'projects', 'product'].flatMap(htmlFilesUnder)) {
+  const html = fs.readFileSync(path.join(root, relativePath), 'utf8');
+  const measurementIdCount = (html.match(/G-EPKW2QTNQL/g) || []).length;
+  if (measurementIdCount !== 2) {
+    throw new Error(`${relativePath} must contain exactly one GA4 installation.`);
+  }
+}
+
 requireText('blog/dangote-refinery-ipo-notes-from-ghana/index.html', [
   '<title>Dangote Refinery Is Going Public: My Notes on the IPO From Ghana | Akwasi Adu-Kyeremeh</title>',
   'id="ghana-broker-mechanics"',

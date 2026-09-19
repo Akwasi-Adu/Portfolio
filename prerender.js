@@ -10,6 +10,40 @@ const cheerio = require("cheerio");
 const ROOT = process.cwd();
 const SRC = ROOT; // site root
 const OUT = ROOT; // writing in-place for GitHub Pages simplicity
+const GA4_MEASUREMENT_ID = "G-EPKW2QTNQL";
+
+function analyticsTag() {
+  return `<script async src="https://www.googletagmanager.com/gtag/js?id=${GA4_MEASUREMENT_ID}"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', '${GA4_MEASUREMENT_ID}');
+</script>`;
+}
+
+async function ensureAnalyticsInDirectory(directoryPath) {
+  if (!await fs.pathExists(directoryPath)) return;
+  const entries = await fs.readdir(directoryPath, { withFileTypes: true });
+
+  for (const entry of entries) {
+    const entryPath = path.join(directoryPath, entry.name);
+    if (entry.isDirectory()) {
+      await ensureAnalyticsInDirectory(entryPath);
+      continue;
+    }
+    if (!entry.isFile() || path.extname(entry.name).toLowerCase() !== ".html") continue;
+
+    const html = await fs.readFile(entryPath, "utf8");
+    if (html.includes(GA4_MEASUREMENT_ID)) continue;
+    if (!/<\/head>/i.test(html)) {
+      throw new Error(`Cannot add analytics because </head> is missing: ${entryPath}`);
+    }
+
+    const updated = html.replace(/<\/head>/i, `${analyticsTag()}\n</head>`);
+    await fs.writeFile(entryPath, updated);
+  }
+}
 
 function absoluteUrl(u) {
   if (!u) return null;
@@ -122,6 +156,7 @@ function makePage({ title, description, canonical, ogImage, body, jsonLd, extraH
 <link rel="stylesheet" href="/portfolio/css/ai-pages.css">
 <link rel="icon" type="image/png" href="/portfolio/images/favicon.png">
 ${extraHead}
+${analyticsTag()}
 <script type="application/ld+json">
 ${JSON.stringify(jsonLd, null, 2)}
 </script>
@@ -397,6 +432,12 @@ function toSlug(s) {
     if (latestContainer.length) latestContainer.html(latest);
 
     await fs.writeFile(indexPath, $.html());
+  }
+
+  // Keep analytics coverage complete for generated pages, standalone articles,
+  // and product landing pages. Private proposal files elsewhere are excluded.
+  for (const publicDirectory of ["blog", "projects", "product"]) {
+    await ensureAnalyticsInDirectory(path.join(OUT, publicDirectory));
   }
 
 
