@@ -10,7 +10,7 @@ const blogs = [
         content: ``,
         categories: ["Finance & Investing", "Business & Markets", "Africa"],
         date: "2026-09-15",
-        lastUpdated: "2026-09-15"
+        lastUpdated: "2026-09-20"
     },
     {
         id: 1,
