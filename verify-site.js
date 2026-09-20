@@ -16,16 +16,28 @@ function requireText(relativePath, needles) {
   return text;
 }
 
-requireText('blog/dangote-refinery-ipo-notes-from-ghana/index.html', [
+const dangoteArticlePage = requireText('blog/dangote-refinery-ipo-notes-from-ghana/index.html', [
   '<title>Dangote Refinery Is Going Public: My Notes on the IPO From Ghana | Akwasi Adu-Kyeremeh</title>',
   'id="ghana-broker-mechanics"',
   'I do not own shares in Dangote Petroleum Refinery',
   '/portfolio/images/blog/dangote-refinery-ipo-social-card-v2.jpg',
   '<meta property="og:image:secure_url"',
   '<meta property="og:image:type" content="image/jpeg">',
+  '<meta property="article:modified_time" content="2026-09-20">',
+  '"dateModified": "2026-09-20"',
+  'Last updated 20 September 2026',
+  '<strong>Update: 20 September 2026.</strong>',
+  'id="source-9"',
+  'id="source-10"',
   '/portfolio/js/newsletter-config.js',
   'href="/privacy.html"'
 ]);
+const disclosurePosition = dangoteArticlePage.indexOf('<strong>Disclosure as at 15 September 2026.</strong>');
+const updatePosition = dangoteArticlePage.indexOf('<strong>Update: 20 September 2026.</strong>');
+const openingPosition = dangoteArticlePage.indexOf('I spend most of my working life thinking about ERP systems');
+if (!(disclosurePosition < updatePosition && updatePosition < openingPosition)) {
+  throw new Error('The dated Dangote update must appear after the disclosure and before the original opening narrative.');
+}
 requireText('portfolio/js/newsletter-config.js', [
   'https://0b003bf6.sibforms.com/serve/',
   'formAction'
@@ -72,14 +84,17 @@ if (ezfmcPage.includes('tel:+233000000000') || ezfmcPage.includes('hello@adullam
 requireText('product/ezrealty-landing-page.html', [
   'mailto:me@akwasi.dev?subject=EzRealty%20Demo%20Request'
 ]);
-requireText('blog-sitemap.xml', [`https://akwasi.dev${articleUrl}`]);
+requireText('blog-sitemap.xml', [
+  `https://akwasi.dev${articleUrl}`,
+  '<lastmod>2026-09-20</lastmod>'
+]);
 requireText('sitemap-static.xml', ['https://akwasi.dev/privacy.html']);
 
 const sandbox = { window: {} };
 vm.createContext(sandbox);
 vm.runInContext(fs.readFileSync(path.join(root, 'portfolio', 'js', 'blogs.js'), 'utf8'), sandbox);
 const article = sandbox.window.blogs?.find((blog) => blog.slug === 'dangote-refinery-ipo-notes-from-ghana');
-if (!article || article.externalUrl !== articleUrl || article.standalone !== true) {
+if (!article || article.externalUrl !== articleUrl || article.standalone !== true || article.lastUpdated !== '2026-09-20') {
   throw new Error('The Dangote article catalogue entry is not configured as a standalone page.');
 }
 
